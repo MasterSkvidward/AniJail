@@ -1,16 +1,15 @@
 .navbar {
-    color: #000;
 
     display: flex;
     align-items: center;
     column-gap: 50px;
 
-    padding: 15px 0px;
+    padding: 10px 0px;
 
     &__logo {
         cursor: pointer;
         img {
-            height: 64px;
+            height: 52px;
         }
     }
 
@@ -25,5 +24,32 @@
         text-transform: uppercase;
         
         cursor: pointer;
+        color: rgba(255, 255, 255, 0.5);
+
+        &:hover {
+            color: rgba(255, 255, 255, 0.8);
+        }
     }
+
+    &__search {
+        max-width: 400px;
+        flex: 1 1 auto;
+    }
+
+    &__profile {
+        
+        cursor: pointer;
+        padding: 5px;
+        margin-left: auto;
+
+        img {
+            border-radius: 50%;
+            height: 64px;
+            width: 64px;
+        }
+    }
+}
+
+.active {
+    color:rgba(255, 255, 255, 1)
 }

@@ -21,6 +21,7 @@
 #root {
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
     background-color: #fff;
+    color: white;
     // overflow: hidden;
 
     a:visited {
@@ -33,11 +34,10 @@
     display: flex;
     flex-direction: column;
 
-    background-color: $white;
 }
 
 ._container {
-    max-width: 1400px;
+    max-width: 1600px;
     margin: 0 auto;
 }
 

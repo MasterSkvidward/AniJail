@@ -1,5 +1,23 @@
 .header {
+    position: relative;
+    border-bottom: 3px solid white;
+    background-color: rgba(13, 18, 22, 1);
+
+    z-index: 5;
+}
+
+.sticky {
     position: sticky;
     top: 0;
-    border-bottom: 3px solid white;
+
+    animation: slideDown 0.45s ease-out;
 }
+
+@keyframes slideDown {
+    from {
+      transform: translateY(-150%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
