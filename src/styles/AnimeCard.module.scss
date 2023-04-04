@@ -1,0 +1,75 @@
+.anime-card {
+
+   
+    &__header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        // height: 400px;
+        width: 100%;
+        z-index: 2;
+       
+    }
+
+    &__background {
+        height: 27vw;
+        position: relative;
+
+        &::after {
+            content: '';
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0; left: 0;
+            background: linear-gradient(to bottom, transparent 0%,  rgba(0, 0, 0, 1) 90%);
+           
+        }
+
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            // background: linear-gradient(to bottom, transparent 0%,  rgba(0,0,0,0.4) 100%);
+        }
+    }
+
+    &__container {
+        position: relative;
+        // background-color: rgba($color: #121212, $alpha: 0);
+        column-gap: 45px;
+        display: flex;
+    
+        margin-top: 22vw !important;
+        min-height: 1000px;
+        z-index: 10;
+        
+    }
+
+    &__image {
+        border: 4px solid rgba(254, 0, 57, 1);
+        cursor: pointer;
+        flex: 0 0 25%;
+        height: 316px;
+        max-width: 225px;
+        max-height: 316px;
+    
+        position: relative;
+        width: 225px;
+        
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__body {
+
+    }
+}

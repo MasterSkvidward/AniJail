@@ -1,17 +1,17 @@
 .input {
     color: rgba(255, 255, 255, 1);
     background-color: rgb(47, 47, 47);
-    font-size: 17px;
+    font-size: 19px;
     flex: 1 0 auto;
-
-    padding: 13px 8px;
+    height: 55px;
+    padding: 10px 15px;
 
     transition: all 0.4s;
 
     &:focus {
         outline: none;
         background-color: inherit;
-        color: rgba(0, 0, 0, 1);
+        // color: rgba(0, 0, 0, 1);
     }
 
     &:active {

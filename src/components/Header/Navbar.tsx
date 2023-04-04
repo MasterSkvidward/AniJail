@@ -31,7 +31,14 @@ const Navbar:FC = () => {
 
             <ul className={classes.navbar__links}>
                 {links.map((link, index) =>
-                    <li data-index={index} data-path={link.path} className={index===selectedNumber? [classes.navbar__link, classes.active].join(" "): classes.navbar__link} onClick={handleClick}>{link.value}</li>
+                    <li className={index===selectedNumber? [classes.navbar__link, classes.active].join(" "): classes.navbar__link} 
+                        data-index={index}
+                        data-path={link.path}
+                        onClick={handleClick}
+                        key={index}
+                        >{link.value}
+                    </li>
+                      
                 )}
             </ul>
 
