@@ -1,7 +1,34 @@
 .row {
+   
+    
+    column-gap: 35px;
     display: flex;
-    column-gap: 15px;
+    font-size: 21px;
 
-    font-size: 18px;
     line-height: 120%;
+
+    padding: 22px 0px;
+
+    &__name {
+        flex: 0 1 25%;
+        font-weight: 500;
+        color: rgba($color: #eae8e8, $alpha: 0.9);
+    }
+
+    &__value {
+        display: flex;
+        column-gap: 11px;
+        color: rgba($color: #eae8e8, $alpha: 0.8);
+    }
+
+    &__genre {
+        
+        // color: rgba($color: #efeded, $alpha: 0.7);
+
+        &:not(:last-child)::after {
+            content: ',';
+            color: rgba($color: #ffffff, $alpha: 0.7);
+        }
+
+    }
 }

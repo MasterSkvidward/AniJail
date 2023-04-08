@@ -1,0 +1,10 @@
+.myLink {
+    // color:  rgba(254, 0, 57, 1);
+    // color:  rgb(204, 75, 98);
+    color: rgba(204, 51, 79, 1) !important;
+    cursor: pointer;
+
+    &:hover {
+        opacity: 0.9;
+    }
+}

@@ -1,0 +1,22 @@
+.anime__details {
+    // background-color: rgba(255, 255, 255, 0.9);
+    color: rgb(231, 228, 228);
+}
+
+.description {
+   
+    display: flex;
+    flex-direction: column;
+    row-gap: 19px;
+
+    &__title {
+        color: rgba(204, 51, 79, 1);
+        font-size: 35px;
+        font-weight: 500;
+    }
+
+    &__body {
+        font-size: 23px;
+        line-height: 130%;
+    }
+}

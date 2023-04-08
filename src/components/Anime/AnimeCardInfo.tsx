@@ -12,16 +12,23 @@ export type rowType = {
     name: string,
     value: string | number | IObjectInfo[] | undefined
     sortType?: string | number | undefined
+    isLink: boolean
 }
 
 const AnimeCardInfo: FC<AnimeCardInfoProps> = ({anime}) => {
     const rows:rowType[] = [
-        {name: 'Year', value: anime?.year, sortType: anime?.year},
-        {name: 'Genres', value: anime?.genres},
-        {name: 'Year', value: anime?.year},
-        {name: 'Year', value: anime?.year},
-        {name: 'Year', value: anime?.year},
+        {name: 'Type', value: anime?.type, sortType: anime?.type, isLink: false},
+        {name: 'Genres', value: anime?.genres, isLink: true},
+        {name: 'Status', value: anime?.status, isLink: true},
+        {name: 'Episodes', value: anime?.episodes, isLink: false},
+        {name: 'Season', value: `${anime?.season} ${anime?.year}`, isLink: true},
+    
+        {name: 'Duration', value: anime?.duration, isLink: false},
     ]
+   
+    console.log(anime?.year);
+    
+    
 
     return (
        <div className={classes['anime-info']}>
@@ -32,7 +39,7 @@ const AnimeCardInfo: FC<AnimeCardInfoProps> = ({anime}) => {
 
             <div className={classes['anime-info__rows']}>
                 {rows.map((row, index) =>
-                    <AnimeCardInfoRow name={row.name} value={row.value} key={index}/>
+                    <AnimeCardInfoRow name={row.name} value={row.value} sortType={row.sortType} isLink={row.isLink} key={index}/>
                 )}
             </div>
            

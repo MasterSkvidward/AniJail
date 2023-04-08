@@ -1,7 +1,7 @@
 .anime-info {
     display: flex;
     flex-direction: column;
-    row-gap: 50px;
+    row-gap: 60px;
 
     &__title {
         display: flex;
@@ -21,6 +21,10 @@
     &__rows {
         display: flex;
         flex-direction: column;
-        row-gap: 10px;
+        // row-gap: 20px;
+
+        &>:not(:last-child) {
+            border-bottom: 1px solid rgba(239, 237, 237, 0.2);
+        }
     }
 }

@@ -1,0 +1,41 @@
+.myModal {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: none;
+    background-color: rgba(18, 17, 17, 0.9);
+    width: 100vw;
+    height: 100vh;
+
+    &__content {
+        cursor:zoom-in;
+        padding: 25px;
+        user-select: none;
+        position: relative;
+        width: 480px;
+        height: 700px;
+
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}
+
+.myModal.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.large {
+    width: 720px;
+    height: 1050px;
+}
