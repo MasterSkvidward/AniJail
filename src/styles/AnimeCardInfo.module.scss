@@ -1,7 +1,7 @@
 .anime-info {
     display: flex;
     flex-direction: column;
-    row-gap: 60px;
+    row-gap: 40px;
 
     &__title {
         display: flex;
@@ -9,12 +9,12 @@
         row-gap: 12px;
         
         &_en {
-            font-size: 39px;
+            font-size: 32px;
         }
 
         &_jp {
             opacity: 0.7;
-            font-size: 15px;
+            font-size: 13px;
         }
     }
 
@@ -24,7 +24,7 @@
         // row-gap: 20px;
 
         &>:not(:last-child) {
-            border-bottom: 1px solid rgba(239, 237, 237, 0.2);
+            border-bottom: 2px solid rgba(243, 242, 242, 0.1);
         }
     }
 }

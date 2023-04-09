@@ -8,6 +8,7 @@
     background-color: rgba(18, 17, 17, 0.9);
     width: 100vw;
     height: 100vh;
+    
 
     &__content {
         cursor:zoom-in;
@@ -16,6 +17,7 @@
         position: relative;
         width: 480px;
         height: 700px;
+        // margin-top: 70px;
 
         img {
             position: absolute;
@@ -32,10 +34,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 100;
+    z-index: 9999;
 }
 
 .large {
-    width: 720px;
-    height: 1050px;
+    width: 672px;
+    height: 910px;
 }

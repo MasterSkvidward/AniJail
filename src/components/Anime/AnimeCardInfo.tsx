@@ -3,6 +3,7 @@ import { IAnimeFull, IObjectInfo } from '../../types/jikan';
 
 import classes from '../../styles/AnimeCardInfo.module.scss';
 import AnimeCardInfoRow from './AnimeCardInfoRow';
+import { AiFillMobile } from 'react-icons/ai';
 
 interface AnimeCardInfoProps {
     anime: IAnimeFull | null
@@ -26,14 +27,11 @@ const AnimeCardInfo: FC<AnimeCardInfoProps> = ({anime}) => {
         {name: 'Duration', value: anime?.duration, isLink: false},
     ]
    
-    console.log(anime?.year);
-    
-    
 
     return (
        <div className={classes['anime-info']}>
             <div className={classes['anime-info__title']}>
-                <div className={classes['anime-info__title_en']}>{anime?.title_english}</div>
+                <div className={classes['anime-info__title_en']}>{anime?.title_english ? anime.title_english : anime?.title}</div>
                 <div className={classes['anime-info__title_jp']}>{anime?.title_japanese}</div>
            </div>
 

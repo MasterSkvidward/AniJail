@@ -9,15 +9,11 @@ interface AnimeDetailsProps {
 
 const AnimeDetails: FC<AnimeDetailsProps> = ({anime}) => {
     return (
-       <div className={classes['anime__details']}>
+       <div className={classes['anime-details']}>
            <div className={classes['description'] + ' ' + '_container'}>
-                <h1 className={classes['description__title']}>Synopsis</h1>
+                <h3 className={classes['description__title']}>Synopsis</h3>
                 <p className={classes['description__body']}>{anime?.synopsis}</p>
            </div>
-           
-           <div className={classes['anime-page__video']}>
-                <iframe width="560" height="315" src={anime?.trailer.embed_url} title="YouTube video player" frameBorder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
-            </div>
        </div>
     );
 }
