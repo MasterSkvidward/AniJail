@@ -7,15 +7,13 @@ import SearchBar from '../../UI/SearchBar/SearchBar';
 
 import site_logo from '../../images/AniJail_logo.png';
 import profile_logo from '../../images/profile_logo.jpg';
+import { navbarLinks } from '../../utils/data';
+
 
 const Navbar:FC = () => {
     const navigate = useNavigate();
     const [selectedNumber, setSelectedNumber] = useState<number>(-1);
-    const links: {value: string, path: string}[] = [
-        {value: 'Top 100', path: publicRoutes.ANY},
-        {value: 'New', path: publicRoutes.ANY},
-        {value: 'Random anime', path: publicRoutes.ANY},
-    ]
+  
 
     const handleClick = (event:MouseEvent<HTMLLIElement>):void => {
         setSelectedNumber(Number(event.currentTarget.dataset.index))
@@ -30,7 +28,7 @@ const Navbar:FC = () => {
             </div>
 
             <ul className={classes.navbar__links}>
-                {links.map((link, index) =>
+                {navbarLinks.map((link, index) =>
                     <li className={index===selectedNumber? [classes.navbar__link, classes.active].join(" "): classes.navbar__link} 
                         data-index={index}
                         data-path={link.path}
@@ -38,7 +36,6 @@ const Navbar:FC = () => {
                         key={index}
                         >{link.value}
                     </li>
-                      
                 )}
             </ul>
 

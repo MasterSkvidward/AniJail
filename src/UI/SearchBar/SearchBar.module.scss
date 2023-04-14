@@ -24,8 +24,7 @@
     }
 
     &__list {
-         // background-color: rgb(232, 99, 121);
-        // background-color: inherit;
+        background-color: rgba(31,31,31, 1);
         display: none;
         height: 200px;
         position: absolute;
@@ -40,4 +39,8 @@
     // background-color: rgb(255, 255, 255);
     // width: 150%;
     // color: rgba(0, 0, 0, 1);
+}
+
+.active {
+    display: flex;
 }

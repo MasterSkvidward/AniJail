@@ -40,8 +40,8 @@ const AnimeDetails: FC<AnimeDetailsProps> = ({anime, animePictures}) => {
                 <div className={classes['images']}>
                     <Title value={'Images'}/>
                     <div className={classes['images__container']}>
-                        {animePictures.map(picture =>
-                            <Image url={picture.jpg.image_url} maxWidth={'300'} maxHeight={'172'}/>
+                        {animePictures.map((picture, index) =>
+                            <Image url={picture.jpg.image_url} maxWidth={'300'} maxHeight={'172'} key={index}/>
                         )}
                     </div>
                    

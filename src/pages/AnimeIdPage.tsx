@@ -37,8 +37,6 @@ const AnimeIdPage = () => {
        <div className={classes['anime-page']}>
            <AnimeCard anime={anime}/>
            <AnimeDetails anime={anime} animePictures={animePictures}/>
-
-           
        </div>
     );
 }
