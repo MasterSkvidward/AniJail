@@ -2,13 +2,23 @@
     width: inherit;
 
     &__btn {
-        background-color: rgb(181, 62, 84);
+        background-color: rgba(181, 62, 84, 1);
+        // background-color: rgba(232, 75, 104, 0.8);
         font-size: 17px;
         width: inherit;
         padding: 7px 15px;
         text-align: center;
 
         cursor: pointer;
+
+        &::before {
+            content: '+';
+            margin-right: 10px;
+        }
+
+        &::after {
+            content: '';
+        }
     }
 
     &__options {

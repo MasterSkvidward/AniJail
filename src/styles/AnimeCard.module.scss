@@ -21,8 +21,7 @@
             height: 100%;
             position: absolute;
             top: 0; left: 0;
-            background: linear-gradient(to bottom, transparent 0%,  rgba(10, 10, 10, 1) 92%);
-           
+            background: linear-gradient(to bottom, transparent 0%,  rgba(10, 10, 10, 1) 92%);  
         }
 
         img {
@@ -56,7 +55,7 @@
 
         flex: 1 1 27%;
 
-        max-width: 270px;
+        max-width: 250px;
         max-height: 450px;
 
         // max-width: 360px;
@@ -127,38 +126,26 @@
             font-size: 13px;
             color: rgba(255, 255, 255, 0.8);
         }
-    }
-}
 
+        .rate {
+            background-color: rgb(40, 40, 40);
+            border-radius: 15px;
 
-.footer {
-    margin: 100px 0px 0px 0px;
+            transition: all 0.2s;
+            font-size: 16px;
+            line-height: 120%;
 
-    &__title {
-        color: rgba(255, 255, 255, 0.9);
-        font-size: 23px;
-        font-weight: 500;
-    }
+            padding: 7px 55px;
+            margin-top: 10px;
+            text-align: center;
 
-    &__video {
-        // flex: 1 1 400px;
-        position: relative;
-        padding: 0px 0px 15% 0px;
+            cursor: pointer;
 
-        max-width: 400px;
-        max-height: 260px;
-
-        min-width: 320px;
-        min-height: 180px;
-        margin: 20px 0px;
-    
-        iframe {
-            object-fit: cover;
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
+            &:hover {
+                background-color: rgb(48, 49, 49);
+                // color: rgba(255, 255, 255, 0.8);
+                transform: scale(1.1);
+            }
         }
     }
 }

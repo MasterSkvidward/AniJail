@@ -5,6 +5,23 @@ export interface IObjectInfo {
     url: string;
 }
 
+export interface IAnimePicture {
+    
+    jpg: {
+        image_url: string
+        large_image_url: string
+        small_image_url: string
+    }
+
+    webp: {
+        image_url: string
+        large_image_url: string
+        small_image_url: string
+    }
+
+  
+}
+
 interface IPagination {
     last_visible_page: number;
     has_next_page: boolean;
@@ -103,6 +120,10 @@ export interface IAnimeListResponse {
 
 export interface IAnimeFullResponse {
     data: IAnimeFull;
+}
+
+export interface IAnimePicturesResponse {
+    data: IAnimePicture[];
 }
 
 export interface IFilter {

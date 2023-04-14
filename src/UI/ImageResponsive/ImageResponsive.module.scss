@@ -1,0 +1,23 @@
+.content {
+    cursor:zoom-in;
+    padding: 25px;
+    user-select: none;
+    position: relative;
+    width: 480px;
+    height: 700px;
+    // margin-top: 70px;
+
+    img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.large {
+    width: 633px;
+    height: 895px;
+}

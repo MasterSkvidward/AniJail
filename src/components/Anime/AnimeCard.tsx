@@ -1,15 +1,17 @@
 import React, {FC, useState} from 'react';
 import classes from '../../styles/AnimeCard.module.scss';
-import { IAnimeFull } from '../../types/jikan';
+import { IAnimeFull, IAnimePicture } from '../../types/jikan';
 import AnimeCardInfo from './AnimeCardInfo';
 import background_img from '../../images/onepiece_2560x1440.jpg';
 import searchLoupe from '../../images/search-loupe.png';
 import MyModal from '../../UI/MyModal/MyModal';
 import DropMenu from '../../UI/DropMenu/DropMenu';
+import ImageResponsive from '../../UI/ImageResponsive/ImageResponsive';
 
 
 interface AnimeCardProps {
     anime: IAnimeFull | null
+    // animePictures: IAnimePicture[] | []
 }
 
 const AnimeCard: FC<AnimeCardProps> = ({anime}) => {
@@ -23,7 +25,7 @@ const AnimeCard: FC<AnimeCardProps> = ({anime}) => {
 
     return (
        <div className={classes['anime-card']}>
-        <MyModal visible={modalVisible} setVisible={setModalVisible} image={anime.images.jpg['large_image_url']}/>
+            <MyModal visible={modalVisible} setVisible={setModalVisible}><ImageResponsive url={anime.images.jpg['large_image_url']}/></MyModal>
             <div className={classes['anime-card__header']}>
                 <div className={classes['anime-card__background']}>
                     <img src={background_img} alt="OnePiece" />
@@ -52,14 +54,10 @@ const AnimeCard: FC<AnimeCardProps> = ({anime}) => {
                         <div className={classes['scoredBy']}>
                             {anime?.scored_by}
                         </div>
+                        <div className={classes['rate']}>Rate</div>
                     </div>
                 </div>
-                <div className={classes['footer']}>
-                    <h3 className={classes['footer__title']}>Trailer</h3>
-                    <div className={classes['footer__video']}>
-                        <iframe src={anime?.trailer.embed_url} title="YouTube video player" frameBorder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
-                    </div>
-                </div>
+               
            </div>
        </div>
     );

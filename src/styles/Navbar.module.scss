@@ -15,7 +15,7 @@
 
     &__links {
         display: flex;
-        column-gap: 25px;
+        column-gap: 30px;
     }
 
     &__link {
@@ -23,13 +23,39 @@
         font-weight: 600;
         text-transform: uppercase;
         transition: all 0.1s;
+
+        display: inline-block;
+        line-height: 1;
+        position: relative;
         
         cursor: pointer;
-        color: rgba(255, 255, 255, 0.5);
+        color: rgba(255, 255, 255, 0.6);
 
-        &:hover {
-            color: rgba(255, 255, 255, 0.8);
+        &::after {
+            display: block;
+            content: "";
+            background-color: rgba(204, 51, 79, 1);
+            height: 2px;
+            top: 21px;
+            width: 0%;
+            left: 50%;
+            position: absolute;
+            -webkit-transition: width .3s ease-in-out;
+            -moz--transition: width .3s ease-in-out;
+            transition: width .3s ease-in-out;
+            -webkit-transform: translateX(-50%);
+            -moz-transform: translateX(-50%);
+            transform: translateX(-50%);
         }
+
+
+        &:hover::after,
+        &:hover:focus::after
+        {
+            width: 100%;
+        }
+
+        
     }
 
     &__search {

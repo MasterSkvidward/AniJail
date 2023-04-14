@@ -6,9 +6,6 @@ import MyLink from '../../UI/MyLink/MyLink';
 
 
 const AnimeCardInfoRow: FC<rowType> = ({name, value, sortType, isLink}) => {
-    // console.log(value);
-    // console.log(typeof value, ' ' , value);
-    // console.log('<--_-->');
     const linkNames:string[] = ['']
     
     return (
@@ -19,7 +16,6 @@ const AnimeCardInfoRow: FC<rowType> = ({name, value, sortType, isLink}) => {
                     ? isLink
                         ? <MyLink sortType={sortType}>{value}</MyLink>
                         : <span>{value}</span>
-
                     : 
                     formatGenres(value).map((genre, index) => 
                     <div className={classes.row__genre} key={index}>

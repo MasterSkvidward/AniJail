@@ -1,7 +1,7 @@
 
 import axios from "axios";
 import {ISingleAnime} from '../types/singleAnime';
-import { IAnime, IAnimeFull, IAnimeFullResponse, IAnimeListParams, IAnimeListResponse } from "../types/jikan";
+import { IAnime, IAnimeFull, IAnimeFullResponse, IAnimeListParams, IAnimeListResponse, IAnimePicture, IAnimePicturesResponse } from "../types/jikan";
 
 export class AnimeService {
     // static async getAnimeList(params?:IAnimeListParams): Promise<IAnime[]> {
@@ -31,6 +31,15 @@ export class AnimeService {
 
         console.log(response.data);
         
+        return response.data.data;
+    }
+
+    static async getAnimePictures(id: number | string | undefined): Promise<IAnimePicture[]> {
+        const response = await axios.get<IAnimePicturesResponse>(`https://api.jikan.moe/v4/anime/${id}/pictures`)
+
+        console.log(response.data.data);
+
+
         return response.data.data;
     }
 

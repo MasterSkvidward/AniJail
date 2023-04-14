@@ -4,18 +4,23 @@ import AnimeCard from '../components/Anime/AnimeCard';
 
 import { useParams } from 'react-router-dom';
 import { AnimeService } from '../API/AnimeService';
-import { IAnimeFull } from '../types/jikan';
+import { IAnimeFull, IAnimePicture } from '../types/jikan';
 import AnimeDetails from '../components/Anime/AnimeDetails';
+
 
 type ParamsType = {
     id: string;
 }
 
 const AnimeIdPage = () => {
-   
     const params = useParams<ParamsType>();
-    
     const [anime, setAnime] = useState<IAnimeFull | null>(null);
+    const [animePictures, setAnimePictures] = useState<IAnimePicture[] | []>([]);
+
+    const fetchAnimePictures = async () => {
+        const response = await AnimeService.getAnimePictures(params.id);    
+        setAnimePictures(response);
+    }
 
     const fetchAnime = async () => {
         const response = await AnimeService.getAnimeById(params.id);
@@ -24,13 +29,14 @@ const AnimeIdPage = () => {
 
     useEffect(() => {
         fetchAnime();
+        fetchAnimePictures();
     }, [])
 
 
     return (
        <div className={classes['anime-page']}>
            <AnimeCard anime={anime}/>
-           <AnimeDetails anime={anime}/>
+           <AnimeDetails anime={anime} animePictures={animePictures}/>
 
            
        </div>

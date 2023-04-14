@@ -8,26 +8,6 @@
     background-color: rgba(18, 17, 17, 0.9);
     width: 100vw;
     height: 100vh;
-    
-
-    &__content {
-        cursor:zoom-in;
-        padding: 25px;
-        user-select: none;
-        position: relative;
-        width: 480px;
-        height: 700px;
-        // margin-top: 70px;
-
-        img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-    }
 }
 
 .myModal.active {
@@ -37,7 +17,3 @@
     z-index: 9999;
 }
 
-.large {
-    width: 672px;
-    height: 910px;
-}
