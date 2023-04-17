@@ -41,7 +41,7 @@ const AnimeDetails: FC<AnimeDetailsProps> = ({anime, animePictures}) => {
                     <Title value={'Images'}/>
                     <div className={classes['images__container']}>
                         {animePictures.map((picture, index) =>
-                            <Image url={picture.jpg.image_url} maxWidth={'300'} maxHeight={'172'} key={index}/>
+                            <Image url={picture.jpg.image_url} key={index}/>
                         )}
                     </div>
                    

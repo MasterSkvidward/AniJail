@@ -131,11 +131,13 @@ export interface IFilter {
     value: string;
 }
 
-export interface IAnimeListParams {
-    q?: string;
+export interface IAnimeSearchParams {
+    letter?: string;
     status?: string;
     rating?: string;
     order_by?: string;
     sort?: string;
     type?: any;
+    limit?: number;
+    sfw: boolean
 }

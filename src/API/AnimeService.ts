@@ -1,7 +1,7 @@
 
 import axios from "axios";
 import {ISingleAnime} from '../types/singleAnime';
-import { IAnime, IAnimeFull, IAnimeFullResponse, IAnimeListParams, IAnimeListResponse, IAnimePicture, IAnimePicturesResponse } from "../types/jikan";
+import { IAnime, IAnimeFull, IAnimeFullResponse, IAnimeSearchParams, IAnimeListResponse, IAnimePicture, IAnimePicturesResponse } from "../types/jikan";
 
 export class AnimeService {
     // static async getAnimeList(params?:IAnimeListParams): Promise<IAnime[]> {
@@ -18,13 +18,13 @@ export class AnimeService {
     //     return response;
     // }
 
-    static async getAnimeList(params?:IAnimeListParams): Promise<IAnime[]> {
-        const response = await axios.get<IAnimeListResponse>('https://api.jikan.moe/v4/anime', {
-            params
-        })
+    // static async getAnimeList(params?:IAnimeListParams): Promise<IAnime[]> {
+    //     const response = await axios.get<IAnimeListResponse>('https://api.jikan.moe/v4/anime', {
+    //         params
+    //     })
 
-        return response.data.data;
-    }
+    //     return response.data.data;
+    // }
 
     static async getAnimeById(id: number | string | undefined): Promise<IAnimeFull> {
         const response = await axios.get<IAnimeFullResponse>(`https://api.jikan.moe/v4/anime/${id}/full`)
@@ -39,8 +39,14 @@ export class AnimeService {
 
         console.log(response.data.data);
 
-
         return response.data.data;
     }
 
+    static async getAnimeBySearch(params?:IAnimeSearchParams): Promise<IAnime[]> {
+        const response = await axios.get<IAnimeListResponse>('https://api.jikan.moe/v4/anime', {
+            params
+        })
+
+        return response.data.data;
+    }
 }

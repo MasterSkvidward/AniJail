@@ -36,7 +36,13 @@
         display: flex;
         column-gap: 20px;
         row-gap: 20px;
-        flex-wrap: wrap;
+        // flex-wrap: wrap;
+        height: 170px;
+
+        div {
+            height: 100%;
+            max-width: 306px;
+        }
     }
 }
 

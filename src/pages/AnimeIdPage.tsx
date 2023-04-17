@@ -14,6 +14,7 @@ type ParamsType = {
 
 const AnimeIdPage = () => {
     const params = useParams<ParamsType>();
+    
     const [anime, setAnime] = useState<IAnimeFull | null>(null);
     const [animePictures, setAnimePictures] = useState<IAnimePicture[] | []>([]);
 
@@ -30,7 +31,7 @@ const AnimeIdPage = () => {
     useEffect(() => {
         fetchAnime();
         fetchAnimePictures();
-    }, [])
+    }, [params])
 
 
     return (

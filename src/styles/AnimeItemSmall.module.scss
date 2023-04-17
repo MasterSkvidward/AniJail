@@ -1,0 +1,36 @@
+.anime {
+    display: flex;
+    column-gap: 15px;
+    transition: ease-in 0.1s;
+    cursor: pointer;
+    padding: 5px 10px;
+
+    &:hover {
+        background-color: rgba(57, 57, 57, 0.7);
+        transform: scale(101%);
+    }
+}
+
+.image {
+    flex: 0 1 15%;
+    background-color: green;
+}
+
+.body {
+    min-height: 115px;
+
+    &__title {
+        display: flex;
+        flex-direction: column;
+        row-gap: 5px;
+
+        &_en {
+            font-size: 17px;
+        }
+
+        &_jp {
+            font-size: 10px;
+            opacity: 0.7;
+        }
+    }
+}

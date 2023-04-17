@@ -1,7 +1,7 @@
 export const publicRoutes = {
     HOMEPAGE: '/',
     ERROR: '/404',
-    ANIMEID: '/:id',
+    ANIMEID: '/anime/:id',
     ANY: '/*',
 }
 
