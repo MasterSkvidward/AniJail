@@ -23,7 +23,7 @@ const Navbar:FC = () => {
     return (
        <nav className={[classes.navbar, '_container'].join(' ')}>
             <div ></div>
-            <div className={classes.navbar__logo} onClick={() => navigate(publicRoutes.HOMEPAGE)}>
+            <div className={classes.navbar__logo} onClick={() => {navigate(publicRoutes.HOMEPAGE); setSelectedNumber(-1)}}>
                 <img src={site_logo} alt="AniJail"/>
             </div>
 

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useLayoutEffect} from 'react';
 import classes from '../styles/AnimeIdPage.module.scss';
 import AnimeCard from '../components/Anime/AnimeCard';
 
@@ -29,6 +29,7 @@ const AnimeIdPage = () => {
     }
 
     useEffect(() => {
+        window.scrollTo(0, 0);
         fetchAnime();
         fetchAnimePictures();
     }, [params])

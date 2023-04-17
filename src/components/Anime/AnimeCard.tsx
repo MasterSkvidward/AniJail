@@ -7,6 +7,7 @@ import searchLoupe from '../../images/search-loupe.png';
 import MyModal from '../../UI/MyModal/MyModal';
 import DropMenu from '../../UI/DropMenu/DropMenu';
 import ImageResponsive from '../../UI/ImageResponsive/ImageResponsive';
+import Score from '../../UI/Score/Score';
 
 
 interface AnimeCardProps {
@@ -48,9 +49,7 @@ const AnimeCard: FC<AnimeCardProps> = ({anime}) => {
                     </div>
 
                     <div className={classes['anime-card__score']}>
-                        <div className={classes['score']}>
-                            {anime?.score}
-                        </div>
+                        <Score score={anime?.score} fontSize={30}/>
                         <div className={classes['scoredBy']}>
                             {anime?.scored_by}
                         </div>

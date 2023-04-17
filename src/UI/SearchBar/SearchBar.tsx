@@ -26,7 +26,7 @@ const SearchBar:FC = () => {
         letter: value,
         order_by: 'score',
         sort: 'desc',
-        limit: 6,
+        limit: 15,
         sfw: false,
     }
 
@@ -55,8 +55,6 @@ const SearchBar:FC = () => {
         console.log('Document Click');
         setVisible(false);
     }
-
-
 
 
     useEffect(() => {
