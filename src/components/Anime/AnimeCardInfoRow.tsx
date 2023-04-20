@@ -12,16 +12,21 @@ const AnimeCardInfoRow: FC<rowType> = ({name, value, sortType, isLink}) => {
         <div className={classes.row}>
             <span className={classes.row__name}>{name}</span>
             <div className={classes.row__value}>
-                {typeof value === 'string' || typeof value === 'number'
-                    ? isLink
-                        ? <MyLink sortType={sortType}>{value}</MyLink>
-                        : <span>{value}</span>
-                    : 
-                    formatGenres(value).map((genre, index) => 
-                    <div className={classes.row__genre} key={index}>
-                        <MyLink sortType={sortType}>{genre}</MyLink>
-                    </div>
-                )}
+                { value 
+                
+                    ? typeof value === 'string'
+                        ? isLink
+                            ? <MyLink sortType={sortType}>{value}</MyLink>
+                            : <span>{value}</span>
+                        : 
+                        formatGenres(value).map((genre, index) => 
+                        <div className={classes.row__genre} key={index}>
+                            <MyLink sortType={sortType}>{genre}</MyLink>
+                        </div>
+                        )
+                    : <span>{'-'}</span>
+                }
+
                 
                 
             

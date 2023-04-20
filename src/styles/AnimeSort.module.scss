@@ -14,4 +14,21 @@
         font-weight: 500;
         margin: 70px 0px 0px 0px;
     }
+
+    &__block {
+        display: flex;
+        justify-content: space-between;
+        column-gap: 30px;
+    }
+
+    &__column {
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__filter {
+        flex: 0 0 250px;
+        background-color: white;
+    }
 }

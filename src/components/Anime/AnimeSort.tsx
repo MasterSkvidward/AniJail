@@ -20,7 +20,6 @@ const AnimeSort = () => {
                         <Filter/>
                     </div>
                 </div>
-               
            </div>
        </div>
     );

@@ -1,4 +1,3 @@
-
 import axios from "axios";
 import {ISingleAnime} from '../types/singleAnime';
 import { IAnime, IAnimeFull, IAnimeFullResponse, IAnimeSearchParams, IAnimeListResponse, IAnimeScreenshots, IAnimePicture, IAnimePicturesResponse, IAnimeScreenshotsResponse } from "../types/jikan";

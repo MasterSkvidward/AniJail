@@ -4,6 +4,7 @@ import { IAnimeFull, IObjectInfo } from '../../types/jikan';
 import classes from '../../styles/AnimeCardInfo.module.scss';
 import AnimeCardInfoRow from './AnimeCardInfoRow';
 import { AiFillMobile } from 'react-icons/ai';
+import { getAnimeField } from '../../utils/utils';
 
 interface AnimeCardInfoProps {
     anime: IAnimeFull | null
@@ -11,22 +12,25 @@ interface AnimeCardInfoProps {
 
 export type rowType = {
     name: string,
-    value: string | number | IObjectInfo[] | undefined
+    value: string | IObjectInfo[] | []
     sortType?: string | number | undefined
     isLink: boolean
 }
 
 const AnimeCardInfo: FC<AnimeCardInfoProps> = ({anime}) => {
     const rows:rowType[] = [
-        {name: 'Type', value: anime?.type, sortType: anime?.type, isLink: false},
-        {name: 'Genres', value: anime?.genres, isLink: true},
-        {name: 'Status', value: anime?.status, isLink: true},
-        {name: 'Episodes', value: anime?.episodes, isLink: false},
-        {name: 'Season', value: `${anime?.season} ${anime?.year}`, isLink: true},
-    
-        {name: 'Duration', value: anime?.duration, isLink: false},
+        {name: 'Type', value: getAnimeField(anime?.type), sortType: anime?.type, isLink: false},
+        {name: 'Genres', value: anime?.genres || [], isLink: true},
+        {name: 'Status', value: getAnimeField(anime?.status), isLink: true},
+        {name: 'Episodes', value: getAnimeField(anime?.episodes), isLink: false},
+        {name: 'Season', value: `${getAnimeField(anime?.season)} ${getAnimeField(anime?.year)}`, isLink: true},
+        {name: 'Duration', value: getAnimeField(anime?.duration), isLink: false},
     ]
    
+    console.log('---------');
+    console.log(rows);
+    console.log('---------');
+    
 
     return (
        <div className={classes['anime-info']}>

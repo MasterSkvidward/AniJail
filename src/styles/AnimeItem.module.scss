@@ -1,12 +1,15 @@
 .anime {
     display: flex;
     flex-direction: column;
+    row-gap: 10px;
     // height: 100%;
 
     &__image {
-        max-height: 340px;
-        max-width: 250px;
-        flex: 1 1 350px;
+        // max-height: 340px;
+        // max-width: 250px;
+        max-height: 250px;
+        max-width: 168px;
+        flex: 1 1 168px;
     }
 
     &__title {

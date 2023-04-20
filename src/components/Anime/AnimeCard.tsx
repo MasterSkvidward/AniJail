@@ -56,7 +56,6 @@ const AnimeCard: FC<AnimeCardProps> = ({anime}) => {
                         <div className={classes['rate']}>Rate</div>
                     </div>
                 </div>
-               
            </div>
        </div>
     );
