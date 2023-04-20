@@ -18,8 +18,11 @@ export interface IAnimePicture {
         large_image_url: string
         small_image_url: string
     }
+}
 
-  
+export interface IAnimeScreenshots {
+    original: string;
+    preview: string;
 }
 
 interface IPagination {
@@ -124,6 +127,10 @@ export interface IAnimeFullResponse {
 
 export interface IAnimePicturesResponse {
     data: IAnimePicture[];
+}
+
+export interface IAnimeScreenshotsResponse {
+    data: IAnimeScreenshots[];
 }
 
 export interface IFilter {

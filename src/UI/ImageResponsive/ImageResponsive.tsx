@@ -1,6 +1,7 @@
-import React, {useRef, FC} from 'react';
+import React, {useRef, FC, useEffect} from 'react';
 
 import classes from './ImageResponsive.module.scss';
+import Image from '../Image/Image';
 
 interface ImageResponsiveProps {
     url: string
@@ -16,7 +17,8 @@ const ImageResponsive:FC<ImageResponsiveProps> = ({url}) => {
 
     return (
         <div ref={content} className={classes['content']} onClick={clickHandler} onSelect={e => false}>
-            <img src={url} alt="" />
+            <Image url={url}/>
+            {/* <img src={url} alt="" /> */}
         </div>
     );
 }

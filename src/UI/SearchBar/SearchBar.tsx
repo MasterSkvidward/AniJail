@@ -32,12 +32,13 @@ const SearchBar:FC = () => {
 
     const handlerFocusIn = (e: FocusEvent):void => {
         console.log('FocusIn');
+        search.current?.classList.add(classes.focused);
         setVisible(true);
         e.stopPropagation();
     }
 
     const handlerClick = (e:MouseEvent):void => {
-        search.current?.classList.add(classes.focused);
+       
         console.log('Click');
         e.stopPropagation()
     }
@@ -68,7 +69,7 @@ const SearchBar:FC = () => {
 
 
     return (
-       <form ref={search} className={classes.search} onClick={handlerClick} onMouseDown={handlerMouseDown} onSubmit={e => e.preventDefault()}>
+       <form ref={search} className={visible? [classes.search, classes.focused].join(' ') :classes.search} onClick={handlerClick} onMouseDown={handlerMouseDown} onSubmit={e => e.preventDefault()}>
             <MyInput setValue={setValue} placeholder={'Search anime...'}/>
             <div className={classes.search__loupe}>
                 <AiOutlineSearch/>

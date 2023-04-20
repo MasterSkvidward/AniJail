@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import { AnimeService } from '../API/AnimeService';
 import { IAnimeFull, IAnimePicture } from '../types/jikan';
 import AnimeDetails from '../components/Anime/AnimeDetails';
+import { useFetching } from '../hooks/useFetching';
 
 
 type ParamsType = {
@@ -23,17 +24,23 @@ const AnimeIdPage = () => {
         setAnimePictures(response);
     }
 
-    const fetchAnime = async () => {
+    const [fetchAnime, animeIsLoading, animesError] = useFetching( async () => {
         const response = await AnimeService.getAnimeById(params.id);
-        setAnime(response);
-    }
+        setAnime(response)
+    })
 
-    useEffect(() => {
+    // const fetchAnime = async () => {
+    //     const response = await AnimeService.getAnimeById(params.id);
+    //     setAnime(response);
+    // }
+
+    useLayoutEffect(() => {
         window.scrollTo(0, 0);
         fetchAnime();
         fetchAnimePictures();
     }, [params])
 
+    if (animeIsLoading) return (<></>);
 
     return (
        <div className={classes['anime-page']}>

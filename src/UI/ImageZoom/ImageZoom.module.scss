@@ -1,0 +1,16 @@
+.image {
+    cursor: pointer;
+    user-select: none;
+    display: inline-block;
+    overflow: hidden;
+
+    img {
+        transition: 0.4s;
+        display: block;
+
+        &:hover {
+            transform: scale(1.07);
+        }
+    }
+
+}

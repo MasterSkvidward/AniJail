@@ -1,0 +1,16 @@
+.anime {
+    display: flex;
+    flex-direction: column;
+    // height: 100%;
+
+    &__image {
+        max-height: 340px;
+        max-width: 250px;
+        flex: 1 1 350px;
+    }
+
+    &__title {
+        font-size: 16px;
+        color: rgb(197, 194, 194);
+    }
+}

@@ -1,7 +1,7 @@
 
 import axios from "axios";
 import {ISingleAnime} from '../types/singleAnime';
-import { IAnime, IAnimeFull, IAnimeFullResponse, IAnimeSearchParams, IAnimeListResponse, IAnimePicture, IAnimePicturesResponse } from "../types/jikan";
+import { IAnime, IAnimeFull, IAnimeFullResponse, IAnimeSearchParams, IAnimeListResponse, IAnimeScreenshots, IAnimePicture, IAnimePicturesResponse, IAnimeScreenshotsResponse } from "../types/jikan";
 
 export class AnimeService {
     // static async getAnimeList(params?:IAnimeListParams): Promise<IAnime[]> {
@@ -41,6 +41,15 @@ export class AnimeService {
 
         return response.data.data;
     }
+
+    static async getAnimeScreenshots(id: number | string | undefined): Promise<IAnimeScreenshots[]> {
+        const response = await axios.get<IAnimeScreenshotsResponse>(`https://shikimori.me/api/animes/${id}/screenshots`)
+
+        console.log(response.data.data);
+
+        return response.data.data;
+    }
+
 
     static async getAnimeBySearch(params?:IAnimeSearchParams): Promise<IAnime[]> {
         const response = await axios.get<IAnimeListResponse>('https://api.jikan.moe/v4/anime', {

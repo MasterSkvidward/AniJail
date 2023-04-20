@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { useEffect, useLayoutEffect } from 'react';
 import AppRouter from './components/AppRouter/AppRouter';
 import Header from './components/Header/Header';
 
 import './styles/App.scss';
 
 function App() {
-  return (
+    return (
     <div className="App">
         <Header/>
         <AppRouter/>
     </div>
-  );
+    );
 }
 
 export default App;
