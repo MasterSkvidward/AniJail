@@ -146,5 +146,5 @@ export interface IAnimeSearchParams {
     sort?: string;
     type?: any;
     limit?: number;
-    sfw: boolean
+    sfw?: boolean;
 }

@@ -52,7 +52,10 @@ export class AnimeService {
 
     static async getAnimeBySearch(params?:IAnimeSearchParams): Promise<IAnime[]> {
         const response = await axios.get<IAnimeListResponse>('https://api.jikan.moe/v4/anime', {
-            params
+            params: {
+                sfw: false,
+                ...params
+            }
         })
 
         return response.data.data;
