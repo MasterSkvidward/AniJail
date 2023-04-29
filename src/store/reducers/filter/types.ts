@@ -2,35 +2,17 @@ import { IAnime, IAnimeSearchParams } from "../../../types/jikan";
 
 export interface FilterState {
     anime: IAnime[],
-    params: IAnimeSearchParams
+    params: IAnimeSearchParams,
+    selectedOptionNumber: number,
+    isDescending: boolean,
 }
 
 export enum FilterActionsEnum {
-    SORT_BY_DATE = "SORT_BY_DATE",
-    SORT_BY_SCORE = "SORT_BY_SCORE",
-    CHANGE_SORT_ORDER = "CHANGE_SORT_ORDER",
     SET_ANIME = "SET_ANIME",
-}
-
-export type FilterAction = 
-    SortByDateAction | SortByScoreAction | ChangeSortOrderAction | SetAnimeAction
-
-
-//!!!
-
-interface SortByDateAction {
-    type: FilterActionsEnum.SORT_BY_DATE;
-    payload: IAnime[];
-}
-
-interface SortByScoreAction {
-    type: FilterActionsEnum.SORT_BY_SCORE;
-    payload: IAnime[];
-}
-
-interface ChangeSortOrderAction{
-    type: FilterActionsEnum.CHANGE_SORT_ORDER;
-    payload: IAnime[];
+    SET_PARAMS = "SET_PARAMS",
+    SET_SELECTED_OPTION = "SET_SELECTED_OPTION",
+    SET_IS_DESCENDING = "SET_IS_DESCENDING",
+    ADD_PARAMS = "ADD_PARAMS",
 }
 
 
@@ -38,3 +20,28 @@ interface SetAnimeAction{
     type: FilterActionsEnum.SET_ANIME;
     payload: IAnime[];
 }
+
+interface SetParamsAction{
+    type: FilterActionsEnum.SET_PARAMS;
+    payload: IAnimeSearchParams;
+}
+
+interface SetSelectedOptionAction{
+    type: FilterActionsEnum.SET_SELECTED_OPTION;
+    payload: number;
+}
+
+interface SetIsDescendingAction{
+    type: FilterActionsEnum.SET_IS_DESCENDING;
+    payload: boolean;
+}
+
+interface AddParamsAction{
+    type: FilterActionsEnum.ADD_PARAMS;
+    payload: IAnimeSearchParams;
+}
+
+
+export type FilterAction = 
+    SetAnimeAction | SetParamsAction | SetSelectedOptionAction | SetIsDescendingAction | AddParamsAction
+

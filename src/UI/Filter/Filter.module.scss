@@ -1,3 +1,13 @@
 .filter {
+    background-color: rgb(84, 84, 84);
+    height: 900px;
 
+    &__row {
+        padding: 5px 2px;
+    }
+
+    &__title {
+       
+        font-size: 22px;
+    }
 }

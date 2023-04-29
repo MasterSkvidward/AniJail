@@ -38,8 +38,6 @@ const SearchBar:FC = () => {
     }
 
     const handlerClick = (e:MouseEvent):void => {
-       
-        console.log('Click');
         e.stopPropagation()
     }
 
@@ -53,7 +51,6 @@ const SearchBar:FC = () => {
     }
 
     function handlerDocumentClick(e: Event):void {
-        console.log('Document Click');
         setVisible(false);
     }
 

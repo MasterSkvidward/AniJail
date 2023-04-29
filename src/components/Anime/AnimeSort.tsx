@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import classes from '../../styles/AnimeSort.module.scss';
 import MySelect from '../../UI/MySelect/MySelect';
 import AnimeList from './AnimeList';
@@ -7,14 +7,22 @@ import { ISelectOption } from '../../types/userInteface';
 import { sortCategories } from '../../utils/data';
 import { useDispatch } from 'react-redux';
 import { FilterActionCreators } from '../../store/reducers/filter/action-creatores';
+import { IAnimeSearchParams } from '../../types/jikan';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 
 
 const AnimeSort = () => {
     const dispatch = useDispatch();
+    const {params} = useTypedSelector(state => state.filter)
 
     useEffect(() => {
-        dispatch(FilterActionCreators.setAnime({order_by: sortCategories[1].order_by, sort: sortCategories[1].sort}));
-    }, [])
+        dispatch(FilterActionCreators.setAnime(params));
+
+        const isDescending = params.sort==='desc';
+        dispatch(FilterActionCreators.setIsDescending(isDescending))
+    }, [params])
+
+
 
     return (
        <div className={classes['anime']}>
@@ -24,6 +32,7 @@ const AnimeSort = () => {
                     <div className={classes['anime__column']}>
                         <div className={classes['anime__row']}>
                             <MySelect options={sortCategories} selectedOption={1}/>
+                            
                         </div>
                         <AnimeList/>
                     </div>
