@@ -15,7 +15,7 @@ const SearchBar:FC = () => {
     const [value, setValue] = useState<string>('');
     const [animeItems, setAnimeItems] = useState<IAnime[] | []>([]);
 
-    const debouncedSearch = useDebounce(searchAnime, 500);
+    const debouncedSearch = useDebounce(searchAnime, 400);
 
     async function searchAnime() {
         const response = await AnimeService.getAnimeBySearch(searchParams);

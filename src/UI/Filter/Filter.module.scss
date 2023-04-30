@@ -1,13 +1,73 @@
 .filter {
-    background-color: rgb(84, 84, 84);
+    // background-color: rgb(84, 84, 84);
     height: 900px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+
 
     &__row {
+       
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         padding: 5px 2px;
     }
 
     &__title {
+        letter-spacing: 1px;
+        font-size: 18px;
+    }
+
+    &__clear {
+        border-radius: 7px;
+        display: flex;
+        column-gap: 10px;
+        align-items: center;
+
+        cursor: pointer;
+        padding: 7px 5px;
+
+
+        &_title {
+            font-size: 17px;
+            color: rgba(235, 234, 234, 0.9);
+        }
+
+        &_cross {
+            font-size: 20px;
+            font-weight: 700;
+            padding: 2px 0px 0px 0px;
+        }
+
+        &:hover {
+            background-color: rgba(39, 39, 39, 0.9);
+        }
        
-        font-size: 22px;
+    }
+
+    &__column {
+        // background-color: #212121 !important;
+        display: flex;
+        flex-direction: column;
+        row-gap: 15px;
+    }
+
+    &__year {
+        letter-spacing: 1px;
+        font-size: 18px;
+        margin: 20px 0px 0px 0px;
+
+        &_inputs {
+            display: flex;
+            column-gap: 10px;
+
+            input {
+                border-radius: 7px;
+                // flex: 0 0 50px;
+                max-width: 150px;
+            }
+        }
     }
 }
+

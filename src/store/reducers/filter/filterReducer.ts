@@ -1,16 +1,13 @@
 import { FilterAction, FilterActionsEnum, FilterState } from "./types";
 import { IAnime } from "../../../types/jikan";
+import { defaultFilterParams } from "../../../utils/data";
+import { act } from "react-dom/test-utils";
 
 
 const initialState: FilterState = {
     anime: [],
-    params: {
-        order_by: 'scored_by',
-        sort: 'desc',
-    },
-
+    params: defaultFilterParams,
     selectedOptionNumber: 1,
-    isDescending: true,
 }
 
 
@@ -37,10 +34,7 @@ export default function filterReducer(state = initialState, action: FilterAction
         case FilterActionsEnum.SET_SELECTED_OPTION:
             return {...state, selectedOptionNumber: action.payload};
 
-            
-        case FilterActionsEnum.SET_IS_DESCENDING:
-            return {...state, isDescending: action.payload};
-
+        
         default: 
             return state;
     }

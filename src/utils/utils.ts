@@ -1,5 +1,6 @@
 import { IObjectInfo } from "../types/jikan"
 import { IGenres } from "../types/singleAnime";
+import { IFilterOption } from "../types/types";
 
 export const formatGenres = (genres:IObjectInfo[] | undefined):string[] => {
     if (!genres) return ['-'];
@@ -18,4 +19,21 @@ export const getAnimeField = (field: string|number|undefined):string => {
     if (typeof field == 'undefined') return '';
 
     return String(field);
+}
+
+export const formatFilterValues = (filterTypeOptions: IFilterOption[]):string =>  {
+    
+    return (filterTypeOptions.map(option => option.value)).join(',');
+}
+
+export const getShortenedString = (value: string | undefined, maxLetters: number) => {
+    if (!value) return '';
+    return (value.length > maxLetters)
+        ? value.slice(0, maxLetters) + '...'
+        : value;
+}
+
+export const getCurrentYear = ():number => {
+    const date = new Date;
+    return date.getFullYear();
 }

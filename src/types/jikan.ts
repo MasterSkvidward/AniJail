@@ -147,4 +147,7 @@ export interface IAnimeSearchParams {
     type?: any;
     limit?: number;
     sfw?: boolean;
+    genres?: string,
+    start_date?:string,
+    end_date?: string,
 }

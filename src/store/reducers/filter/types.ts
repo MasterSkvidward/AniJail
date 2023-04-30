@@ -4,7 +4,6 @@ export interface FilterState {
     anime: IAnime[],
     params: IAnimeSearchParams,
     selectedOptionNumber: number,
-    isDescending: boolean,
 }
 
 export enum FilterActionsEnum {
@@ -31,11 +30,6 @@ interface SetSelectedOptionAction{
     payload: number;
 }
 
-interface SetIsDescendingAction{
-    type: FilterActionsEnum.SET_IS_DESCENDING;
-    payload: boolean;
-}
-
 interface AddParamsAction{
     type: FilterActionsEnum.ADD_PARAMS;
     payload: IAnimeSearchParams;
@@ -43,5 +37,5 @@ interface AddParamsAction{
 
 
 export type FilterAction = 
-    SetAnimeAction | SetParamsAction | SetSelectedOptionAction | SetIsDescendingAction | AddParamsAction
+    SetAnimeAction | SetParamsAction | SetSelectedOptionAction | AddParamsAction
 

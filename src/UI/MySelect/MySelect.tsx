@@ -18,12 +18,10 @@ interface MySelectProps {
 
 const MySelect:FC<MySelectProps> = ({options}) => {
     const dispatch = useDispatch();
-    const {selectedOptionNumber, isDescending} = useTypedSelector(state => state.filter); 
+    const {selectedOptionNumber, params} = useTypedSelector(state => state.filter); 
     const [isVisible, setIsVisible] = useState<boolean>(false);
 
-
     const MySelect = useRef<HTMLDivElement>(null);
-  
 
     const handlerDocumentClick = (e: Event):void => {
         setIsVisible(false);
@@ -36,7 +34,7 @@ const MySelect:FC<MySelectProps> = ({options}) => {
     }
 
     const handlerClickSort = () => {
-        const param = !isDescending ? 'desc' : 'asc'
+        const param = (params.sort === 'desc') ? 'asc' : 'desc';
         dispatch(FilterActionCreators.addParams({sort: param}))
     }
 
@@ -56,14 +54,6 @@ const MySelect:FC<MySelectProps> = ({options}) => {
         return () => document.removeEventListener("click",  handlerDocumentClick);
     }, [])
 
-    // useEffect(() => {
-    //     if (isComponentMounted) {
-    //         const param = isDesc? 'desc' : 'esc';
-    //         dispatch(FilterActionCreators.addParams({sort: param}))
-    //     }
-        
-    // }, [params])
-
 
     return (
         <div className={classes.MySelect} ref={MySelect}>
@@ -73,7 +63,7 @@ const MySelect:FC<MySelectProps> = ({options}) => {
                 <MdOutlineKeyboardArrowDown className={isVisible? [classes['arrow'], classes['rotate']].join(' '): classes['arrow']}/>
             </div>
             <div className={classes['sortArrow']} onClick={handlerClickSort}>
-                {isDescending
+                {params.sort === 'desc'
                     ? <AiOutlineSortDescending/>
                     : <AiOutlineSortAscending/>
                 }
@@ -87,7 +77,6 @@ const MySelect:FC<MySelectProps> = ({options}) => {
                         >{option.name}
                     </div>
                 )}
-                
             </div>
          </div>
     )

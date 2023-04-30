@@ -1,3 +1,18 @@
+@keyframes scaleIn {
+	0% {
+		opacity: 0;
+		transform: scale(0.9);
+	}
+	50% {
+		opacity: 0.3;
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+
 .MySelect {
     font-size: 20px;
     position: relative;
@@ -36,8 +51,8 @@
     &__options {
         width: 250px;
         border-radius: 8px;
-        background-color: rgb(46, 46, 46);
-        padding: 15px 0px;
+        background-color: rgb(37, 37, 37);
+        padding: 9px 0px;
         position: absolute;
         top: 49px;
         left: 0;
@@ -46,7 +61,9 @@
         z-index: 50;
         // transition: height 1s ease;
 
-        box-shadow: 0px 5px 11px 2px rgb(94, 94, 94);
+        // box-shadow: 0px 5px 11px 2px rgb(94, 94, 94);
+
+        animation: scaleIn 0.22s ease-in-out;
     }
 
     &__option {

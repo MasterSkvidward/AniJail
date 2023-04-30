@@ -32,5 +32,4 @@ export const FilterActionCreators = {
     setParams: (params: IAnimeSearchParams):FilterAction => ({type: FilterActionsEnum.SET_PARAMS, payload: params}),
     addParams: (params: IAnimeSearchParams):FilterAction => ({type: FilterActionsEnum.ADD_PARAMS, payload: params}),
     setSelectedOptionNumber: (number: number):FilterAction => ({type: FilterActionsEnum.SET_SELECTED_OPTION, payload: number}),
-    setIsDescending: (flag: boolean):FilterAction => ({type: FilterActionsEnum.SET_IS_DESCENDING, payload: flag}),
 }

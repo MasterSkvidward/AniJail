@@ -17,9 +17,6 @@ const AnimeSort = () => {
 
     useEffect(() => {
         dispatch(FilterActionCreators.setAnime(params));
-
-        const isDescending = params.sort==='desc';
-        dispatch(FilterActionCreators.setIsDescending(isDescending))
     }, [params])
 
 
@@ -32,7 +29,6 @@ const AnimeSort = () => {
                     <div className={classes['anime__column']}>
                         <div className={classes['anime__row']}>
                             <MySelect options={sortCategories} selectedOption={1}/>
-                            
                         </div>
                         <AnimeList/>
                     </div>
