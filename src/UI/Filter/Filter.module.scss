@@ -1,6 +1,6 @@
 .filter {
     // background-color: rgb(84, 84, 84);
-    height: 900px;
+    height: auto;
     display: flex;
     flex-direction: column;
     row-gap: 10px;
@@ -11,7 +11,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 5px 2px;
+        padding: 7px 2px;
     }
 
     &__title {
@@ -62,11 +62,27 @@
             display: flex;
             column-gap: 10px;
 
-            input {
-                border-radius: 7px;
-                // flex: 0 0 50px;
+            .input {
+                padding: 15px 10px 13px;
+                background-color: #212121;
+                font-size: 17px;
+                color: rgba(white, 0.7);
+
                 max-width: 150px;
+                border-radius: 7px;
+                // cursor: text;
+            
+                &:focus, &:active {
+                    outline: none;
+                    background-color: rgba($color: #2c2b2b, $alpha: 1.0);
+                }
             }
+
+            // input {
+            //     border-radius: 7px;
+            //     // flex: 0 0 50px;
+            //     max-width: 150px;
+            // }
         }
     }
 }

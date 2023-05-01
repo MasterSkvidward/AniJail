@@ -1,5 +1,5 @@
 import { FilterAction, FilterActionsEnum, FilterState } from "./types";
-import { IAnime } from "../../../types/jikan";
+import { IAnime, IAnimeSearchParams } from "../../../types/jikan";
 import { defaultFilterParams } from "../../../utils/data";
 import { act } from "react-dom/test-utils";
 
@@ -34,6 +34,9 @@ export default function filterReducer(state = initialState, action: FilterAction
         case FilterActionsEnum.SET_SELECTED_OPTION:
             return {...state, selectedOptionNumber: action.payload};
 
+        case FilterActionsEnum.CLEAR_FILTER_PARAMS:
+            let {sort, order_by}:IAnimeSearchParams = state.params
+            return {...state, params: {'sort': sort, 'order_by': order_by}};
         
         default: 
             return state;

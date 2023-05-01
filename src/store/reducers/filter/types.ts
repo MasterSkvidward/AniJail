@@ -12,6 +12,7 @@ export enum FilterActionsEnum {
     SET_SELECTED_OPTION = "SET_SELECTED_OPTION",
     SET_IS_DESCENDING = "SET_IS_DESCENDING",
     ADD_PARAMS = "ADD_PARAMS",
+    CLEAR_FILTER_PARAMS = "CLEAR_FILTER_PARAMS",
 }
 
 
@@ -30,12 +31,16 @@ interface SetSelectedOptionAction{
     payload: number;
 }
 
-interface AddParamsAction{
+export interface AddParamsAction{
     type: FilterActionsEnum.ADD_PARAMS;
     payload: IAnimeSearchParams;
 }
 
+export interface ClearFilterParamsAction{
+    type: FilterActionsEnum.CLEAR_FILTER_PARAMS;
+}
+
 
 export type FilterAction = 
-    SetAnimeAction | SetParamsAction | SetSelectedOptionAction | AddParamsAction
+    SetAnimeAction | SetParamsAction | SetSelectedOptionAction | AddParamsAction | ClearFilterParamsAction
 

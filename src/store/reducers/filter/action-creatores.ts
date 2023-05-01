@@ -14,6 +14,7 @@ export const FilterActionCreators = {
             dispatch({type: FilterActionsEnum.SET_ANIME, payload: response})
         } catch (e){
             // dispatch({type: FilterActionsEnum.SET_ANIME, payload: {}})
+            dispatch({type: FilterActionsEnum.SET_ANIME, payload: []})
         }
 
         finally {
@@ -32,4 +33,5 @@ export const FilterActionCreators = {
     setParams: (params: IAnimeSearchParams):FilterAction => ({type: FilterActionsEnum.SET_PARAMS, payload: params}),
     addParams: (params: IAnimeSearchParams):FilterAction => ({type: FilterActionsEnum.ADD_PARAMS, payload: params}),
     setSelectedOptionNumber: (number: number):FilterAction => ({type: FilterActionsEnum.SET_SELECTED_OPTION, payload: number}),
+    clearFilterParams: ():FilterAction => ({type: FilterActionsEnum.CLEAR_FILTER_PARAMS}),
 }

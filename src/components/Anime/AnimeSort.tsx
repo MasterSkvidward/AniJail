@@ -28,7 +28,7 @@ const AnimeSort = () => {
                 <div className={classes['anime__block']}>
                     <div className={classes['anime__column']}>
                         <div className={classes['anime__row']}>
-                            <MySelect options={sortCategories} selectedOption={1}/>
+                            <MySelect options={sortCategories}/>
                         </div>
                         <AnimeList/>
                     </div>

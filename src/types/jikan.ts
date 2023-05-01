@@ -150,4 +150,6 @@ export interface IAnimeSearchParams {
     genres?: string,
     start_date?:string,
     end_date?: string,
+    min_score?: string,
+    max_score?: string,
 }

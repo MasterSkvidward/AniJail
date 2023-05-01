@@ -1,4 +1,4 @@
-import React, {FC, useState, useEffect, useRef, MouseEvent} from 'react';
+import React, {FC, useState, useEffect, useRef, MouseEvent, memo} from 'react';
 import { useDispatch } from 'react-redux';
 import { FilterActionCreators } from '../../store/reducers/filter/action-creatores';
 import { ISelectOption } from '../../types/userInteface';
@@ -13,10 +13,9 @@ import { useComponentDidMount } from '../../hooks/useComponentDidMount';
 
 interface MySelectProps {
     options: ISelectOption[];
-    selectedOption?: number;
 }
 
-const MySelect:FC<MySelectProps> = ({options}) => {
+const MySelect:FC<MySelectProps> = memo(({options}) => {
     const dispatch = useDispatch();
     const {selectedOptionNumber, params} = useTypedSelector(state => state.filter); 
     const [isVisible, setIsVisible] = useState<boolean>(false);
@@ -46,7 +45,7 @@ const MySelect:FC<MySelectProps> = ({options}) => {
 
         dispatch(FilterActionCreators.setSelectedOptionNumber(index));
         setIsVisible(false);
-        dispatch(FilterActionCreators.setParams(sortParams));
+        dispatch(FilterActionCreators.addParams(sortParams));
     }
 
     useEffect(() => {
@@ -80,6 +79,6 @@ const MySelect:FC<MySelectProps> = ({options}) => {
             </div>
          </div>
     )
-}
+})
 
 export default MySelect;

@@ -3,17 +3,31 @@
     flex-direction: column;
     row-gap: 10px;
     // height: 100%;
+    border-radius: 7px;
+
+    &:hover {
+        .anime__title {
+            color: rgb(178, 57, 63);
+        }
+    }
 
     &__image {
         // max-height: 340px;
         // max-width: 250px;
-        max-width: 170px;
-        max-height: 270px;
-        flex: 1 1 170px;
+        max-width: 200px;
+        max-height: 298px;
+        flex: 1 1 298px;
+        border-radius: 7px;
+       
+        img {
+            border-radius: 7px;
+        }
     }
 
     &__title {
         font-size: 16px;
-        color: rgb(197, 194, 194);
+        color: rgb(215, 215, 215);
+        transition: 0.2s;
+        cursor: pointer;
     }
 }
