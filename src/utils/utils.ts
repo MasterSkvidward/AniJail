@@ -1,6 +1,7 @@
-import { IObjectInfo } from "../types/jikan"
+import { IAnimeSearchParams, IObjectInfo } from "../types/jikan"
 import { IGenres } from "../types/singleAnime";
 import { IFilterOption } from "../types/types";
+import {MultiValue} from "react-select";
 
 export const formatGenres = (genres:IObjectInfo[] | undefined):string[] => {
     if (!genres) return ['-'];
@@ -21,7 +22,7 @@ export const getAnimeField = (field: string|number|undefined):string => {
     return String(field);
 }
 
-export const formatFilterValues = (filterTypeOptions: IFilterOption[]):string =>  {
+export const formatFilterValues = (filterTypeOptions: MultiValue<IFilterOption>):string =>  {
     
     return (filterTypeOptions.map(option => option.value)).join(',');
 }
@@ -36,4 +37,9 @@ export const getShortenedString = (value: string | undefined, maxLetters: number
 export const getCurrentYear = ():number => {
     const date = new Date;
     return date.getFullYear();
+}
+
+export const getFilterOptions = (options: IFilterOption[], param: string):IFilterOption[] => {
+    let paramItems = param.split(',');   
+    return options.filter(option => paramItems.includes(option.value));
 }

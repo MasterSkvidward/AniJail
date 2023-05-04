@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {FC, useEffect, useState, useRef} from 'react';
 import classes from '../../styles/AnimeSort.module.scss';
 import MySelect from '../../UI/MySelect/MySelect';
 import AnimeList from './AnimeList';
@@ -9,16 +9,46 @@ import { useDispatch } from 'react-redux';
 import { FilterActionCreators } from '../../store/reducers/filter/action-creatores';
 import { IAnimeSearchParams } from '../../types/jikan';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
+import Loader from '../../UI/Loader/Loader';
 
 
 const AnimeSort = () => {
     const dispatch = useDispatch();
-    const {params} = useTypedSelector(state => state.filter)
+    const {loadNewAnime, params, isLoading, hasMoreAnime} = useTypedSelector(state => state.filter);
+    const [page, setPage] = useState<number>(1);
+
+    const lastAnimeRow = useRef<HTMLDivElement | null>(null);
+    const observer = useRef<IntersectionObserver | null>(null);
+
 
     useEffect(() => {
-        dispatch(FilterActionCreators.setAnime(params));
-    }, [params])
+        if (loadNewAnime) {
+            setPage(1);
+            dispatch(FilterActionCreators.setAnime(params));
+        }
+    }, [loadNewAnime])
 
+
+    useEffect(() => {
+        if (isLoading) return;
+        if (observer.current) observer.current.disconnect();
+
+        const options = {
+            rootMargin: '0px 0px 150px 0px',
+            threshold: 0,
+        }
+
+        const callback = (entries: any, observer: IntersectionObserver) => {
+            if (entries[0].isIntersecting && hasMoreAnime) {   
+                dispatch(FilterActionCreators.addAnime(params, page));
+                setPage(page + 1);
+            }
+        }
+
+        observer.current = new IntersectionObserver(callback)
+    
+        if (lastAnimeRow.current) observer.current.observe(lastAnimeRow.current);   
+    }, [isLoading])
 
 
     return (
@@ -31,6 +61,10 @@ const AnimeSort = () => {
                             <MySelect options={sortCategories}/>
                         </div>
                         <AnimeList/>
+                        <div ref={lastAnimeRow} className={classes['anime__lastRow']}>
+                            {isLoading && hasMoreAnime && <Loader/>}
+                        </div>
+                    
                     </div>
                     <div className={classes['anime__filter']}>
                         <Filter/>

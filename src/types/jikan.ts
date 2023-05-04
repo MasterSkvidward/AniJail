@@ -139,6 +139,7 @@ export interface IFilter {
 }
 
 export interface IAnimeSearchParams {
+    page?: number;
     letter?: string;
     status?: string;
     rating?: string;

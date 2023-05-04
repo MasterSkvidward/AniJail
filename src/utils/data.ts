@@ -4,7 +4,7 @@ import { IAnimeSearchParams } from "../types/jikan";
 
 
 export const navbarLinks: {value: string, path: string}[] = [
-    {value: 'Top 100', path: publicRoutes.ANIME},
+    {value: 'Catalog', path: publicRoutes.ANIME},
     {value: 'New', path: publicRoutes.ANY},
     {value: 'Random anime', path: publicRoutes.ANY},
 ]
@@ -19,8 +19,7 @@ export const sortCategories: ISelectOption[] = [
 export const defaultFilterParams: IAnimeSearchParams = {
     order_by: 'scored_by',
     sort: 'desc',
-    // start_date: '',
-    // end_date: '',
+    page: 1,
 }
 
 export const filterTypeOptions = [
@@ -35,9 +34,9 @@ export const filterTypeOptions = [
 export const filterGenreOptions = [
     {value: '1', label: 'Action'},
     {value: '2', label: 'Adventure'},
-    {value: '3', label: 'Racing'},
+    // {value: '3', label: 'Racing'},
     {value: '4', label: 'Comedy'},
-    {value: '5', label: 'Avant Garde'},
+    // {value: '5', label: 'Avant Garde'},
     {value: '6', label: 'Mythology'},
     {value: '7', label: 'Mystery'},
     {value: '8', label: 'Drama'},

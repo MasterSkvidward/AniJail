@@ -14,14 +14,17 @@
     &__image {
         // max-height: 340px;
         // max-width: 250px;
-        max-width: 200px;
-        max-height: 298px;
-        flex: 1 1 298px;
-        border-radius: 7px;
+        max-width: 188px;
+        max-height: 273px;
+        flex: 1 1 273px;
+        // border-radius: 13px;
+      
        
         img {
-            border-radius: 7px;
+            border-radius: 13px;
         }
+
+        
     }
 
     &__title {

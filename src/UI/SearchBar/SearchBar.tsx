@@ -19,7 +19,7 @@ const SearchBar:FC = () => {
 
     async function searchAnime() {
         const response = await AnimeService.getAnimeBySearch(searchParams);
-        setAnimeItems(response);
+        setAnimeItems(response.data);
     }
 
     const searchParams:IAnimeSearchParams = {

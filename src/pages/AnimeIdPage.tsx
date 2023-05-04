@@ -29,11 +29,6 @@ const AnimeIdPage = () => {
         setAnime(response)
     })
 
-    // const fetchAnime = async () => {
-    //     const response = await AnimeService.getAnimeById(params.id);
-    //     setAnime(response);
-    // }
-
     useLayoutEffect(() => {
         window.scrollTo(0, 0);
         fetchAnime();

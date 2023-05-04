@@ -8,27 +8,10 @@ import { useTypedSelector } from '../../hooks/useTypedSelector';
 
 const AnimeList = () => {
     const {anime} = useTypedSelector(state => state.filter)
-    // const [anime, setAnime] = useState<IAnime | null>(null)
-
-    //!
-
-    // const [fetchAnime, animeIsLoading, animesError] = useFetching( async () => {
-    //     const response = await AnimeService.getAnimeById(41467);
-    //     setAnime(response)
-    // })
-
-    // const fetchAnime = async () => {
-    //     const response = await AnimeService.getAnimeById(params.id);
-    //     setAnime(response);
-    // }
-
-    // useEffect(() => {
-    //     fetchAnime();
-    // }, [])
-
-
-
-    //!
+    
+    if (!anime.length) return (
+        <div className={classes['empty']}>No Results</div>
+    )
 
 
     return (

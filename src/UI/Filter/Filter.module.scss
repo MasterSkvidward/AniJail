@@ -4,14 +4,13 @@
     display: flex;
     flex-direction: column;
     row-gap: 10px;
+    padding: 15px 0px 0px 0px;
 
 
     &__row {
-       
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 7px 2px;
     }
 
     &__title {
@@ -30,12 +29,12 @@
 
 
         &_title {
-            font-size: 17px;
+            font-size: 14px;
             color: rgba(235, 234, 234, 0.9);
         }
 
         &_cross {
-            font-size: 20px;
+            font-size: 16px;
             font-weight: 700;
             padding: 2px 0px 0px 0px;
         }
@@ -53,7 +52,7 @@
         row-gap: 15px;
     }
 
-    &__year {
+    &__block {
         letter-spacing: 1px;
         font-size: 18px;
         margin: 20px 0px 0px 0px;
@@ -77,12 +76,6 @@
                     background-color: rgba($color: #2c2b2b, $alpha: 1.0);
                 }
             }
-
-            // input {
-            //     border-radius: 7px;
-            //     // flex: 0 0 50px;
-            //     max-width: 150px;
-            // }
         }
     }
 }
