@@ -1,0 +1,55 @@
+.footer {
+    min-height: 270px;
+    border-top: 1px solid red;
+    background-color: rgb(15, 17, 19);
+    margin-top: auto;
+
+    &__body {
+       
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__column {
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+    }
+
+    &__brandname {
+        color: white;
+        font-size: 30px;
+        font-weight: 600;
+    }
+
+    &__copyright {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    &__contacts {
+        margin: 50px 0px 0px 0px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+    }
+
+    &__label {
+        font-size: 23px;
+    }
+
+    &__links {
+        display: flex;
+        flex-direction: column;
+        row-gap: 8px;
+    }
+
+    &__link {
+        font-size: 17px;
+    }
+
+    &__image {
+        margin: 10px 0px 0px 0px;
+    }
+}

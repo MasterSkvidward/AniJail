@@ -1,0 +1,15 @@
+.carousel {
+    // display: flex;
+    column-gap: 50px;
+
+
+    &__items {
+        display: flex;
+        column-gap: 25px;
+    }
+
+    &__item {
+        cursor: pointer;
+        width: 185px;
+    }
+}

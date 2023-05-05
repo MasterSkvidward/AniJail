@@ -4,9 +4,10 @@ import AnimeCard from '../components/Anime/AnimeCard';
 
 import { useParams } from 'react-router-dom';
 import { AnimeService } from '../API/AnimeService';
-import { IAnimeFull, IAnimePicture } from '../types/jikan';
+import { IAnimeFull, IAnimePicture } from '../types/jikanMoe/jikan';
 import AnimeDetails from '../components/Anime/AnimeDetails';
 import { useFetching } from '../hooks/useFetching';
+import { ISingleAnime } from '../types/anime/singleAnime';
 
 
 type ParamsType = {
@@ -16,7 +17,7 @@ type ParamsType = {
 const AnimeIdPage = () => {
     const params = useParams<ParamsType>();
     
-    const [anime, setAnime] = useState<IAnimeFull | null>(null);
+    const [anime, setAnime] = useState<ISingleAnime | null>(null);
     const [animePictures, setAnimePictures] = useState<IAnimePicture[] | []>([]);
 
     const fetchAnimePictures = async () => {
@@ -26,7 +27,10 @@ const AnimeIdPage = () => {
 
     const [fetchAnime, animeIsLoading, animesError] = useFetching( async () => {
         const response = await AnimeService.getAnimeById(params.id);
-        setAnime(response)
+        console.log(response + ' RESPONSE');
+        
+        setAnime(response);
+
     })
 
     useLayoutEffect(() => {

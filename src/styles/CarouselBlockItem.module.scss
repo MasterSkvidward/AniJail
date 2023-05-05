@@ -1,0 +1,16 @@
+.carousel-item {
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+
+    &__title {
+        font-size: 27px;
+        font-weight: 600;
+    }
+
+    &__body {
+    //    min-height: 200px;
+    }
+
+}
+

@@ -13,7 +13,7 @@
 
 .image {
     flex: 0 1 14%;
-    background-color: green;
+    // background-color: green;
 }
 
 .body {
@@ -67,13 +67,11 @@
     }
 
     &__genre {
-        color: rgb(223, 62, 92);
+        color: rgb(197, 77, 77);
 
         &:not(:last-child)::after {
             content: ',';
             color: rgba(255, 255, 255, 1);
         }
     }
-
-    
 }

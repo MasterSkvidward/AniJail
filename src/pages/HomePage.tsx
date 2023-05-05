@@ -1,15 +1,16 @@
-import { FC, useLayoutEffect } from 'react';
+import { FC, useEffect } from 'react';
+import CarouselBlock from '../components/Carousel/CarouselBlock';
 import classes from '../styles/HomePage.module.scss';
 
 const HomePage:FC = () => {
     
-    useLayoutEffect(() => {
+    useEffect(() => {
         window.scrollTo(0, 0);
     }, [])
 
     return (
        <div className={classes.homepage}>
-           
+            <CarouselBlock/>
        </div>
     );
 }

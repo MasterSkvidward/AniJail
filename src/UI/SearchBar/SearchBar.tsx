@@ -3,7 +3,7 @@ import classes from './SearchBar.module.scss';
 import MyInput from '../MyInput/MyInput';
 import {AiOutlineSearch} from 'react-icons/ai';
 import AnimeItemSmall from '../../components/Anime/AnimeItemSmall';
-import { IAnime, IAnimeSearchParams } from '../../types/jikan';
+import { IAnime, IAnimeSearchParams } from '../../types/jikanMoe/jikan';
 import useDebounce from '../../hooks/useDebounce';
 import { AnimeService } from '../../API/AnimeService';
 

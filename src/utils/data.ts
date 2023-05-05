@@ -1,6 +1,6 @@
 import { publicRoutes } from "./routes";
 import { ISelectOption } from "../types/userInteface";
-import { IAnimeSearchParams } from "../types/jikan";
+import { IAnimeSearchParams } from "../types/jikanMoe/jikan";
 
 
 export const navbarLinks: {value: string, path: string}[] = [

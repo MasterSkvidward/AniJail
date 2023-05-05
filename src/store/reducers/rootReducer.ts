@@ -1,6 +1,5 @@
 import {combineReducers} from 'redux';
 import { store } from '../store';
-import {animeReducer} from './anime/animeReducer';
 import filterReducer from './filter/filterReducer';
 // import { authReducer } from './authReducer';
 

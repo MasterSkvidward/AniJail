@@ -2,14 +2,15 @@ import React, {FC, useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 
 import classes from '../../styles/AnimeDetails.module.scss';
-import { IAnimeFull } from '../../types/jikan';
+import { IAnimeFull } from '../../types/jikanMoe/jikan';
 import Title from '../../UI/Title/Title';
 import { AnimeService } from '../../API/AnimeService';
-import { IAnimePicture } from '../../types/jikan';
+import { IAnimePicture } from '../../types/jikanMoe/jikan';
 import Image from '../../UI/Image/Image';
+import { ISingleAnime } from '../../types/anime/singleAnime';
 
 interface AnimeDetailsProps {
-    anime: IAnimeFull | null
+    anime: ISingleAnime | null
     animePictures: IAnimePicture[] | []
 }
 
@@ -20,7 +21,7 @@ type ParamsType = {
 const AnimeDetails: FC<AnimeDetailsProps> = ({anime, animePictures}) => {
 
     return (
-        <div className={classes['anime-details']}>
+        <section className={classes['anime-details']}>
             <div className={classes['anime-details__container'] + ' ' + '_container'}>
 
                 <div className={classes['description']}>
@@ -48,7 +49,7 @@ const AnimeDetails: FC<AnimeDetailsProps> = ({anime, animePictures}) => {
                 </div>
                     
             </div>
-        </div>
+        </section>
     );
 }
 

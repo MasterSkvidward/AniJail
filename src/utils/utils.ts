@@ -1,5 +1,5 @@
-import { IAnimeSearchParams, IObjectInfo } from "../types/jikan"
-import { IGenres } from "../types/singleAnime";
+import { IAnimeSearchParams, IObjectInfo } from "../types/jikanMoe/jikan"
+import { IGenre } from "../types/anime/singleAnime";
 import { IFilterOption } from "../types/types";
 import {MultiValue} from "react-select";
 
@@ -30,7 +30,7 @@ export const formatFilterValues = (filterTypeOptions: MultiValue<IFilterOption>)
 export const getShortenedString = (value: string | undefined, maxLetters: number) => {
     if (!value) return '';
     return (value.length > maxLetters)
-        ? value.slice(0, maxLetters) + '...'
+        ? value.slice(0, maxLetters).trim() + '...'
         : value;
 }
 

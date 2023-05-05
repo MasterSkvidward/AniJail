@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import { IAnime } from '../../types/jikan';
+import { IAnime } from '../../types/jikanMoe/jikan';
 import Image from '../../UI/Image/Image';
 import { useNavigate } from 'react-router-dom';
 import { formatGenres } from '../../utils/utils';

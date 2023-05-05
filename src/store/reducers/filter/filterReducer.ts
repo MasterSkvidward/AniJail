@@ -1,5 +1,5 @@
 import { FilterAction, FilterActionsEnum, FilterState } from "./types";
-import { IAnime, IAnimeSearchParams } from "../../../types/jikan";
+import { IAnime, IAnimeSearchParams } from "../../../types/jikanMoe/jikan";
 import { defaultFilterParams } from "../../../utils/data";
 import { act } from "react-dom/test-utils";
 

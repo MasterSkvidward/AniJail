@@ -1,4 +1,5 @@
-import { AuthState } from "../../../types/auth";
+// import { AuthState } from "../../../types/auth";
+export const tmp = {}
 
 // const initialState: AuthState = {
 //     isRegistred: false,

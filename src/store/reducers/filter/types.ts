@@ -1,4 +1,4 @@
-import { IAnime, IAnimeSearchParams } from "../../../types/jikan";
+import { IAnime, IAnimeSearchParams } from "../../../types/jikanMoe/jikan";
 
 export interface FilterState {
     anime: IAnime[],

@@ -1,6 +1,6 @@
 import React, {FC, useState} from 'react';
 import classes from '../../styles/AnimeCard.module.scss';
-import { IAnimeFull, IAnimePicture } from '../../types/jikan';
+import { IAnimeFull, IAnimePicture } from '../../types/jikanMoe/jikan';
 import AnimeCardInfo from './AnimeCardInfo';
 import background_img from '../../images/onepiece_2560x1440.jpg';
 import searchLoupe from '../../images/search-loupe.png';
@@ -8,10 +8,11 @@ import MyModal from '../../UI/MyModal/MyModal';
 import DropMenu from '../../UI/DropMenu/DropMenu';
 import ImageResponsive from '../../UI/ImageResponsive/ImageResponsive';
 import Score from '../../UI/Score/Score';
+import { ISingleAnime } from '../../types/anime/singleAnime';
 
 
 interface AnimeCardProps {
-    anime: IAnimeFull | null
+    anime: ISingleAnime | null
     // animePictures: IAnimePicture[] | []
 }
 
@@ -25,7 +26,7 @@ const AnimeCard: FC<AnimeCardProps> = ({anime}) => {
     ]
 
     return (
-       <div className={classes['anime-card']}>
+       <section className={classes['anime-card']}>
             <MyModal visible={modalVisible} setVisible={setModalVisible}><ImageResponsive url={anime.images.jpg['large_image_url']}/></MyModal>
             <div className={classes['anime-card__header']}>
                 <div className={classes['anime-card__background']}>
@@ -57,7 +58,7 @@ const AnimeCard: FC<AnimeCardProps> = ({anime}) => {
                     </div>
                 </div>
            </div>
-       </div>
+       </section>
     );
 }
 

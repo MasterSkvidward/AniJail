@@ -1,4 +1,4 @@
-import { IAnime, IAnimeSearchParams } from "../../../types/jikan";
+import { IAnime, IAnimeSearchParams } from "../../../types/jikanMoe/jikan";
 import { AnimeService } from "../../../API/AnimeService";
 import { useFetching } from "../../../hooks/useFetching";
 import { AppDispatch } from "../rootReducer";

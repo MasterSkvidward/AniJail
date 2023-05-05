@@ -7,7 +7,7 @@ import { ISelectOption } from '../../types/userInteface';
 import { sortCategories } from '../../utils/data';
 import { useDispatch } from 'react-redux';
 import { FilterActionCreators } from '../../store/reducers/filter/action-creatores';
-import { IAnimeSearchParams } from '../../types/jikan';
+import { IAnimeSearchParams } from '../../types/jikanMoe/jikan';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import Loader from '../../UI/Loader/Loader';
 
@@ -21,7 +21,7 @@ const AnimeSort = () => {
     const observer = useRef<IntersectionObserver | null>(null);
 
 
-    useEffect(() => {
+    useEffect(() => {   
         if (loadNewAnime) {
             setPage(1);
             dispatch(FilterActionCreators.setAnime(params));

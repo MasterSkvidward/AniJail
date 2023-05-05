@@ -6,7 +6,7 @@ import makeAnimated from 'react-select/animated';
 import { filterTypeOptions, filterGenreOptions, filterAgeOptions, filterStatusOptions } from '../../utils/data';
 import { useDispatch } from 'react-redux';
 import { FilterActionCreators } from '../../store/reducers/filter/action-creatores';
-import { IAnimeSearchParams } from '../../types/jikan';
+import { IAnimeSearchParams } from '../../types/jikanMoe/jikan';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { formatFilterValues } from '../../utils/utils';
 import { getCurrentYear, getFilterOptions } from '../../utils/utils';
@@ -44,9 +44,10 @@ const Filter = memo(() => {
         dispatch(FilterActionCreators.addParams(param))
     }
 
-    function handlerChange (e:ChangeEvent<HTMLInputElement>, paramValue:string) {
-        debouncedParams({[paramValue]: e.target.value});
+    function handlerChange (e:ChangeEvent<HTMLInputElement>, paramValue:string, defaultValue:number = 0) {  
+        debouncedParams({[paramValue]: e.target.value ? e.target.value : defaultValue});
     }
+  
 
 
     return (
@@ -66,14 +67,14 @@ const Filter = memo(() => {
                 <Select value={getFilterOptions(filterStatusOptions, params.status ? params.status : '')} closeMenuOnSelect={true} options={filterStatusOptions} classNamePrefix={'custom-select'} placeholder={'Status'} isMulti={true} components={animatedComponents} onChange={(optionList) => handlerSelectChange(optionList, 'status')}/>
                 <h3 className={classes['filter__block']}>Year</h3>
                 <div className={classes['filter__block_inputs']}>
-                    <input ref={yearFrom} className={classes['input']} defaultValue={params.start_date? params.start_date : ''} type="text" placeholder={'From'} onChange={(e) => handlerChange(e, 'start_date')}/>
-                    <input ref={yearTo} className={classes['input']} defaultValue={params.end_date? params.end_date : ''} type="text" placeholder={'To'} onChange={(e) => handlerChange(e, 'end_date')}/>
+                    <input ref={yearFrom} className={classes['input']} defaultValue={params.start_date? params.start_date : ''} type="text" placeholder={'From'} onChange={(e) => handlerChange(e, 'start_date', 0)}/>
+                    <input ref={yearTo} className={classes['input']} defaultValue={params.end_date? params.end_date : ''} type="text" placeholder={'To'} onChange={(e) => handlerChange(e, 'end_date', getCurrentYear()+1)}/>
                 </div>
 
                 <h3 className={classes['filter__block']}>Score</h3>
                 <div className={classes['filter__block_inputs']}>
-                    <input ref={scoreFrom} className={classes['input']} defaultValue={params.min_score? params.min_score : ''} type="text" placeholder={'From'} onChange={(e) => handlerChange(e, 'min_score')}/>
-                    <input ref={scoreTo} className={classes['input']} defaultValue={params.max_score? params.max_score : ''} type="text" placeholder={'To'} onChange={(e) => handlerChange(e, 'max_score')}/>
+                    <input ref={scoreFrom} className={classes['input']} defaultValue={params.min_score? params.min_score : ''} type="text" placeholder={'From'} onChange={(e) => handlerChange(e, 'min_score', 0)}/>
+                    <input ref={scoreTo} className={classes['input']} defaultValue={params.max_score? params.max_score : ''} type="text" placeholder={'To'} onChange={(e) => handlerChange(e, 'max_score', 999)}/>
                 </div>
             </div>
        </div>
