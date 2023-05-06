@@ -4,7 +4,8 @@
     row-gap: 10px;
     // height: 100%;
     border-radius: 7px;
-
+    cursor: pointer;
+    // width: 20px;
  
 
     &__image {
@@ -18,8 +19,8 @@
         border-radius: 14px ;
         border: 0.5px solid rgba(255, 255, 255, 0.1);
         overflow: hidden;
-        
-       
+        // max-width: 188px;
+        width: inherit;
         img {
             // border-radius: 13px;
         }
@@ -28,8 +29,9 @@
     }
 
     &__title {
+        width: inherit;
         overflow-wrap: break-word;
-        max-width: 188px;
+        // max-width: 188px;
         font-size: 15px;
         color: rgb(255, 255, 255);
         transition: 0.2s;

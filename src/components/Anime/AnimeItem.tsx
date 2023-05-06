@@ -12,15 +12,27 @@ import AnimePreview from './AnimePreview';
 
 interface AnimeItemProps {
     anime: IAnime | null;
+    maxWidth?: number,
+    maxHeight?: number,
+    minWidth?: number,
+    width?: number,
+    height?: number,
 }
 
-const AnimeItem:FC<AnimeItemProps> = ({anime}) => {
+const AnimeItem:FC<AnimeItemProps> = ({anime, width, height, maxHeight=340, maxWidth=215, minWidth=158}) => {
     const navigate = useNavigate();
+
+    const propsStyles = {
+        width: `${width}px`,
+        maxWidth: `${maxWidth}px`,
+        minWidth: `${minWidth}px`,
+        height: `${height}px`,
+    }
 
     if (!anime) return (<></>);
 
     return (
-        <div className={classes['anime']} onClick={() => navigate((`/anime/${anime?.mal_id}`))}>
+        <div style={propsStyles} className={classes['anime']} onClick={() => navigate((`/anime/${anime?.mal_id}`))}>
             <div className={classes['anime__image']}>
                 <Image url={anime?.images.jpg.image_url || ''}/>
             </div>

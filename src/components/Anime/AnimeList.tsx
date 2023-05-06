@@ -28,7 +28,7 @@ const AnimeList = () => {
            <div className={classes['anime-list__grid']}>       
                 {anime.map((item, index) => 
                     <div className={classes['anime-list__item']} key={index} onMouseEnter={handlerMouseEnter} onMouseLeave={handlerMouseLeave}>
-                        <AnimeItem anime={item} />
+                        <AnimeItem anime={item} maxWidth={188} maxHeight={275}/>
                     </div>
                 )}
            </div>

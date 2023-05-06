@@ -1,3 +1,9 @@
 .carousel-block {
     padding: 90px 0px 90px 0px;
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        row-gap: 110px;
+    }
 }

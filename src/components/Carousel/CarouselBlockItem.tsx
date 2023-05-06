@@ -10,28 +10,16 @@ import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide';
 
 interface CarouselBlockItemProps {
     title: string,
+    items: IAnime[],
 }
 
-const CarouselBlockItem:FC<CarouselBlockItemProps> = ({title}) => {
-    const [animeCurrentSeason, setAnimeCurrentSeason] = useState<IAnime[]>([]);
-
-    const fetchAnime = async () => {
-        const response = await AnimeService.getAnimeSeasonNow();
-        setAnimeCurrentSeason(response);  
-    }
-
-    console.log(animeCurrentSeason);
-    
-
-    useEffect(() => {
-        fetchAnime();
-    }, [])
+const CarouselBlockItem:FC<CarouselBlockItemProps> = ({title, items}) => {
 
     return (
        <div className={classes['carousel-item']}>
             <h3 className={classes['carousel-item__title']}>{title}</h3>
             <div className={classes['carousel-item__body']}>
-                <Carousel items={animeCurrentSeason}/>
+                <Carousel items={items}/>
            </div>
        </div>
     );
