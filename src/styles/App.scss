@@ -10,7 +10,13 @@
 
 // !--------------------------------------------------------media----------------------------------------------------
 
-@media (max-width: 1480px) {
+@media (max-width: 1850px) {
+    .App {
+        padding: 0px 25px;
+    }
+}
+
+@media (max-width: 1000px) {
     .App {
         padding: 0px 10px;
     }
@@ -62,6 +68,12 @@
 
 ._container {
     max-width: 1440px;
+    // max-width: 70vw;
+    margin: 0 auto;
+}
+
+._container1800 {
+    max-width: 86vw;
     // max-width: 70vw;
     margin: 0 auto;
 }

@@ -3,13 +3,20 @@ import { IAnime } from '../../types/jikanMoe/jikan';
 import { AnimeService } from '../../API/AnimeService';
 import classes from '../../styles/CarouselBlock.module.scss';
 import CarouselBlockItem from './CarouselBlockItem';
+import { bigCarouselOptions, smallCarouselOptions } from '../../utils/data';
+import { getCurrentSeasonName } from '../../utils/utils';
+import AnimeItem from '../Anime/AnimeItem';
+import AnimeItemBig from '../Anime/AnimeItemBig';
 
 const CarouselBlock = () => {
     const [animeCurrentSeason, setAnimeCurrentSeason] = useState<IAnime[]>([]);
 
+   
     const fetchAnime = async () => {
-        const response = await AnimeService.getAnimeSeasonNow();
-        setAnimeCurrentSeason(response);  
+        const seasonAnime = await AnimeService.getAnimeSeasonNow();
+        const popularAnime = await AnimeService.getAnimeSeasonNow();
+        const dateAnime = await AnimeService.getAnimeSeasonNow();
+        setAnimeCurrentSeason(seasonAnime);  
     }
 
     useEffect(() => {
@@ -18,10 +25,31 @@ const CarouselBlock = () => {
 
     return (
         <section className={classes['carousel-block']}>
-            <div className={'_container'}>
+            <div className={'_container1800'}>
                 <div className={classes['carousel-block__body']}>
-                    <CarouselBlockItem title={'Spring Anime'} items={animeCurrentSeason}/>
-                    <CarouselBlockItem title={'Spring Anime'} items={animeCurrentSeason}/>
+                    <CarouselBlockItem title={`${getCurrentSeasonName()} season`} options={bigCarouselOptions}>
+                        {animeCurrentSeason.map((item, index) => 
+                            <AnimeItemBig anime={item} key={index}/>
+                        )}
+                    </CarouselBlockItem>
+
+                    <CarouselBlockItem title={`Anime for you`} options={smallCarouselOptions}>
+                        {animeCurrentSeason.map((item, index) => 
+                            <AnimeItem anime={item} key={index}/>
+                        )}
+                    </CarouselBlockItem>
+
+                    <CarouselBlockItem title={'Popular'} options={smallCarouselOptions}>
+                        {animeCurrentSeason.map((item, index) => 
+                                <AnimeItem anime={item} key={index}/>
+                        )}
+                    </CarouselBlockItem>
+
+                    <CarouselBlockItem title={'A-Z'} options={smallCarouselOptions}>
+                        {animeCurrentSeason.map((item, index) => 
+                                <AnimeItem anime={item} key={index}/>
+                        )}
+                    </CarouselBlockItem>
                 </div>
             </div>
         </section>

@@ -30,8 +30,9 @@
     }
 
     &__filter {
-        flex: 0 1 300px;
-        max-width: 440px;
+        flex: 1 1 auto;
+        max-width: 500px;
+        // max-width: 440px;
         // background-color: white;
     }
 

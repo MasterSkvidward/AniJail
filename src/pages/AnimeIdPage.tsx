@@ -27,8 +27,6 @@ const AnimeIdPage = () => {
 
     const [fetchAnime, animeIsLoading, animesError] = useFetching( async () => {
         const response = await AnimeService.getAnimeById(params.id);
-        console.log(response + ' RESPONSE');
-        
         setAnime(response);
 
     })

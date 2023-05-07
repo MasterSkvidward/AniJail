@@ -22,6 +22,7 @@
     }
 
     &__arrow {
+        position: absolute;
         cursor: pointer;
         background-color: rgba(94, 94, 94, 0);
 
@@ -36,7 +37,7 @@
     }
 
     &__leftArrow {
-        position: absolute;
+        
         top: 40%;
         right: 0;
         opacity: 0.7;
@@ -49,7 +50,7 @@
     }
 
     &__rightArrow {
-        position: absolute;
+
         top: 40%;
         left: 0;
         opacity: 0.7;

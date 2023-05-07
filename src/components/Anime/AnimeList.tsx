@@ -14,21 +14,13 @@ const AnimeList = () => {
         <div className={classes['empty']}>No Results</div>
     )
 
-    const handlerMouseEnter = (e: MouseEvent) => {
-
-    }
-
-    const handlerMouseLeave = (e: MouseEvent) => {
-
-    }
-
 
     return (
        <div className={classes['anime-list']}>
            <div className={classes['anime-list__grid']}>       
                 {anime.map((item, index) => 
-                    <div className={classes['anime-list__item']} key={index} onMouseEnter={handlerMouseEnter} onMouseLeave={handlerMouseLeave}>
-                        <AnimeItem anime={item} maxWidth={188} maxHeight={275}/>
+                    <div className={classes['anime-list__item']} key={index}>
+                        <AnimeItem anime={item} maxWidth={268} maxHeight={355}/>
                     </div>
                 )}
            </div>

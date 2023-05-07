@@ -43,3 +43,38 @@ export const getFilterOptions = (options: IFilterOption[], param: string):IFilte
     let paramItems = param.split(',');   
     return options.filter(option => paramItems.includes(option.value));
 }
+
+export const getCurrentSeasonName = ():string => {
+    const currentMonth = new Date().getMonth();
+    let currentSeason = 'Winter';
+    if (currentMonth < 3 || currentMonth === 11) currentSeason = 'Winter';
+    else if (currentMonth < 6) currentSeason = 'Spring';
+    else if (currentMonth < 9) currentSeason = 'Summer';
+    else if (currentMonth < 11) currentSeason = 'Autumn';
+    
+    return currentSeason;
+}
+
+
+export async function get_average_rgb(src: string): Promise<Uint8ClampedArray> {
+    return new Promise(resolve => {
+        let context = document.createElement('canvas').getContext('2d');
+        context!.imageSmoothingEnabled = true;
+        
+        let img = new Image;
+        img.src = src;
+        img.crossOrigin = "";
+        
+        img.onload = () => {
+            context!.drawImage(img, 0, 0, 1, 1);
+            resolve(context!.getImageData(0, 0, 1, 1).data.slice(0, 3));
+        };
+    });
+    }
+    
+export const formatColor = (color:string):string => {
+    // console.log(color);
+    let arr = color.split(',').map(item => Number(item));
+    if (arr[0] + arr[1] + arr[2] > 520) arr = [130, 30, 30];
+    return arr.join(',');
+}

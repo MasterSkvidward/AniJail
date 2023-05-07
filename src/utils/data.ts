@@ -9,6 +9,55 @@ export const navbarLinks: {value: string, path: string}[] = [
     {value: 'Random anime', path: publicRoutes.ANY},
 ]
 
+export const bigCarouselOptions = {
+    speed: 600,
+    // height : '275px',
+    rewind : true,
+    gap    : '25px',
+    interval: 7000,
+    autoplay: true,
+    lazyLoad: 'nearby',
+    perPage: 5,
+    // fixedWidth: 190,
+    arrows: true,
+    // arrowPath: arrowRight,
+
+    breakpoints: {
+        1712: {perPage: 5},
+        1580: {perPage: 5},
+        1428: { perPage: 5, },
+        1220: { perPage: 5, },
+        1010: { perPage: 4, },
+        820: { perPage: 3, },
+    },
+}
+
+export const smallCarouselOptions = {
+    speed: 600,
+    // height : '275px',
+    rewind : true,
+    gap    : '20px',
+    interval: 7000,
+    autoplay: true,
+    lazyLoad: 'nearby',
+    perPage: 9,
+    // fixedWidth: 190,
+    arrows: true,
+    // arrowPath: arrowRight,
+
+    breakpoints: {
+        // 4500: {autoWidth: true},
+        1712: {perPage: 8},
+        1580: {perPage: 7},
+        1428: { perPage: 6, },
+        1220: { perPage: 5, },
+        1010: { perPage: 4, },
+        820: { perPage: 3, },
+    },
+}
+
+
+
 export const sortCategories: ISelectOption[] = [
     {name: 'By Date', order_by: 'start_date', sort: 'desc'},
     {name: 'By Popularity', order_by: 'scored_by', sort: 'desc'},

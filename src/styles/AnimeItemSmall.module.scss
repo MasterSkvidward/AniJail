@@ -12,16 +12,19 @@
 }
 
 .image {
-    flex: 0 1 14%;
+    // flex: 0 1 15%;
+    min-width: 90px;
+    max-width: 120px;
+    min-height: 140px;
     // background-color: green;
 }
 
 .body {
-    flex: 0 1 86%;
+    flex: 1 1 auto;
     display: flex;
     flex-direction: column;
     row-gap: 20px;
-    
+   
     min-height: 110px;
 
     &__title {

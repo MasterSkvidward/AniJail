@@ -1,10 +1,12 @@
 .header {
     position: relative;
     // border-bottom: 3px solid white;
-    border-bottom: 4px solid rgba(204, 51, 79, 1);
+    border-bottom: 3px solid rgba(204, 51, 79, 1);
     background-color: rgba(13, 18, 22, 1);
+    box-shadow: 0 0px 34px 15px rgba(27, 27, 27, 0.8);
 
     z-index: 500;
+
 }
 
 .sticky {

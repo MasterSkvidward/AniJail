@@ -1,4 +1,4 @@
-import React, {FC, useState, useEffect} from 'react';
+import React, {FC, useState, useEffect, PropsWithChildren} from 'react';
 import Carousel from '../../UI/Carousel/Carousel';
 
 
@@ -8,18 +8,22 @@ import { IAnime } from '../../types/jikanMoe/jikan';
 import { AnimeService } from '../../API/AnimeService';
 import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide';
 
-interface CarouselBlockItemProps {
+interface CarouselBlockItemProps extends PropsWithChildren{
     title: string,
-    items: IAnime[],
+    options?: any,
 }
 
-const CarouselBlockItem:FC<CarouselBlockItemProps> = ({title, items}) => {
+const CarouselBlockItem:FC<CarouselBlockItemProps> = ({title, options, children}) => {
+    
 
     return (
        <div className={classes['carousel-item']}>
             <h3 className={classes['carousel-item__title']}>{title}</h3>
             <div className={classes['carousel-item__body']}>
-                <Carousel items={items}/>
+                <Carousel options={options}>
+                    {children}
+                </Carousel>
+              
            </div>
        </div>
     );

@@ -19,7 +19,7 @@ interface AnimeItemProps {
     height?: number,
 }
 
-const AnimeItem:FC<AnimeItemProps> = ({anime, width, height, maxHeight=340, maxWidth=215, minWidth=158}) => {
+const AnimeItem:FC<AnimeItemProps> = ({anime, width, height, maxHeight=440, maxWidth=315, minWidth=158}) => {
     const navigate = useNavigate();
 
     const propsStyles = {
@@ -27,6 +27,7 @@ const AnimeItem:FC<AnimeItemProps> = ({anime, width, height, maxHeight=340, maxW
         maxWidth: `${maxWidth}px`,
         minWidth: `${minWidth}px`,
         height: `${height}px`,
+        maxHeight: `${maxHeight}px`,
     }
 
     if (!anime) return (<></>);

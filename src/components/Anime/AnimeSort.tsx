@@ -15,16 +15,18 @@ import Loader from '../../UI/Loader/Loader';
 const AnimeSort = () => {
     const dispatch = useDispatch();
     const {loadNewAnime, params, isLoading, hasMoreAnime} = useTypedSelector(state => state.filter);
-    const [page, setPage] = useState<number>(1);
+    const [page, setPage] = useState<number>(2);
 
     const lastAnimeRow = useRef<HTMLDivElement | null>(null);
     const observer = useRef<IntersectionObserver | null>(null);
 
 
-    useEffect(() => {   
+    useEffect(() => {  
+        console.log(loadNewAnime);
+        
         if (loadNewAnime) {
-            setPage(1);
             dispatch(FilterActionCreators.setAnime(params));
+            setPage(2);
         }
     }, [loadNewAnime])
 
@@ -33,13 +35,10 @@ const AnimeSort = () => {
         if (isLoading) return;
         if (observer.current) observer.current.disconnect();
 
-        const options = {
-            rootMargin: '0px 0px 150px 0px',
-            threshold: 0,
-        }
 
         const callback = (entries: any, observer: IntersectionObserver) => {
             if (entries[0].isIntersecting && hasMoreAnime) {   
+                console.log(page);
                 dispatch(FilterActionCreators.addAnime(params, page));
                 setPage(page + 1);
             }
@@ -53,7 +52,7 @@ const AnimeSort = () => {
 
     return (
        <div className={classes['anime']}>
-           <div className={[classes['anime__container'], '_container'].join(' ')}>
+           <div className={[classes['anime__container'], '_container1800'].join(' ')}>
                 <h2 className={classes['anime__title']}>{'Catalog'}</h2>
                 <div className={classes['anime__block']}>
                     <div className={classes['anime__column']}>

@@ -1,0 +1,102 @@
+// @keyframes emerge {
+// 	0% {
+//         height: 0%;
+//         opacity: 0;
+// 		// transform: scale(0.9);
+// 	}
+
+// 	100% {
+//         display: block;
+// 		height: 100%;
+//         opacity: 1;
+// 		// transform: scale(1);
+// 	}
+// }
+
+.anime {
+    transition: 0.4s;
+    padding: 6px 6px;
+    border: 1px solid rgba(119, 119, 119, 0);
+    border-radius: 19px;
+
+    &:hover {
+        
+        cursor: pointer;
+        border: 1px solid rgba(186, 186, 186, 0.4);
+
+
+        .anime__block {
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .anime__synopsis {
+            opacity: 1;
+            max-height: 50px;
+        }
+    }
+
+    &__body {
+        border-radius: 14px;
+        max-width: 340px;
+        max-height: 550px;
+        min-height: 540px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+
+    &__block {
+
+        transition: all 0.5s;
+        // justify-self:
+        padding: 20px 15px 0px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 17px;
+    }
+
+    &__title {
+        text-shadow: 3px 3px 15px rgb(0, 0, 0);
+        font-size: 27px;
+        font-weight: 600;
+    }
+
+    &__synopsis {
+        font-weight: 600;
+        text-shadow: 0px -8px 25px rgb(0, 0, 0);
+        display: block;
+        opacity: 1;
+        max-height: 0px;
+        overflow-y: hidden;
+        overflow-y: hidden;
+        transition-duration: 0.25s;
+        transition-property: max-height, opacity;
+        transition-timing-function: ease-in-out, ease-in-out;
+    }
+
+    &__details {
+        text-shadow: 3px 3px 15px rgb(0, 0, 0);
+        font-weight: 600;
+        
+    }
+
+    &__arrow {
+        padding: 25px 0px;
+        border-top: 1px solid rgba(255, 255, 255, 1);
+
+        svg {
+            // fill: rgba(195, 55, 55, 0.9);
+            color: rgb(228, 228, 228);
+            background-color: rgba(0, 0, 0, 0.9);
+            border-radius: 51%;
+            height: 32px;
+            width: 32px;
+            font-weight: 600;
+            font-size: 22px;
+        }
+    }
+}
+
+.active {
+    display: flex;
+}
