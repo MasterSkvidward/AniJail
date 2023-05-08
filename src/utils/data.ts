@@ -23,12 +23,10 @@ export const bigCarouselOptions = {
     // arrowPath: arrowRight,
 
     breakpoints: {
-        1712: {perPage: 5},
-        1580: {perPage: 5},
-        1428: { perPage: 5, },
-        1220: { perPage: 5, },
-        1010: { perPage: 4, },
-        820: { perPage: 3, },
+        1920: {gap :'15px',},
+        1775: {perPage: 4},
+        1300: {perPage: 3},
+        720: { perPage: 2, },
     },
 }
 
@@ -47,11 +45,12 @@ export const smallCarouselOptions = {
 
     breakpoints: {
         // 4500: {autoWidth: true},
-        1712: {perPage: 8},
+        1920: {perPage: 8},
+        // 1712: {perPage: 8},
         1580: {perPage: 7},
         1428: { perPage: 6, },
         1220: { perPage: 5, },
-        1010: { perPage: 4, },
+        1070: { perPage: 4, },
         820: { perPage: 3, },
     },
 }

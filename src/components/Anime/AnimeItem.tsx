@@ -35,7 +35,7 @@ const AnimeItem:FC<AnimeItemProps> = ({anime, width, height, maxHeight=440, maxW
     return (
         <div style={propsStyles} className={classes['anime']} onClick={() => navigate((`/anime/${anime?.mal_id}`))}>
             <div className={classes['anime__image']}>
-                <Image url={anime?.images.jpg.image_url || ''}/>
+                <Image url={anime?.images.jpg.image_url || ''} score={anime.score}/>
             </div>
             <h4 className={classes['anime__title']}>{getShortenedString(anime?.title_english ? anime.title_english : anime?.title, 37)}</h4>
             {/* <AnimePreview anime={anime}/> */}

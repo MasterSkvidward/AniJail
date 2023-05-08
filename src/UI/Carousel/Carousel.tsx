@@ -11,10 +11,11 @@ import {IoIosArrowDropright} from 'react-icons/io';
 
 interface CarouselProps extends PropsWithChildren {
     options?: any,
+    arrowTop?: number,
 }
 
 
-const Carousel:FC<CarouselProps> = ({options, children}) => {
+const Carousel:FC<CarouselProps> = ({options, arrowTop=50, children}) => {
     return (
         <Splide hasTrack={ false } aria-label="MySlider" options={options}>
             <div className={classes['carousel__wrapper']}>
@@ -27,8 +28,8 @@ const Carousel:FC<CarouselProps> = ({options, children}) => {
                 </SplideTrack>
                 
                 <div className="splide__arrows">
-                    <button className={["splide__arrow splide__arrow--next", classes['carousel__arrow'], classes['carousel__leftArrow']].join(' ')}><IoIosArrowDropright/></button>  
-                    <button className={["splide__arrow splide__arrow--prev", classes['carousel__arrow'], classes['carousel__rightArrow']].join(' ')}><IoIosArrowDropleft/></button>
+                    <button style={{top: `${arrowTop}%`}} className={["splide__arrow splide__arrow--next", classes['carousel__arrow'], classes['carousel__leftArrow']].join(' ')}><IoIosArrowDropright/></button>  
+                    <button style={{top: `${arrowTop}%`}} className={["splide__arrow splide__arrow--prev", classes['carousel__arrow'], classes['carousel__rightArrow']].join(' ')}><IoIosArrowDropleft/></button>
                 </div>
             </div>
         </Splide>

@@ -23,6 +23,8 @@ const CarouselBlock = () => {
         fetchAnime();
     }, [])
 
+    if (!animeCurrentSeason) return (<></>)
+
     return (
         <section className={classes['carousel-block']}>
             <div className={'_container1800'}>
@@ -33,19 +35,19 @@ const CarouselBlock = () => {
                         )}
                     </CarouselBlockItem>
 
-                    <CarouselBlockItem title={`Anime for you`} options={smallCarouselOptions}>
+                    <CarouselBlockItem title={`Anime for you`} options={smallCarouselOptions} arrowTop={40}>
                         {animeCurrentSeason.map((item, index) => 
                             <AnimeItem anime={item} key={index}/>
                         )}
                     </CarouselBlockItem>
 
-                    <CarouselBlockItem title={'Popular'} options={smallCarouselOptions}>
+                    <CarouselBlockItem title={'Popular'} options={smallCarouselOptions} arrowTop={40}>
                         {animeCurrentSeason.map((item, index) => 
                                 <AnimeItem anime={item} key={index}/>
                         )}
                     </CarouselBlockItem>
 
-                    <CarouselBlockItem title={'A-Z'} options={smallCarouselOptions}>
+                    <CarouselBlockItem title={'A-Z'} options={smallCarouselOptions} arrowTop={40}>
                         {animeCurrentSeason.map((item, index) => 
                                 <AnimeItem anime={item} key={index}/>
                         )}

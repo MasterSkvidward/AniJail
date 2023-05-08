@@ -1,23 +1,16 @@
-// @keyframes emerge {
-// 	0% {
-//         height: 0%;
-//         opacity: 0;
-// 		// transform: scale(0.9);
-// 	}
 
-// 	100% {
-//         display: block;
-// 		height: 100%;
-//         opacity: 1;
-// 		// transform: scale(1);
-// 	}
-// }
+
+
 
 .anime {
     transition: 0.4s;
     padding: 6px 6px;
     border: 1px solid rgba(119, 119, 119, 0);
     border-radius: 19px;
+    max-width: 18vw;
+    height: 26vw;
+    font-size: 27px;
+    position: relative;
 
     &:hover {
         
@@ -31,16 +24,15 @@
 
         .anime__synopsis {
             opacity: 1;
-            max-height: 50px;
+            max-height: 80px;
         }
     }
 
     &__body {
-        border-radius: 14px;
-        max-width: 340px;
-        max-height: 550px;
-        min-height: 540px;
+        border-radius: 19px;
         display: flex;
+        width: 100%;
+        height: 100%;
         flex-direction: column;
         justify-content: flex-end;
     }
@@ -57,12 +49,14 @@
 
     &__title {
         text-shadow: 3px 3px 15px rgb(0, 0, 0);
-        font-size: 27px;
+        font-size: 1em;
         font-weight: 600;
     }
 
     &__synopsis {
+        font-size: 0.6em;
         font-weight: 600;
+        line-height: 125%;
         text-shadow: 0px -8px 25px rgb(0, 0, 0);
         display: block;
         opacity: 1;
@@ -77,7 +71,16 @@
     &__details {
         text-shadow: 3px 3px 15px rgb(0, 0, 0);
         font-weight: 600;
-        
+        font-size: 0.6em;
+
+        display: flex;
+        column-gap: 10px;
+    }
+
+    &__genre {
+        &:not(:last-child)::after {
+            content: ',';
+        }
     }
 
     &__arrow {
@@ -100,3 +103,84 @@
 .active {
     display: flex;
 }
+
+
+@media (max-width: 1900px) {
+    .anime {
+        max-width: 500px;
+        height: 490px;
+    }
+}
+
+@media (max-width: 1775px) {
+    .anime {
+        height: 30vw;
+    }
+}
+
+
+@media (max-width: 1300px) {
+    .anime {
+        height: 40vw;
+    }
+}
+
+@media (max-width: 1200px) {
+    .anime {
+        font-size: 21px;
+
+        &__block {
+            row-gap: 11px;
+        }
+    }
+}
+
+@media (max-width: 910px) {
+    .anime {
+        font-size: 19px;
+
+        &__synopsis {
+            display: none;
+        }
+
+        &__block {
+            row-gap: 10px;
+        }
+
+        &__arrow {
+            padding: 10px 0px;
+
+            svg {
+                height: 26px;
+                width: 26px;
+            }
+        }
+    }
+}
+
+@media (max-width: 720px) {
+    .anime {
+        height: 60vw;
+    }
+}
+
+@media (max-width: 510px) {
+    .anime {
+        font-size: 15px;
+    }
+
+}
+
+// @media (max-width: 560px) {
+//     .anime {
+//         font-size: 14px;
+
+//         &__block {
+//             margin-bottom: 15px;
+//         }
+
+//         &__arrow {
+//            display: none;
+//         }
+//     }
+// }

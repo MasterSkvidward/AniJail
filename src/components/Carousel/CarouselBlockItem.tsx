@@ -11,19 +11,19 @@ import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide';
 interface CarouselBlockItemProps extends PropsWithChildren{
     title: string,
     options?: any,
+    arrowTop?: number,
 }
 
-const CarouselBlockItem:FC<CarouselBlockItemProps> = ({title, options, children}) => {
+const CarouselBlockItem:FC<CarouselBlockItemProps> = ({title, options, children, arrowTop}) => {
     
 
     return (
        <div className={classes['carousel-item']}>
             <h3 className={classes['carousel-item__title']}>{title}</h3>
             <div className={classes['carousel-item__body']}>
-                <Carousel options={options}>
+                <Carousel options={options} arrowTop={arrowTop}>
                     {children}
                 </Carousel>
-              
            </div>
        </div>
     );

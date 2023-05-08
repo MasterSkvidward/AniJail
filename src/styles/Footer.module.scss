@@ -1,20 +1,21 @@
 .footer {
-    min-height: 270px;
-    border-top: 1px solid red;
-    background-color: rgb(15, 17, 19);
+    min-height: 120px;
+
+    // background-color: rgb(15, 17, 19);
     margin-top: auto;
 
     &__body {
-       
+        border-top: 1px solid red;
         display: flex;
         justify-content: space-between;
+        align-items: center;
     }
 
     &__column {
-        margin-top: 50px;
+        margin: 50px 0px;
         display: flex;
         flex-direction: column;
-        row-gap: 10px;
+        row-gap: 15px;
     }
 
     &__brandname {
@@ -23,13 +24,19 @@
         font-weight: 600;
     }
 
+    &__info {
+        color: rgba(198, 198, 198, 0.9);
+        font-size: 15px;
+        font-weight: 600;
+    }
+
     &__copyright {
         font-size: 13px;
-        color: rgba(255, 255, 255, 0.8);
+        color: rgba(198, 198, 198, 0.9);
     }
 
     &__contacts {
-        margin: 50px 0px 0px 0px;
+        // margin: 50px 0px 0px 0px;
         display: flex;
         flex-direction: column;
         row-gap: 20px;

@@ -5,6 +5,7 @@ import HomePage from '../../pages/HomePage';
 import Error from '../../pages/Error404';
 import AnimeIdPage from '../../pages/AnimeIdPage';
 import Anime from '../../pages/Anime';
+import Profile from '../../pages/Profile';
 
 const AppRouter:FC = () => {
     return (
@@ -13,6 +14,7 @@ const AppRouter:FC = () => {
             <Route path={publicRoutes.ERROR} element={<Error/>}/>
             <Route path={publicRoutes.ANIME} element={<Anime/>}/>
             <Route path={`anime/:id`} element={<AnimeIdPage/>}/>
+            <Route path={`profile/:id`} element={<Profile/>}/>
             <Route path={publicRoutes.ANY} element={<Navigate to={publicRoutes.ERROR} replace/>}/>
         </Routes>
     );

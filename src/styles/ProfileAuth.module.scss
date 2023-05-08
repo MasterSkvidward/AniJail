@@ -1,0 +1,13 @@
+@keyframes slideDown {
+    from {
+      transform: translateY(20%);
+    }
+    to {
+      transform: translateY(0);
+    }
+}
+
+
+.profile {
+    animation: slideDown 0.35s;
+}

@@ -11,6 +11,8 @@ import { AnimeService } from '../../API/AnimeService';
 const SearchBar:FC = () => {
 
     const search = useRef<HTMLFormElement>(null);
+    const searchList = useRef<HTMLDivElement>(null);
+    
     const [visible, setVisible] = useState<boolean>(false);
     const [value, setValue] = useState<string>('');
     const [animeItems, setAnimeItems] = useState<IAnime[] | []>([]);
@@ -54,14 +56,14 @@ const SearchBar:FC = () => {
         setVisible(false);
     }
 
-
     useEffect(() => {
-        debouncedSearch()
+        debouncedSearch();
+        if (searchList.current?.scrollTop) searchList.current.scrollTop = 0;
     }, [value])
 
     useEffect(() => {
         document.addEventListener("mousedown", handlerDocumentClick);
-        search.current?.addEventListener('focusin', handlerFocusIn)
+        search.current?.addEventListener('focusin', handlerFocusIn);
     }, [])
 
 
@@ -71,14 +73,13 @@ const SearchBar:FC = () => {
             <div className={classes.search__loupe}>
                 <AiOutlineSearch/>
             </div>
-            <div className={visible? [classes.search__list, classes.active].join(' ') :classes.search__list} onClick={handlerClickMenu}>
+            <div ref={searchList} className={visible? [classes.search__list, classes.active].join(' ') :classes.search__list} onClick={handlerClickMenu}>
                 <div className={classes.search__items}>
                     {animeItems.map((anime, index) => 
                         <AnimeItemSmall anime={anime} key={index}/>
                     )}   
                 </div>
                 <div className={classes['search__all']}>See all results for "{value}"</div>
-                
             </div>
        </form>
     );

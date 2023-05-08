@@ -12,7 +12,7 @@
         cursor: pointer;
         font-size: 22px;
         font-weight: 600;
-        color: rgb(228, 80, 80);
+        color: rgb(245, 245, 245);
 
         align-self: self-start;
         display: inline-block;
@@ -25,9 +25,9 @@
         &::after {
             display: block;
             content: "";
-            background-color: rgb(164, 164, 164);
+            background-color: rgb(189, 52, 52);
             height: 2px;
-            top: 35px;
+            top: 29px;
             width: 0%;
             left: 50%;
             position: absolute;
@@ -44,6 +44,10 @@
         &:hover:focus::after
         {
             width: 100%;
+        }
+
+        &:hover {
+            color: rgba(241, 241, 241, 0.9);
         }
     }
 

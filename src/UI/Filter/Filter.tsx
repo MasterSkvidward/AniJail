@@ -54,10 +54,6 @@ const Filter = memo(() => {
        <div className={classes['filter']}>
             <div className={classes['filter__row']}>
                 <h3 className={classes['filter__title']}>Filters</h3>
-                <div className={classes['filter__clear']} onClick={handlerClickClear}>
-                    <h3 className={classes['filter__clear_title']}>CLEAR</h3>
-                    <RxCross1 className={classes['filter__clear_cross']}/>
-                </div>
             </div>
 
             <div className={classes['filter__column']}>
@@ -75,6 +71,10 @@ const Filter = memo(() => {
                 <div className={classes['filter__block_inputs']}>
                     <input ref={scoreFrom} className={classes['input']} defaultValue={params.min_score? params.min_score : ''} type="text" placeholder={'From'} onChange={(e) => handlerChange(e, 'min_score', 0)}/>
                     <input ref={scoreTo} className={classes['input']} defaultValue={params.max_score? params.max_score : ''} type="text" placeholder={'To'} onChange={(e) => handlerChange(e, 'max_score', 999)}/>
+                </div>
+                <div className={classes['filter__clear']} onClick={handlerClickClear}>
+                    <h3 className={classes['filter__clear_title']}>CLEAR</h3>
+                    {/* <RxCross1 className={classes['filter__clear_cross']}/> */}
                 </div>
             </div>
        </div>

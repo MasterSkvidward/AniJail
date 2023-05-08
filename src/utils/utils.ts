@@ -8,6 +8,12 @@ export const formatGenres = (genres:IObjectInfo[] | undefined):string[] => {
     return genres.map(genre => `${genre.name}`)
 }
 
+export const getAnimeScore = (score:number | undefined):string => {
+    if (!score) return '?';
+    
+    return String(score.toFixed(2));
+}
+
 export const getScoreColor = (score:number):string => {
     if (score >= 8) return 'green';
     if (score >= 7 && score < 8) return 'light-green';
