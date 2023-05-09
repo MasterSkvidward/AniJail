@@ -1,4 +1,4 @@
-import React, {FC, useState} from 'react';
+import React, {FC, useState, useEffect} from 'react';
 import classes from '../../styles/AnimeCard.module.scss';
 import { IAnimeFull, IAnimePicture } from '../../types/jikanMoe/jikan';
 import AnimeCardInfo from './AnimeCardInfo';
@@ -9,31 +9,48 @@ import DropMenu from '../../UI/DropMenu/DropMenu';
 import ImageResponsive from '../../UI/ImageResponsive/ImageResponsive';
 import Score from '../../UI/Score/Score';
 import { ISingleAnime } from '../../types/anime/singleAnime';
+import { IAnime } from '../../types/jikanMoe/jikan';
+import { get_average_rgb, formatColor } from '../../utils/utils';
+import { AnimeService } from '../../API/AnimeService';
+
 
 
 interface AnimeCardProps {
-    anime: ISingleAnime | null
+    anime: IAnime | null
     // animePictures: IAnimePicture[] | []
 }
 
 const AnimeCard: FC<AnimeCardProps> = ({anime}) => {
+    const [animeColor, setAnimeColor] = useState<string>('');
     const [modalVisible, setModalVisible] = useState(false);
-    if (!anime) return <></>;
+
 
     const dropMenuOptions = [
         {name: 'Add to list', value: ''},
         {name: 'Add to list', value: ''},
     ]
 
+    const getAnimeColor = async () => {
+        const color = await get_average_rgb(background_img);
+        setAnimeColor(formatColor(color.toString()));
+    }
+
+    useEffect(() => {
+        getAnimeColor();
+    }, [])
+
+    if (!anime) return <></>;
+
     return (
        <section className={classes['anime-card']}>
             <MyModal visible={modalVisible} setVisible={setModalVisible}><ImageResponsive url={anime.images.jpg['large_image_url']}/></MyModal>
             <div className={classes['anime-card__header']}>
-                <div className={classes['anime-card__background']}>
-                    <img src={background_img} alt="OnePiece" />
+                <div className={classes['anime-card__background']} 
+                    style={{background:  `linear-gradient(to top, transparent 89%, rgba(0, 0, 0, 0.8) 100%), linear-gradient(to bottom, transparent 35%, rgba(${animeColor}, 0.7) 100%), url(${background_img}) 0 0/ cover no-repeat`}}>
+                    {/* <img src={background_img} alt="OnePiece" /> */}
                 </div>
             </div>
-            <div className={[classes['anime-card__container'], '_container'].join(' ')}>
+            <div className={[classes['anime-card__container'], '_container1800'].join(' ')}>
                 <div className={classes['anime-card__main']}>
                     <div className={classes['anime-card__media']}>
                         <div className={classes['anime-card__image']} onClick={() => setModalVisible(true)}>

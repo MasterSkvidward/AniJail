@@ -8,34 +8,39 @@ import { AnimeService } from '../../API/AnimeService';
 import { IAnimePicture } from '../../types/jikanMoe/jikan';
 import Image from '../../UI/Image/Image';
 import { ISingleAnime } from '../../types/anime/singleAnime';
+import Carousel from '../../UI/Carousel/Carousel';
+import { smallCarouselOptions } from '../../utils/data';
+import { IAnime } from '../../types/jikanMoe/jikan';
+import AnimeItem from './AnimeItem';
 
 interface AnimeDetailsProps {
-    anime: ISingleAnime | null
+    anime: IAnimeFull | null
     animePictures: IAnimePicture[] | []
+    similarAnime: IAnime[]
 }
 
 type ParamsType = {
     id: string;
 }
 
-const AnimeDetails: FC<AnimeDetailsProps> = ({anime, animePictures}) => {
+const AnimeDetails: FC<AnimeDetailsProps> = ({similarAnime, anime, animePictures}) => {
 
     return (
         <section className={classes['anime-details']}>
-            <div className={classes['anime-details__container'] + ' ' + '_container'}>
+            <div className={classes['anime-details__container'] + ' ' + '_container1800'}>
 
                 <div className={classes['description']}>
                     <Title value={'Synopsis'}/>
                     <p className={classes['description__body']}>{anime?.synopsis}</p>
                 </div>
 
-
+{/* 
                 <div className={classes['trailer']}>
                     <Title value={'Trailer'}/>
                     <div className={classes['trailer__video']}>
                         <iframe src={anime?.trailer.embed_url} title="YouTube video player" frameBorder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
                     </div>
-                </div>
+                </div> */}
 
                 
                 <div className={classes['images']}>
@@ -46,6 +51,15 @@ const AnimeDetails: FC<AnimeDetailsProps> = ({anime, animePictures}) => {
                         )}
                     </div>
                    
+                </div>
+
+                <div className={classes['carousel']}>
+                    <Title value={'You may also like'}/>
+                    <Carousel options={smallCarouselOptions} arrowTop={40}>
+                        {similarAnime.map((item, index) => 
+                                    <AnimeItem anime={item} key={index}/>
+                        )}
+                    </Carousel>
                 </div>
                     
             </div>

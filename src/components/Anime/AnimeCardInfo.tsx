@@ -10,7 +10,7 @@ import { IAnime } from '../../types/jikanMoe/jikan';
 
 
 interface AnimeCardInfoProps {
-    anime: ISingleAnime | null
+    anime: IAnime | null
 }
 
 export type rowType = {

@@ -3,7 +3,7 @@
 
 .form {
     position: relative;
-    height: 28vw;
+    // max-height: 750px;
     width: 30vw;
     background-color: rgb(36, 36, 36);
     padding: 10px 20px;
@@ -22,7 +22,7 @@
     }
 
     &__column {
-        margin: 0px 50px;
+        margin: 0px 50px 80px;
         display: flex;
         flex-direction: column;
         row-gap: 25px;

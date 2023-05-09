@@ -14,7 +14,7 @@ const AppRouter:FC = () => {
             <Route path={publicRoutes.ERROR} element={<Error/>}/>
             <Route path={publicRoutes.ANIME} element={<Anime/>}/>
             <Route path={`anime/:id`} element={<AnimeIdPage/>}/>
-            <Route path={`profile/:id`} element={<Profile/>}/>
+            <Route path={`users/:id`} element={<Profile/>}/>
             <Route path={publicRoutes.ANY} element={<Navigate to={publicRoutes.ERROR} replace/>}/>
         </Routes>
     );

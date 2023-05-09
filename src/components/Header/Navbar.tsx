@@ -1,20 +1,19 @@
 import React, { FC, MouseEvent, useState, useEffect} from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom';
 import classes from '../../styles/Navbar.module.scss';
 import { publicRoutes } from '../../utils/routes';
 import SearchBar from '../../UI/SearchBar/SearchBar';
-
 import site_logo from '../../images/AniJail_logo.png';
-import profile_logo from '../../images/profile_logo.jpg';
 import { navbarLinks } from '../../utils/data';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import MyModal from '../../UI/MyModal/MyModal';
-import LoginForm from '../../UI/LoginForm/LoginForm';
 import { useDispatch } from 'react-redux';
 import { AuthActionCreators } from '../../store/reducers/auth/action-creatores';
-import MyForm from '../../UI/SignUpForm/SignUpForm';
 import ProfileAuth from '../Profile/ProfileAuth';
+import {TbSettings} from 'react-icons/tb';
+import {RiLogoutBoxRLine} from 'react-icons/ri';
+import {HiOutlineEye} from 'react-icons/hi';
+import {CgProfile} from 'react-icons/cg';
 
 
 const Navbar:FC = () => {
@@ -24,7 +23,7 @@ const Navbar:FC = () => {
     const [menuVisible, setMenuVisible] = useState(false);
 
     const dispatch = useDispatch();
-    const {isAuth} = useTypedSelector(state => state.auth);
+    const {isAuth, user} = useTypedSelector(state => state.auth);
   
 
     const handleClick = (event:MouseEvent<HTMLLIElement>):void => {
@@ -48,6 +47,11 @@ const Navbar:FC = () => {
 
     const handlerLogout = (e: MouseEvent) => {
         dispatch(AuthActionCreators.setAuth(false));
+    }
+
+    const handlerOptionsClick = (e: MouseEvent, url:string) => {
+        setMenuVisible(false);
+        navigate(url);
     }
 
     useEffect(() => {
@@ -82,16 +86,18 @@ const Navbar:FC = () => {
                 {isAuth 
                     ?   
                         <div className={classes['profile__img']} onClick={handlerProfileClick}>
-                            <img src={profile_logo} alt="Profile" />
-                            <div className={ menuVisible? [classes['profile__menu'], classes['visible']].join(' ') :  classes['profile__menu']}>
-                                <h3 className={classes['profile__user']}>
-
-                                </h3>
+                            <img src={user.image_url} alt="Profile" />
+                            <div className={ menuVisible? [classes['profile__menu'], classes['visible']].join(' ') :  classes['profile__menu']} onClick={(e => e.stopPropagation())}>
+                                <div className={classes['profile__user']} onClick={(e) => handlerOptionsClick(e, `/users/${user.id}`)}>
+                                    <h3 className={classes['profile__username']}>{user.username}</h3>
+                                    <h3 className={classes['profile__email']}>{user.email}</h3>
+                                </div>
+                                
                                 <ul className={classes['menu']}>
-                                    <li className={classes['menu__item']}>Profile</li>
-                                    <li className={classes['menu__item']}>Anime list</li>
-                                    <li className={classes['menu__item']}>Settings</li>
-                                    <li className={classes['menu__item']} onClick={handlerLogout}>Logout</li>
+                                    <li className={classes['menu__item']} onClick={(e) => handlerOptionsClick(e, `/users/${user.id}`)}><span><CgProfile/></span>Profile</li>
+                                    <li className={classes['menu__item']}><span><HiOutlineEye/></span>Watchlist</li>
+                                    <li className={classes['menu__item']}><span><TbSettings/></span>Settings</li>
+                                    <li className={classes['menu__item']} onClick={handlerLogout}><span><RiLogoutBoxRLine/></span>Logout</li>
                                 </ul>
                             </div>
                         </div>

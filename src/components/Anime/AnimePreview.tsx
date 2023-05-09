@@ -11,7 +11,7 @@ interface AnimePreviewProps {
 const AnimePreview:FC<AnimePreviewProps> = ({anime}) => {
     return (
        <div className={classes['preview']}>
-           {/* <AnimeCardInfo anime={anime}/> */}
+           <AnimeCardInfo anime={anime}/>
            <p className={classes['description__body']}>{anime?.synopsis}</p>
        </div>
     );

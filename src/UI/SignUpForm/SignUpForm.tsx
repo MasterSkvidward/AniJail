@@ -28,7 +28,7 @@ const SignUpForm:FC<SignUpFormProps> = ({setModalVisible, setIsNewUser}) => {
 
     return (
        <form className={classes['form']} onClick={(e) => e.stopPropagation()} onSubmit={handleSubmit}>
-            <h3 className={classes['form__title']}>{'Register!'}</h3>
+            <h3 className={classes['form__title']}>{'Register'}</h3>
             <div className={classes['form__column']}>
                 <InputField
                     type={'text'}

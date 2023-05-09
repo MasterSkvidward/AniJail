@@ -64,8 +64,7 @@
     &__search {
         max-width: 800px;
         flex: 1 1 auto;
-        margin: 0px 0px 0px 100px;
-
+        margin: 0px 0px 0px 50px;
     }
 }
 
@@ -88,15 +87,43 @@
     }
 
     &__menu {
+        box-shadow: 0px 0px 4px 1px rgba(220, 220, 220, 0.3);;
         position: absolute;
-        top: 63px;
+        top: 70px;
         right: 0;
         width: 15vw;
         display: none;
         background-color: rgb(45, 45, 45);
         border-radius: 15px;
 
+        &::before {
+            content: ""; 
+            border: solid transparent;
+            position: absolute; 
+            bottom: 100%;
+            right: 23px;
+            border-bottom-color: rgba(78, 78, 78, 0.6);
+            border-width: 9px;
+            margin-right: -1px;
+        }
         
+    }
+
+    &__user {
+        margin: 25px 0px 0px 0px;
+        padding: 5px 20px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+    }
+
+    &__username {
+        font-size: 22px;
+        color: rgba(231, 56, 56, 0.9);
+    }
+
+    &__email {
+        color: rgba(223, 223, 223, 0.9);
     }
 
     &__login {
@@ -120,18 +147,29 @@
     margin: 15px 0px;
 
     &__item {
-
+        display: flex;
+        align-items: center;
+        column-gap: 11px;
         cursor: pointer;
-        padding: 16px 15px;
+        padding: 16px 20px;
         font-size: 17px;
         transition: 0.2s;
         width: 100%;
+        color:rgba(255, 255, 255, 0.8);
+
         &:hover {
             background-color: rgba(83, 83, 83, 0.9);
+        }
+
+        svg {
+            width: 22px;
+            height: 22px;
+            color:rgba(255, 255, 255, 0.9);
         }
     }
 }
 
 .visible {
     display: flex;
+    flex-direction: column;
 }

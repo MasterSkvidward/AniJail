@@ -1,4 +1,4 @@
-import React, {useRef, FC, useState, useEffect, useLayoutEffect, MouseEvent} from 'react';
+import React, {useRef, FC, useState, useEffect, useLayoutEffect, MouseEvent, Dispatch, SetStateAction} from 'react';
 import classes from './SearchBar.module.scss';
 import MyInput from '../MyInput/MyInput';
 import {AiOutlineSearch} from 'react-icons/ai';
@@ -6,9 +6,11 @@ import AnimeItemSmall from '../../components/Anime/AnimeItemSmall';
 import { IAnime, IAnimeSearchParams } from '../../types/jikanMoe/jikan';
 import useDebounce from '../../hooks/useDebounce';
 import { AnimeService } from '../../API/AnimeService';
+import MyModal from '../MyModal/MyModal';
+import { Search } from 'react-router-dom';
 
 
-const SearchBar:FC = () => {
+const SearchBar = () => {
 
     const search = useRef<HTMLFormElement>(null);
     const searchList = useRef<HTMLDivElement>(null);
@@ -40,7 +42,7 @@ const SearchBar:FC = () => {
     }
 
     const handlerClick = (e:MouseEvent):void => {
-        e.stopPropagation()
+        e.stopPropagation();
     }
 
     const handlerClickMenu= (e:MouseEvent):void => {

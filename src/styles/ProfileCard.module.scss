@@ -1,0 +1,55 @@
+.card {
+    position: relative;
+    font-size: 16px;
+
+    &__container {
+        display: flex;
+        align-items: flex-start;
+        column-gap: 70px;
+        padding: 60px 0px 0px 0px;
+    }
+
+    &__media {
+
+    }
+
+    &__image {
+        border-radius: 10px;
+        width: 250px;
+        height: 340px;
+        cursor: pointer;
+
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+    }
+
+    &__header {
+        display: flex;
+        column-gap: 20px;
+        align-items: baseline;
+    }
+
+    &__name {
+        font-size: 2.5em;
+        font-weight: 600;      
+    }
+
+    &__lastseen {
+        font-size: 0.9em;
+        color: rgba(227, 227, 227, 0.8);
+    }
+
+    &__inforow {
+        font-size: 0.95em;
+        color: rgba(255, 255, 255, 0.8);
+
+        span {
+            color: rgb(238, 54, 54);
+        }
+        
+    }
+}

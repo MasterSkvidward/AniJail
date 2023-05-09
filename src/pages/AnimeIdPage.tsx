@@ -4,7 +4,7 @@ import AnimeCard from '../components/Anime/AnimeCard';
 
 import { useParams } from 'react-router-dom';
 import { AnimeService } from '../API/AnimeService';
-import { IAnimeFull, IAnimePicture } from '../types/jikanMoe/jikan';
+import { IAnime, IAnimeFull, IAnimePicture } from '../types/jikanMoe/jikan';
 import AnimeDetails from '../components/Anime/AnimeDetails';
 import { useFetching } from '../hooks/useFetching';
 import { ISingleAnime } from '../types/anime/singleAnime';
@@ -17,12 +17,18 @@ type ParamsType = {
 const AnimeIdPage = () => {
     const params = useParams<ParamsType>();
     
-    const [anime, setAnime] = useState<ISingleAnime | null>(null);
+    const [anime, setAnime] = useState<IAnimeFull | null>(null);
     const [animePictures, setAnimePictures] = useState<IAnimePicture[] | []>([]);
+    const [similarAnime, setSimilarAnime] = useState<IAnime[]>([]);
 
     const fetchAnimePictures = async () => {
         const response = await AnimeService.getAnimePictures(params.id);    
         setAnimePictures(response);
+    }
+
+    const fetchSimilar = async () => {
+        const response = await AnimeService.getAnimeSeasonNow(); 
+        setSimilarAnime(response);
     }
 
     const [fetchAnime, animeIsLoading, animesError] = useFetching( async () => {
@@ -31,10 +37,13 @@ const AnimeIdPage = () => {
 
     })
 
+    
+
     useLayoutEffect(() => {
         window.scrollTo(0, 0);
         fetchAnime();
         fetchAnimePictures();
+        fetchSimilar();
     }, [params])
 
     if (animeIsLoading) return (<></>);
@@ -42,7 +51,7 @@ const AnimeIdPage = () => {
     return (
        <div className={classes['anime-page']}>
            <AnimeCard anime={anime}/>
-           <AnimeDetails anime={anime} animePictures={animePictures}/>
+           <AnimeDetails similarAnime={similarAnime} anime={anime} animePictures={animePictures}/>
        </div>
     );
 }

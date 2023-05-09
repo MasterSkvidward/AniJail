@@ -8,10 +8,10 @@ export class AnimeService {
 
     //! JikanMoe API
 
-    // static async getAnimeById(id: number | string | undefined): Promise<IAnimeFull> {
-    //     const response = await axios.get<IAnimeFullResponse>(`https://api.jikan.moe/v4/anime/${id}/full`)
-    //     return response.data.data;
-    // }
+    static async getAnimeById(id: number | string | undefined): Promise<IAnimeFull> {
+        const response = await axios.get<IAnimeFullResponse>(`https://api.jikan.moe/v4/anime/${id}/full`)
+        return response.data.data;
+    }
 
     static async getAnimePictures(id: number | string | undefined): Promise<IAnimePicture[]> {
         const response = await axios.get<IAnimePicturesResponse>(`https://api.jikan.moe/v4/anime/${id}/pictures`)
@@ -48,10 +48,10 @@ export class AnimeService {
 
     //! AnimeSearch API
 
-    static async getAnimeById(id: number | string | undefined): Promise<ISingleAnime> {
-        const response = await axios.get<ISingleAnime>(`http://127.0.0.1:8000/api/anime/${id}`);
-        return response.data;
-    }
+    // static async getAnimeById(id: number | string | undefined): Promise<ISingleAnime> {
+    //     const response = await axios.get<ISingleAnime>(`http://127.0.0.1:8000/api/anime/${id}`);
+    //     return response.data;
+    // }
 
     static async getAnimeByParams(params?:IAnimeSearchParams): Promise<IAnimeListItem> {
         const response = await axios.get<IAnimeListItem>(`http://127.0.0.1:8000/api/anime`, {

@@ -1,9 +1,11 @@
+import { copyFile } from "fs";
 import { AuthAction, AuthActionsEnum, AuthState } from "./types";
-
+import img from '../../../images/vacant_room_ch2-copy.jpg' ;
 
 
 const initialState: AuthState = {
     isAuth: true,
+    user: {id: 1, username: "Arthur", email: "Arthur1203@yandex.ru", image_url: img, date_joined: 'december 2019', last_login: '2 days ago'},
     // isLoading: false,
     // error: '',
 }
@@ -13,6 +15,9 @@ export default function authReducer(state = initialState, action: AuthAction): A
     switch (action.type) {
         case AuthActionsEnum.SET_AUTH:
             return {...state, isAuth: action.payload};
+
+        case AuthActionsEnum.SET_USER:
+            return {...state, user: action.payload};
 
         default: 
             return state;

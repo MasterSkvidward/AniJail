@@ -1,6 +1,7 @@
 .anime-card {
-    background-color: rgba(10, 10, 10, 1);
+    // background-color:  linear-gradient(to top, transparent 0%, rgb(196, 19, 19) 98%);  
     padding: 0px 0px 120px 0px;
+
 
     &__header {
         position: absolute;
@@ -13,7 +14,7 @@
     }
 
     &__background {
-        height: 27vw;
+        height: 26vw;
         position: relative;
         user-select: none;
 
@@ -23,7 +24,7 @@
             height: 100%;
             position: absolute;
             top: 0; left: 0;
-            background: linear-gradient(to bottom, transparent 0%, rgba(10, 10, 10, 1) 92%);  
+            // background: linear-gradient(to bottom, transparent 0%, rgba(191, 55, 55, 0.5) 93%);  
         }
 
         img {
@@ -72,6 +73,8 @@
         position: relative;
         user-select: none;
 
+      
+
         &:hover {
             .search-loupe {
                 opacity: 0.7;
@@ -80,6 +83,7 @@
         }
         
         img {
+            border-radius: 13px;
             position: absolute;
             top: 0;
             left: 0;
@@ -131,7 +135,7 @@
             line-height: 120%;
 
             padding: 7px 55px;
-            margin-top: 10px;
+            margin-top: 30px;
             text-align: center;
 
             cursor: pointer;
