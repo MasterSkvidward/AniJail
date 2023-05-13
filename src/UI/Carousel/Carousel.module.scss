@@ -1,6 +1,8 @@
 .carousel {
     display: flex;
     column-gap: 50px;
+    position: relative;
+    // z-index: 5;
 
     &:active {
         cursor: grab;

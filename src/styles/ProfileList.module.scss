@@ -1,0 +1,37 @@
+.list {
+    
+}
+
+.go-back {
+    margin: 70px 0px 0px 0px;
+    display: flex;
+    column-gap: 22px;
+    align-items: baseline;
+
+    &__column {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+
+        span {
+            &:nth-child(2) {
+                color: rgba(249, 249, 249, 0.8);
+            }
+        }
+
+        svg {
+            font-size: 33px;
+            font-weight: 600;
+        }
+    }
+
+    &__name {
+        cursor: pointer;
+        font-size: 37px;
+        font-weight: 600;
+
+        &__hover {
+            color: rgba(223, 223, 223, 0.8);
+        }
+    }
+}

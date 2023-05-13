@@ -95,7 +95,7 @@ const Navbar:FC = () => {
                                 
                                 <ul className={classes['menu']}>
                                     <li className={classes['menu__item']} onClick={(e) => handlerOptionsClick(e, `/users/${user.id}`)}><span><CgProfile/></span>Profile</li>
-                                    <li className={classes['menu__item']}><span><HiOutlineEye/></span>Watchlist</li>
+                                    <li className={classes['menu__item']} onClick={(e) => handlerOptionsClick(e, `/users/${user.id}/watchlist`)}><span><HiOutlineEye/></span>Watchlist</li>
                                     <li className={classes['menu__item']}><span><TbSettings/></span>Settings</li>
                                     <li className={classes['menu__item']} onClick={handlerLogout}><span><RiLogoutBoxRLine/></span>Logout</li>
                                 </ul>

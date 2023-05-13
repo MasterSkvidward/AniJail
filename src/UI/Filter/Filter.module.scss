@@ -19,11 +19,13 @@
     }
 
     &__clear {
+    
         margin: 10px 0px 0px 0px;
         border-radius: 50px;
         display: flex;
         column-gap: 10px;
         align-items: center;
+        justify-content: center;
         background-color:rgba(150, 52, 52, 0.8);
         padding: 14px 190px;
         transition: 0.3s;

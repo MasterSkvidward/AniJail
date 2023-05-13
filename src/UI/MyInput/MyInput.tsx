@@ -2,7 +2,7 @@ import React, {FC, Dispatch, SetStateAction, ChangeEvent} from 'react';
 import classes from './MyInput.module.scss';
 
 interface MyInputProps {
-    placeholder: string;
+    placeholder?: string;
     setValue:Dispatch<SetStateAction<string>>;
 }
 

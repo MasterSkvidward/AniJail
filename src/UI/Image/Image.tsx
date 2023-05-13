@@ -10,8 +10,8 @@ interface ImageProps {
 
 const Image: FC<ImageProps> = ({url, alt, score}) => {
     return (
-       <div className={classes.image}>
-           <img src={url} alt={alt}/>
+       <div className={classes.image} style={{background: `url(${url}) 0 0 / cover no-repeat`}}>
+           {/* <img src={url} alt={alt}/> */}
            {score &&
                 <div className={classes.rating}>
                     <div className={classes.ratingNumber}>{getAnimeScore(score)}</div>

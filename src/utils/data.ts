@@ -13,7 +13,7 @@ export const bigCarouselOptions = {
     speed: 600,
     // height : '275px',
     rewind : true,
-    gap    : '25px',
+    gap    : '20px',
     interval: 7000,
     autoplay: true,
     lazyLoad: 'nearby',
@@ -52,6 +52,31 @@ export const smallCarouselOptions = {
         1220: { perPage: 5, },
         1070: { perPage: 4, },
         820: { perPage: 3, },
+    },
+}
+
+export const smallLimitedCarouseIOptions = {
+    speed: 600,
+    // height : '275px',
+    rewind : true,
+    gap    : '27px',
+    interval: 5000,
+    autoplay: true,
+    lazyLoad: 'nearby',
+    perPage: 6,
+    // fixedWidth: 190,
+    arrows: true,
+    // arrowPath: arrowRight,
+
+    breakpoints: {
+        // 4500: {autoWidth: true},
+        // 1920: {perPage: 6},
+        // 1712: {perPage: 8},
+        1630: {perPage: 5,  gap    : '25px',},
+        1500: { perPage: 7, },
+        1340: { perPage: 6, },
+        1160: { perPage: 5, },
+        950: { perPage: 4, },
     },
 }
 
@@ -106,4 +131,8 @@ export const filterStatusOptions = [
     {value: 'airing', label: 'Airing'},
     {value: 'complete', label: 'Complete'},
     {value: 'upcoming', label: 'Upcoming'},
+]
+
+export const watchListHeadlines = [
+    '№', 'Name', 'Score', 'Type'
 ]

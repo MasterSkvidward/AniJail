@@ -1,7 +1,9 @@
 .anime-info {
     display: flex;
     flex-direction: column;
-    row-gap: 40px;
+    row-gap: 3em;
+
+    font-size: 1em;
 
     &__title {
         display: flex;
@@ -9,12 +11,12 @@
         row-gap: 12px;
         
         &_en {
-            font-size: 32px;
+            font-size: 2em;
         }
 
         &_jp {
             opacity: 0.7;
-            font-size: 13px;
+            font-size: 0.8em;
         }
     }
 

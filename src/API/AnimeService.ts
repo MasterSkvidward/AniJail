@@ -36,8 +36,8 @@ export class AnimeService {
     }
 
 
-    static async getAnimeSeasonNow(): Promise<IAnime[]> {
-        const response = await axios.get<IAnimeListResponse>(`https://api.jikan.moe/v4/seasons/now`);
+    static async getAnimeSeasonNow(params: IAnimeSearchParams = {}): Promise<IAnime[]> {
+        const response = await axios.get<IAnimeListResponse>(`https://api.jikan.moe/v4/seasons/now`, {params});
         return response.data.data;
     }
 

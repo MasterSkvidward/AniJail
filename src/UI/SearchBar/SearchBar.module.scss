@@ -3,7 +3,7 @@
     background-color: #212121;
     display: flex;
     transition: all 0.1s;
-    border-radius: 8px;
+    border-radius: 15px;
 
 
     &__loupe {
@@ -39,7 +39,7 @@
         max-height: 900px;
         overflow-y: auto;
         overflow-x:hidden;
-        border-radius: 8px;
+        border-radius: 14px;
 
     
         &::-webkit-scrollbar {

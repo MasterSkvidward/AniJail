@@ -7,6 +7,7 @@ export const publicRoutes = {
 
 
     PROFILE: '/profile/:id',
+    WATCHLIST: '/profile/:id/watchlist',
 }
 
 export const privateRoutes = {

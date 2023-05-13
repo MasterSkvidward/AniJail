@@ -16,7 +16,6 @@ const ProfileAuth:FC<ProfileAuthProps> = ({setModalVisible}) => {
             { isNewUser
                 ?
                     <SignUpForm setIsNewUser={setIsNewUser} setModalVisible={setModalVisible}/>
-
                 :
                     <LoginForm setIsNewUser={setIsNewUser} setModalVisible={setModalVisible}/>
             }

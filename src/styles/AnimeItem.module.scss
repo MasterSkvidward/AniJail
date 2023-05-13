@@ -1,18 +1,72 @@
+@keyframes tooltipShow {
+    to {
+      opacity: 1;
+      transform: translate(-2%, 0);
+    }
+  }
+
 .anime {
-    display: flex;
-    flex-direction: column;
-    row-gap: 10px;
-    // height: 100%;
-    border-radius: 7px;
-    cursor: pointer;
-    // width: 20px;
- 
+    position: relative;
+    width: 100%;
+    height: 100%;
+    // z-index: 199;
+    
+
+    // &:hover {
+    //     .anime__preview {
+    //         // display: block;
+           
+    //     }   
+    // }
+
+    &__preview {
+        position: absolute;
+        top: -20%;
+        left: 234px;
+        border-radius: 13px;
+        // z-index: 999;
+        // width: 150px;
+        // height: 250px;
+        opacity: 0;
+        // overflow: hidden;
+        // visibility: hidden;
+        // transition: 0.11s ease-in-out;
+        // transition-delay: 1s;
+        // display: none;5
+        // overflow: hidden;
+      
+    }
+
+    &__body {
+        
+        display: flex;
+        align-content: space-between;
+        flex-direction: column;
+        row-gap: 10px;
+        // height: 100%;
+        border-radius: 7px;
+        cursor: pointer;
+        // width: 20px;
+        // height: 1000px;
+        // width: 100%;
+        // height: 2000px;
+        // height: 100%;
+        width: 100%;
+        height: 100%;
+    }
 
     &__image {
+        // height: 100%;
+        flex: 1 1 auto;
+        height: 86%;
+        width: 100%;
+        min-height: 270px;
         // max-height: 340px;
         // max-width: 250px;
         // max-height: 273px;
-        flex: 1 1 273px;
+        // flex: 1 1 auto;
+      
+        // height: auto;
         // border-radius: 13px;
         // border-radius: px !important;
         // border: 2px solid red;
@@ -20,8 +74,9 @@
         border: 0.5px solid rgba(255, 255, 255, 0.1);
         overflow: hidden;
         // max-width: 188px;
-        width: inherit;
+        // width: inherit;
         transition: 0.2s ease-in-out;
+
         img {
             // border-radius: 13px;
         }
@@ -29,17 +84,26 @@
         &:hover {
             opacity: 0.8;
         }
-
         
     }
 
     &__title {
         width: inherit;
         overflow-wrap: break-word;
-        // max-width: 188px;
-        font-size: 15px;
-        color: rgb(255, 255, 255);
+        // max-width: 188px
+        font-size: 16px;
+        font-weight: 600;
+        color: rgb(234, 234, 234);
         transition: 0.2s;
         cursor: pointer;
+        height: 14%;
     }
+}
+
+.preview-visible {
+    z-index: 77;
+    visibility: visible;
+    opacity: 1;
+    animation: tooltipShow 0.2s ease-out forwards;
+
 }

@@ -3,20 +3,21 @@
     user-select: none;
     // min-height: 180px;
     // min-width: 300px;
-    width: 100%;
+    display: block;
     height: 100%;
+    // height: auto;
     // border-radius: inherit;
 
-    img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
+    // img {
+    //     position: absolute;
+    //     top: 0;
+    //     left: 0;
+    //     height: 100%;
+    //     width: 100%;
+    //     object-fit: cover;
        
-        // object-position:center;
-    }
+    //     // object-position:center;
+    // }
 }
 
 .rating {
@@ -30,8 +31,8 @@
     background-color: #ffd400;
 
     height: 28px;
-    padding: 11px 8px;
-    z-index: 1;
+    padding: 13px 11px;
+    // z-index: 1;
 }
 
 .ratingNumber {

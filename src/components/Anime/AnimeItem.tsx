@@ -1,5 +1,6 @@
-import React, {FC} from 'react';
+import React, {FC, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
+import useDebounce from '../../hooks/useDebounce';
 
 import classes from '../../styles/AnimeItem.module.scss';
 import { ISingleAnime } from '../../types/anime/singleAnime';
@@ -17,28 +18,53 @@ interface AnimeItemProps {
     minWidth?: number,
     width?: number,
     height?: number,
+    showPreview?: boolean
 }
 
-const AnimeItem:FC<AnimeItemProps> = ({anime, width, height, maxHeight=440, maxWidth=315, minWidth=158}) => {
+const AnimeItem:FC<AnimeItemProps> = ({anime, width, height, maxHeight=440, maxWidth=315, minWidth=158, showPreview=false}) => {
     const navigate = useNavigate();
+    const [previewVisible, setPreviewVisible] = useState<boolean>(false);
+    const [duration, setDuration] = useState(500);
+    const debounceShow = useDebounce(showAnimePreview, duration);
 
-    const propsStyles = {
-        width: `${width}px`,
-        maxWidth: `${maxWidth}px`,
-        minWidth: `${minWidth}px`,
-        height: `${height}px`,
-        maxHeight: `${maxHeight}px`,
+    function showAnimePreview(flag:boolean) {
+        setPreviewVisible(flag);
     }
+
+    const handlerMouseEnter = () => {
+        debounceShow(true);
+        setDuration(100);
+    }
+
+    const handlerMouseLeave = () => {
+        debounceShow(false);
+        setDuration(500);
+    }
+
+    // const propsStyles = {
+    //     width: `${width}px`,
+    //     maxWidth: `${maxWidth}px`,
+    //     minWidth: `${minWidth}px`,
+    //     height: `${height}px`,
+    //     maxHeight: `${maxHeight}px`,
+    // }
 
     if (!anime) return (<></>);
 
     return (
-        <div style={propsStyles} className={classes['anime']} onClick={() => navigate((`/anime/${anime?.mal_id}`))}>
-            <div className={classes['anime__image']}>
-                <Image url={anime?.images.jpg.image_url || ''} score={anime.score}/>
+        <div className={classes['anime']} onClick={() => navigate((`/anime/${anime?.mal_id}`))} onMouseEnter={handlerMouseEnter} onMouseLeave={handlerMouseLeave}>
+            {showPreview && 
+                <div className={previewVisible? [classes['anime__preview'], classes['preview-visible']].join(' ') : classes['anime__preview']}>
+                    <AnimePreview anime={anime}/>
+                </div> 
+            }
+            <div className={classes['anime__body']}>
+                <div className={classes['anime__image']}>
+                    <Image url={anime?.images.jpg.image_url || ''} score={anime.score}/>
+                </div>
+                <h4 className={classes['anime__title']}>{getShortenedString(anime?.title_english ? anime.title_english : anime?.title, 37)}</h4>
+                {/* <AnimePreview anime={anime}/> */}
             </div>
-            <h4 className={classes['anime__title']}>{getShortenedString(anime?.title_english ? anime.title_english : anime?.title, 37)}</h4>
-            {/* <AnimePreview anime={anime}/> */}
         </div>
     );
 }

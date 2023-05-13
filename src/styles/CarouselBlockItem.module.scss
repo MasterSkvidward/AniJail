@@ -8,9 +8,9 @@
     }
 
     &__title {
-        text-transform: uppercase;
+        // text-transform: uppercase;
         cursor: pointer;
-        font-size: 22px;
+        font-size: 27px;
         font-weight: 600;
         color: rgb(245, 245, 245);
 
@@ -27,7 +27,7 @@
             content: "";
             background-color: rgb(189, 52, 52);
             height: 2px;
-            top: 29px;
+            top: 35px;
             width: 0%;
             left: 50%;
             position: absolute;

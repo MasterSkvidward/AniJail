@@ -38,7 +38,6 @@ const AnimeSort = () => {
 
         const callback = (entries: any, observer: IntersectionObserver) => {
             if (entries[0].isIntersecting && hasMoreAnime) {   
-                console.log(page);
                 dispatch(FilterActionCreators.addAnime(params, page));
                 setPage(page + 1);
             }

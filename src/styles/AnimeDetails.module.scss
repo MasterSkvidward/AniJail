@@ -3,11 +3,27 @@
     color: rgb(255, 255, 255);
 
     padding: 60px 0px;
+    margin: 0px 0px 150px 0px;
 
     &__container {
+      display: flex;
+      column-gap: 90px;
+      align-items: flex-start;
+    //   flex-direction: row;
+    }
+
+    &__main {
+        max-width: 68%;
+        // flex: 0 1 70%;
         display: flex;
         flex-direction: column;
-        row-gap: 100px;
+        row-gap: 150px;
+    }
+
+    &__sidebar {
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
     }
 
 }
@@ -79,5 +95,17 @@
 
 
 
+@media (max-width: 1500px) {
+    .anime-details {
 
+        &__main {
+            max-width: 100%;
+   
+        }
+        
+        &__sidebar {
+            display: none;
+        }
+    }
+}
   

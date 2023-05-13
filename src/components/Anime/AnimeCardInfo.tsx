@@ -36,7 +36,7 @@ const AnimeCardInfo: FC<AnimeCardInfoProps> = ({anime}) => {
     return (
        <div className={classes['anime-info']}>
             <div className={classes['anime-info__title']}>
-                <div className={classes['anime-info__title_en']}>{anime?.title_english ? anime.title_english : anime?.title}</div>
+                <h2 className={classes['anime-info__title_en']}>{anime?.title_english ? anime.title_english : anime?.title}</h2>
                 <div className={classes['anime-info__title_jp']}>{anime?.title_japanese}</div>
            </div>
 

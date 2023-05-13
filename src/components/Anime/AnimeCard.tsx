@@ -24,6 +24,14 @@ const AnimeCard: FC<AnimeCardProps> = ({anime}) => {
     const [animeColor, setAnimeColor] = useState<string>('');
     const [modalVisible, setModalVisible] = useState(false);
 
+    const backgroundImgStyle = {
+        // background: `linear-gradient(to bottom, transparent 0%, rgba(${animeColor}, 0.9) 92%), url(${background_img}) 0 30% / cover`,
+        backgroundImage: `linear-gradient(to bottom, transparent 0%, rgba(${animeColor}, 1) 97%), url(${background_img})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center 30%',
+
+    }
 
     const dropMenuOptions = [
         {name: 'Add to list', value: ''},
@@ -46,7 +54,7 @@ const AnimeCard: FC<AnimeCardProps> = ({anime}) => {
             <MyModal visible={modalVisible} setVisible={setModalVisible}><ImageResponsive url={anime.images.jpg['large_image_url']}/></MyModal>
             <div className={classes['anime-card__header']}>
                 <div className={classes['anime-card__background']} 
-                    style={{background:  `linear-gradient(to top, transparent 89%, rgba(0, 0, 0, 0.8) 100%), linear-gradient(to bottom, transparent 35%, rgba(${animeColor}, 0.7) 100%), url(${background_img}) 0 0/ cover no-repeat`}}>
+                    style={ backgroundImgStyle}>
                     {/* <img src={background_img} alt="OnePiece" /> */}
                 </div>
             </div>

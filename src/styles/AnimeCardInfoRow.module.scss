@@ -1,13 +1,11 @@
 .row {
-   
-    
-    column-gap: 195px;
+    column-gap: 12em;
     display: flex;
-    font-size: 17px;
+    font-size: 1.05em;
 
     line-height: 120%;
 
-    padding: 16px 0px;
+    padding: 1em 0px;
 
     &__name {
         flex: 0 1 25%;

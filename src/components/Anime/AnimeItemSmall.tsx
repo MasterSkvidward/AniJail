@@ -29,7 +29,7 @@ const AnimeItemSmall: FC<AnimeItemSmallProps> = ({anime}) => {
                 <div className={classes['body__type']}>{anime.year? `${anime.type}, ${anime.year}` : anime.type}</div>
 
                 <div className={classes['body__info']}>
-                    <Score score={anime?.score} fontSize={17}/>
+                    <Score score={anime?.score} fontSize={15}/>
                     <div className={classes['body__genres']}>
                         {formatGenres(anime?.genres).map((genre, index) => 
                             <div className={classes['body__genre']} key={index}>{genre}</div>

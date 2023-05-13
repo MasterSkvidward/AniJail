@@ -1,14 +1,10 @@
-
-
-
-
 .anime {
     transition: 0.4s;
     padding: 6px 6px;
     border: 1px solid rgba(119, 119, 119, 0);
     border-radius: 19px;
-    max-width: 18vw;
-    height: 26vw;
+    // max-width: 455px;
+    height: 550px;
     font-size: 27px;
     position: relative;
 
@@ -16,7 +12,6 @@
         
         cursor: pointer;
         border: 1px solid rgba(186, 186, 186, 0.4);
-
 
         .anime__block {
             background-color: rgba(0, 0, 0, 0.3);
@@ -105,23 +100,32 @@
 }
 
 
+@media (min-width: 1901px) {
+    .anime {
+        // height: 23vw;
+        // width: 15vw;
+    }
+}
+
+
+
 @media (max-width: 1900px) {
     .anime {
         max-width: 500px;
-        height: 490px;
+        height: 30vw;
     }
 }
 
 @media (max-width: 1775px) {
     .anime {
-        height: 30vw;
+        height: 36vw;
     }
 }
 
 
 @media (max-width: 1300px) {
     .anime {
-        height: 40vw;
+        height: 47vw;
     }
 }
 
@@ -160,7 +164,7 @@
 
 @media (max-width: 720px) {
     .anime {
-        height: 60vw;
+        height: 67vw;
     }
 }
 
