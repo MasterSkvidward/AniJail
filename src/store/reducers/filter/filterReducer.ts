@@ -1,5 +1,6 @@
 import { FilterAction, FilterActionsEnum, FilterState } from "./types";
-import { IAnime, IAnimeSearchParams } from "../../../types/jikanMoe/jikan";
+// import { IAnime, IAnimeSearchParams } from "../../../types/jikanMoe/jikan";
+import { IAnimeListItem, IAnimeSearchParams } from "../../../types/anime/animeList";
 import { defaultFilterParams } from "../../../utils/data";
 import { act } from "react-dom/test-utils";
 
@@ -21,7 +22,7 @@ export default function filterReducer(state = initialState, action: FilterAction
             return {...state, isLoading: action.payload};
 
         case FilterActionsEnum.SET_HAS_MORE_ANIME:
-            return {...state, hasMoreAnime: action.payload};
+            return {...state, hasMoreAnime: action.payload ? true : false};
 
         case FilterActionsEnum.SET_PARAMS:
             return {...state, params: action.payload};
@@ -39,8 +40,8 @@ export default function filterReducer(state = initialState, action: FilterAction
             return {...state, selectedOptionNumber: action.payload};
 
         case FilterActionsEnum.CLEAR_FILTER_PARAMS:
-            let {sort, order_by, page}:IAnimeSearchParams = state.params
-            return {...state, params: {sort, order_by, page}, loadNewAnime: true};
+            // let {sort, order_by, page}:IAnimeSearchParams = state.params
+            // return {...state, params: {sort, order_by, page}, loadNewAnime: true};
         
         default: 
             return state;

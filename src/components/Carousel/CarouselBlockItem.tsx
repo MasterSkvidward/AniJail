@@ -4,7 +4,6 @@ import Carousel from '../../UI/Carousel/Carousel';
 
 import classes from '../../styles/CarouselBlockItem.module.scss';
 import AnimeItem from '../Anime/AnimeItem';
-import { IAnime } from '../../types/jikanMoe/jikan';
 import { AnimeService } from '../../API/AnimeService';
 import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide';
 

@@ -1,7 +1,8 @@
-import { IAnime, IAnimeSearchParams } from "../../../types/jikanMoe/jikan";
+import { IAnimeListItem, IAnimeSearchParams } from "../../../types/anime/animeList";
+
 
 export interface FilterState {
-    anime: IAnime[],
+    anime: IAnimeListItem[],
     params: IAnimeSearchParams,
     selectedOptionNumber: number,
     isLoading: boolean,
@@ -30,17 +31,17 @@ interface SetIsLoadingAction{
 
 interface SetAnimeAction{
     type: FilterActionsEnum.SET_ANIME;
-    payload: IAnime[];
+    payload: IAnimeListItem[];
 }
 
 interface SetHasMoreAnimeAction{
     type: FilterActionsEnum.SET_HAS_MORE_ANIME;
-    payload: boolean;
+    payload: string;
 }
 
 interface AddAnimeAction{
     type: FilterActionsEnum.ADD_ANIME;
-    payload: IAnime[];
+    payload: IAnimeListItem[];
 }
 
 interface SetParamsAction{

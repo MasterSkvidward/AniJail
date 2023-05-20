@@ -4,7 +4,6 @@ import useDebounce from '../../hooks/useDebounce';
 
 import classes from '../../styles/AnimeItem.module.scss';
 import { ISingleAnime } from '../../types/anime/singleAnime';
-import { IAnime } from '../../types/jikanMoe/jikan';
 import Image from '../../UI/Image/Image';
 import ImageZoom from '../../UI/ImageZoom/ImageZoom';
 import { publicRoutes } from '../../utils/routes';
@@ -12,7 +11,7 @@ import { getShortenedString } from '../../utils/utils';
 import AnimePreview from './AnimePreview';
 
 interface AnimeItemProps {
-    anime: IAnime | null;
+    anime: ISingleAnime | null;
     maxWidth?: number,
     maxHeight?: number,
     minWidth?: number,
@@ -52,7 +51,7 @@ const AnimeItem:FC<AnimeItemProps> = ({anime, width, height, maxHeight=440, maxW
     if (!anime) return (<></>);
 
     return (
-        <div className={classes['anime']} onClick={() => navigate((`/anime/${anime?.mal_id}`))} onMouseEnter={handlerMouseEnter} onMouseLeave={handlerMouseLeave}>
+        <div className={classes['anime']} onClick={() => navigate((`/anime/${anime.id}`))} onMouseEnter={handlerMouseEnter} onMouseLeave={handlerMouseLeave}>
             {showPreview && 
                 <div className={previewVisible? [classes['anime__preview'], classes['preview-visible']].join(' ') : classes['anime__preview']}>
                     <AnimePreview anime={anime}/>

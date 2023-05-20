@@ -1,6 +1,6 @@
 import { publicRoutes } from "./routes";
-import { ISelectOption } from "../types/userInteface";
-import { IAnimeSearchParams } from "../types/jikanMoe/jikan";
+import { ISelectOption, IWatchCategory } from "../types/userInteface";
+import { IAnimeSearchParams } from "../types/anime/animeList";
 
 
 export const navbarLinks: {value: string, path: string}[] = [
@@ -80,6 +80,12 @@ export const smallLimitedCarouseIOptions = {
     },
 }
 
+export const watchCategories: IWatchCategory[] = [
+    {name: 'Viewed', accessor: 'viewed'},
+    {name: 'Will Watch', accessor: 'will_watch'},
+    {name: 'Favorite', accessor: 'favorite'},
+]
+
 
 
 export const sortCategories: ISelectOption[] = [
@@ -90,9 +96,9 @@ export const sortCategories: ISelectOption[] = [
 ]
 
 export const defaultFilterParams: IAnimeSearchParams = {
-    order_by: 'scored_by',
-    sort: 'desc',
-    page: 1,
+    // order_by: 'scored_by',
+    // sort: 'desc',
+    // page: 1,
 }
 
 export const filterTypeOptions = [

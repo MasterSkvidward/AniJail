@@ -3,3 +3,8 @@ export interface ISelectOption {
     order_by: string;
     sort: string;
 }
+
+export interface IWatchCategory {
+    name: string,
+    accessor: string,
+}

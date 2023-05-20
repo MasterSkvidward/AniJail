@@ -5,7 +5,6 @@ import '@splidejs/react-splide/css/core';
 import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide';
 import AnimeItem from '../../components/Anime/AnimeItem';
 import classes from './Carousel.module.scss';
-import { IAnime } from '../../types/jikanMoe/jikan';
 import {IoIosArrowDropleft} from 'react-icons/io';
 import {IoIosArrowDropright} from 'react-icons/io';
 

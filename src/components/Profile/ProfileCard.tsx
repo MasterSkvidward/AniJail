@@ -4,7 +4,9 @@ import { IUser } from '../../store/reducers/auth/types';
 
 import classes from '../../styles/ProfileCard.module.scss';
 import ImageResponsive from '../../UI/ImageResponsive/ImageResponsive';
+import MyButton from '../../UI/MyButton/MyButton';
 import MyModal from '../../UI/MyModal/MyModal';
+import Score from '../../UI/Score/Score';
 
 interface ProfileCardProps {
     currentUser: IUser,
@@ -37,11 +39,8 @@ const ProfileCard: FC<ProfileCardProps> = ({currentUser}) => {
                             <h6 className={classes['header__lastseen']}>online {currentUser.last_login}</h6>
                         </div>
                         <div className={classes['header__btn']}>
-                            <div className={classes['header__rate']}>{'Изменить данные'}</div>
+                            <MyButton value='Изменить данные'/>
                         </div>
-
-
-                        
                     </div>
 
                     <div className={classes['card__inforow']}>
@@ -68,8 +67,10 @@ const ProfileCard: FC<ProfileCardProps> = ({currentUser}) => {
                         </div>
 
                         <div className={classes['card__list']}>
-                            <span className={classes['card__score']}>Average score: {'7.53'}</span>
-                            <div className={classes['card__btn']} onClick={() => navigate(`/users/${currentUser.id}/watchlist`)}>Watchlist</div>
+                            <div className={classes['card__score']}><span>Average score:</span><Score score={7.53}/></div>
+                            <div className={classes['card__btn']} onClick={() => navigate(`/users/${currentUser.id}/watchlist`)}>
+                                <MyButton value='Watchlist'/>
+                            </div>
                         </div>
                     </div>
 

@@ -1,4 +1,6 @@
-import { IAnime, IAnimeSearchParams } from "../../../types/jikanMoe/jikan";
+// import { IAnime, IAnimeSearchParams } from "../../../types/jikanMoe/jikan";
+
+import { IAnimeSearchParams } from "../../../types/anime/animeList";
 
 export interface IUser {
     id: number,

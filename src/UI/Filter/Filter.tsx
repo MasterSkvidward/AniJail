@@ -6,7 +6,7 @@ import makeAnimated from 'react-select/animated';
 import { filterTypeOptions, filterGenreOptions, filterAgeOptions, filterStatusOptions } from '../../utils/data';
 import { useDispatch } from 'react-redux';
 import { FilterActionCreators } from '../../store/reducers/filter/action-creatores';
-import { IAnimeSearchParams } from '../../types/jikanMoe/jikan';
+import { IAnimeSearchParams } from '../../types/anime/animeList';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { formatFilterValues } from '../../utils/utils';
 import { getCurrentYear, getFilterOptions } from '../../utils/utils';
@@ -52,7 +52,7 @@ const Filter = memo(() => {
 
     return (
        <div className={classes['filter']}>
-            <div className={classes['filter__row']}>
+            {/* <div className={classes['filter__row']}>
                 <h3 className={classes['filter__title']}>Filters</h3>
             </div>
 
@@ -75,8 +75,8 @@ const Filter = memo(() => {
                 <div className={classes['filter__clear']} onClick={handlerClickClear}>
                     <h3 className={classes['filter__clear_title']}>CLEAR</h3>
                     {/* <RxCross1 className={classes['filter__clear_cross']}/> */}
-                </div>
-            </div>
+                {/* </div> */}
+            {/* </div>  */}
        </div>
     );
 })

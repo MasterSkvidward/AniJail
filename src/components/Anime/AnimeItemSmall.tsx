@@ -1,5 +1,4 @@
 import React, {FC} from 'react';
-import { IAnime } from '../../types/jikanMoe/jikan';
 import Image from '../../UI/Image/Image';
 import { useNavigate } from 'react-router-dom';
 import { formatGenres } from '../../utils/utils';
@@ -7,16 +6,17 @@ import { formatGenres } from '../../utils/utils';
 import classes from '../../styles/AnimeItemSmall.module.scss';
 import { publicRoutes } from '../../utils/routes';
 import Score from '../../UI/Score/Score';
+import { IAnimeListItem } from '../../types/anime/animeList';
 
 interface AnimeItemSmallProps {
-    anime: IAnime
+    anime: IAnimeListItem
 }
 
 const AnimeItemSmall: FC<AnimeItemSmallProps> = ({anime}) => {
     const navigate = useNavigate();
 
     return (
-       <div className={classes['anime']} onClick={() => navigate(`/anime/${anime.mal_id}`)}>
+       <div className={classes['anime']} onClick={() => navigate(`/anime/${anime.id}`)}>
            <div className={classes['image']}>
                 <Image url={anime.images.jpg.image_url}/>
            </div>
@@ -31,9 +31,9 @@ const AnimeItemSmall: FC<AnimeItemSmallProps> = ({anime}) => {
                 <div className={classes['body__info']}>
                     <Score score={anime?.score} fontSize={15}/>
                     <div className={classes['body__genres']}>
-                        {formatGenres(anime?.genres).map((genre, index) => 
+                        {/* {formatGenres(anime?.genres).map((genre, index) => 
                             <div className={classes['body__genre']} key={index}>{genre}</div>
-                        )}
+                        )} */}
                     </div>
                 </div>
            </div>

@@ -1,28 +1,33 @@
-import { Action } from "@remix-run/router"
 
 export interface ISingleAnime {
     id: number,
     // reviews: IReview,
+    score?: number,
+    scored_by?: number,
+    user_score: number,
+    type: string,
+    source: string,
+    rating: string,
+    genres: IGenre[],
+    studios: IStudio[],
     images: IImages,
-    trailer: ITrailer,
+    trailer: {},
+
     title: string,
     title_english?: string,
     title_japanese?: string,
     episodes?: number,
     status: string,
     airing: boolean,
-    aired: string,
+    aired: {},
     duration: string,
-    score?: number,
-    scored_by?: number,
+  
+   
     favorites: number,
     synopsis?: string,
-    year?: number,
-    type: string,
-    source: number,
-    rating: string,
-    studios: number[],
-    genres: number[],
+    season: string,
+    year: number,
+    characters?: number[],
 }
 
 export interface IReview {
@@ -64,8 +69,9 @@ export interface ITrailer {
     youtube_id: string,
 }
 
-export interface IStudios {
-
+export interface IStudio {
+    id: number,
+    name: string,
 }
 
 export interface IGenre {

@@ -13,7 +13,7 @@ const AnimeWatchList = ({}) => {
        <div className={classes['watchlist']}>
             <div className={classes['watchlist__list']}>
 
-                <MyTable headlines={watchListHeadlines} data={anime}/>
+                {/* <MyTable headlines={watchListHeadlines} data={anime}/> */}
                 {/* <MyTable headlines={watchListHeadlines}>
                     {anime.map((item, index) =>
                         <>

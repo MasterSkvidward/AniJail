@@ -1,6 +1,5 @@
-import React, {FC, useState, useEffect} from 'react';
+import React, {FC, useState, useEffect, MouseEvent} from 'react';
 import classes from '../../styles/AnimeCard.module.scss';
-import { IAnimeFull, IAnimePicture } from '../../types/jikanMoe/jikan';
 import AnimeCardInfo from './AnimeCardInfo';
 import background_img from '../../images/onepiece_2560x1440.jpg';
 import searchLoupe from '../../images/search-loupe.png';
@@ -9,20 +8,25 @@ import DropMenu from '../../UI/DropMenu/DropMenu';
 import ImageResponsive from '../../UI/ImageResponsive/ImageResponsive';
 import Score from '../../UI/Score/Score';
 import { ISingleAnime } from '../../types/anime/singleAnime';
-import { IAnime } from '../../types/jikanMoe/jikan';
 import { get_average_rgb, formatColor } from '../../utils/utils';
 import { AnimeService } from '../../API/AnimeService';
+import MyButton from '../../UI/MyButton/MyButton';
+import { watchCategories } from '../../utils/data';
+import MyRating from '../../UI/MyRating/MyRating';
+
 
 
 
 interface AnimeCardProps {
-    anime: IAnime | null
+    anime: ISingleAnime | null
     // animePictures: IAnimePicture[] | []
 }
 
 const AnimeCard: FC<AnimeCardProps> = ({anime}) => {
     const [animeColor, setAnimeColor] = useState<string>('');
     const [modalVisible, setModalVisible] = useState(false);
+    const [ratingVisible, setRatingVisible] = useState(false);
+    const [userRating, setUserRating] = useState<number>(7);
 
     const backgroundImgStyle = {
         // background: `linear-gradient(to bottom, transparent 0%, rgba(${animeColor}, 0.9) 92%), url(${background_img}) 0 30% / cover`,
@@ -30,21 +34,26 @@ const AnimeCard: FC<AnimeCardProps> = ({anime}) => {
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: 'center 30%',
-
     }
-
-    const dropMenuOptions = [
-        {name: 'Add to list', value: ''},
-        {name: 'Add to list', value: ''},
-    ]
 
     const getAnimeColor = async () => {
         const color = await get_average_rgb(background_img);
         setAnimeColor(formatColor(color.toString()));
     }
 
+    const handlerDocumentClick = (e: Event):void => {
+        setRatingVisible(false);
+    }
+
+    const handlerRateClick = (e: MouseEvent):void => {
+        setRatingVisible(!ratingVisible)
+        e.stopPropagation();
+    }
+
     useEffect(() => {
         getAnimeColor();
+        document.addEventListener('click', handlerDocumentClick);
+        return () => document.removeEventListener("click",  handlerDocumentClick);
     }, [])
 
     if (!anime) return <></>;
@@ -66,7 +75,7 @@ const AnimeCard: FC<AnimeCardProps> = ({anime}) => {
                             <img className={classes['search-loupe']} src={searchLoupe}></img>
                         </div>
                         <div className={classes['anime-card__dropmenu']}>
-                            <DropMenu options={dropMenuOptions}/>
+                            <DropMenu defaultValue={{name: 'Add to List', accessor: 'add'}} options={watchCategories}/>
                         </div>
                     </div>
 
@@ -79,7 +88,15 @@ const AnimeCard: FC<AnimeCardProps> = ({anime}) => {
                         <div className={classes['scoredBy']}>
                             {anime?.scored_by}
                         </div>
-                        <div className={classes['rate']}>Rate</div>
+                        <div className={classes['rate']} onClick={handlerRateClick}>
+                            <div className={classes['rate__btn']}><span>Rate</span><span>{userRating}</span> </div>
+                            {/* <MyButton value='Rate'/> */}
+                            <div className={ratingVisible ? [classes['rate__block'], classes['active']].join(' ') : classes['rate__block']}>
+                                <div className={classes['rate__body']}>
+                                    <MyRating setUserRating={setUserRating} setRatingVisible={setRatingVisible} maxWidth={400}/>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
            </div>

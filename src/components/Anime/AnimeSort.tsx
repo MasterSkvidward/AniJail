@@ -7,7 +7,7 @@ import { ISelectOption } from '../../types/userInteface';
 import { sortCategories } from '../../utils/data';
 import { useDispatch } from 'react-redux';
 import { FilterActionCreators } from '../../store/reducers/filter/action-creatores';
-import { IAnimeSearchParams } from '../../types/jikanMoe/jikan';
+import { IAnimeSearchParams } from '../../types/anime/animeList';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import Loader from '../../UI/Loader/Loader';
 
@@ -38,7 +38,7 @@ const AnimeSort = () => {
 
         const callback = (entries: any, observer: IntersectionObserver) => {
             if (entries[0].isIntersecting && hasMoreAnime) {   
-                dispatch(FilterActionCreators.addAnime(params, page));
+                // dispatch(FilterActionCreators.addAnime(params, page));
                 setPage(page + 1);
             }
         }

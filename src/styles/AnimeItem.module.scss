@@ -1,6 +1,7 @@
 @keyframes tooltipShow {
     to {
       opacity: 1;
+      visibility: visible;
       transform: translate(-2%, 0);
     }
   }
@@ -28,8 +29,9 @@
         // width: 150px;
         // height: 250px;
         opacity: 0;
+
         // overflow: hidden;
-        // visibility: hidden;
+        visibility: hidden;
         // transition: 0.11s ease-in-out;
         // transition-delay: 1s;
         // display: none;5

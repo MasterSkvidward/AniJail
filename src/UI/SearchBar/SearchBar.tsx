@@ -3,7 +3,7 @@ import classes from './SearchBar.module.scss';
 import MyInput from '../MyInput/MyInput';
 import {AiOutlineSearch} from 'react-icons/ai';
 import AnimeItemSmall from '../../components/Anime/AnimeItemSmall';
-import { IAnime, IAnimeSearchParams } from '../../types/jikanMoe/jikan';
+import { IAnimeListItem, IAnimeSearchParams } from '../../types/anime/animeList';
 import useDebounce from '../../hooks/useDebounce';
 import { AnimeService } from '../../API/AnimeService';
 import MyModal from '../MyModal/MyModal';
@@ -17,21 +17,21 @@ const SearchBar = () => {
     
     const [visible, setVisible] = useState<boolean>(false);
     const [value, setValue] = useState<string>('');
-    const [animeItems, setAnimeItems] = useState<IAnime[] | []>([]);
+    const [animeItems, setAnimeItems] = useState<IAnimeListItem[] | []>([]);
 
     const debouncedSearch = useDebounce(searchAnime, 400);
 
     async function searchAnime() {
-        const response = await AnimeService.getAnimeBySearch(searchParams);
-        setAnimeItems(response.data);
+        const response = await AnimeService.getAnimeByParams(searchParams);
+        setAnimeItems(response.results);
     }
 
     const searchParams:IAnimeSearchParams = {
-        letter: value,
-        order_by: 'score',
-        sort: 'desc',
-        limit: 15,
-        sfw: false,
+        // letter: value,
+        // order_by: 'score',
+        // sort: 'desc',
+        // limit: 15,
+        // sfw: false,
     }
 
     const handlerFocusIn = (e: FocusEvent):void => {

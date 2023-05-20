@@ -2,38 +2,36 @@ import React, {FC, useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 
 import classes from '../../styles/AnimeDetails.module.scss';
-import { IAnimeFull } from '../../types/jikanMoe/jikan';
 import Title from '../../UI/Title/Title';
 import { AnimeService } from '../../API/AnimeService';
-import { IAnimePicture } from '../../types/jikanMoe/jikan';
 import Image from '../../UI/Image/Image';
 import { ISingleAnime } from '../../types/anime/singleAnime';
 import Carousel from '../../UI/Carousel/Carousel';
 import { smallLimitedCarouseIOptions } from '../../utils/data';
-import { IAnime } from '../../types/jikanMoe/jikan';
 import AnimeItem from './AnimeItem';
 import Sidebar from '../../UI/Sidebar/Sidebar';
 import AnimeItemSmall from './AnimeItemSmall';
+import { IAnimeListItem } from '../../types/anime/animeList';
 
 
 interface AnimeDetailsProps {
-    anime: IAnimeFull | null
-    animePictures: IAnimePicture[] | []
-    similarAnime: IAnime[]
+    anime: ISingleAnime | null
+    similarAnime: ISingleAnime[]
 }
 
 type ParamsType = {
     id: string;
 }
 
-const AnimeDetails: FC<AnimeDetailsProps> = ({similarAnime, anime, animePictures}) => {
+const AnimeDetails: FC<AnimeDetailsProps> = ({similarAnime, anime}) => {
 
-    const [animeCurrentSeason, setAnimeCurrentSeason] = useState<IAnime[]>([]);
+    const [animeCurrentSeason, setAnimeCurrentSeason] = useState<IAnimeListItem[]>([]);
 
    
     const fetchAnime = async () => {
-        const seasonAnime = await AnimeService.getAnimeSeasonNow({limit: 10});
-        setAnimeCurrentSeason(seasonAnime);  
+        // const seasonAnime = await AnimeService.getAnimeSeasonNow({limit: 10});
+        const seasonAnime = await AnimeService.getAnimeById(21);
+        setAnimeCurrentSeason([]);  
     }
 
     useEffect(() => {
@@ -64,7 +62,7 @@ const AnimeDetails: FC<AnimeDetailsProps> = ({similarAnime, anime, animePictures
                         </div>
                     </div> */}
 
-                    
+{/*                     
                     <div className={classes['images']}>
                         <Title value={'Images'}/>
                         <div className={classes['images__container']}>
@@ -73,7 +71,7 @@ const AnimeDetails: FC<AnimeDetailsProps> = ({similarAnime, anime, animePictures
                             )}
                         </div>
                     
-                    </div>
+                    </div> */}
 
                     <div className={classes['carousel']}>
                         <Title value={'You may also like'}/>

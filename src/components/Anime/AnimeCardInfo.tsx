@@ -1,21 +1,20 @@
 import React, {FC} from 'react';
-import { IAnimeFull, IObjectInfo } from '../../types/jikanMoe/jikan';
 
 import classes from '../../styles/AnimeCardInfo.module.scss';
 import AnimeCardInfoRow from './AnimeCardInfoRow';
 import { AiFillMobile } from 'react-icons/ai';
 import { getAnimeField } from '../../utils/utils';
 import { ISingleAnime } from '../../types/anime/singleAnime';
-import { IAnime } from '../../types/jikanMoe/jikan';
+import { IRowObjectInfo } from '../../types/types';
 
 
 interface AnimeCardInfoProps {
-    anime: IAnime | null
+    anime: ISingleAnime | null
 }
 
 export type rowType = {
     name: string,
-    value: string | IObjectInfo[] | []
+    value: string | IRowObjectInfo[] | []
     sortType?: string | number | undefined
     isLink: boolean
 }

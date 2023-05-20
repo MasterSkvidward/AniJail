@@ -33,8 +33,8 @@ const MySelect:FC<MySelectProps> = memo(({options}) => {
     }
 
     const handlerClickSort = () => {
-        const param = (params.sort === 'desc') ? 'asc' : 'desc';
-        dispatch(FilterActionCreators.addParams({sort: param}))
+        // const param = (params.sort === 'desc') ? 'asc' : 'desc';
+        // dispatch(FilterActionCreators.addParams({sort: param}))
     }
 
     const handlerOptionClick = (e: MouseEvent, index: number):void => {
@@ -56,7 +56,7 @@ const MySelect:FC<MySelectProps> = memo(({options}) => {
 
     return (
         <div className={classes.MySelect} ref={MySelect}>
-            <div className={classes['MySelect__body']} onClick={handlerButtonClick}>
+            {/* <div className={classes['MySelect__body']} onClick={handlerButtonClick}>
                 <BsFilterLeft/>
                 <button className={classes['MySelect__btn']}>{options[selectedOptionNumber].name}</button>
                 <MdOutlineKeyboardArrowDown className={isVisible? [classes['arrow'], classes['rotate']].join(' '): classes['arrow']}/>
@@ -76,7 +76,7 @@ const MySelect:FC<MySelectProps> = memo(({options}) => {
                         >{option.name}
                     </div>
                 )}
-            </div>
+            </div> */}
          </div>
     )
 })

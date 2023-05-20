@@ -2,12 +2,11 @@ import React, {FC} from 'react';
 import { ISingleAnime } from '../../types/anime/singleAnime';
 import classes from '../../styles/AnimePreview.module.scss';
 import AnimeCardInfo from './AnimeCardInfo';
-import { IAnime } from '../../types/jikanMoe/jikan';
 import { getShortenedString } from '../../utils/utils';
 import Loader from '../../UI/Loader/Loader';
 
 interface AnimePreviewProps {
-    anime: IAnime,
+    anime: ISingleAnime,
 }
 
 const AnimePreview:FC<AnimePreviewProps> = ({anime}) => {
