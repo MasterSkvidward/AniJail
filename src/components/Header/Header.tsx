@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useRef } from 'react';
-import Navbar from './Navbar';
+import Navbar from '../Navbar/Navbar';
 
-import classes from '../../styles/Header.module.scss';
+import classes from './Header.module.scss';
 
 
 const Header:FC = () => {

@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import classes from '../../styles/Container.module.scss';
+import classes from './Container.module.scss';
 
 interface ContainerProps extends React.PropsWithChildren {
     className?: string,

@@ -1,14 +1,13 @@
 import React, { ChangeEvent, memo, useEffect, useRef, useState } from 'react';
 import Select, { MultiValue } from 'react-select';
 import classes from './Filter.module.scss';
-import {RxCross1} from 'react-icons/rx';
 import makeAnimated from 'react-select/animated';
-import { filterTypeOptions, filterGenreOptions, filterAgeOptions, filterStatusOptions } from '../../utils/data';
+import * as CONSTANTS from './constants';
 import { useDispatch } from 'react-redux';
 import { FilterActionCreators } from '../../store/reducers/filter/action-creatores';
 import { IAnimeSearchParams } from '../../types/jikanMoe/jikan';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
-import { formatFilterValues } from '../../utils/utils';
+import { formatFilterValues } from '../../helpers/helpers';
 import { getCurrentYear, getFilterOptions } from '../../utils/utils';
 import useDebounce from '../../hooks/useDebounce';
 import { IFilterOption } from '../../types/types';
@@ -57,10 +56,10 @@ const Filter = memo(() => {
             </div>
 
             <div className={classes['filter__column']}>
-                <Select value={getFilterOptions(filterTypeOptions, params.type ? params.type : '')} closeMenuOnSelect={true} options={filterTypeOptions} classNamePrefix={'custom-select'} placeholder={'Type'} isMulti={true} components={animatedComponents} onChange={(optionList) => handlerSelectChange(optionList, 'type')}/>
-                <Select value={getFilterOptions(filterGenreOptions, params.genres ? params.genres : '')} closeMenuOnSelect={true} options={filterGenreOptions} classNamePrefix={'custom-select'} placeholder={'Genres'} isMulti={true} components={animatedComponents} onChange={(optionList) => handlerSelectChange(optionList, 'genres')}/>
-                <Select value={getFilterOptions(filterAgeOptions, params.rating ? params.rating : '')} closeMenuOnSelect={true} options={filterAgeOptions} classNamePrefix={'custom-select'} placeholder={'Age rating'} isMulti={true} components={animatedComponents} onChange={(optionList) => handlerSelectChange(optionList, 'rating')}/>
-                <Select value={getFilterOptions(filterStatusOptions, params.status ? params.status : '')} closeMenuOnSelect={true} options={filterStatusOptions} classNamePrefix={'custom-select'} placeholder={'Status'} isMulti={true} components={animatedComponents} onChange={(optionList) => handlerSelectChange(optionList, 'status')}/>
+                <Select value={getFilterOptions(CONSTANTS.filterTypeOptions, params.type ? params.type : '')} closeMenuOnSelect={true} options={CONSTANTS.filterTypeOptions} classNamePrefix={'custom-select'} placeholder={'Type'} isMulti={true} components={animatedComponents} onChange={(optionList) => handlerSelectChange(optionList, 'type')}/>
+                <Select value={getFilterOptions(CONSTANTS.filterGenreOptions, params.genres ? params.genres : '')} closeMenuOnSelect={true} options={CONSTANTS.filterGenreOptions} classNamePrefix={'custom-select'} placeholder={'Genres'} isMulti={true} components={animatedComponents} onChange={(optionList) => handlerSelectChange(optionList, 'genres')}/>
+                <Select value={getFilterOptions(CONSTANTS.filterAgeOptions, params.rating ? params.rating : '')} closeMenuOnSelect={true} options={CONSTANTS.filterAgeOptions} classNamePrefix={'custom-select'} placeholder={'Age rating'} isMulti={true} components={animatedComponents} onChange={(optionList) => handlerSelectChange(optionList, 'rating')}/>
+                <Select value={getFilterOptions(CONSTANTS.filterStatusOptions, params.status ? params.status : '')} closeMenuOnSelect={true} options={CONSTANTS.filterStatusOptions} classNamePrefix={'custom-select'} placeholder={'Status'} isMulti={true} components={animatedComponents} onChange={(optionList) => handlerSelectChange(optionList, 'status')}/>
                 <h3 className={classes['filter__block']}>Year</h3>
                 <div className={classes['filter__block_inputs']}>
                     <input ref={yearFrom} className={classes['input']} defaultValue={params.start_date? params.start_date : ''} type="text" placeholder={'From'} onChange={(e) => handlerChange(e, 'start_date', 0)}/>

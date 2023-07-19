@@ -1,0 +1,1 @@
+export const watchListHeadlines = ["№", "Name", "Score", "Type"];

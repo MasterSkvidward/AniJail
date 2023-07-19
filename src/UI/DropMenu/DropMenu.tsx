@@ -1,6 +1,5 @@
 import React, { FC, useState, useEffect, MouseEvent } from "react";
-import { IWatchCategory } from "../../types/userInteface";
-import { watchCategories } from "../../utils/data";
+import { IWatchCategory } from "../../types/user-inteface";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { GoPlus } from "react-icons/go";
 import { GoCheck } from "react-icons/go";

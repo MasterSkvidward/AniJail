@@ -1,7 +1,6 @@
 import React from 'react';
-import classes from '../../styles/Footer.module.scss';
-import girl from '../../images/footer_girl.png';
-
+import classes from './Footer.module.scss';
+import footer_image from "../../assets/images/footer_girl.png";
 
 const Footer = () => {
     return (
@@ -23,7 +22,7 @@ const Footer = () => {
                         </ul>
                     </div>
                     <div className={classes['footer__image']}>
-                        <img src={girl} alt="" height={110}/>
+                        <img src={footer_image} alt="" height={110}/>
                     </div>
                 </div>
            </div>

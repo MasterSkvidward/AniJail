@@ -1,12 +1,13 @@
 import { copyFile } from "fs";
 import { AuthAction, AuthActionsEnum, AuthState } from "./types";
-import img from '../../../images/vacant_room_ch2-copy.jpg' ;
-import user_logo from '../../../images/user_logo.jpg';
+// import img from '../../../images/vacant_room_ch2-copy.jpg' ;
+
+import user_image from "../../../assets/images/user_logo.jpg";
 
 
 const initialState: AuthState = {
     isAuth: true,
-    user: {id: 1, username: "Master Squidward", email: "Arthur1203@yandex.ru", image_url: user_logo, date_joined: 'december 2019', last_login: '2 days ago'},
+    user: {id: 1, username: "Master Squidward", email: "Arthur1203@yandex.ru", image_url: user_image, date_joined: 'december 2019', last_login: '2 days ago'},
     // isLoading: false,
     // error: '',
 }
