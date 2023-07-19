@@ -1,0 +1,57 @@
+.rating {
+  gap: 1px;
+  // max-width: 200px;
+  // width: 100%;
+
+  // .rr--box {
+  //     background-color: chocolate;
+  // }
+
+  .rr--svg {
+    padding: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 4px;
+    background-color: chocolate;
+
+    &:hover {
+      transform: scale(101%);
+    }
+    // background-color: chocolate;
+  }
+
+  .rr--on .rr--svg {
+    fill: MediumSeaGreen;
+    background: MintCream;
+    border-color: MediumSeaGreen;
+  }
+
+  .rr--off .rr--svg {
+    fill: Tomato;
+    background: AntiqueWhite;
+    border-color: Tomato;
+  }
+}
+
+//   button {
+//         padding: 5px 10px;
+//         background-color: red($color: #b63d3d);
+//   }
+
+@media (min-width: 610px) {
+  .custom-classname {
+    max-width: 300px;
+    gap: 10px;
+  }
+
+  .custom-classname .rr--svg {
+    padding: 10px;
+    border-width: 2px;
+    border-radius: 10px;
+  }
+}
+
+.custom-btn {
+  padding: 5px 10px;
+  background-color: red($color: #b63d3d) !important;
+}

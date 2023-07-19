@@ -1,9 +1,10 @@
 import { IAnimeSearchParams, IObjectInfo } from "../types/jikanMoe/jikan"
+import { IRowObjectInfo } from "../types/types";
 import { IGenre } from "../types/anime/singleAnime";
 import { IFilterOption } from "../types/types";
 import {MultiValue} from "react-select";
 
-export const formatGenres = (genres:IObjectInfo[] | undefined):string[] => {
+export const formatGenres = (genres:IRowObjectInfo[] | undefined):string[] => {
     if (!genres) return ['-'];
     return genres.map(genre => `${genre.name}`)
 }

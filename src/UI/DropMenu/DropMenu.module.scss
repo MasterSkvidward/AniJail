@@ -1,36 +1,122 @@
+@keyframes scaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 .dropmenu {
+  position: relative;
+  width: 100%;
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    // column-gap: 10px;
     width: 100%;
+    padding: 7px 15px;
+    text-align: center;
+    border-radius: 15px;
+    transition: all 0.2s;
+    color: rgb(254, 254, 254);
+    cursor: pointer;
+    height: 38px;
 
-    &__btn {
-        background-color: rgb(194, 70, 70);
-        // background-color: rgba(232, 75, 104, 0.8);
-        font-size: 17px;
-        width: 100%;
-        padding: 7px 15px;
-        text-align: center;
-        border-radius: 15px;
-        transition: all 0.2s;
-        color: rgb(239, 239, 239);
-
-        cursor: pointer;
-
-        &:hover {
-            background-color: rgb(169, 43, 43);
-            // color: rgba(255, 255, 255, 0.8);
-            transform: scale(1.05);
-        }
-
-        &::before {
-            content: '+';
-            margin-right: 10px;
-        }
-
-        &::after {
-            content: '';
-        }
+    button {
+      background-color: transparent;
+      color: rgb(254, 254, 254);
+      font-size: 18px;
+      align-self: center;
+      cursor: pointer;
+      margin: 0px auto;
+      user-select: none;
     }
 
-    &__options {
-
+    svg {
+      &:nth-child(1) {
+        width: 19px;
+        height: 19px;
+      }
     }
+
+    &_add {
+      color: rgb(239, 239, 239);
+      background-color: rgb(49, 49, 49);
+    }
+
+    &_viewed {
+      background-color: rgb(95, 167, 81);
+    }
+
+    &_will_watch {
+      background-color: rgb(76, 129, 197);
+    }
+
+    &_favorite {
+      background-color: rgb(194, 70, 70);
+    }
+
+    &:hover {
+      opacity: 0.9;
+      // color: rgba(255, 255, 255, 0.8);
+      // transform: scale(1.001);
+    }
+
+    &::after {
+      content: "";
+    }
+  }
+
+  &__options {
+    width: 100%;
+    border-radius: 14px;
+    background-color: rgb(37, 37, 37);
+    padding: 9px 0px;
+    position: absolute;
+    top: 49px;
+    left: 0;
+    display: none;
+    flex-direction: column;
+    z-index: 50;
+    // transition: height 1s ease;
+
+    // box-shadow: 0px 5px 11px 2px rgb(94, 94, 94);
+
+    animation: scaleIn 0.22s ease-in-out;
+  }
+
+  &__option {
+    cursor: pointer;
+    padding: 16px 15px;
+    font-size: 17px;
+    transition: 0.2s;
+
+    &:hover {
+      background-color: rgba(83, 83, 83, 0.9);
+    }
+  }
+}
+
+.active {
+  display: flex;
+}
+
+.arrow {
+  width: 26px;
+  height: 26px;
+  transition: transform 0.4s ease-in-out;
+  // margin: 0px 0px 0px auto;
+  // transform: rotate(180deg);
+}
+
+.rotate {
+  transform: rotate(180deg);
 }

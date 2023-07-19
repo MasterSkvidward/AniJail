@@ -22,6 +22,7 @@ export default function filterReducer(state = initialState, action: FilterAction
 
         case FilterActionsEnum.SET_HAS_MORE_ANIME:
             return {...state, hasMoreAnime: action.payload};
+            // return {...state, hasMoreAnime: action.payload ? true : false};
 
         case FilterActionsEnum.SET_PARAMS:
             return {...state, params: action.payload};

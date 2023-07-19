@@ -7,6 +7,7 @@ import { AiFillMobile } from 'react-icons/ai';
 import { getAnimeField } from '../../utils/utils';
 import { ISingleAnime } from '../../types/anime/singleAnime';
 import { IAnime } from '../../types/jikanMoe/jikan';
+import { IRowObjectInfo } from '../../types/types';
 
 
 interface AnimeCardInfoProps {
@@ -15,7 +16,7 @@ interface AnimeCardInfoProps {
 
 export type rowType = {
     name: string,
-    value: string | IObjectInfo[] | []
+    value: string | IRowObjectInfo[] | []
     sortType?: string | number | undefined
     isLink: boolean
 }
