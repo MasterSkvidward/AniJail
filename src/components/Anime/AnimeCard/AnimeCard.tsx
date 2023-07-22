@@ -53,6 +53,7 @@ const AnimeCard: FC<AnimeCardProps> = ({ anime }) => {
   }, []);
 
   if (!anime) return <></>;
+  
   return (
     <section className={classes["anime-card"]}>
       <MyModal visible={modalVisible} setVisible={setModalVisible}>

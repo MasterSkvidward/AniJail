@@ -1,4 +1,3 @@
-import axios from "axios";
 import { IAnimeResponse } from "../types/anime/responses";
 import { IAnimeListItem } from "../types/anime/anime-list";
 import { ISingleAnime } from "../types/anime/anime-single";
@@ -13,6 +12,7 @@ import {
   IAnimePicturesResponse,
   IAnimeScreenshotsResponse,
 } from "../types/jikanMoe/jikan";
+
 import $api from "../API/api";
 import { API_ENDPOINTS } from "../API/api-endpoints";
 

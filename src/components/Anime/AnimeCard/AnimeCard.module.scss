@@ -1,3 +1,5 @@
+@import "../../../styles/colors";
+
 .anime-card {
   // background-color:  linear-gradient(to top rgba(201, 50, 50, 0.5));
   padding: 0px 0px 160px 0px;
@@ -104,7 +106,7 @@
     row-gap: 5px;
     .scoredBy {
       font-size: 13px;
-      color: rgba(255, 255, 255, 0.8);
+      color: var(--text-secondary);
     }
 
     .rate {
@@ -113,7 +115,7 @@
       max-width: 200px;
 
       &__btn {
-        background-color: rgb(210, 92, 92);
+        background-color: $red;
         border-radius: 15px;
 
         transition: all 0.2s;
@@ -160,7 +162,7 @@
         // width: 200%;
         visibility: hidden;
 
-        background-color: rgba(34, 34, 34, 0.9);
+        background-color: var(--background-secondary);
         box-shadow: 0px 0px 4px 1px rgba(124, 124, 124, 0.3);
 
         border-radius: 29px;

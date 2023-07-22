@@ -7,13 +7,14 @@ import {FaMoon} from "react-icons/fa";
 
 interface InputSwitchThemeProps {
   isChecked: boolean
+  changeTheme: () => void,
 }
 
-const InputSwitchTheme:FC<InputSwitchThemeProps> = ({ isChecked, ...props }) => {
+const InputSwitchTheme:FC<InputSwitchThemeProps> = ({ isChecked, changeTheme }) => {
   return (
     <div>
       <input
-        {...props}
+        onChange={() => changeTheme()}
         checked={isChecked}
         type="checkbox"
         className={classes.checkbox}

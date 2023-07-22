@@ -14,6 +14,7 @@ import { RiLogoutBoxRLine } from "react-icons/ri";
 import { HiOutlineEye } from "react-icons/hi";
 import { CgProfile } from "react-icons/cg";
 import InputSwitchTheme from "../../UI/InputSwitchTheme/InputSwitchTheme";
+import { GlobalActionCreators } from "../../store/reducers/global/action-creatores";
 
 import * as CONSTANTS from "./constants";
 
@@ -24,7 +25,14 @@ const Navbar: FC = () => {
   const [menuVisible, setMenuVisible] = useState(false);
 
   const dispatch = useDispatch();
+  const {theme} = useTypedSelector(state => state.global)
   const { isAuth, user } = useTypedSelector((state) => state.auth);
+
+  const changeTheme = ():void => {
+    const newTheme = (theme === "dark") ? "light" : "dark";
+    localStorage.setItem("theme", newTheme);
+    dispatch(GlobalActionCreators.setTheme(newTheme))
+  }
 
   const handleClick = (event: MouseEvent<HTMLLIElement>): void => {
     setSelectedNumber(Number(event.currentTarget.dataset.index));
@@ -94,9 +102,10 @@ const Navbar: FC = () => {
         <SearchBar />
       </div>
 
-      <InputSwitchTheme isChecked={false} />
+
 
       <div className={classes.profile}>
+      <InputSwitchTheme isChecked={theme === "dark"} changeTheme={changeTheme}/>
         {isAuth ? (
           <div
             className={classes["profile__img"]}

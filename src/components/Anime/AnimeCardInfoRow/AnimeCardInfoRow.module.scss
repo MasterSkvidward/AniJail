@@ -10,13 +10,16 @@
     &__name {
         flex: 0 1 25%;
         font-weight: 500;
-        color: rgba($color: #eae8e8, $alpha: 0.9);
+        // color: rgba($color: #eae8e8, $alpha: 0.9);
+        color: var(--text-secondary);
+        opacity: 0.9;
     }
 
     &__value {
         display: flex;
         column-gap: 11px;
-        color: rgba($color: #eae8e8, $alpha: 0.8);
+        // color: rgba($color: #eae8e8, $alpha: 0.8);
+        opacity: 0.8
     }
 
     &__genre {
@@ -25,7 +28,8 @@
 
         &:not(:last-child)::after {
             content: ',';
-            color: rgba($color: #ffffff, $alpha: 0.7);
+            // color: rgba($color: #ffffff, $alpha: 0.7);
+            opacity: 0.7;
         }
 
     }

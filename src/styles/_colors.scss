@@ -5,35 +5,61 @@ $red: rgba(254, 0, 57, 1);
 $white: rgba(255, 255, 255, 1);
 $black: rgba(0, 0, 0, 1);
 
+//! general colors
+
+$main-color: rgba(254, 0, 57, 1);
+$main-color-dark: rgb(221, 78, 78);
+
+$red: rgba(254, 0, 57, 1);
+
+//! new color system
+
+$black-light: rgb(32, 32, 32);
+$black-dark: rgb(23, 23, 23);
+
+$grey-dark: rgba(57, 57, 57, 0.7);
+
+$white-default: rgb(255, 255, 255);
+$white: rgb(247, 247, 247);
+$white-light: rgb(216, 216, 216);
+// $white: #dedede;
+$white-snow: #e1e1e1;
+$white-dark: rgba(255, 255, 255, 0.8);
 
 html[data-theme="light"] {
-    // --background-primary: #{$white-snow};
-    // --background-secondary: #{$white};
-    // --background-neu: #{$white-snow};
-  
-    // --text-primary: #{$black-coal};
-    // --text-secondary: #{$grey-cloud};
-  
-    // --border-primary: #{$grey-light};
-    // --border-secondary: #{$border-thin-dark};
-  
-    // --box-shadow-primary: #{$box-shadow-dark};
-    // --box-shadow-secondary: #{$box-shadow-medium};
-    // --box-shadow-neu: #{$box-shadow-neu-light};
-  }
-  
-  html[data-theme="dark"] {
-    // --background-primary: #{$black-coal};
-    // --background-secondary: #{$black-light};
-    // --background-neu: #{$black-neu-dark};
-  
-    // --text-primary: #{$white-dark};
-    // --text-secondary: #{$grey-cloud};
-  
-    // --border-primary: #{$grey-dark};
-    // --border-secondary: #{$border-thin-light};
-  
-    // --box-shadow-primary: #{$box-shadow-light};
-    // --box-shadow-secondary: #{$box-shadow-medium};
-    // --box-shadow-neu: #{$box-shadow-neu-dark};
-  }
+  --background-primary: #{$white};
+  --background-secondary: #{$white-default};
+  // --background-neu: #{$white-snow};
+
+  --hover-primary: #{$white-light};
+
+  --text-primary: #{$black-light};
+  --text-secondary: #{$black-light};
+  --text-reverse: #{$white};
+
+  // --border-primary: #{$grey-light};
+  // --border-secondary: #{$border-thin-dark};
+
+  // --box-shadow-primary: #{$box-shadow-dark};
+  // --box-shadow-secondary: #{$box-shadow-medium};
+  // --box-shadow-neu: #{$box-shadow-neu-light};
+}
+
+html[data-theme="dark"] {
+  --background-primary: #{$black-light};
+  --background-secondary: #{$black-dark};
+  // --background-neu: #{$black-neu-dark};
+
+  --hover-primary: #{$grey-dark};
+
+  --text-primary: #{$white};
+  --text-secondary: #{$white-dark};
+  --text-reverse: #{$black-light};
+
+  // --border-primary: #{$grey-dark};
+  // --border-secondary: #{$border-thin-light};
+
+  // --box-shadow-primary: #{$box-shadow-light};
+  // --box-shadow-secondary: #{$box-shadow-medium};
+  // --box-shadow-neu: #{$box-shadow-neu-dark};
+}

@@ -1,5 +1,7 @@
+@import "../../styles/colors";
+
 .title {
-    color: rgb(255, 255, 255);
+    // color: rgb(255, 255, 255);
     font-size: 27px;
     font-weight: 600;
 
@@ -7,6 +9,6 @@
         content: '';
         margin-right: 8px;
         vertical-align:middle;
-        border-right: 4px solid rgba(204, 51, 79, 1);
+        border-right: 4px solid $main-color;
     }
 }

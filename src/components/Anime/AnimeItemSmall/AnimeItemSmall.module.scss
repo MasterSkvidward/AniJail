@@ -1,3 +1,5 @@
+@import "../../../styles/colors";
+
 .anime {
     display: flex;
     column-gap: 20px;
@@ -9,7 +11,7 @@
     font-size: 20px;
 
     &:hover {
-        background-color: rgba(57, 57, 57, 0.7);
+        background-color: var(--hover-primary);
         transform: scale(100%);
     }
 
@@ -47,14 +49,13 @@
         }
 
         &_jp {
-            font-size: 0.58em;
+            font-size: 0.50em;
             opacity: 0.7;
         }
     }
 
     &__type {
-        // color: rgba(226, 224, 224, 0.9);
-        color: rgba(225, 223, 223, 0.9);
+        opacity: 0.9;
         margin: auto 0px auto;
         font-size: 0.74em;
     }
@@ -85,11 +86,11 @@
     }
 
     &__genre {
-        color: rgb(197, 77, 77);
+        color: $red;
 
         &:not(:last-child)::after {
             content: ',';
-            color: rgba(255, 255, 255, 1);
+            color: var(--text-secondary);
         }
     }
 }

@@ -1,3 +1,5 @@
+@import "../../../styles/colors";
+
 .anime-info {
     display: flex;
     flex-direction: column;
@@ -6,6 +8,8 @@
     font-size: 1em;
 
     &__title {
+        // color: var(--text-primary);
+        color: $white;
         display: flex;
         flex-direction: column;
         row-gap: 12px;

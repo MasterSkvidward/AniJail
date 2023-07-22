@@ -46,7 +46,7 @@ const AnimeItem: FC<AnimeItemProps> = ({
 
   const handlerMouseLeave = () => {
     debounceShow(false);
-    setDuration(500);
+    setDuration(800);
   };
 
   // const propsStyles = {

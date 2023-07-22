@@ -19,20 +19,21 @@
     }
 
     &__brandname {
-        color: white;
+        // color: white;
         font-size: 30px;
         font-weight: 600;
     }
 
     &__info {
-        color: rgba(198, 198, 198, 0.9);
+        // color: rgba(198, 198, 198, 0.9);
+        opacity: 0.9;
         font-size: 15px;
         font-weight: 600;
     }
 
     &__copyright {
         font-size: 13px;
-        color: rgba(198, 198, 198, 0.9);
+        opacity: 0.9;
     }
 
     &__contacts {

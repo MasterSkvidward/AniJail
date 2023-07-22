@@ -1,8 +1,10 @@
+@import "../../../styles/colors";
+
+
 @keyframes progressBar {
     from { width: 0 }
     to   { width: 100% }
 }
-
 
 .statistics {
     // display: flex;
@@ -32,12 +34,13 @@
     &__progressbar-container {
         max-width: 1350px;
         background-color: rgb(75, 75, 75);
+        // background-color: var(--text-secondary);
         height: 12px;
         border-radius: 14px;
     }
 
     &__progressbar {
-        background-color: rgb(219, 71, 71);
+        background-color: $red;
         // max-width: 1400px;
         border-radius: 14px;
         height: inherit;

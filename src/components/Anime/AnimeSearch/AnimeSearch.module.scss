@@ -1,6 +1,8 @@
+@import "../../../styles/colors";
+
 .search {
     position: relative;
-    background-color: #212121;
+    // background-color: #212121;
     display: flex;
     transition: all 0.1s;
     border-radius: 15px;
@@ -18,11 +20,10 @@
             cursor: pointer;
             height: 32px;
             width: 32px;
-            color: rgba(255, 255, 255, 0.7);
-
+            color: var(--text-secondary);
             
             &:hover {
-                color: rgba(255, 255, 255, 0.6);
+                opacity: 0.9;
             }
         }
     }
@@ -31,7 +32,7 @@
 .focused {
     .search__loupe {
         svg {
-            color:  rgba(204, 51, 79, 1);
+            color:  $red;
         }
     }
 }

@@ -1,9 +1,12 @@
+@import "../../../styles/colors";
+
 .preview {
 	// width: 100px;
     // height: 150px;
 	padding: 17px 18px;
 	position: relative;
-    background-color: rgb(38, 38, 38);
+    // background-color: rgb(38, 38, 38);
+    background-color: var(--background-secondary);
 	border-radius: 13px;
     z-index: 77;
     display: flex;
@@ -34,17 +37,21 @@
     }
 
     &__title {
-        color: rgb(193, 64, 64);
+        color: $red;
         font-size: 21px;
         font-weight: 600;
     }
 
     &__synopsis {
         line-height: 140%;
-        color: rgba(233, 233, 233, 0.9);
+        opacity: 0.9;
     }
 
     h2 {
-        color: rgb(252, 91, 91);
+        color: $red;
+    }
+
+    h4 {
+        color: var(--text-primary);
     }
 }
