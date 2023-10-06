@@ -1,26 +1,25 @@
 .header {
-    position: relative;
-    // border-bottom: 3px solid white;
-    // border-bottom: 3px solid rgba(204, 51, 79, 1);
-    // background-color: rgba(13, 18, 22, 1);
-    background-color: var(--background-secondary);
-   
-    z-index: 2;
+  position: relative;
+  // border-bottom: 3px solid white;
+  // border-bottom: 3px solid rgba(204, 51, 79, 1);
+  // background-color: rgba(13, 18, 22, 1);
+  background-color: var(--background-secondary);
+  box-shadow: var(--box-shadow-primary);
+  z-index: 2;
 }
 
 .sticky {
-    // box-shadow: 0 0px 34px 16px rgba(27, 27, 27, 0.8);
-    position: sticky;
-    top: 0;
-    animation: slideDown 0.45s ease-out;
+  // box-shadow: 0 0px 34px 16px rgba(27, 27, 27, 0.8);
+  position: sticky;
+  top: 0;
+  animation: slideDown 0.45s ease-out;
 }
 
-
 @keyframes slideDown {
-    from {
-      transform: translateY(-150%);
-    }
-    to {
-      transform: translateY(0);
-    }
+  from {
+    transform: translateY(-150%);
   }
+  to {
+    transform: translateY(0);
+  }
+}

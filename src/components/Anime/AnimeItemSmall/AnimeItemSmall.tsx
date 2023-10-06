@@ -36,7 +36,7 @@ const AnimeItemSmall: FC<AnimeItemSmallProps> = ({ anime }) => {
         </div>
 
         <div className={classes["body__info"]}>
-          <Score score={anime?.score} fontSize={15} />
+          <Score score={anime?.score || 0} fontSize={15} />
           <div className={classes["body__genres"]}>
             {formatGenres(anime?.genres).map((genre, index) => (
               <div className={classes["body__genre"]} key={index}>

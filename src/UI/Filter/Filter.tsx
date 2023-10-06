@@ -1,6 +1,7 @@
 import React, { ChangeEvent, memo, useEffect, useRef, useState } from 'react';
 import Select, { MultiValue } from 'react-select';
 import classes from './Filter.module.scss';
+import "./react-select.scss";
 import makeAnimated from 'react-select/animated';
 import * as CONSTANTS from './constants';
 import { useDispatch } from 'react-redux';

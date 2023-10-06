@@ -2,18 +2,15 @@
     // color: rgba(229, 226, 226, 0.8);
     color: var(--text-secondary);
     background-color: inherit;
-    font-size: 17px;
+    font-size: 1em;
     flex: 1 1 auto;
     height: 45px;
     padding: 8px 15px;
     border-radius: 15px;
 
-    // transition: all 0.4s;
-
     &:focus {
         outline: none;
         background-color: inherit;
-        // color: rgba(0, 0, 0, 1);
     }
 
     &:active {

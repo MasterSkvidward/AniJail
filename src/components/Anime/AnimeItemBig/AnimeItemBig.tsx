@@ -18,7 +18,7 @@ interface AnimeItemBigProps {
 }
 
 const AnimeItemBig: FC<AnimeItemBigProps> = ({ anime }) => {
-  const [animeColor, setAnimeColor] = useState<string>("0,0,0");
+  const [animeColor, setAnimeColor] = useState<string>("");
   const navigate = useNavigate();
 
   const getAnimeColor = async () => {
@@ -29,6 +29,11 @@ const AnimeItemBig: FC<AnimeItemBigProps> = ({ anime }) => {
   useEffect(() => {
     getAnimeColor();
   }, []);
+
+
+  
+  if (!anime) return <div className={classes["anime-skeleton"]}></div>
+
 
   return (
     <div

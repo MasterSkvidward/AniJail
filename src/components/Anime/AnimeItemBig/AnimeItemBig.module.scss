@@ -1,9 +1,15 @@
 @import "../../../styles/_colors.scss";
 
+.anime-skeleton {
+    border: 1px solid rgba(146, 146, 146, 0.2);
+    position: relative;
+}
+
 .anime {
     transition: 0.4s;
-    padding: 6px 6px;
-    border: 1px solid rgba(119, 119, 119, 0);
+    border: 1px solid rgba(146, 146, 146, 0.2);
+    background-color: var(--background-tertiary);
+    // padding: 6px 6px;
     border-radius: 19px;
     // max-width: 455px;
     height: 550px;
@@ -11,9 +17,8 @@
     position: relative;
 
     &:hover {
-        
         cursor: pointer;
-        border: 1px solid rgba(186, 186, 186, 0.4);
+        border: 1px solid rgba(213, 212, 212, 0.44);
 
         .anime__block {
             // background-color: rgba(0, 0, 0, 0.3);

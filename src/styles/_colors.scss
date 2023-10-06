@@ -10,26 +10,51 @@ $black: rgba(0, 0, 0, 1);
 $main-color: rgba(254, 0, 57, 1);
 $main-color-dark: rgb(221, 78, 78);
 
-$red: rgba(254, 0, 57, 1);
-
 //! new color system
 
-$black-light: rgb(32, 32, 32);
-$black-dark: rgb(23, 23, 23);
+$black-default: rgb(0, 0, 0);
+$black-light: rgb(27, 27, 27);
+$black-dark: rgb(19, 19, 19);
+$black-coal: rgba(21, 21, 21, 0.9);
 
 $grey-dark: rgba(57, 57, 57, 0.7);
+$grey: rgba(0, 0, 0, 0.07);
+$grey-medium: rgb(143, 143, 143);
+$grey-light: rgba(243, 242, 242, 0.1);
+$grey-thin: rgba(201, 201, 201, 0.8);
+
+$green: #3bb33b;
+$green-light: rgb(40, 221, 94);
+
+$red: rgb(191, 31, 47);
 
 $white-default: rgb(255, 255, 255);
-$white: rgb(247, 247, 247);
+$white: rgb(237, 237, 237);
 $white-light: rgb(216, 216, 216);
 // $white: #dedede;
-$white-snow: #e1e1e1;
+$white-snow: #ededed;
 $white-dark: rgba(255, 255, 255, 0.8);
 
+//!? box shadows and borders
+
+$border-thin-dark: 1px solid rgba(3, 3, 3, 0.14);
+$border-thin-light: 1px solid rgba(255, 255, 255, 0.14);
+
+$box-shadow-dark: 0px 1px 12px 2px rgba(139, 139, 139, 0.122);
+$box-shadow-light: 0px 1px 17px 2px rgba(12, 12, 12, 0.432);
+$box-shadow-medium: 0px 2px 35px -2px rgba(119, 119, 119, 0.812);
+$box-shadow-neu-light: 6px 6px 22px #7a797c, -6px -6px 22px #ffffff;
+$box-shadow-neu-dark: 13px 13px 26px #2a2a2a, -13px -13px 26px #424242;
+
 html[data-theme="light"] {
-  --background-primary: #{$white};
+  --background-primary: #{$white-snow};
   --background-secondary: #{$white-default};
-  // --background-neu: #{$white-snow};
+  --background-tertiary: #{$grey};
+  --background-reverse: #{$black-dark};
+
+  --border-primary: #{$grey-thin};
+  --box-shadow-primary: #{$box-shadow-dark};
+  --box-shadow-neu: #{$box-shadow-neu-light};
 
   --hover-primary: #{$white-light};
 
@@ -46,9 +71,14 @@ html[data-theme="light"] {
 }
 
 html[data-theme="dark"] {
-  --background-primary: #{$black-light};
-  --background-secondary: #{$black-dark};
-  // --background-neu: #{$black-neu-dark};
+  --background-primary: #{$black-dark};
+  --background-secondary: #{$black-light};
+  --background-tertiary: #{$grey-light};
+  --background-reverse: #{$white-snow};
+
+  --border-primary: #{$grey-light};
+  --box-shadow-primary: #{$box-shadow-dark};
+  --box-shadow-neu: #{$box-shadow-neu-dark};
 
   --hover-primary: #{$grey-dark};
 

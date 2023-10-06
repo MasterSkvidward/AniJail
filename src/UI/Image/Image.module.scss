@@ -36,13 +36,13 @@
 }
 
 .ratingNumber {
-    font-size: 14px;
+    font-size: 0.82em;
     line-height: 20px;
     font-weight: 700;  
 }
 
 .ratingNumber::before {
-    font-size: 18px;
+    font-size: 1.15em;
     content: '★';
 
     margin: 0px 3px 0px 0px;

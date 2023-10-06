@@ -11,8 +11,6 @@ function App() {
 
   useEffect(() => {
     const theme = localStorage.getItem("theme") || "dark";
-    console.log(theme);
-    
     if ((theme === "dark") || (theme === "light")) dispatch(GlobalActionCreators.setTheme(theme));
   });
 

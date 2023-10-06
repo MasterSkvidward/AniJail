@@ -13,8 +13,8 @@ const MyModal:FC<MyModalProps> = ({children, visible, setVisible}) => {
 
     useEffect(() => {
         visible 
-            ?  document.body.style.overflowY = "hidden"
-            :  document.body.style.overflowY = "scroll"
+            ?  document.body.classList.add(classes["hide-scroll"])
+            :  document.body.classList.remove(classes["hide-scroll"])
     }, [visible])
 
     return (

@@ -2,26 +2,10 @@
 // reset styles
 @import "./_reset.scss";
 @import "./_colors.scss";
+@import "./media_queries";
 
 // fonts
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap");
-
-// !--------------------------------------------------------media----------------------------------------------------
-
-@media (max-width: 1850px) {
-  .App {
-    padding: 0px 25px;
-  }
-}
-
-@media (max-width: 1000px) {
-  .App {
-    padding: 0px 10px;
-  }
-}
-
-@media (max-width: 800px) {
-}
 
 // !-------------------------------------------------------general---------------------------------------------------
 
@@ -29,11 +13,34 @@
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
     "Segoe UI Symbol";
-  background-color: var(--background-primary);
+  background-color: var(--background-secondary);
   // background-image: linear-gradient(90deg, #fee140 0%, #fa709a 100%);
   // background-color: rgb(17, 18, 19);
   color: var(--text-primary);
   // overflow: hidden;
+
+  line-height: 1;
+  font-size: 16px;
+
+  @include for-medium-desktop-up {
+    font-size: 14px;
+  }
+
+  @include for-small-desktop-up {
+    font-size: 12px;
+  }
+
+  @include for-desktop-up {
+    font-size: 11px;
+  }
+
+  @include for-tablet-landscape-up {
+    font-size: 9px;
+  }
+
+  @include for-phone-only {
+    font-size: 8px;
+  }
 
   a:visited {
     color: inherit;
@@ -67,6 +74,14 @@
   max-width: 1440px;
   // max-width: 70vw;
   margin: 0 auto;
+
+  @include for-medium-desktop-up {
+    padding: 0 20px;
+  }
+
+  @include for-phone-only {
+    padding: 0 5px;
+  }
 }
 
 ._container1800 {
@@ -74,6 +89,31 @@
   max-width: 1800px;
   // max-width: 70vw;
   margin: 0 auto;
+
+  @include for-medium-desktop-up {
+    padding: 0 15px;
+  }
+
+  @include for-phone-only {
+    padding: 0 5px;
+  }
 }
 
-@import "./react-select.scss";
+// @import "./react-select.scss";
+
+// !--------------------------------------------------------media----------------------------------------------------
+
+// @media (max-width: 1850px) {
+//     .App {
+//       padding: 0px 25px;
+//     }
+//   }
+
+//   @media (max-width: 1000px) {
+//     .App {
+//       padding: 0px 10px;
+//     }
+//   }
+
+//   @media (max-width: 800px) {
+//   }

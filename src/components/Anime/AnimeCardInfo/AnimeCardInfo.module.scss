@@ -1,36 +1,36 @@
 @import "../../../styles/colors";
 
 .anime-info {
+  display: flex;
+  flex-direction: column;
+  row-gap: 3em;
+
+
+  &__title {
+    // color: var(--text-primary);
+    color: $white;
     display: flex;
     flex-direction: column;
-    row-gap: 3em;
+    row-gap: 12px;
 
-    font-size: 1em;
-
-    &__title {
-        // color: var(--text-primary);
-        color: $white;
-        display: flex;
-        flex-direction: column;
-        row-gap: 12px;
-        
-        &_en {
-            font-size: 2em;
-        }
-
-        &_jp {
-            opacity: 0.7;
-            font-size: 0.8em;
-        }
+    &_en {
+      font-size: 2em;
     }
 
-    &__rows {
-        display: flex;
-        flex-direction: column;
-        // row-gap: 20px;
-
-        &>:not(:last-child) {
-            border-bottom: 2px solid rgba(243, 242, 242, 0.1);
-        }
+    &_jp {
+      opacity: 0.7;
+      font-size: 0.8em;
     }
+  }
+
+  &__rows {
+    display: flex;
+    flex-direction: column;
+    // row-gap: 20px;
+
+    & > :not(:last-child) {
+      //   border-bottom: 2px solid rgba(243, 242, 242, 0.1);
+      border-bottom: 2px solid var(--border-primary);
+    }
+  }
 }

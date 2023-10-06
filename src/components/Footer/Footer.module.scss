@@ -1,63 +1,89 @@
+@import "../../styles/_colors.scss";
+
 .footer {
-    min-height: 120px;
-    border-top: 1px solid red;
-    // background-color: rgb(15, 17, 19);
-    margin-top: auto;
+  height: 190px;
+  // border-top: 1px solid $main-color;
+  // background-color: rgb(15, 17, 19);
+  margin-top: auto;
+  background-color: var(--background-primary);
+  padding: 25px 0;
 
-    &__body {
-     
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    
+  }
+
+  &__image {
+    img {
+      width: 99px;
+      height: 155px;
     }
+  }
+}
 
-    &__column {
-        margin: 50px 0px;
-        display: flex;
-        flex-direction: column;
-        row-gap: 15px;
-    }
+.info {
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
 
-    &__brandname {
-        // color: white;
-        font-size: 30px;
+  &__brandname {
+    // color: white;
+    font-size: 1.8em;
+    font-weight: 600;
+  }
+
+  &__divider {
+    border-bottom: 1mm ridge $main-color;
+    width: 50px;
+  }
+
+  &__copyright {
+    margin: auto 0 15px;
+    opacity: 0.8;
+    font-size: 0.9em;
+  }
+}
+
+.contacts {
+    margin-right: 250px;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 22px;
+
+    &__title {
+        font-size: 1.1em;
         font-weight: 600;
-    }
-
-    &__info {
-        // color: rgba(198, 198, 198, 0.9);
-        opacity: 0.9;
-        font-size: 15px;
-        font-weight: 600;
-    }
-
-    &__copyright {
-        font-size: 13px;
-        opacity: 0.9;
-    }
-
-    &__contacts {
-        // margin: 50px 0px 0px 0px;
-        display: flex;
-        flex-direction: column;
-        row-gap: 20px;
-    }
-
-    &__label {
-        font-size: 23px;
     }
 
     &__links {
+        font-size: 0.88em;
         display: flex;
         flex-direction: column;
-        row-gap: 8px;
-    }
+        row-gap: 10px;
+        margin-left: 50px;
 
-    &__link {
-        font-size: 17px;
-    }
+        a {
+            color: var(--text-secondary);
+            // color: $main-color;
+            font-style: italic;
+            display: flex;
+            column-gap: 15px;
+            align-items: center;
+            justify-content: space-between;
+        }
 
-    &__image {
-        margin: 10px 0px 0px 0px;
+
+        svg {
+            width: 32px;
+            height: 32px;
+            transition: 0.2s ease-in-out;
+
+            &:hover {
+                opacity: 0.85;
+            }
+        }
     }
 }

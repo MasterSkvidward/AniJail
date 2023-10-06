@@ -1,8 +1,14 @@
 @import "../../../styles/colors";
+@import "../../../styles/media_queries.scss";
+
+$width: 227px;
+$height: 322px;
 
 .anime-card {
   // background-color:  linear-gradient(to top rgba(201, 50, 50, 0.5));
   padding: 0px 0px 160px 0px;
+  background-color: var(--background-primary);
+
   &__header {
     position: absolute;
     top: 0;
@@ -50,21 +56,34 @@
     display: flex;
     flex-direction: column;
     row-gap: 25px;
-    flex: 1 1 27%;
-    max-width: 250px;
-    max-height: 450px;
+    // flex: 1 1 27%;
+
     // max-width: 360px;
     // max-height: 240px;
   }
   &__image {
     // border: 2px solid rgba(254, 0, 57, 1);
     cursor: pointer;
-    flex: 1 1 auto;
+    height: 100%;
+    // flex-grow: 1;
+    width: calc($width * 1.08);
+    height: calc($height * 1.08);
     position: relative;
     user-select: none;
     border: 0.5px solid rgba(255, 255, 255, 0.1);
     border-radius: 13px;
     overflow: hidden;
+
+    @include for-medium-desktop-up {
+      width: calc($width * 1.03);
+      height: calc($height * 1.03);
+    }
+
+    @include for-small-desktop-up {
+      width: calc($width * 0.95);
+      height: calc($height * 0.95);
+    }
+
     &:hover {
       .search-loupe {
         opacity: 0.7;
@@ -89,8 +108,8 @@
       opacity: 0;
 
       border-radius: 50%;
-      height: 110px !important;
-      width: 110px !important;
+      height: 90px !important;
+      width: 90px !important;
     }
   }
   &__dropmenu {
@@ -99,31 +118,49 @@
   }
   &__body {
     flex: 0 1 52%;
+
+    @include for-medium-desktop-up {
+      flex: 0 1 47%;
+    }
+
+    @include for-small-desktop-up {
+      flex: 0 1 43%;
+    }
   }
+
   &__score {
     display: flex;
     flex-direction: column;
     row-gap: 5px;
+
+    & > span {
+      font-size: 1.25em;
+      margin: 14px 0px 2px;
+      color: $white;
+    }
+
     .scoredBy {
-      font-size: 13px;
-      color: var(--text-secondary);
+      font-size: 0.8125em;
+      color: rgba(255, 255, 255, 0.75);
     }
 
     .rate {
       position: relative;
-      margin-top: 30px;
-      max-width: 200px;
+      margin-top: 40px;
+      max-width: 225px;
 
       &__btn {
-        background-color: $red;
-        border-radius: 15px;
-
+        background-color: var(--background-tertiary);
+        border-radius: 25px;
+        font-size: 0.98em;
         transition: all 0.2s;
-        font-size: 16px;
         line-height: 120%;
 
-        padding: 11px 24px;
-        width: 144px;
+        padding: 8px 22px;
+        // min-width: 120px;
+        max-width: 254px;
+        align-items: center;
+        height: 39px;
         // margin-top: 30px;
         // text-align: center;
 
@@ -131,26 +168,39 @@
         user-select: none;
 
         display: flex;
-        justify-content: space-between;
         align-items: center;
+        text-align: center;
+        justify-content: center;
         font-weight: 600;
 
         &:hover {
-          background-color: rgb(169, 43, 43);
-          // color: rgba(255, 255, 255, 0.8);
-          // transform: scale(1.02);
+          //   background-color: rgb(169, 43, 43);
+          //   background-color: ;
+          opacity: 1;
+          transform: scale(1.03);
         }
 
         span {
+          text-align: center;
+
           &:nth-child(1) {
-            // font-size: 26px;
+            text-align: center;
           }
 
           &:nth-child(2) {
-            // font-size: 26px;
-            border-radius: 50%;
-            padding: 1px 5px;
-            background-color: rgba(0, 0, 0, 1);
+            color: $white;
+            border-radius: 15px;
+            padding: 2px 7px;
+            display: flex;
+            align-items: center;
+            column-gap: 1px;
+            margin-left: 17px;
+            // max-width: 45px;
+            // background-color: rgba(0, 0, 0, 1);
+          }
+
+          svg {
+            margin-top: 2.5px;
           }
         }
       }
@@ -159,14 +209,12 @@
         position: absolute;
         top: 55px;
         left: 0px;
-        // width: 200%;
         visibility: hidden;
-
         background-color: var(--background-secondary);
         box-shadow: 0px 0px 4px 1px rgba(124, 124, 124, 0.3);
 
         border-radius: 29px;
-        width: 300%;
+        width: 430px;
       }
 
       &__body {
@@ -193,4 +241,20 @@
 
 .active {
   visibility: visible !important;
+}
+
+.green {
+  background-color: $green;
+}
+
+.light-green {
+  background-color: $green;
+}
+
+.grey {
+  background-color: $grey-medium;
+}
+
+.red {
+  background-color: $red;
 }

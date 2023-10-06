@@ -15,15 +15,14 @@ interface CarouselBlockItemProps extends PropsWithChildren {
 
 const CarouselBlockItem: FC<CarouselBlockItemProps> = ({
   title,
-  options,
   children,
-  arrowTop,
+  ...rest
 }) => {
   return (
     <div className={classes["carousel-item"]}>
       <h3 className={classes["carousel-item__title"]}>{title}</h3>
       <div className={classes["carousel-item__body"]}>
-        <Carousel options={options} arrowTop={arrowTop}>
+        <Carousel {...rest}>
           {children}
         </Carousel>
       </div>

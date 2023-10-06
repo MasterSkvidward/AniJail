@@ -1,5 +1,5 @@
 .carousel-block {
-    padding: 90px 0px 90px 0px;
+    padding: 0px 0px 90px 0px;
 
     &__body {
         display: flex;
@@ -10,4 +10,12 @@
 
 .animeItemBig {
     
+}
+
+.carousel-item__big {
+    // background-color: var(--background-secondary);
+    // min-height: 700px;
+    background-color: var(--background-primary);
+    padding: 40px 0px 60px;
+    margin-bottom: 50px;
 }

@@ -15,8 +15,8 @@
 }
 
 .MySelect {
-  font-size: 20px;
   position: relative;
+  font-size: 1.2em;
 
   display: flex;
   column-gap: 30px;
@@ -38,7 +38,6 @@
   }
 
   &__btn {
-    font-size: 14px;
     font-weight: 600;
     padding: 0px 9px;
     color: inherit;
@@ -69,7 +68,7 @@
   &__option {
     cursor: pointer;
     padding: 16px 15px;
-    font-size: 17px;
+    font-size: 0.8em;
     transition: 0.2s;
 
     &:hover {
@@ -103,7 +102,7 @@
 
 .sortArrow {
   border-radius: 7px;
-  font-size: 26px;
+  font-size: 1.3em;
   cursor: pointer;
   padding: 5px 5px;
 

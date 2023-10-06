@@ -1,111 +1,112 @@
+@import "../../../styles/media_queries";
+
 .anime-details {
-    // background-color: rgba(238, 243, 241, 0.9);
-    // color: rgb(255, 255, 255);
+//   background-color: var(--background-secondary);
+  // background-color: rgba(238, 243, 241, 0.9);
+  // color: rgb(255, 255, 255);
 
-    padding: 60px 0px;
-    margin: 0px 0px 150px 0px;
+  padding: 60px 0px;
+  margin: 0px 0px 150px 0px;
 
-    &__container {
-      display: flex;
-      column-gap: 90px;
-      align-items: flex-start;
+  &__container {
+    display: flex;
+    column-gap: 90px;
+    align-items: flex-start;
     //   flex-direction: row;
-    }
+  }
 
-    &__main {
-        max-width: 68%;
-        // flex: 0 1 70%;
-        display: flex;
-        flex-direction: column;
-        row-gap: 150px;
-    }
+  &__main {
+    max-width: 68%;
+    // flex: 0 1 70%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 150px;
 
-    &__sidebar {
-        display: flex;
-        flex-direction: column;
-        row-gap: 20px;
+    @include for-small-desktop-up {
+      max-width: 100%;
     }
+  }
 
+  &__sidebar {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+
+    @include for-small-desktop-up {
+      display: none;
+    }
+  }
 }
 
 .description {
-   
-    display: flex;
-    flex-direction: column;
-    row-gap: 19px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 19px;
 
-    &__body {
-        font-size: 17px;
-        line-height: 150%;
-
-        // text-indent: 60px;
-    }
+  &__body {
+    font-size: 1.06em;
+    line-height: 150%;
+    // text-indent: 60px;
+  }
 }
 
-
 .images {
-    display: flex; 
-    flex-direction: column;
-    row-gap: 24px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
 
-    &__container {
-        display: flex;
-        column-gap: 20px;
-        row-gap: 20px;
-        // flex-wrap: wrap;
-        height: 170px;
+  &__container {
+    display: flex;
+    column-gap: 20px;
+    row-gap: 20px;
+    // flex-wrap: wrap;
+    height: 170px;
 
-        div {
-            height: 100%;
-            max-width: 306px;
-        }
+    div {
+      height: 100%;
+      max-width: 306px;
     }
+  }
 }
 
 .trailer {
+  &__video {
+    // flex: 1 1 400px;
+    position: relative;
+    // padding: 0px 0px 56% 0px;
+    // aspect-ratio: 16 / 9;
+    // max-width: 400px;
+    width: 476px;
+    height: 267px;
+    // max-width: 320px;
+    // min-height: 180px;
+    margin: 25px 0px 0px 0px;
 
-    &__video {
-        // flex: 1 1 400px;
-        position: relative;
-        padding: 0px 0px 15% 0px;
-    
-        max-width: 400px;
-        max-height: 260px;
-    
-        min-width: 320px;
-        min-height: 180px;
-        margin: 25px 0px 0px 0px;
-    
-        iframe {
-            object-fit: cover;
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
+    iframe {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
     }
+  }
 }
 
 .carousel {
-    display: flex;
-    flex-direction: column;
-    row-gap: 23px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 23px;
 }
-
-
 
 @media (max-width: 1500px) {
-    .anime-details {
-
-        &__main {
-            max-width: 100%;
-   
-        }
-        
-        &__sidebar {
-            display: none;
-        }
+  .anime-details {
+    &__main {
+      max-width: 100%;
     }
+
+    &__sidebar {
+      display: none;
+    }
+  }
 }
-  

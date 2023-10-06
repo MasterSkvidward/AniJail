@@ -42,6 +42,7 @@ const AnimeDetails: FC<AnimeDetailsProps> = ({
   }, []);
 
   if (!anime) return <></>;
+  
 
   return (
     <section className={classes["anime-details"]}>
@@ -59,22 +60,22 @@ const AnimeDetails: FC<AnimeDetailsProps> = ({
             <p className={classes["description__body"]}>{anime?.synopsis}</p>
           </div>
 
-          {/* 
-                    <div className={classes['trailer']}>
-                        <Title value={'Trailer'}/>
-                        <div className={classes['trailer__video']}>
-                            <iframe src={anime?.trailer.embed_url} title="YouTube video player" frameBorder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
-                        </div>
-                    </div> */}
+    
+            <div className={classes['trailer']}>
+                <Title value={'Trailer'}/>
+                <div className={classes['trailer__video']}>
+                    <iframe src={`${anime?.trailer.embed_url}?mute=1`} width="397" height="345" title="YouTube video player" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen ></iframe>
+                </div>
+            </div>
 
-          <div className={classes["images"]}>
+          {/* <div className={classes["images"]}>
             <Title value={"Images"} />
             <div className={classes["images__container"]}>
               {animePictures.map((picture, index) => (
                 <Image url={picture.jpg.image_url} key={index} />
               ))}
             </div>
-          </div>
+          </div> */}
 
           <div className={classes["carousel"]}>
             <Title value={"You may also like"} />

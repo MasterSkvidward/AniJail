@@ -66,6 +66,7 @@ const Navbar: FC = () => {
     document.addEventListener("click", handlerDocumentClick);
     return () => document.removeEventListener("click", handlerDocumentClick);
   }, []);
+  
 
   return (
     <nav className={[classes.navbar, "_container1800"].join(" ")}>

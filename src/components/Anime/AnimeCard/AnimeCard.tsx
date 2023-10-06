@@ -8,10 +8,12 @@ import DropMenu from "../../../UI/DropMenu/DropMenu";
 import ImageResponsive from "../../../UI/ImageResponsive/ImageResponsive";
 import Score from "../../../UI/Score/Score";
 import { IAnime } from "../../../types/jikanMoe/jikan";
-import { get_average_rgb } from "../../../utils/utils";
+import { get_average_rgb, splitNumberByThree } from "../../../utils/utils";
 import {formatColor} from "../../../helpers/helpers";
 import * as CONSTANTS from "./constants";
 import MyRating from "../../../UI/MyRating/MyRating";
+import { getScoreColor } from "../../../utils/utils";
+import { AiFillStar } from "react-icons/ai";
 
 interface AnimeCardProps {
   anime: IAnime | null;
@@ -78,8 +80,8 @@ const AnimeCard: FC<AnimeCardProps> = ({ anime }) => {
               className={classes["anime-card__image"]}
               onClick={() => setModalVisible(true)}
             >
-              <img src={anime?.images.jpg.image_url}></img>
-              <img className={classes["search-loupe"]} src={searchLoupe}></img>
+              <img src={anime?.images.jpg.image_url} alt="Anime Preview"></img>
+              <img className={classes["search-loupe"]} src={searchLoupe} alt="loupe"></img>
             </div>
             <div className={classes["anime-card__dropmenu"]}>
               <DropMenu
@@ -93,12 +95,19 @@ const AnimeCard: FC<AnimeCardProps> = ({ anime }) => {
             <AnimeCardInfo anime={anime} />
           </div>
           <div className={classes["anime-card__score"]}>
-            <Score score={anime?.score} fontSize={30} />
-            <div className={classes["scoredBy"]}>{anime?.scored_by}</div>
+            {anime?.score
+                ?
+                    <Score score={anime?.score} fontSize={30} />
+                :
+                    <span>No scores</span>
+            }
+            
+            <div className={classes["scoredBy"]}>{`Scored by:   ${splitNumberByThree(anime?.scored_by || 0)}`}</div>
             <div className={classes["rate"]} onClick={handlerRateClick}>
               <div className={classes["rate__btn"]}>
-                <span>Rate</span>
-                <span>{userRating}</span>{" "}
+                <span>{userRating ? "Change score" : "Rate"}</span>
+                {userRating !== 0 &&
+                <span className={classes[getScoreColor(userRating || 0)]}><AiFillStar/>{userRating}</span>}
               </div>
               {/* <MyButton value='Rate'/> */}
               <div

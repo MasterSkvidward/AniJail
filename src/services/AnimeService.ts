@@ -62,10 +62,12 @@ export class AnimeService {
   static async getAnimeSeasonNow(
     params: IAnimeSearchParams = {}
   ): Promise<IAnime[]> {
+    //! убрать try, catch; перенести запрос из компонента в redux, там обернуть в try, catch
     const response = await $api.get<IAnimeListResponse>(
       API_ENDPOINTS.SEASON_NOW,
       { params }
     );
+
     return response.data.data;
   }
 

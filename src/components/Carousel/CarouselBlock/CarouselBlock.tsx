@@ -13,8 +13,8 @@ const CarouselBlock = () => {
 
   const fetchAnime = async () => {
     const seasonAnime = await AnimeService.getAnimeSeasonNow();
-    const popularAnime = await AnimeService.getAnimeSeasonNow();
-    const dateAnime = await AnimeService.getAnimeSeasonNow();
+    // const popularAnime = await AnimeService.getAnimeSeasonNow();
+    // const dateAnime = await AnimeService.getAnimeSeasonNow();
     setAnimeCurrentSeason(seasonAnime);
   };
 
@@ -22,12 +22,10 @@ const CarouselBlock = () => {
     fetchAnime();
   }, []);
 
-  if (!animeCurrentSeason) return <></>;
-
   return (
     <section className={classes["carousel-block"]}>
-      <div className={"_container1800"}>
-        <div className={classes["carousel-block__body"]}>
+      <div className={classes["carousel-item__big"]}>
+        <div className={"_container1800"}>
           <CarouselBlockItem
             title={`${getCurrentSeasonName()} season`}
             options={MEDIA_OPTIONS.bigCarouselOptions}
@@ -36,7 +34,10 @@ const CarouselBlock = () => {
               <AnimeItemBig anime={item} key={index} />
             ))}
           </CarouselBlockItem>
-
+        </div>
+      </div>
+      <div className={"_container1800"}>
+        <div className={classes["carousel-block__body"]}>
           <CarouselBlockItem
             title={`Anime for you`}
             options={MEDIA_OPTIONS.smallCarouselOptions}
