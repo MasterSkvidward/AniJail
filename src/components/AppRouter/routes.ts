@@ -3,6 +3,7 @@ export const publicRoutes = {
     ANIME: '/anime',
     ANIMEID: '/anime/:id',
     ERROR: '/404',
+    RANDOM: '/anime/55644',
     ANY: '/*',
 
 

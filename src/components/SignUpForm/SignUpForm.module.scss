@@ -1,0 +1,58 @@
+@import "../../styles/colors";
+
+.form {
+  position: relative;
+  // max-height: 750px;
+
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+  width: 100%;
+  z-index: 2;
+
+  &__title {
+    font-size: 28px;
+    text-align: center;
+  }
+
+  &__column {
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+  }
+
+  &__btn {
+    text-align: center;
+    background-color: $main-color;
+    padding: 13px 20px;
+    margin: 20px 0px 0px 0px;
+    border-radius: 10px;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+
+    &:disabled {
+      background-color: $skeleton-dark;
+    }
+  }
+
+  &__ref {
+    display: flex;
+    align-items: center;
+    margin: 5px 0px 0px 0px;
+    align-self: center;
+    font-size: 16.8px;
+
+    span {
+      padding: 0px 10px;
+      color: $main-color;
+      transition: all 0.2s ease-in;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+}

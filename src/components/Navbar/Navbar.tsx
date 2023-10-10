@@ -25,14 +25,14 @@ const Navbar: FC = () => {
   const [menuVisible, setMenuVisible] = useState(false);
 
   const dispatch = useDispatch();
-  const {theme} = useTypedSelector(state => state.global)
+  const { theme } = useTypedSelector((state) => state.global);
   const { isAuth, user } = useTypedSelector((state) => state.auth);
 
-  const changeTheme = ():void => {
-    const newTheme = (theme === "dark") ? "light" : "dark";
+  const changeTheme = (): void => {
+    const newTheme = theme === "dark" ? "light" : "dark";
     localStorage.setItem("theme", newTheme);
-    dispatch(GlobalActionCreators.setTheme(newTheme))
-  }
+    dispatch(GlobalActionCreators.setTheme(newTheme));
+  };
 
   const handleClick = (event: MouseEvent<HTMLLIElement>): void => {
     setSelectedNumber(Number(event.currentTarget.dataset.index));
@@ -60,13 +60,13 @@ const Navbar: FC = () => {
   const handlerOptionsClick = (e: MouseEvent, url: string) => {
     setMenuVisible(false);
     navigate(url);
+    navigate(0);
   };
 
   useEffect(() => {
     document.addEventListener("click", handlerDocumentClick);
     return () => document.removeEventListener("click", handlerDocumentClick);
   }, []);
-  
 
   return (
     <nav className={[classes.navbar, "_container1800"].join(" ")}>
@@ -103,10 +103,11 @@ const Navbar: FC = () => {
         <SearchBar />
       </div>
 
-
-
       <div className={classes.profile}>
-      <InputSwitchTheme isChecked={theme === "dark"} changeTheme={changeTheme}/>
+        <InputSwitchTheme
+          isChecked={theme === "dark"}
+          changeTheme={changeTheme}
+        />
         {isAuth ? (
           <div
             className={classes["profile__img"]}

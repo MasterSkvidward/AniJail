@@ -2,32 +2,35 @@ import React, { useState, useEffect, useLayoutEffect } from "react";
 import classes from "./AnimeIdPage.module.scss";
 import AnimeCard from "../../components/Anime/AnimeCard/AnimeCard";
 
-import { useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { AnimeService } from "../../services/AnimeService";
-import { IAnime, IAnimeFull, IAnimePicture } from "../../types/jikanMoe/jikan";
+import { IAnime, IAnimeFull, IAnimePicture, IAnimeRecommendation } from "../../types/jikanMoe/jikan";
 import AnimeDetails from "../../components/Anime/AnimeDetails/AnimeDetails";
 import { useFetching } from "../../hooks/useFetching";
 import { ISingleAnime } from "../../types/anime/anime-single";
+import { useDispatch } from "react-redux";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { AnimeActionCreators } from "../../store/reducers/anime/action-creatores";
 
 type ParamsType = {
   id: string;
 };
 
 const AnimeIdPage = () => {
+const dispatch = useDispatch();
   const params = useParams<ParamsType>();
 
   const [anime, setAnime] = useState<IAnimeFull | null>(null);
-  const [animePictures, setAnimePictures] = useState<IAnimePicture[] | []>([]);
-  const [similarAnime, setSimilarAnime] = useState<IAnime[]>([]);
+//   const [animePictures, setAnimePictures] = useState<IAnimePicture[] | []>([]);
 
-  const fetchAnimePictures = async () => {
-    const response = await AnimeService.getAnimePictures(params.id);
-    setAnimePictures(response);
+
+  const fetchSimilar = (id:string | undefined) => {
+    dispatch(AnimeActionCreators.GetAnimeRecommendations(Number(id)));
+    // setSimilarAnime(response);
   };
 
-  const fetchSimilar = async () => {
-    const response = await AnimeService.getAnimeSeasonNow();
-    setSimilarAnime(response);
+  const fetchSeasonAnime = (limit:number | undefined) => {
+    dispatch(AnimeActionCreators.GetAnimeSeason({limit: Number(limit)}));
   };
 
   const [fetchAnime, animeIsLoading, animesError] = useFetching(async () => {
@@ -35,12 +38,12 @@ const AnimeIdPage = () => {
     setAnime(response);
   });
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     window.scrollTo(0, 0);
     fetchAnime();
-    fetchAnimePictures();
-    fetchSimilar();
-  }, [params]);
+    fetchSimilar(params.id);
+    fetchSeasonAnime(10);
+  }, []);
 
   if (animeIsLoading) return <></>;
 
@@ -48,9 +51,7 @@ const AnimeIdPage = () => {
     <div className={classes["anime-page"]}>
       <AnimeCard anime={anime} />
       <AnimeDetails
-        similarAnime={similarAnime}
         anime={anime}
-        animePictures={animePictures}
       />
     </div>
   );

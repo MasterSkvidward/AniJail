@@ -1,21 +1,29 @@
+@import "../../../styles/media_queries";
+
+$width: 225px;
+
 .anime-list {
     // z-index: 99;
 
     &__grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-        // grid-template-rows: repeat(auto-fit, minmax(250px, 1fr));
-        column-gap: 20px;
-        row-gap: 20px;
-        // padding: 0px 0px 5% 0px;
+        // grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(197px, 197px));
+        // grid-template-columns: minmax(130px, 227px), minmax(130px, 227px), minmax(130px, 227px), minmax(130px, 227px), minmax(130px, 227px);
+        // grid-template-columns: auto auto auto auto auto;
+        column-gap: 15px;
+        row-gap: 30px;
+
+        // @include for-medium-desktop-up {
+        //     column-gap: 1px;
+        // }
     }
 
     &__item {
         // position: relative;
         border-radius: 14px;
-        height: 390px;
         transition: 0.2s ease-in-out;
-
+        max-width: calc($width * 0.85);
         cursor: pointer;
 
         &:hover {
@@ -37,93 +45,93 @@
 
 
 
-@media (max-width: 1820px) {
-    .anime-list {
-        // max-width: 500px;
-        // height: 30vw;
+// @media (max-width: 1820px) {
+//     .anime-list {
+//         // max-width: 500px;
+//         // height: 30vw;
 
-        &__grid {
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-        }
+//         &__grid {
+//             grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+//         }
 
-        &__item {
-            height: 23vw;
+//         &__item {
+//             height: 23vw;
 
-        }
-    }
-}
+//         }
+//     }
+// }
 
-@media (max-width: 1675px) {
-    .anime-list {
-        // max-width: 500px;
-        // height: 30vw;
+// @media (max-width: 1675px) {
+//     .anime-list {
+//         // max-width: 500px;
+//         // height: 30vw;
 
-        &__grid {
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-        }
+//         &__grid {
+//             grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+//         }
 
-        &__item {
-            height: 27vw;
+//         // &__item {
+//         //     height: 27vw;
 
-        }
-    }
-}
+//         // }
+//     }
+// }
 
-@media (max-width: 1510px) {
-    .anime-list {
-        // max-width: 500px;
-        // height: 30vw;
+// @media (max-width: 1510px) {
+//     .anime-list {
+//         // max-width: 500px;
+//         // height: 30vw;
 
-        &__grid {
-            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-        }
+//         &__grid {
+//             grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+//         }
 
-        &__item {
-            height: 27vw;
+//         // &__item {
+//         //     height: 27vw;
 
-        }
-    }
-}
+//         // }
+//     }
+// }
 
-@media (max-width: 1390px) {
-    .anime-list {
-        // max-width: 500px;
-        // height: 30vw;
+// @media (max-width: 1390px) {
+//     .anime-list {
+//         // max-width: 500px;
+//         // height: 30vw;
 
-        &__grid {
-            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-        }
+//         &__grid {
+//             grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+//         }
 
-        &__item {
-            height: 32vw;
+//         // &__item {
+//         //     height: 32vw;
 
-        }
-    }
-}
+//         // }
+//     }
+// }
 
 
-//! Filter - display: none
-@media (max-width: 1160px) {
-    .anime-list {
-        // max-width: 500px;
-        // height: 30vw;
+// //! Filter - display: none
+// @media (max-width: 1160px) {
+//     .anime-list {
+//         // max-width: 500px;
+//         // height: 30vw;
 
-        &__grid {
-            // grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-        }
+//         &__grid {
+//             // grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+//         }
 
-        &__item {
-            height: 36vw;
+//         // &__item {
+//         //     height: 36vw;
 
-        }
-    }
-}
+//         // }
+//     }
+// }
 
-@media (max-width: 920px) {
-    .anime-list {
+// @media (max-width: 920px) {
+//     .anime-list {
 
-        &__item {
-            height: 48vw;
-        }
-    }
-}
+//         // &__item {
+//         //     height: 48vw;
+//         // }
+//     }
+// }

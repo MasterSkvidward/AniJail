@@ -17,24 +17,30 @@ import useDebounce from "../../hooks/useDebounce";
 import { AnimeService } from "../../services/AnimeService";
 import MyModal from "../MyModal/MyModal";
 import { Search } from "react-router-dom";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { AnimeActionCreators } from "../../store/reducers/anime/action-creatores";
+import { useDispatch } from "react-redux";
 
 const SearchBar = () => {
   const search = useRef<HTMLFormElement>(null);
   const searchList = useRef<HTMLDivElement>(null);
+  const dispatch = useDispatch();
 
   const [visible, setVisible] = useState<boolean>(false);
   const [value, setValue] = useState<string>("");
-  const [animeItems, setAnimeItems] = useState<IAnime[] | []>([]);
+//   const [animeItems, setAnimeItems] = useState<IAnime[] | []>([]);
+
+  const {animeSearch} = useTypedSelector(state => state.anime);
 
   const debouncedSearch = useDebounce(searchAnime, 400);
 
   async function searchAnime() {
-    const response = await AnimeService.getAnimeBySearch(searchParams);
-    setAnimeItems(response.data);
+    // const response = await AnimeService.getAnimeBySearch(searchParams);
+    dispatch(AnimeActionCreators.GetAnimeSearch(searchParams));
   }
 
   const searchParams: IAnimeSearchParams = {
-    letter: value,
+    q: value,
     order_by: "score",
     sort: "desc",
     limit: 15,
@@ -99,7 +105,7 @@ const SearchBar = () => {
         onClick={handlerClickMenu}
       >
         <div className={classes.search__items}>
-          {animeItems.map((anime, index) => (
+          {animeSearch.map((anime, index) => (
             <AnimeItemSmall anime={anime} key={index} />
           ))}
         </div>

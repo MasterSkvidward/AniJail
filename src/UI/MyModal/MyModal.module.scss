@@ -5,7 +5,7 @@
     right: 0;
     left: 0;
     display: none;
-    background-color: rgba(18, 17, 17, 0.9);
+    background-color: rgba(18, 17, 17, 0.8);
     width: 100vw;
     height: 100vh;
 }
@@ -15,6 +15,7 @@
     justify-content: center;
     align-items: center;
     z-index: 9999;
+    cursor:auto;
 }
 
 .hide-scroll {

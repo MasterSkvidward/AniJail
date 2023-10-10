@@ -1,4 +1,7 @@
+@import "../../../styles/media_queries";
+
 .anime {
+    min-height: 100vh;
 
     &__container {
         // background-color: white;
@@ -6,7 +9,7 @@
         // min-height: 100vh;
         display: flex;
         flex-direction: column;
-        row-gap: 35px;
+        row-gap: 50px;
     }
 
     &__title {
@@ -17,44 +20,43 @@
 
     &__block {
         display: flex;
-        justify-content: space-between;
+        // justify-content: space-between;
         align-items: flex-start;
-        column-gap: 40px;
+        column-gap: 100px;
+
+        @include for-medium-desktop-up {
+            column-gap: 50px;
+        }
     }
 
     &__column {
-        flex: 1 1 auto;
+        flex: 0 1 1130px;
         display: flex;
         flex-direction: column;
         row-gap: 15px;
-        z-index: 2100;
+        // z-index: 2100;
     }
 
     &__filter {
         position: sticky;
-        top: 95px;
+        top: 115px;
         flex: 1 1 auto;
-        max-width: 400px;
+        max-width: 460px;
         // max-width: 440px;
         // background-color: white;
+
+        // @include for-medium-desktop-up {
+        //     max-width: 350px;
+        // }
+
+        @include for-desktop-up {
+            display: none;
+            position: relative;
+        }
     }
 
     &__lastRow {
         height: 400px;
-    }
-}
-
-
-
-@media (max-width: 1160px) {
-    .anime {
-        // max-width: 500px;
-        // height: 30vw;
-
-        &__filter {
-            display: none;
-        }
-
     }
 }
 

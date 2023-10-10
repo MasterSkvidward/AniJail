@@ -21,7 +21,7 @@ const AnimeSearch = () => {
   }
 
   const searchParams: IAnimeSearchParams = {
-    letter: value,
+    q: value,
     order_by: "score",
     sort: "desc",
     limit: 15,

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { API_ENDPOINTS } from "./api-endpoints";
 
+export const PUBLIC_URL = process.env.PUBLIC_URL;
 export const API_URL = "https://api.jikan.moe/v4";
 
 const $api = axios.create({

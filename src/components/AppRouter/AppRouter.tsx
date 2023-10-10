@@ -14,7 +14,7 @@ const AppRouter: FC = () => {
       <Route path={publicRoutes.HOMEPAGE} element={<HomePage />} />
       <Route path={publicRoutes.ERROR} element={<Error />} />
       <Route path={publicRoutes.ANIME} element={<Anime />} />
-      <Route path={`anime/:id`} element={<AnimeIdPage />} />
+      <Route path={`anime/:id`} element={<AnimeIdPage/>} />
       <Route path={`users/:id`} element={<Profile />} />
       <Route path={`users/:id/watchlist`} element={<ProfileList />} />
       <Route

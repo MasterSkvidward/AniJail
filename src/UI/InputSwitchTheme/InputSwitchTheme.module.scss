@@ -43,8 +43,8 @@
 }
 
 .icon {
-    font-size: 0.8em;
-    //     font-weight: 600;
+  font-size: 0.8em;
+  //     font-weight: 600;
 }
 
 @media (max-width: 1500px) {
@@ -68,5 +68,10 @@
     i {
       font-size: 11.2px;
     }
+  }
+
+  .icon {
+    font-size: 0.99em;
+    //     font-weight: 600;
   }
 }

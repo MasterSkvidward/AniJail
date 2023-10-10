@@ -11,6 +11,8 @@ import {
   IAnimePicture,
   IAnimePicturesResponse,
   IAnimeScreenshotsResponse,
+  IAnimeRecommendation,
+  IAnimeRecommendationsResponse,
 } from "../types/jikanMoe/jikan";
 
 import $api from "../API/api";
@@ -37,14 +39,15 @@ export class AnimeService {
     return response.data.data;
   }
 
-  //   static async getAnimeScreenshots(
-  //     id: number | string | undefined
-  //   ): Promise<IAnimeScreenshots[]> {
-  //     const response = await axios.get<IAnimeScreenshotsResponse>(
-  //       `https://shikimori.me/api/animes/${id}/screenshots`
-  //     );
-  //     return response.data.data;
-  //   }
+  static async getAnimeRecommendatios(id: number | undefined): Promise<IAnimeRecommendation[]> {
+    const response = await $api.get<IAnimeRecommendationsResponse>(`${API_ENDPOINTS.ANIME}/${id}/recommendations`, {
+        params: {
+            limit: 15,
+        }
+    });
+    
+    return response.data.data;
+  }
 
   static async getAnimeBySearch(
     params?: IAnimeSearchParams
@@ -55,7 +58,7 @@ export class AnimeService {
         ...params,
       },
     });
-
+    
     return response.data;
   }
 
@@ -70,6 +73,15 @@ export class AnimeService {
 
     return response.data.data;
   }
+
+    //   static async getAnimeScreenshots(
+  //     id: number | string | undefined
+  //   ): Promise<IAnimeScreenshots[]> {
+  //     const response = await axios.get<IAnimeScreenshotsResponse>(
+  //       `https://shikimori.me/api/animes/${id}/screenshots`
+  //     );
+  //     return response.data.data;
+  //   }
 
   //! AnimeSearch API
 
@@ -94,3 +106,5 @@ export class AnimeService {
   //     return response.data;
   //   }
 }
+
+

@@ -59,7 +59,7 @@ const AnimeCard: FC<AnimeCardProps> = ({ anime }) => {
   return (
     <section className={classes["anime-card"]}>
       <MyModal visible={modalVisible} setVisible={setModalVisible}>
-        <ImageResponsive url={anime.images.jpg["large_image_url"]} />
+        <ImageResponsive url={anime.images.jpg.large_image_url} />
       </MyModal>
       <div className={classes["anime-card__header"]}>
         <div
@@ -80,7 +80,7 @@ const AnimeCard: FC<AnimeCardProps> = ({ anime }) => {
               className={classes["anime-card__image"]}
               onClick={() => setModalVisible(true)}
             >
-              <img src={anime?.images.jpg.image_url} alt="Anime Preview"></img>
+              <img src={anime?.images.jpg.large_image_url} alt="Anime Preview"></img>
               <img className={classes["search-loupe"]} src={searchLoupe} alt="loupe"></img>
             </div>
             <div className={classes["anime-card__dropmenu"]}>
@@ -97,7 +97,7 @@ const AnimeCard: FC<AnimeCardProps> = ({ anime }) => {
           <div className={classes["anime-card__score"]}>
             {anime?.score
                 ?
-                    <Score score={anime?.score} fontSize={30} />
+                    <Score score={anime?.score}/>
                 :
                     <span>No scores</span>
             }

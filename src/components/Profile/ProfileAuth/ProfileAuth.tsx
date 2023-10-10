@@ -1,7 +1,13 @@
-import React, { useState, FC, Dispatch, SetStateAction } from "react";
+import React, {
+  useState,
+  FC,
+  Dispatch,
+  SetStateAction,
+  KeyboardEvent,
+} from "react";
 import classes from "./ProfileAuth.module.scss";
-import LoginForm from "../../../UI/LoginForm/LoginForm";
-import SignUpForm from "../../../UI/SignUpForm/SignUpForm";
+import LoginForm from "../../LoginForm/LoginForm";
+import SignUpForm from "../../SignUpForm/SignUpForm";
 
 interface ProfileAuthProps {
   setModalVisible: Dispatch<SetStateAction<boolean>>;
@@ -10,19 +16,29 @@ interface ProfileAuthProps {
 const ProfileAuth: FC<ProfileAuthProps> = ({ setModalVisible }) => {
   const [isNewUser, setIsNewUser] = useState(false);
 
+  const handleMouseDown = (e: KeyboardEvent<HTMLDivElement>): void => {
+    if (e.code === "Escape") setModalVisible(false);
+  };
+
   return (
-    <div className={classes["profile"]}>
-      {isNewUser ? (
-        <SignUpForm
-          setIsNewUser={setIsNewUser}
-          setModalVisible={setModalVisible}
-        />
-      ) : (
-        <LoginForm
-          setIsNewUser={setIsNewUser}
-          setModalVisible={setModalVisible}
-        />
-      )}
+    <div
+      className={classes["profile"]}
+      onClick={(e) => e.stopPropagation()}
+      onKeyDown={handleMouseDown}
+    >
+      <div className={classes["profile__img"]}>
+        {isNewUser ? (
+          <SignUpForm
+            setIsNewUser={setIsNewUser}
+            setModalVisible={setModalVisible}
+          />
+        ) : (
+          <LoginForm
+            setIsNewUser={setIsNewUser}
+            setModalVisible={setModalVisible}
+          />
+        )}
+      </div>
     </div>
   );
 };

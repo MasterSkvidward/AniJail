@@ -54,7 +54,7 @@ const AnimeItemBig: FC<AnimeItemBigProps> = ({ anime }) => {
             )}
           </h4>
           <div className={classes["anime__synopsis"]}>
-            {getShortenedString(anime.synopsis, 115)}
+            {getShortenedString(anime.synopsis, 110) || "Nothing yet..."}
           </div>
           <div className={classes["anime__details"]}>
             {/* <span>{`${anime.type}, ${anime.year}`}</span> */}

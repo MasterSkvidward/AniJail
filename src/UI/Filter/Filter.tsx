@@ -32,6 +32,7 @@ const Filter = memo(() => {
         if (yearTo.current) yearTo.current.value = '';
         if (scoreFrom.current) scoreFrom.current.value = '';
         if (scoreTo.current) scoreTo.current.value = '';
+        window.scrollTo(0,0);
     }
     
     const handlerSelectChange = (optionList: MultiValue<IFilterOption>, paramValue: string):void => {

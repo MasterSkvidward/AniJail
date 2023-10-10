@@ -20,6 +20,15 @@ export interface IAnimePicture {
     }
 }
 
+export interface IAnimeRecommendation {
+    entry: {
+        mal_id: number
+        url: string
+        images: IAnimePicture
+        title: string
+    }
+}
+
 export interface IAnimeScreenshots {
     original: string;
     preview: string;
@@ -125,6 +134,10 @@ export interface IAnimeFullResponse {
     data: IAnimeFull;
 }
 
+export interface IAnimeRecommendationsResponse {
+    data: IAnimeRecommendation[];
+}
+
 export interface IAnimePicturesResponse {
     data: IAnimePicture[];
 }
@@ -140,7 +153,7 @@ export interface IFilter {
 
 export interface IAnimeSearchParams {
     page?: number;
-    letter?: string;
+    q?: string;
     status?: string;
     rating?: string;
     order_by?: string;

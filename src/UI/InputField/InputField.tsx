@@ -1,25 +1,30 @@
-import React, {FC} from 'react';
-
-import classes from './InputField.module.scss';
+import React, { FC, forwardRef } from "react";
+import { IFormValues } from "../../components/LoginForm/LoginForm";
+import classes from "./InputField.module.scss";
 
 interface InputFieldProps {
-    label: string,
-    type: string,
-    value: string,
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void,
+  type: string;
+  placeholder: string;
+  label: string;
+  errors: any;
 }
 
-const InputField:FC<InputFieldProps> = ({label, type, value, onChange}) => {
-    return (   
-        <div className={[classes["form__group"], classes['field']].join(' ')}>
-            <input
-                type={type}
-                value={value}
-                onChange={onChange}
-                className={classes["form__field"]} placeholder={label} name={label} id={label} required />
-            <label htmlFor={label} className={classes["form__label"]}>{label}</label>
+export type Ref = HTMLInputElement;
+
+const InputField = forwardRef<Ref, InputFieldProps>(
+  ({ label, errors, ...props }, ref) => {
+    return (
+      <div>
+        <label className={classes.label}>
+          {label}
+          <input {...props} ref={ref} className={classes.input} />
+        </label>
+        <div className={classes.error}>
+          <span>{errors}</span>
         </div>
+      </div>
     );
-}
+  }
+);
 
 export default InputField;

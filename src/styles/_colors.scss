@@ -19,7 +19,9 @@ $black-coal: rgba(21, 21, 21, 0.9);
 
 $grey-dark: rgba(57, 57, 57, 0.7);
 $grey: rgba(0, 0, 0, 0.07);
-$grey-medium: rgb(143, 143, 143);
+$grey-medium: rgb(146, 146, 146);
+$grey-medium-darker: rgb(89, 89, 89);
+
 $grey-light: rgba(243, 242, 242, 0.1);
 $grey-thin: rgba(201, 201, 201, 0.8);
 
@@ -28,11 +30,14 @@ $green-light: rgb(40, 221, 94);
 
 $red: rgb(191, 31, 47);
 
-$white-default: rgb(255, 255, 255);
+$skeleton-light: rgba(202, 202, 202, 0.4);
+$skeleton-dark: rgba(60, 60, 60, 0.4);
+
+$white-default: rgb(242, 242, 242);
 $white: rgb(237, 237, 237);
 $white-light: rgb(216, 216, 216);
 // $white: #dedede;
-$white-snow: #ededed;
+$white-snow: #e4e4e4;
 $white-dark: rgba(255, 255, 255, 0.8);
 
 //!? box shadows and borders
@@ -51,6 +56,7 @@ html[data-theme="light"] {
   --background-secondary: #{$white-default};
   --background-tertiary: #{$grey};
   --background-reverse: #{$black-dark};
+  --background-skeleton: #{$skeleton-light};
 
   --border-primary: #{$grey-thin};
   --box-shadow-primary: #{$box-shadow-dark};
@@ -60,6 +66,7 @@ html[data-theme="light"] {
 
   --text-primary: #{$black-light};
   --text-secondary: #{$black-light};
+  --text-tertiary: #{$grey-medium};
   --text-reverse: #{$white};
 
   // --border-primary: #{$grey-light};
@@ -75,6 +82,7 @@ html[data-theme="dark"] {
   --background-secondary: #{$black-light};
   --background-tertiary: #{$grey-light};
   --background-reverse: #{$white-snow};
+  --background-skeleton: #{$skeleton-dark};
 
   --border-primary: #{$grey-light};
   --box-shadow-primary: #{$box-shadow-dark};
@@ -84,6 +92,7 @@ html[data-theme="dark"] {
 
   --text-primary: #{$white};
   --text-secondary: #{$white-dark};
+  --text-tertiary: #{$grey-medium};
   --text-reverse: #{$black-light};
 
   // --border-primary: #{$grey-dark};

@@ -1,36 +1,7 @@
-@import "../../../styles/media_queries";
-
 $width: 225px;
 $height: 318px;
 
-@keyframes tooltipShow {
-  to {
-    opacity: 1;
-    visibility: visible;
-    transform: translate(-2%, 0);
-  }
-}
-
 .anime {
-  position: relative;
-  width: 100%;
-
-
-  &__preview {
-    position: absolute;
-    top: -20%;
-    left: 234px;
-    border-radius: 13px;
-    display: none;
-
-    opacity: 0;
-    visibility: hidden;
-
-    @include for-small-desktop-up {
-        display: none;
-    }
-  }
-
   &__body {
     display: flex;
     flex-direction: column;
@@ -68,12 +39,4 @@ $height: 318px;
     transition: 0.2s;
     cursor: pointer;
   }
-}
-
-.preview-visible {
-  z-index: 77;
-  visibility: visible;
-  opacity: 1;
-  display: block;
-  animation: tooltipShow 0.2s ease-out forwards;
 }

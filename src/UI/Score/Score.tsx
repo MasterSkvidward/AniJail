@@ -5,12 +5,11 @@ import classes from './Score.module.scss';
 
 interface ScoreProps {
     score: number | undefined;
-    fontSize?: number
 }
 
-const Score:FC<ScoreProps> = ({score, fontSize}) => {
+const Score:FC<ScoreProps> = ({score}) => {
     return (
-        <div style={{fontSize: fontSize}} className={score? [classes['score'], classes[getScoreColor(score? score: 0)]].join(' ') : classes["score"]}>
+        <div className={score? [classes['score'], classes[getScoreColor(score? score: 0)]].join(' ') : classes["score"]}>
             {getAnimeScore(score)}
         </div>
     );

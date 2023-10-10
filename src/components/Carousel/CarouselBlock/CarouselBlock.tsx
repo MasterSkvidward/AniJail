@@ -3,23 +3,34 @@ import { IAnime } from "../../../types/jikanMoe/jikan";
 import { AnimeService } from "../../../services/AnimeService";
 import classes from "./CarouselBlock.module.scss";
 import CarouselBlockItem from "../CarouselBlockItem/CarouselBlockItem";
-import * as MEDIA_OPTIONS from "./media-options";
+import {bigCarouselOptions, smallCarouselOptions} from "./media-options";
 import { getCurrentSeasonName } from "../../../utils/utils";
 import AnimeItem from "../../Anime/AnimeItem/AnimeItem";
 import AnimeItemBig from "../../Anime/AnimeItemBig/AnimeItemBig";
+import ContentLoader from "react-content-loader";
+import { useTypedSelector } from "../../../hooks/useTypedSelector";
 
 const CarouselBlock = () => {
-  const [animeCurrentSeason, setAnimeCurrentSeason] = useState<IAnime[]>([]);
 
-  const fetchAnime = async () => {
-    const seasonAnime = await AnimeService.getAnimeSeasonNow();
-    // const popularAnime = await AnimeService.getAnimeSeasonNow();
-    // const dateAnime = await AnimeService.getAnimeSeasonNow();
-    setAnimeCurrentSeason(seasonAnime);
-  };
+  const { animeSeason: animeCurrentSeason } = useTypedSelector(
+    (state) => state.anime
+  );
+
+//   const fetchAnime = async () => {
+//     // const seasonAnime = await AnimeService.getAnimeSeasonNow();
+//     // const popularAnime = await AnimeService.getAnimeSeasonNow();
+//     // const dateAnime = await AnimeService.getAnimeSeasonNow();
+//   };
+
+   let carousels = [
+    { title: `Anime for you`, options: smallCarouselOptions, arrowTop: 40, data: animeCurrentSeason},
+    { title: `Popular`, options: smallCarouselOptions, arrowTop: 40, data: animeCurrentSeason},
+    { title: `A-Z`, options: smallCarouselOptions, arrowTop: 40, data: animeCurrentSeason},
+    ]
+
 
   useEffect(() => {
-    fetchAnime();
+    // fetchAnime();
   }, []);
 
   return (
@@ -28,45 +39,60 @@ const CarouselBlock = () => {
         <div className={"_container1800"}>
           <CarouselBlockItem
             title={`${getCurrentSeasonName()} season`}
-            options={MEDIA_OPTIONS.bigCarouselOptions}
+            options={bigCarouselOptions}
+            arrowTop={48}
           >
-            {animeCurrentSeason.map((item, index) => (
-              <AnimeItemBig anime={item} key={index} />
-            ))}
+            {animeCurrentSeason.length !== 0
+              ? animeCurrentSeason.map((item, index) => (
+                  <AnimeItemBig anime={item} key={index} />
+                ))
+              : [1, 2, 3, 4, 5].map((item, index) => (
+                  <ContentLoader
+                    key={index}
+                    speed={2}
+                    className={classes["skeleton__big"]}
+                    foregroundColor="var(--background-secondary)"
+                    backgroundColor="var(--background-skeleton)"
+                  >
+                    <rect x="0" y="0" rx="2" ry="2" width="342" height="548" />
+                  </ContentLoader>
+                ))}
           </CarouselBlockItem>
         </div>
       </div>
       <div className={"_container1800"}>
         <div className={classes["carousel-block__body"]}>
-          <CarouselBlockItem
-            title={`Anime for you`}
-            options={MEDIA_OPTIONS.smallCarouselOptions}
-            arrowTop={40}
-          >
-            {animeCurrentSeason.map((item, index) => (
-              <AnimeItem anime={item} key={index} />
-            ))}
-          </CarouselBlockItem>
-
-          <CarouselBlockItem
-            title={"Popular"}
-            options={MEDIA_OPTIONS.smallCarouselOptions}
-            arrowTop={40}
-          >
-            {animeCurrentSeason.map((item, index) => (
-              <AnimeItem anime={item} key={index} />
-            ))}
-          </CarouselBlockItem>
-
-          <CarouselBlockItem
-            title={"A-Z"}
-            options={MEDIA_OPTIONS.smallCarouselOptions}
-            arrowTop={40}
-          >
-            {animeCurrentSeason.map((item, index) => (
-              <AnimeItem anime={item} key={index} />
-            ))}
-          </CarouselBlockItem>
+            <>
+            {carousels.map((carousel, index) => (
+                <CarouselBlockItem
+                title={carousel.title}
+                options={carousel.options}
+                arrowTop={carousel.arrowTop}
+                key={index}
+              >
+                {carousel.data.length !== 0
+                    ?
+                        carousel.data.map((item, index) => (
+                            <AnimeItem anime={item} key={index} />
+                        ))
+                    :
+                        [1, 2, 3, 4, 5, 6, 7, 8, 9].map((item, index) => (
+                            <ContentLoader
+                            key={index}
+                            speed={2}
+                            className={classes["skeleton__small"]}
+                            foregroundColor="var(--background-secondary)"
+                            backgroundColor="var(--background-skeleton)"
+                            >
+                            <rect x="0" y="0" rx="2" ry="2" width="182" height="268" />
+                            <rect x="0" y="282" rx="2" ry="2" width="182" height="30" />
+                            </ContentLoader>
+                        ))     
+                }
+              </CarouselBlockItem>
+            ))
+            }
+            </>
         </div>
       </div>
     </section>

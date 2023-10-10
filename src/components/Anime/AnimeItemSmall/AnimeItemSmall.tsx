@@ -15,10 +15,15 @@ interface AnimeItemSmallProps {
 const AnimeItemSmall: FC<AnimeItemSmallProps> = ({ anime }) => {
   const navigate = useNavigate();
 
+  const handleClick = (id: number) => {
+    navigate(`/anime/${id}`);
+    navigate(0);
+  };
+
   return (
     <div
       className={classes["anime"]}
-      onClick={() => navigate(`/anime/${anime.mal_id}`)}
+      onClick={() => handleClick(anime.mal_id)}
     >
       <div className={classes["image"]}>
         <Image url={anime.images.jpg.image_url} />
@@ -36,7 +41,7 @@ const AnimeItemSmall: FC<AnimeItemSmallProps> = ({ anime }) => {
         </div>
 
         <div className={classes["body__info"]}>
-          <Score score={anime?.score || 0} fontSize={15} />
+          <Score score={anime?.score || 0}/>
           <div className={classes["body__genres"]}>
             {formatGenres(anime?.genres).map((genre, index) => (
               <div className={classes["body__genre"]} key={index}>

@@ -132,6 +132,12 @@ $height: 322px;
     display: flex;
     flex-direction: column;
     row-gap: 5px;
+   
+
+    & > div:first-child {
+        font-size: 1.87em;
+    }
+
 
     & > span {
       font-size: 1.25em;
@@ -156,7 +162,7 @@ $height: 322px;
         transition: all 0.2s;
         line-height: 120%;
 
-        padding: 8px 22px;
+        padding: 8px 30px;
         // min-width: 120px;
         max-width: 254px;
         align-items: center;

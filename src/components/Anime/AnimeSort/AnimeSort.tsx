@@ -22,8 +22,6 @@ const AnimeSort = () => {
   const observer = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
-    console.log(loadNewAnime);
-
     if (loadNewAnime) {
       dispatch(FilterActionCreators.setAnime(params));
       setPage(2);
