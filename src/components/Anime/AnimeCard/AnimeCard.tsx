@@ -2,6 +2,7 @@ import React, { FC, useState, useEffect, MouseEvent } from "react";
 import classes from "./AnimeCard.module.scss";
 import AnimeCardInfo from "../AnimeCardInfo/AnimeCardInfo";
 import background_img from "../../../assets/images/onepiece_2560x1440.jpg";
+
 import searchLoupe from "../../../assets/images/search-loupe.png";
 import MyModal from "../../../UI/MyModal/MyModal";
 import DropMenu from "../../../UI/DropMenu/DropMenu";
@@ -14,21 +15,24 @@ import * as CONSTANTS from "./constants";
 import MyRating from "../../../UI/MyRating/MyRating";
 import { getScoreColor } from "../../../utils/utils";
 import { AiFillStar } from "react-icons/ai";
+import { useTypedSelector } from "../../../hooks/useTypedSelector";
 
-interface AnimeCardProps {
-  anime: IAnime | null;
-  // animePictures: IAnimePicture[] | []
-}
+// interface AnimeCardProps {
+//   anime: IAnime | null;
+//   // animePictures: IAnimePicture[] | []
+// }
 
-const AnimeCard: FC<AnimeCardProps> = ({ anime }) => {
+const AnimeCard: FC = () => {
   const [animeColor, setAnimeColor] = useState<string>("");
   const [modalVisible, setModalVisible] = useState(false);
   const [ratingVisible, setRatingVisible] = useState(false);
   const [userRating, setUserRating] = useState<number>(7);
 
+  const {animeSingle: anime} = useTypedSelector(state => state.anime);
+
   const backgroundImgStyle = {
     // background: `linear-gradient(to bottom, transparent 0%, rgba(${animeColor}, 0.9) 92%), url(${background_img}) 0 30% / cover`,
-    backgroundImage: `linear-gradient(to bottom, transparent 0%, rgba(${animeColor}, 1) 97%), url(${background_img})`,
+    backgroundImage: `linear-gradient(to bottom, transparent 0%, rgba(${animeColor}, 1) 92%), url(${background_img})`,
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
     backgroundPosition: "center 30%",

@@ -4,7 +4,7 @@ import useDebounce from "../../../hooks/useDebounce";
 
 import classes from "./AnimeItem.module.scss";
 import { ISingleAnime } from "../../../types/anime/anime-single";
-import { IAnime } from "../../../types/jikanMoe/jikan";
+import { IAnime, IAnimeFull } from "../../../types/jikanMoe/jikan";
 import Image from "../../../UI/Image/Image";
 import ImageZoom from "../../../UI/ImageZoom/ImageZoom";
 import { publicRoutes } from "../../AppRouter/routes";

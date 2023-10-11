@@ -1,3 +1,5 @@
+import { IImages } from "../anime/anime-single";
+
 export interface IObjectInfo {
     mal_id: number;
     type: string;
@@ -27,6 +29,27 @@ export interface IAnimeRecommendation {
         images: IAnimePicture
         title: string
     }
+}
+
+export interface IAnimeCharacter {
+    character: {
+        mal_id: number
+        url: string
+        images: {
+            jpg : {
+                image_url: string
+                small_image_url: string
+            }
+
+            webp : {
+                image_url: string
+                small_image_url: string
+            }
+        }
+        name: string
+    }
+   role: string
+   voice_actors: any
 }
 
 export interface IAnimeScreenshots {
@@ -125,6 +148,10 @@ export interface IAnimeFull extends IAnime {
     striming: {name: string; url: string}[];
 }
 
+export interface IAnimeResponse {
+    data: IAnime;
+}
+
 export interface IAnimeListResponse {
     data: IAnime[];
     pagination: IPagination;
@@ -132,6 +159,10 @@ export interface IAnimeListResponse {
 
 export interface IAnimeFullResponse {
     data: IAnimeFull;
+}
+
+export interface IAnimeCharactersResponse {
+    data: IAnimeCharacter[];
 }
 
 export interface IAnimeRecommendationsResponse {

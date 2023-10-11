@@ -6,7 +6,8 @@
     flex: 1 1 auto;
     height: 45px;
     padding: 8px 15px;
-    border-radius: 15px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
 
     &:focus {
         outline: none;

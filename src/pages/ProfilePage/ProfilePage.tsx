@@ -15,13 +15,13 @@ const Profile = () => {
   const { user } = useTypedSelector((state) => state.auth);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
   }, []);
 
   return (
     <div className={classes["profile"]}>
-      <ProfileCard currentUser={user} />
-      <ProfileStatistics currentUser={user} />
+        <ProfileCard currentUser={user} />
+        <ProfileStatistics currentUser={user} />
     </div>
   );
 };

@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { ISingleAnime } from "../../../types/anime/anime-single";
 import classes from "./AnimePreview.module.scss";
 import AnimeCardInfo from "../AnimeCardInfo/AnimeCardInfo";
-import { IAnime } from "../../../types/jikanMoe/jikan";
+import { IAnime, IAnimeFull } from "../../../types/jikanMoe/jikan";
 import { getShortenedString } from "../../../utils/utils";
 import Loader from "../../../UI/Loader/Loader";
 

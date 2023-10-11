@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Image from "../../../UI/Image/Image";
 import { IAnimeRecommendation } from "../../../types/jikanMoe/jikan";
 
+
 interface AnimeItemPreviewProps {
   anime: IAnimeRecommendation;
 }
@@ -13,8 +14,8 @@ const AnimeItemPreview: FC<AnimeItemPreviewProps> = ({ anime }) => {
   const navigate = useNavigate();
 
   const handleClick = (id: number) => {
-    navigate(`/anime/${id}`);
-    navigate(0);
+     navigate(`/anime/${id}`);
+     navigate(0);
   };
 
   return (

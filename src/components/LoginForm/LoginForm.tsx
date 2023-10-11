@@ -47,6 +47,7 @@ const LoginForm: FC<LoginFormProps> = ({ setModalVisible, setIsNewUser }) => {
     e.preventDefault();
     dispatch(AuthActionCreators.setAuth(true));
     setModalVisible(false);
+    document.body.classList.remove("hide-scroll");
     resetField("login");
     resetField("password");
   };

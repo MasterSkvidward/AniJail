@@ -36,6 +36,8 @@ const Navbar: FC = () => {
 
   const handleClick = (event: MouseEvent<HTMLLIElement>): void => {
     setSelectedNumber(Number(event.currentTarget.dataset.index));
+    console.log(String(event.currentTarget.dataset.path));
+    
     navigate(String(event.currentTarget.dataset.path));
   };
 
@@ -60,7 +62,6 @@ const Navbar: FC = () => {
   const handlerOptionsClick = (e: MouseEvent, url: string) => {
     setMenuVisible(false);
     navigate(url);
-    navigate(0);
   };
 
   useEffect(() => {

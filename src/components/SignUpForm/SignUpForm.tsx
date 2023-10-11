@@ -47,7 +47,7 @@ const SignUpForm: FC<SignUpFormProps> = ({ setModalVisible, setIsNewUser }) => {
     e.preventDefault();
     dispatch(AuthActionCreators.setAuth(true));
     setModalVisible(false);
-
+    document.body.classList.remove("hide-scroll");
     resetField("nickname");
     resetField("email");
     resetField("password");

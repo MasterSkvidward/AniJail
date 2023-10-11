@@ -8,7 +8,7 @@
 
   &__title {
     // color: var(--text-primary);
-    color: $white;
+    color: var(--text-primary);
     display: flex;
     flex-direction: column;
     row-gap: 12px;

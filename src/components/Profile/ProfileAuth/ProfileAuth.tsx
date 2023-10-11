@@ -16,15 +16,15 @@ interface ProfileAuthProps {
 const ProfileAuth: FC<ProfileAuthProps> = ({ setModalVisible }) => {
   const [isNewUser, setIsNewUser] = useState(false);
 
-  const handleMouseDown = (e: KeyboardEvent<HTMLDivElement>): void => {
+  const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>): void => {
     if (e.code === "Escape") setModalVisible(false);
   };
 
   return (
     <div
       className={classes["profile"]}
-      onClick={(e) => e.stopPropagation()}
-      onKeyDown={handleMouseDown}
+      onMouseDown={(e) => e.stopPropagation()}
+      onKeyDown={handleKeyDown}
     >
       <div className={classes["profile__img"]}>
         {isNewUser ? (

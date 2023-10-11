@@ -23,6 +23,9 @@ const dispatch = useDispatch();
   const [anime, setAnime] = useState<IAnimeFull | null>(null);
 //   const [animePictures, setAnimePictures] = useState<IAnimePicture[] | []>([]);
 
+const fetchAnimeById = (id:string | undefined) => {
+    dispatch(AnimeActionCreators.GetAnimeSingle(Number(id)));
+  };
 
   const fetchSimilar = (id:string | undefined) => {
     dispatch(AnimeActionCreators.GetAnimeRecommendations(Number(id)));
@@ -33,25 +36,25 @@ const dispatch = useDispatch();
     dispatch(AnimeActionCreators.GetAnimeSeason({limit: Number(limit)}));
   };
 
-  const [fetchAnime, animeIsLoading, animesError] = useFetching(async () => {
-    const response = await AnimeService.getAnimeById(params.id);
-    setAnime(response);
-  });
+  
+  const fetchCharacters = (id:string | undefined) => {
+    dispatch(AnimeActionCreators.GetAnimeCharacters(Number(id)));
+  };
+
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    fetchAnime();
+    fetchAnimeById(params.id);
     fetchSimilar(params.id);
     fetchSeasonAnime(10);
+    fetchCharacters(params.id);
   }, []);
-
-  if (animeIsLoading) return <></>;
 
   return (
     <div className={classes["anime-page"]}>
-      <AnimeCard anime={anime} />
+      <AnimeCard/>
       <AnimeDetails
-        anime={anime}
+        // anime={anime}
       />
     </div>
   );

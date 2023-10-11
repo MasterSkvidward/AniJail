@@ -1,8 +1,6 @@
-import { IAnimeResponse } from "../types/anime/responses";
-import { IAnimeListItem } from "../types/anime/anime-list";
-import { ISingleAnime } from "../types/anime/anime-single";
 import {
   IAnime,
+  IAnimeResponse,
   IAnimeFull,
   IAnimeFullResponse,
   IAnimeSearchParams,
@@ -13,6 +11,8 @@ import {
   IAnimeScreenshotsResponse,
   IAnimeRecommendation,
   IAnimeRecommendationsResponse,
+  IAnimeCharacter,
+  IAnimeCharactersResponse,
 } from "../types/jikanMoe/jikan";
 
 import $api from "../API/api";
@@ -21,11 +21,24 @@ import { API_ENDPOINTS } from "../API/api-endpoints";
 export class AnimeService {
   //! JikanMoe API
 
-  static async getAnimeById(
+  static async getAnimeById(id: number | string | undefined): Promise<IAnime> {
+    const response = await $api.get<IAnimeResponse>(
+      `${API_ENDPOINTS.ANIME}/${id}`
+    );
+
+    return response.data.data;
+  }
+
+  static async getAnimeCharacters(
     id: number | string | undefined
-  ): Promise<IAnimeFull> {
-    const response = await $api.get<IAnimeFullResponse>(
-      `${API_ENDPOINTS.ANIME}/${id}/full`
+  ): Promise<IAnimeCharacter[]> {
+    const response = await $api.get<IAnimeCharactersResponse>(
+      `${API_ENDPOINTS.ANIME}/${id}/characters`,
+      {
+        params: {
+          limit: 10,
+        },
+      }
     );
     return response.data.data;
   }
@@ -39,13 +52,18 @@ export class AnimeService {
     return response.data.data;
   }
 
-  static async getAnimeRecommendatios(id: number | undefined): Promise<IAnimeRecommendation[]> {
-    const response = await $api.get<IAnimeRecommendationsResponse>(`${API_ENDPOINTS.ANIME}/${id}/recommendations`, {
+  static async getAnimeRecommendatios(
+    id: number | undefined
+  ): Promise<IAnimeRecommendation[]> {
+    const response = await $api.get<IAnimeRecommendationsResponse>(
+      `${API_ENDPOINTS.ANIME}/${id}/recommendations`,
+      {
         params: {
-            limit: 15,
-        }
-    });
-    
+          limit: 15,
+        },
+      }
+    );
+
     return response.data.data;
   }
 
@@ -58,7 +76,7 @@ export class AnimeService {
         ...params,
       },
     });
-    
+
     return response.data;
   }
 
@@ -74,7 +92,7 @@ export class AnimeService {
     return response.data.data;
   }
 
-    //   static async getAnimeScreenshots(
+  //   static async getAnimeScreenshots(
   //     id: number | string | undefined
   //   ): Promise<IAnimeScreenshots[]> {
   //     const response = await axios.get<IAnimeScreenshotsResponse>(
@@ -106,5 +124,3 @@ export class AnimeService {
   //     return response.data;
   //   }
 }
-
-

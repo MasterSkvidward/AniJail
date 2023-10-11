@@ -48,7 +48,6 @@ const SearchBar = () => {
   };
 
   const handlerFocusIn = (e: FocusEvent): void => {
-    console.log("FocusIn");
     search.current?.classList.add(classes.focused);
     setVisible(true);
     e.stopPropagation();

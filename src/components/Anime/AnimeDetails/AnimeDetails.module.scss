@@ -1,4 +1,5 @@
 @import "../../../styles/media_queries";
+@import "../../../styles/colors";
 
 .anime-details {
   //   background-color: var(--background-secondary);
@@ -33,10 +34,34 @@
     flex-direction: column;
     row-gap: 20px;
     // min-width: 603px;
+    max-width: 486px;
+    justify-self: flex-end;
 
     @include for-small-desktop-up {
       display: none;
     }
+  }
+}
+
+.characters {
+  display: flex;
+  flex-direction: column;
+  row-gap: 27px;
+
+  svg {
+    height: 35px;
+    width: 35px;
+    color: $main-color;
+  }
+
+  &__rows {
+    // display: grid;
+    // column-gap: 30px;
+    // row-gap: 30px;
+
+    // grid-template-columns: repeat(6, 112px);
+    // grid-template-columns: minmax(130px, 227px), minmax(130px, 227px), minmax(130px, 227px), minmax(130px, 227px), minmax(130px, 227px);
+    // grid-template-columns: auto auto auto auto auto;
   }
 }
 
@@ -100,12 +125,18 @@
   display: flex;
   flex-direction: column;
   row-gap: 23px;
+
+  svg {
+    height: 40px;
+    width: 40px;
+    color: $main-color;
+  }
 }
 
 .skeleton__item-small {
-    width: 466px;
-    height: 139px;
-    margin-bottom: 14px;
+  width: 466px;
+  height: 139px;
+  margin-bottom: 14px;
 }
 
 @media (max-width: 1500px) {
@@ -119,4 +150,3 @@
     }
   }
 }
-

@@ -60,6 +60,7 @@
     max-width: 650px;
     flex: 1 1 auto;
     margin: 0px 0px 0px 50px;
+    border-radius: 15px;
   }
 }
 
@@ -68,6 +69,7 @@
 }
 
 .profile {
+    position: relative;
   cursor: pointer;
   margin: 0px 5px 0px auto;
   display: flex;
@@ -75,12 +77,15 @@
   align-items: center;
 
   &__img {
-    position: relative;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    overflow: hidden;
 
     img {
-      border-radius: 50%;
-      height: 60px;
-      width: 60px;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
   }
 
@@ -172,22 +177,21 @@
 }
 
 @media (max-width: 1775px) {
-    .navbar__search {
-        max-width: 500px;
-    }
- }
+  .navbar__search {
+    max-width: 500px;
+  }
+}
 
- @media (max-width: 1300px) {
-    .navbar__search {
-        display: none;
-    }
- }
-
+@media (max-width: 1300px) {
+  .navbar__search {
+    display: none;
+  }
+}
 
 @media (max-width: 720px) {
-   .navbar {
+  .navbar {
     &__links {
-        display: none;
+      display: none;
     }
-   }
+  }
 }

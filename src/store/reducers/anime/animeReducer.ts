@@ -2,6 +2,10 @@ import { AnimeAction, AnimeActionsEnum, AnimeState } from "./types";
 import { IAnime, IAnimeSearchParams } from "../../../types/jikanMoe/jikan";
 
 const initialState: AnimeState = {
+  animeSingle: null,
+  animeSingleLoading: false,
+  animeSingleError: "",
+
   animeRecommendations: [],
   animeRecommendationsLoading: false,
   animeRecommendationsError: "",
@@ -13,6 +17,10 @@ const initialState: AnimeState = {
   animeSearch: [],
   animeSearchLoading: false,
   animeSearchError: "",
+
+  animeCharacters: [],
+  animeCharactersLoading: false,
+  animeCharactersError: "",
 };
 
 export default function animeReducer(
@@ -20,6 +28,17 @@ export default function animeReducer(
   action: AnimeAction
 ): AnimeState {
   switch (action.type) {
+    case AnimeActionsEnum.GET_ANIME_SINGLE:
+      return { ...state, animeSingle: action.payload };
+
+    case AnimeActionsEnum.SET_ANIME_SINGLE_LOADING:
+      return { ...state, animeSingleLoading: action.payload };
+
+    case AnimeActionsEnum.SET_ANIME_SINGLE_ERROR:
+      return { ...state, animeSingleError: action.payload };
+
+    //!
+
     case AnimeActionsEnum.GET_ANIME_RECOMMENDATIONS:
       return { ...state, animeRecommendations: action.payload };
 
@@ -50,6 +69,17 @@ export default function animeReducer(
 
     case AnimeActionsEnum.SET_ANIME_SEARCH_ERROR:
       return { ...state, animeSearchError: action.payload };
+
+    //!
+
+    case AnimeActionsEnum.GET_ANIME_CHARACTERS:
+      return { ...state, animeCharacters: action.payload };
+
+    case AnimeActionsEnum.SET_ANIME_CHARACTERS_LOADING:
+      return { ...state, animeCharactersLoading: action.payload };
+
+    case AnimeActionsEnum.SET_ANIME_CHARACTERS_ERROR:
+      return { ...state, animeCharactersError: action.payload };
 
     default:
       return state;

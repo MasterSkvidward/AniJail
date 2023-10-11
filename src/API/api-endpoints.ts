@@ -4,5 +4,6 @@ export const API_ENDPOINTS = {
   REFRESH_TOKEN: "/refresh",
  
   ANIME: "/anime",
+  CHARACTERS: "/characters",
   SEASON_NOW: "/seasons/now",
 };

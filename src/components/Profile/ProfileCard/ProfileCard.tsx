@@ -29,9 +29,6 @@ const ProfileCard: FC<ProfileCardProps> = ({ currentUser }) => {
     currentUser,
     currentUser,
     currentUser,
-    currentUser,
-    currentUser,
-    currentUser,
   ];
 
   return (
@@ -41,13 +38,16 @@ const ProfileCard: FC<ProfileCardProps> = ({ currentUser }) => {
       </MyModal>
       <div className={[classes["card__container"], "_container1800"].join(" ")}>
         <div className={classes["card__media"]}>
-          <div
+          {/* <div
             style={{
               background: `url(${currentUser.image_url}) 50% 0 / cover no-repeat`,
             }}
             className={classes["card__image"]}
             onClick={() => setModalVisible(true)}
-          ></div>
+          ></div> */}
+          <div className={classes["card__image"]} onClick={() => setModalVisible(true)}>
+            <img src={currentUser.image_url} alt="User" />
+          </div>
         </div>
         <div className={classes["card__body"]}>
           <div className={classes["card__header"]}>
@@ -77,7 +77,7 @@ const ProfileCard: FC<ProfileCardProps> = ({ currentUser }) => {
               <h5 className={classes["friends__title"]}>Друзья</h5>
               <div className={classes["friends__container"]}>
                 {friends.map((friend, index) => (
-                  <div className={classes["friend"]}>
+                  <div className={classes["friend"]}key={index}>
                     <div
                       style={{
                         background: `url(${currentUser.image_url}) 50% 0 / cover no-repeat`,

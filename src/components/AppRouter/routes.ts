@@ -4,7 +4,7 @@ export const publicRoutes = {
     ANIMEID: '/anime/:id',
     ERROR: '/404',
     RANDOM: '/anime/55644',
-    ANY: '/*',
+    ANY: '*',
 
 
     PROFILE: '/profile/:id',

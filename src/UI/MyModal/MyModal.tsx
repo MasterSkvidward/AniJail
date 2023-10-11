@@ -11,18 +11,20 @@ const MyModal:FC<MyModalProps> = ({children, visible, setVisible}) => {
     const rootClasses = [classes['myModal']];
     if (visible) rootClasses.push(classes.active);
 
-    const handleMouseDown = (e: KeyboardEvent<HTMLDivElement>):void => {
+    const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>):void => {
         if (e.code === "Escape") setVisible(false); 
     }
 
     useEffect(() => {
+        console.log(visible);
+        
         visible 
-            ?  document.body.classList.add(classes["hide-scroll"])
-            :  document.body.classList.remove(classes["hide-scroll"])
+            ?  document.body.classList.add("hide-scroll")
+            :  document.body.classList.remove("hide-scroll")
     }, [visible])
 
     return (
-       <div className={rootClasses.join(' ')} onClick={() => setVisible(false)} onKeyDown={handleMouseDown}>
+       <div className={rootClasses.join(' ')} onMouseDown={() => setVisible(false)} onKeyDown={handleKeyDown}>
             {children}
        </div>
     );

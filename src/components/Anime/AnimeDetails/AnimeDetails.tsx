@@ -12,7 +12,7 @@ import { IAnimePicture } from "../../../types/jikanMoe/jikan";
 import Image from "../../../UI/Image/Image";
 import { ISingleAnime } from "../../../types/anime/anime-single";
 import Carousel from "../../../UI/Carousel/Carousel";
-import { smallLimitedCarouseIOptions } from "../../Carousel/CarouselBlock/media-options";
+import { smallLimitedCarouseIOptions, charactersCarouseIOptions } from "../../Carousel/CarouselBlock/media-options";
 import { IAnime } from "../../../types/jikanMoe/jikan";
 import AnimeItem from "../AnimeItem/AnimeItem";
 import Sidebar from "../../../UI/Sidebar/Sidebar";
@@ -22,22 +22,17 @@ import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { publicRoutes } from "../../AppRouter/routes";
 import AnimeItemPreview from "../AnimeItemPreview/AnimeItemPreview";
 import ContentLoader from "react-content-loader";
+import PersonItem from "../../PersonItem/PersonItem";
 
-interface AnimeDetailsProps {
-  anime: IAnimeFull | null;
-  //   animePictures: IAnimePicture[] | [];
-  //   similarAnime: IAnimeRecommendation[];
-}
 
-const AnimeDetails: FC<AnimeDetailsProps> = ({
-  //   similarAnime,
-  anime,
-  //   animePictures,
-}) => {
 
-  const { animeRecommendations, animeSeason: animeCurrentSeason } = useTypedSelector(
-    (state) => state.anime
-  );
+const AnimeDetails = () => {
+  const {
+    animeRecommendations,
+    animeCharacters,
+    animeSeason: animeCurrentSeason,
+    animeSingle: anime,
+  } = useTypedSelector((state) => state.anime);
 
   const fetchAnime = async () => {
     // const seasonAnime = await AnimeService.getAnimeSeasonNow({ limit: 10 });
@@ -49,17 +44,28 @@ const AnimeDetails: FC<AnimeDetailsProps> = ({
   }, []);
 
 
-  if (!anime) return <></>;
-
   return (
     <section className={classes["anime-details"]}>
       <div
         className={classes["anime-details__container"] + " " + "_container1800"}
       >
         <div className={classes["anime-details__main"]}>
-          <div className={classes["description"]}>
-            <Title value={"Characters"} />
-            <p className={classes["description__body"]}>{anime?.synopsis}</p>
+          <div className={classes["characters"]}>
+            <Title value={"Main Characters"} />
+            <div className={classes["characters__rows"]}>
+              {animeCharacters.length > 0 &&
+
+                    <Carousel options={charactersCarouseIOptions} arrowTop={40}>
+                        {animeCharacters.slice(0, 10).map((character, index) => (
+                        // <AnimeItem anime={item} key={index} />
+                            <PersonItem character={character} key={index} />
+                        ))}
+                    </Carousel>
+                }
+                 {/* animeCharacters.slice(0, 10).map((character, index) => (
+                   <PersonItem character={character} key={index} />
+                 ))} */}
+            </div>
           </div>
 
           <div className={classes["description"]}>
@@ -98,7 +104,7 @@ const AnimeDetails: FC<AnimeDetailsProps> = ({
               <Carousel options={smallLimitedCarouseIOptions} arrowTop={40}>
                 {animeRecommendations.map((item, index) => (
                   // <AnimeItem anime={item} key={index} />
-                    <AnimeItemPreview anime={item} key={index}/>
+                  <AnimeItemPreview anime={item} key={index} />
                 ))}
               </Carousel>
             </div>
@@ -109,12 +115,12 @@ const AnimeDetails: FC<AnimeDetailsProps> = ({
           <Title value="Airing Now" />
           <Sidebar>
             {animeCurrentSeason.length !== 0
-                ?
-                animeCurrentSeason.map((anime, index) => (
-                        <AnimeItemSmall anime={anime} key={index} />
-                    ))
-                :
-                    [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item, index) => (
+              ? animeCurrentSeason
+                  .slice(0, 10)
+                  .map((anime, index) => (
+                    <AnimeItemSmall anime={anime} key={index} />
+                  ))
+              : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item, index) => (
                   <ContentLoader
                     key={index}
                     speed={2}
@@ -124,9 +130,7 @@ const AnimeDetails: FC<AnimeDetailsProps> = ({
                   >
                     <rect x="0" y="0" rx="2" ry="2" width="466" height="139" />
                   </ContentLoader>
-                ))
-            }
-          
+                ))}
           </Sidebar>
         </div>
       </div>

@@ -1,5 +1,8 @@
 @import "../../../styles/colors";
 
+$width: 250px;
+$height: 250px;
+
 .card {
   position: relative;
 
@@ -8,15 +11,30 @@
     align-items: flex-start;
     column-gap: 55px;
     padding: 60px 0px 0px 0px;
+
   }
   &__media {
   }
+
   &__image {
+    position: relative;
     border-radius: 10px;
-    width: 270px;
-    height: 430px;
+    width: $width;
+    height: $height;
     cursor: pointer;
+    border-radius: 50%;
+    overflow: hidden;
+
+    img {
+        // position: absolute;
+        // top: 0;
+        // left: 0;
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
   }
+
   &__body {
     display: flex;
     flex-direction: column;

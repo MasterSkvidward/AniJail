@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { IAnime } from "../../../types/jikanMoe/jikan";
 import Image from "../../../UI/Image/Image";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { formatGenres } from "../../../helpers/helpers";
 
 import classes from "./AnimeItemSmall.module.scss";
@@ -21,10 +21,7 @@ const AnimeItemSmall: FC<AnimeItemSmallProps> = ({ anime }) => {
   };
 
   return (
-    <div
-      className={classes["anime"]}
-      onClick={() => handleClick(anime.mal_id)}
-    >
+    <div className={classes["anime"]} onClick={() => handleClick(anime.mal_id)}>
       <div className={classes["image"]}>
         <Image url={anime.images.jpg.image_url} />
       </div>
@@ -41,7 +38,7 @@ const AnimeItemSmall: FC<AnimeItemSmallProps> = ({ anime }) => {
         </div>
 
         <div className={classes["body__info"]}>
-          <Score score={anime?.score || 0}/>
+          <Score score={anime?.score || 0} />
           <div className={classes["body__genres"]}>
             {formatGenres(anime?.genres).map((genre, index) => (
               <div className={classes["body__genre"]} key={index}>

@@ -10,13 +10,13 @@ interface ImageResponsiveProps {
 const ImageResponsive:FC<ImageResponsiveProps> = ({url}) => {
     const content = useRef<HTMLDivElement>(null);
 
-    const clickHandler = (e:React.MouseEvent):void => {
+    const handlerMouseDown = (e:React.MouseEvent):void => {
         content.current?.classList.toggle(classes.large);
         e.stopPropagation();
     }
 
     return (
-        <div ref={content} className={classes['content']} onClick={clickHandler} onSelect={e => false}>
+        <div ref={content} className={classes['content']} onMouseDown={handlerMouseDown} onSelect={e => false}>
             <Image url={url}/>
             {/* <img src={url} alt="" /> */}
         </div>

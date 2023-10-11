@@ -10,27 +10,28 @@ $height: 322px;
   background-color: var(--background-primary);
 
   &__header {
-    position: absolute;
-    top: 0;
-    left: 0;
+    // position: relative;
+    // top: 0;
+    // left: 0;
     // height: 400px;
     width: 100%;
     // z-index: 2;
+    margin-bottom: 23px;
   }
 
   &__background {
-    height: 26vw;
+    height: 22vw;
     position: relative;
     user-select: none;
-    &::after {
-      content: "";
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      // background: linear-gradient(to bottom, transparent 0%, rgba(191, 55, 55, 0.5) 93%);
-    }
+    // &::after {
+    //   content: "";
+    //   width: 100%;
+    //   height: 100%;
+    //   position: absolute;
+    //   top: 0;
+    //   left: 0;
+    //   // background: linear-gradient(to bottom, transparent 0%, rgba(191, 55, 55, 0.5) 93%);
+    // }
     img {
       position: absolute;
       top: 0;
@@ -44,7 +45,7 @@ $height: 322px;
   }
   &__container {
     position: relative;
-    margin-top: 22.7vw !important;
+    // margin-top: 22.7vw !important;
     // min-height: 1000px;
     // z-index: 10;
   }
@@ -132,6 +133,7 @@ $height: 322px;
     display: flex;
     flex-direction: column;
     row-gap: 5px;
+    color: var(--text-primary);
    
 
     & > div:first-child {
@@ -142,12 +144,12 @@ $height: 322px;
     & > span {
       font-size: 1.25em;
       margin: 14px 0px 2px;
-      color: $white;
+    //   color: var(--text-primary);
     }
 
     .scoredBy {
       font-size: 0.8125em;
-      color: rgba(255, 255, 255, 0.75);
+      color: var(--text-secondary);
     }
 
     .rate {

@@ -28,6 +28,8 @@ $grey-thin: rgba(201, 201, 201, 0.8);
 $green: #3bb33b;
 $green-light: rgb(40, 221, 94);
 
+$pearl: rgb(236, 235, 235);
+
 $red: rgb(191, 31, 47);
 
 $skeleton-light: rgba(202, 202, 202, 0.4);
@@ -52,7 +54,8 @@ $box-shadow-neu-light: 6px 6px 22px #7a797c, -6px -6px 22px #ffffff;
 $box-shadow-neu-dark: 13px 13px 26px #2a2a2a, -13px -13px 26px #424242;
 
 html[data-theme="light"] {
-  --background-primary: #{$white-snow};
+  --background-primary: #{$pearl};
+  //   --background-secondary: #{$white-snow};
   --background-secondary: #{$white-default};
   --background-tertiary: #{$grey};
   --background-reverse: #{$black-dark};

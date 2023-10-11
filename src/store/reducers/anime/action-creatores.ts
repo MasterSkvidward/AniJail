@@ -6,6 +6,34 @@ import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { AnimeAction, AnimeActionsEnum } from "./types";
 
 export const AnimeActionCreators = {
+  setAnimeSingleLoading: (flag: boolean): AnimeAction => ({
+    type: AnimeActionsEnum.SET_ANIME_SEASON_LOADING,
+    payload: flag,
+  }),
+
+  setAnimeSingleError: (error: string): AnimeAction => ({
+    type: AnimeActionsEnum.SET_ANIME_SINGLE_ERROR,
+    payload: error,
+  }),
+
+  GetAnimeSingle:
+    (id: number): any =>
+    async (dispatch: AppDispatch) => {
+      try {
+        dispatch(AnimeActionCreators.setAnimeSingleLoading(true));
+        const response = await AnimeService.getAnimeById(id);
+        dispatch({
+          type: AnimeActionsEnum.GET_ANIME_SINGLE,
+          payload: response,
+        });
+      } catch (e: any) {
+        dispatch(AnimeActionCreators.setAnimeSingleError(e));
+      } finally {
+        dispatch(AnimeActionCreators.setAnimeSingleLoading(false));
+      }
+    },
+
+  //!
   setAnimeRecommendationsLoading: (flag: boolean): AnimeAction => ({
     type: AnimeActionsEnum.SET_ANIME_RECOMMENDATIONS_LOADING,
     payload: flag,
@@ -35,7 +63,7 @@ export const AnimeActionCreators = {
       }
     },
 
-    //!
+  //!
   setAnimeSeasonLoading: (flag: boolean): AnimeAction => ({
     type: AnimeActionsEnum.SET_ANIME_SEASON_LOADING,
     payload: flag,
@@ -46,17 +74,22 @@ export const AnimeActionCreators = {
     payload: error,
   }),
 
-  GetAnimeSeason: (params?: IAnimeSearchParams): any => async (dispatch: AppDispatch) => {
-    try {        
-      dispatch(AnimeActionCreators.setAnimeSeasonLoading(true));
-      const response = await AnimeService.getAnimeSeasonNow(params);  
-      dispatch({ type: AnimeActionsEnum.GET_ANIME_SEASON, payload: response });
-    } catch (e: any) {
-      dispatch(AnimeActionCreators.setAnimeSeasonError(e));
-    } finally {
-      dispatch(AnimeActionCreators.setAnimeSeasonLoading(false));
-    }
-  },
+  GetAnimeSeason:
+    (params?: IAnimeSearchParams): any =>
+    async (dispatch: AppDispatch) => {
+      try {
+        dispatch(AnimeActionCreators.setAnimeSeasonLoading(true));
+        const response = await AnimeService.getAnimeSeasonNow(params);
+        dispatch({
+          type: AnimeActionsEnum.GET_ANIME_SEASON,
+          payload: response,
+        });
+      } catch (e: any) {
+        dispatch(AnimeActionCreators.setAnimeSeasonError(e));
+      } finally {
+        dispatch(AnimeActionCreators.setAnimeSeasonLoading(false));
+      }
+    },
 
   //!
   setAnimeSearchLoading: (flag: boolean): AnimeAction => ({
@@ -69,16 +102,49 @@ export const AnimeActionCreators = {
     payload: error,
   }),
 
-  GetAnimeSearch: (params?: IAnimeSearchParams): any => async (dispatch: AppDispatch) => {
-    try {        
-      dispatch(AnimeActionCreators.setAnimeSearchLoading(true));
-      const response = await AnimeService.getAnimeBySearch(params);  
-      const finalResponse = response.data;
-      dispatch({ type: AnimeActionsEnum.GET_ANIME_SEARCH, payload: finalResponse });
-    } catch (e: any) {
-      dispatch(AnimeActionCreators.setAnimeSearchError(e));
-    } finally {
-      dispatch(AnimeActionCreators.setAnimeSearchLoading(false));
-    }
-  },
+  GetAnimeSearch:
+    (params?: IAnimeSearchParams): any =>
+    async (dispatch: AppDispatch) => {
+      try {
+        dispatch(AnimeActionCreators.setAnimeSearchLoading(true));
+        const response = await AnimeService.getAnimeBySearch(params);
+        const finalResponse = response.data;
+        dispatch({
+          type: AnimeActionsEnum.GET_ANIME_SEARCH,
+          payload: finalResponse,
+        });
+      } catch (e: any) {
+        dispatch(AnimeActionCreators.setAnimeSearchError(e));
+      } finally {
+        dispatch(AnimeActionCreators.setAnimeSearchLoading(false));
+      }
+    },
+
+  //!
+  setAnimeCharactersLoading: (flag: boolean): AnimeAction => ({
+    type: AnimeActionsEnum.SET_ANIME_CHARACTERS_LOADING,
+    payload: flag,
+  }),
+
+  setAnimeCharactersError: (error: string): AnimeAction => ({
+    type: AnimeActionsEnum.SET_ANIME_CHARACTERS_ERROR,
+    payload: error,
+  }),
+
+  GetAnimeCharacters:
+    (id: number): any =>
+    async (dispatch: AppDispatch) => {
+      try {
+        dispatch(AnimeActionCreators.setAnimeCharactersLoading(true));
+        const response = await AnimeService.getAnimeCharacters(id);
+        dispatch({
+          type: AnimeActionsEnum.GET_ANIME_CHARACTERS,
+          payload: response,
+        });
+      } catch (e: any) {
+        dispatch(AnimeActionCreators.setAnimeCharactersError(e));
+      } finally {
+        dispatch(AnimeActionCreators.setAnimeCharactersLoading(false));
+      }
+    },
 };
