@@ -1,57 +1,54 @@
+@import "../../styles/colors";
+
 .rating {
-  gap: 1px;
-  // max-width: 200px;
-  // width: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 7px;
 
-  // .rr--box {
-  //     background-color: chocolate;
-  // }
+  &__body {
+    display: grid;
+    justify-items: center;
+  }
 
-  .rr--svg {
-    padding: 5px;
-    border-width: 1px;
-    border-style: solid;
-    border-radius: 4px;
-    background-color: chocolate;
+  &__footer {
+    display: flex;
+    align-items: center;
+    // justify-content: center;
+    padding: 11px 0 0;
+  }
 
-    &:hover {
-      transform: scale(101%);
+  &__user-score {
+    font-size: 1.1em;
+    display: none;
+  }
+
+  &__btn {
+    padding: 9px 10px;
+    background-color: red;
+    cursor: pointer;
+    border-radius: 19px;
+    width: 101.6px;
+    text-align: center;
+    user-select: none;
+    justify-self: center;
+    margin-top: 11px;
+    color: $white;
+    margin: 0 auto;
+  }
+}
+
+.show {
+    column-gap: 60px;
+    padding: 20px 0 0;
+
+  .rating {
+    &__user-score {
+      display: inline-block;
+      margin-left: 10px;
     }
-    // background-color: chocolate;
+
+    &__btn {
+        margin: 0 0;
+    }
   }
-
-  .rr--on .rr--svg {
-    fill: MediumSeaGreen;
-    background: MintCream;
-    border-color: MediumSeaGreen;
-  }
-
-  .rr--off .rr--svg {
-    fill: Tomato;
-    background: AntiqueWhite;
-    border-color: Tomato;
-  }
-}
-
-//   button {
-//         padding: 5px 10px;
-//         background-color: red($color: #b63d3d);
-//   }
-
-@media (min-width: 610px) {
-  .custom-classname {
-    max-width: 300px;
-    gap: 10px;
-  }
-
-  .custom-classname .rr--svg {
-    padding: 10px;
-    border-width: 2px;
-    border-radius: 10px;
-  }
-}
-
-.custom-btn {
-  padding: 5px 10px;
-  background-color: red($color: #b63d3d) !important;
 }

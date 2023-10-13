@@ -9,9 +9,9 @@ interface ScoreProps {
 
 const Score:FC<ScoreProps> = ({score}) => {
     return (
-        <div className={score? [classes['score'], classes[getScoreColor(score? score: 0)]].join(' ') : classes["score"]}>
+        <span className={score? [classes['score'], classes[getScoreColor(score? score: 0)]].join(' ') : classes["score"]}>
             {getAnimeScore(score)}
-        </div>
+        </span>
     );
 }
 

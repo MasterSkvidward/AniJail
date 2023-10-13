@@ -52,6 +52,42 @@ export interface IAnimeCharacter {
    voice_actors: any
 }
 
+export interface IAnimeReview {
+    user: {
+        username: string,
+        url: string,
+        images: {
+            jpg: {
+                image_url: string,
+            }
+            webp: {
+                image_url: string,
+            }
+        }
+    },
+
+    mal_id: number,
+    url: string,
+    type: string,
+    reactions: {
+        overall: number,
+        nice: number,
+        love_it: number,
+        funny: number,
+        confusing: number,
+        informative: number,
+        well_written: number,
+        creative: number
+    },
+    date: string,
+    review: string,
+    score: number,
+    tags: string[],
+    is_spoiler: boolean,
+    is_preliminary: boolean,
+    episodes_watched: number
+}
+
 export interface IAnimeScreenshots {
     original: string;
     preview: string;
@@ -165,6 +201,10 @@ export interface IAnimeCharactersResponse {
     data: IAnimeCharacter[];
 }
 
+export interface IAnimeReviewsResponse {
+    data: IAnimeReview[];
+}
+
 export interface IAnimeRecommendationsResponse {
     data: IAnimeRecommendation[];
 }
@@ -197,4 +237,10 @@ export interface IAnimeSearchParams {
     end_date?: string,
     min_score?: string,
     max_score?: string,
+}
+
+export interface IAnimeReviewsParams {
+    page?: number;
+    preliminary: boolean,
+    spoiler: boolean
 }

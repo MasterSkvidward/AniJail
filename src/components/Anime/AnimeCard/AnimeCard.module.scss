@@ -52,6 +52,10 @@ $height: 322px;
   &__main {
     column-gap: 60px;
     display: flex;
+
+    @include for-desktop-up {
+        column-gap: 35px;
+    }
   }
   &__media {
     display: flex;
@@ -84,6 +88,12 @@ $height: 322px;
       width: calc($width * 0.95);
       height: calc($height * 0.95);
     }
+
+    @include for-desktop-up {
+        width: calc($width * 0.85);
+        height: calc($height * 0.85);
+      }
+  
 
     &:hover {
       .search-loupe {
@@ -125,8 +135,12 @@ $height: 322px;
     }
 
     @include for-small-desktop-up {
-      flex: 0 1 43%;
+        flex: 0 1 43%;
     }
+
+    // @include for-small-desktop-up {
+    //   flex: 0 1 43%;
+    // }
   }
 
   &__score {
@@ -136,12 +150,12 @@ $height: 322px;
     color: var(--text-primary);
    
 
-    & > div:first-child {
+    & > span:first-child {
         font-size: 1.87em;
     }
 
 
-    & > span {
+    & > span:last-child {
       font-size: 1.25em;
       margin: 14px 0px 2px;
     //   color: var(--text-primary);
@@ -223,6 +237,18 @@ $height: 322px;
 
         border-radius: 29px;
         width: 430px;
+
+        @include for-medium-desktop-up {
+            width: 330px;
+        }
+
+        @include for-small-desktop-up {
+            width: 300px;
+        }
+
+        @include for-desktop-up {
+            width: 250px;
+        }
       }
 
       &__body {
@@ -238,7 +264,8 @@ $height: 322px;
           position: absolute;
           left: 22px;
           bottom: 100%;
-          border-bottom-color: rgba(34, 34, 34, 0.9);
+        //   border-bottom-color: rgba(34, 34, 34, 0.9);
+            border-bottom-color: var(--background-secondary);
           border-width: 13px;
           margin-left: 0;
         }

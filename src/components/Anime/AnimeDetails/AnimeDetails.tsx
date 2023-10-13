@@ -12,19 +12,23 @@ import { IAnimePicture } from "../../../types/jikanMoe/jikan";
 import Image from "../../../UI/Image/Image";
 import { ISingleAnime } from "../../../types/anime/anime-single";
 import Carousel from "../../../UI/Carousel/Carousel";
-import { smallLimitedCarouseIOptions, charactersCarouseIOptions } from "../../Carousel/CarouselBlock/media-options";
+import {
+  smallLimitedCarouseIOptions,
+  charactersCarouseIOptions,
+} from "../../Carousel/CarouselBlock/media-options";
 import { IAnime } from "../../../types/jikanMoe/jikan";
 import AnimeItem from "../AnimeItem/AnimeItem";
 import Sidebar from "../../../UI/Sidebar/Sidebar";
 import AnimeItemSmall from "../AnimeItemSmall/AnimeItemSmall";
-import { getShortenedString } from "../../../utils/utils";
+import { getShortenedString, splitNumberByThree } from "../../../utils/utils";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { publicRoutes } from "../../AppRouter/routes";
 import AnimeItemPreview from "../AnimeItemPreview/AnimeItemPreview";
 import ContentLoader from "react-content-loader";
 import PersonItem from "../../PersonItem/PersonItem";
-
-
+import MyRating from "../../../UI/MyRating/MyRating";
+import Score from "../../../UI/Score/Score";
+import { BsFillPencilFill } from "react-icons/bs";
 
 const AnimeDetails = () => {
   const {
@@ -33,6 +37,8 @@ const AnimeDetails = () => {
     animeSeason: animeCurrentSeason,
     animeSingle: anime,
   } = useTypedSelector((state) => state.anime);
+
+  const [userRating, setUserRating] = useState<number>(7);
 
   const fetchAnime = async () => {
     // const seasonAnime = await AnimeService.getAnimeSeasonNow({ limit: 10 });
@@ -43,7 +49,6 @@ const AnimeDetails = () => {
     fetchAnime();
   }, []);
 
-
   return (
     <section className={classes["anime-details"]}>
       <div
@@ -53,16 +58,31 @@ const AnimeDetails = () => {
           <div className={classes["characters"]}>
             <Title value={"Main Characters"} />
             <div className={classes["characters__rows"]}>
-              {animeCharacters.length > 0 &&
-
-                    <Carousel options={charactersCarouseIOptions} arrowTop={40}>
-                        {animeCharacters.slice(0, 10).map((character, index) => (
-                        // <AnimeItem anime={item} key={index} />
-                            <PersonItem character={character} key={index} />
-                        ))}
-                    </Carousel>
-                }
-                 {/* animeCharacters.slice(0, 10).map((character, index) => (
+              {animeCharacters.length > 0 && (
+                <Carousel
+                  options={
+                    animeCharacters.length >= 7
+                      ? charactersCarouseIOptions
+                      : {
+                          ...charactersCarouseIOptions,
+                          drag: false,
+                          arrows: false,
+                          autoWidth: true,
+                        }
+                  }
+                  arrowTop={40}
+                >
+                  {animeCharacters.slice(0, 10).map((character, index) => (
+                    // <AnimeItem anime={item} key={index} />
+                    <PersonItem
+                      src={character.character.images.jpg.image_url}
+                      name={character.character.name}
+                      key={index}
+                    />
+                  ))}
+                </Carousel>
+              )}
+              {/* animeCharacters.slice(0, 10).map((character, index) => (
                    <PersonItem character={character} key={index} />
                  ))} */}
             </div>
@@ -73,6 +93,37 @@ const AnimeDetails = () => {
             <p className={classes["description__body"]}>
               {anime?.synopsis || "Nothing yet."}
             </p>
+          </div>
+
+        
+
+          <div className={classes["rating"]}>
+            <Title value={"Rating"} />
+            <div className={classes["rating__row"]}>
+              <div className={classes["rating__rate"]}>
+                <MyRating
+                  userRating={userRating}
+                  setUserRating={setUserRating}
+                  maxWidth={400}
+                  items={10}
+                  showUserRating={true}
+                />
+              </div>
+              <div className={classes["rating__column"]}>
+                {anime?.score ? (
+                  <Score score={anime?.score} />
+                ) : (
+                  <span>No scores</span>
+                )}
+
+                <span
+                  className={classes["rating__scored-by"]}
+                >{`Scored by: ${splitNumberByThree(
+                  anime?.scored_by || 0
+                )}`}</span>
+              </div>
+            </div>
+            <button className={classes["rating__review"]}><BsFillPencilFill/><span>Write review</span></button>
           </div>
 
           <div className={classes["trailer"]}>
@@ -89,15 +140,6 @@ const AnimeDetails = () => {
             </div>
           </div>
 
-          {/* <div className={classes["images"]}>
-            <Title value={"Images"} />
-            <div className={classes["images__container"]}>
-              {animePictures.map((picture, index) => (
-                <Image url={picture.jpg.image_url} key={index} />
-              ))}
-            </div>
-          </div> */}
-
           {animeRecommendations.length > 5 && (
             <div className={classes["carousel"]}>
               <Title value={"You may also like"} />
@@ -109,6 +151,18 @@ const AnimeDetails = () => {
               </Carousel>
             </div>
           )}
+
+          {/* {animeCurrentSeason.length > 5 && 
+            <div className={classes["carousel"]}>
+              <Title value={"Trending now"} />
+              <Carousel options={smallLimitedCarouseIOptions} arrowTop={40}>
+                {animeCurrentSeason.map((item, index) => (
+                  // <AnimeItem anime={item} key={index} />
+                  <AnimeItem anime={item} key={index} />
+                ))}
+              </Carousel>
+            </div>
+        } */}
         </div>
 
         <div className={classes["anime-details__sidebar"]}>

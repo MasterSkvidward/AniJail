@@ -13,6 +13,9 @@ import {
   IAnimeRecommendationsResponse,
   IAnimeCharacter,
   IAnimeCharactersResponse,
+  IAnimeReviewsResponse,
+  IAnimeReview,
+  IAnimeReviewsParams,
 } from "../types/jikanMoe/jikan";
 
 import $api from "../API/api";
@@ -39,6 +42,17 @@ export class AnimeService {
           limit: 10,
         },
       }
+    );
+    return response.data.data;
+  }
+
+  static async getAnimeReviews(
+    id: number | string | undefined,
+    params?: IAnimeReviewsParams
+  ): Promise<IAnimeReview[]> {
+    const response = await $api.get<IAnimeReviewsResponse>(
+      `${API_ENDPOINTS.ANIME}/${id}/reviews`,
+      { params }
     );
     return response.data.data;
   }

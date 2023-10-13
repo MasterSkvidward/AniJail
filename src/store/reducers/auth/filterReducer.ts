@@ -3,7 +3,7 @@ import { AuthAction, AuthActionsEnum, AuthState } from "./types";
 // import img from '../../../images/vacant_room_ch2-copy.jpg' ;
 
 // import user_image from "../../../assets/images/user_logo.jpg";
-import user_image from "../../../assets/images/satoru.jpg";
+import user_image from "../../../assets/images/makima.jpg";
 
 
 const initialState: AuthState = {

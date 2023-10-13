@@ -1,0 +1,38 @@
+.anime {
+  padding: 30px 0px 200px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 100px;
+
+  &__reviews {
+    background-color: var(--background-primary);
+    padding: 40px 0;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 33px;
+  }
+
+ 
+
+  &__comments {
+    background-color: var(--background-secondary);
+  }
+}
+
+.reviews {
+    &__row {
+        display: flex;
+        column-gap: 30px;
+        flex-wrap: wrap;
+      }
+
+      &__column {
+        display: flex;
+        flex-direction: column;
+        row-gap: 29px;
+        margin-bottom: 50px;
+      }
+}

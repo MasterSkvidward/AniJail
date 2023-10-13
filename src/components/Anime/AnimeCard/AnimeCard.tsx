@@ -106,7 +106,7 @@ const AnimeCard: FC = () => {
                     <span>No scores</span>
             }
             
-            <div className={classes["scoredBy"]}>{`Scored by:   ${splitNumberByThree(anime?.scored_by || 0)}`}</div>
+            <span className={classes["scoredBy"]}>{`Scored by:   ${splitNumberByThree(anime?.scored_by || 0)}`}</span>
             <div className={classes["rate"]} onClick={handlerRateClick}>
               <div className={classes["rate__btn"]}>
                 <span>{userRating ? "Change score" : "Rate"}</span>
@@ -123,6 +123,7 @@ const AnimeCard: FC = () => {
               >
                 <div className={classes["rate__body"]}>
                   <MyRating
+                    userRating={userRating}
                     setUserRating={setUserRating}
                     setRatingVisible={setRatingVisible}
                     maxWidth={400}

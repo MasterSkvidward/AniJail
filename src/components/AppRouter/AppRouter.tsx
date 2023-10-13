@@ -7,7 +7,6 @@ import AnimeIdPage from "../../pages/AnimeIdPage/AnimeIdPage";
 import Anime from "../../pages/AnimePage/AnimePage";
 import Profile from "../../pages/ProfilePage/ProfilePage";
 import ProfileList from "../../pages/ProfileListPage/ProfileListPage";
-import BlankPage from "../../pages/BlankPage/BlankPage";
 
 const AppRouter: FC = () => {
   return (
@@ -18,8 +17,6 @@ const AppRouter: FC = () => {
       <Route path={`/anime/:id`} element={<AnimeIdPage/>} />
       <Route path={`/users/:id`} element={<Profile />} />
       <Route path={`/users/:id/watchlist`} element={<ProfileList />} />
-
-      <Route path={`/loader`} element={<BlankPage/>} />
       <Route
         path={publicRoutes.ANY}
         element={<Navigate to={publicRoutes.ERROR} replace />}

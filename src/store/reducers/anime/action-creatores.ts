@@ -1,4 +1,8 @@
-import { IAnime, IAnimeSearchParams } from "../../../types/jikanMoe/jikan";
+import {
+  IAnime,
+  IAnimeReviewsParams,
+  IAnimeSearchParams,
+} from "../../../types/jikanMoe/jikan";
 import { AnimeService } from "../../../services/AnimeService";
 import { useFetching } from "../../../hooks/useFetching";
 import { AppDispatch } from "../rootReducer";
@@ -145,6 +149,35 @@ export const AnimeActionCreators = {
         dispatch(AnimeActionCreators.setAnimeCharactersError(e));
       } finally {
         dispatch(AnimeActionCreators.setAnimeCharactersLoading(false));
+      }
+    },
+
+  //!
+
+  setAnimeReviewsLoading: (flag: boolean): AnimeAction => ({
+    type: AnimeActionsEnum.SET_ANIME_REVIEWS_LOADING,
+    payload: flag,
+  }),
+
+  setAnimeReviewsError: (error: string): AnimeAction => ({
+    type: AnimeActionsEnum.SET_ANIME_REVIEWS_ERROR,
+    payload: error,
+  }),
+
+  GetAnimeReviews:
+    (id: number, params?: IAnimeReviewsParams): any =>
+    async (dispatch: AppDispatch) => {
+      try {
+        dispatch(AnimeActionCreators.setAnimeReviewsLoading(true));
+        const response = await AnimeService.getAnimeReviews(id, params);
+        dispatch({
+          type: AnimeActionsEnum.GET_ANIME_REVIEWS,
+          payload: response,
+        });
+      } catch (e: any) {
+        dispatch(AnimeActionCreators.setAnimeReviewsError(e));
+      } finally {
+        dispatch(AnimeActionCreators.setAnimeReviewsLoading(false));
       }
     },
 };

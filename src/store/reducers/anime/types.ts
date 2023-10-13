@@ -1,4 +1,4 @@
-import { IAnime, IAnimeCharacter, IAnimeRecommendation, IAnimeSearchParams, IAnimeFull } from "../../../types/jikanMoe/jikan";
+import { IAnime, IAnimeCharacter, IAnimeRecommendation, IAnimeSearchParams, IAnimeFull, IAnimeReview } from "../../../types/jikanMoe/jikan";
 
 export interface AnimeState {
     animeSingle: IAnime | null,
@@ -20,6 +20,10 @@ export interface AnimeState {
     animeCharacters: IAnimeCharacter[],
     animeCharactersLoading: boolean,
     animeCharactersError: string,
+
+    animeReviews: IAnimeReview[],
+    animeReviewsLoading: boolean,
+    animeReviewsError: string,
 }
 
 export enum AnimeActionsEnum {
@@ -42,6 +46,10 @@ export enum AnimeActionsEnum {
     GET_ANIME_CHARACTERS = "GET_ANIME_CHARACTERS",
     SET_ANIME_CHARACTERS_LOADING = "SET_ANIME_CHARACTERS_LOADING",
     SET_ANIME_CHARACTERS_ERROR = "SET_ANIME_CHARACTERS_ERROR",
+
+    GET_ANIME_REVIEWS = "GET_ANIME_REVIEWS",
+    SET_ANIME_REVIEWS_LOADING = "SET_ANIME_REVIEWS_LOADING",
+    SET_ANIME_REVIEWS_ERROR = "SET_ANIME_REVIEWS_ERROR",
 }
 
 
@@ -127,6 +135,23 @@ interface SetAnimeCharactersError {
     payload: string;
 }
 
+//!
+
+interface GetAnimeReviews {
+    type: AnimeActionsEnum.GET_ANIME_REVIEWS;
+    payload: IAnimeReview[];
+}
+
+interface SetAnimeReviewsLoading {
+    type: AnimeActionsEnum.SET_ANIME_REVIEWS_LOADING;
+    payload: boolean;
+}
+
+interface SetAnimeReviewsError {
+    type: AnimeActionsEnum.SET_ANIME_REVIEWS_ERROR;
+    payload: string;
+}
+
 
 export type AnimeAction = 
     GetAnimeSingle |
@@ -147,6 +172,10 @@ export type AnimeAction =
 
     GetAnimeCharacters |
     SetAnimeCharactersLoading |
-    SetAnimeCharactersError
+    SetAnimeCharactersError |
+
+    GetAnimeReviews |
+    SetAnimeReviewsLoading |
+    SetAnimeReviewsError 
 
 

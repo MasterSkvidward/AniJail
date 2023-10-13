@@ -6,7 +6,6 @@ export const publicRoutes = {
     RANDOM: '/anime/55644',
     ANY: '*',
 
-
     PROFILE: '/profile/:id',
     WATCHLIST: '/profile/:id/watchlist',
 }

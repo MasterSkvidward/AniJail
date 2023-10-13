@@ -4,43 +4,51 @@ import AnimeCard from "../../components/Anime/AnimeCard/AnimeCard";
 
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { AnimeService } from "../../services/AnimeService";
-import { IAnime, IAnimeFull, IAnimePicture, IAnimeRecommendation } from "../../types/jikanMoe/jikan";
+import {
+  IAnime,
+  IAnimeFull,
+  IAnimePicture,
+  IAnimeRecommendation,
+} from "../../types/jikanMoe/jikan";
 import AnimeDetails from "../../components/Anime/AnimeDetails/AnimeDetails";
 import { useFetching } from "../../hooks/useFetching";
 import { ISingleAnime } from "../../types/anime/anime-single";
 import { useDispatch } from "react-redux";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { AnimeActionCreators } from "../../store/reducers/anime/action-creatores";
+import AnimeFeedback from "../../components/Anime/AnimeFeedback/AnimeFeedback";
 
 type ParamsType = {
   id: string;
 };
 
 const AnimeIdPage = () => {
-const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const params = useParams<ParamsType>();
 
-  const [anime, setAnime] = useState<IAnimeFull | null>(null);
-//   const [animePictures, setAnimePictures] = useState<IAnimePicture[] | []>([]);
+//   const [anime, setAnime] = useState<IAnimeFull | null>(null);
+  //   const [animePictures, setAnimePictures] = useState<IAnimePicture[] | []>([]);
 
-const fetchAnimeById = (id:string | undefined) => {
+  const fetchAnimeById = (id: string | undefined) => {
     dispatch(AnimeActionCreators.GetAnimeSingle(Number(id)));
   };
 
-  const fetchSimilar = (id:string | undefined) => {
+  const fetchSimilar = (id: string | undefined) => {
     dispatch(AnimeActionCreators.GetAnimeRecommendations(Number(id)));
     // setSimilarAnime(response);
   };
 
-  const fetchSeasonAnime = (limit:number | undefined) => {
-    dispatch(AnimeActionCreators.GetAnimeSeason({limit: Number(limit)}));
+  const fetchSeasonAnime = (limit: number | undefined) => {
+    dispatch(AnimeActionCreators.GetAnimeSeason({ limit: Number(limit) }));
   };
 
-  
-  const fetchCharacters = (id:string | undefined) => {
+  const fetchCharacters = (id: string | undefined) => {
     dispatch(AnimeActionCreators.GetAnimeCharacters(Number(id)));
   };
 
+  const fetchReviews = (id: string | undefined) => {
+    dispatch(AnimeActionCreators.GetAnimeReviews(Number(id)));
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -48,14 +56,14 @@ const fetchAnimeById = (id:string | undefined) => {
     fetchSimilar(params.id);
     fetchSeasonAnime(10);
     fetchCharacters(params.id);
+    fetchReviews(params.id);
   }, []);
 
   return (
     <div className={classes["anime-page"]}>
-      <AnimeCard/>
-      <AnimeDetails
-        // anime={anime}
-      />
+      <AnimeCard />
+      <AnimeDetails/>
+      <AnimeFeedback/>
     </div>
   );
 };

@@ -9,7 +9,11 @@
 .statistics {
     // display: flex;
     // flex-direction: column;
-    background-color: var(--background-primary);
+
+
+    &__container {
+        background-color: var(--background-primary);
+    }
 
     &__time {
         margin: 200px 0px 0px 0px;

@@ -70,30 +70,64 @@ export const smallLimitedCarouseIOptions = {
 };
 
 export const charactersCarouseIOptions = {
-    speed: 900,
-    // height : '275px',
-    rewind: true,
-    gap: "27px",
-    interval: 9000,
-    autoplay: true,
-    lazyLoad: "nearby",
-    perPage: 8,
-    // fixedWidth: 190,
-    arrows: true,
-    // arrowPath: arrowRight,
-  
-    breakpoints: {
-      // 4500: {autoWidth: true},
-      // 1920: {perPage: 6},
-      // 1712: {perPage: 8},
-      1720: { perPage: 7, gap: "20px"},
-      1550: { perPage: 6, gap: "25px" },
-      1500: { perPage: 8 },
-      1180: { perPage: 7 },
-      950: { perPage: 6 },
-      500: { perPage: 4 },
-    },
-  };
-  
+  speed: 900,
+  // height : '275px',
+  rewind: true,
+  gap: "15px",
+  interval: 9000,
+  autoplay: true,
+  lazyLoad: "nearby",
+  perPage: 7,
+  // fixedWidth: 190,
+  arrows: true,
+  // arrowPath: arrowRight,
 
+  breakpoints: {
+    1500: { perPage: 8 },
+    1180: { perPage: 7 },
+    950: { perPage: 6 },
+    500: { perPage: 4 },
+  },
+};
 
+export const personCarouseIOptionsLimited = {
+  speed: 900,
+  // height : '275px',
+  rewind: true,
+  gap: "15px",
+  interval: 9000,
+  autoplay: true,
+  lazyLoad: "nearby",
+  perPage: 7,
+  // fixedWidth: 190,
+  arrows: true,
+  // arrowPath: arrowRight,
+
+  breakpoints: {
+    1500: { perPage: 8 },
+    1180: { perPage: 7 },
+    950: { perPage: 6 },
+    500: { perPage: 4 },
+  },
+};
+
+export const friendCarouseIOptionsLimited = {
+  speed: 900,
+  // height : '275px',
+  rewind: true,
+  gap: "15px",
+  interval: 9000,
+  autoplay: true,
+  lazyLoad: "nearby",
+  perPage: 6,
+  // fixedWidth: 190,
+  arrows: true,
+  // arrowPath: arrowRight,
+
+  breakpoints: {
+    1500: { perPage: 5 },
+    1180: { perPage: 5 },
+    950: { perPage: 4 },
+    500: { perPage: 4 },
+  },
+};

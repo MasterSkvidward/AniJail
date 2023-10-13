@@ -37,11 +37,11 @@
   }
 
   @include for-tablet-landscape-up {
-    font-size: 9px;
+    font-size: 10px;
   }
 
   @include for-phone-only {
-    font-size: 8px;
+    font-size: 9px;
   }
 
   a:visited {
