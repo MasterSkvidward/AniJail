@@ -16,8 +16,6 @@ const MyModal:FC<MyModalProps> = ({children, visible, setVisible}) => {
     }
 
     useEffect(() => {
-        console.log(visible);
-        
         visible 
             ?  document.body.classList.add("hide-scroll")
             :  document.body.classList.remove("hide-scroll")

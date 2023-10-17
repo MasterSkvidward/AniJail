@@ -10,7 +10,7 @@ import Score from "../../../UI/Score/Score";
 import PersonItem from "../../PersonItem/PersonItem";
 
 import Carousel from "../../../UI/Carousel/Carousel";
-import { friendCarouseIOptionsLimited } from "../../Carousel/CarouselBlock/media-options";
+import { friendCarouseIOptionsLimited } from "../../../UI/Carousel/media-options";
 
 import user2_image from "../../../assets/images/vacant_room_ch2-copy.jpg";
 
@@ -25,14 +25,35 @@ const ProfileCard: FC<ProfileCardProps> = ({ currentUser }) => {
   const friends = [
     currentUser,
     currentUser,
-    {id: 2, username: "Cuttie228", email: "Arthur1203@yandex.ru", image_url: user2_image, date_joined: 'december 2019', last_login: '2 days ago'},
+    {
+      id: 2,
+      username: "Cuttie228",
+      email: "Arthur1203@yandex.ru",
+      image_url: user2_image,
+      date_joined: "december 2019",
+      last_login: "2 days ago",
+    },
     currentUser,
     currentUser,
-    {id: 3, username: "Marmelad1337", email: "Arthur1203@yandex.ru", image_url: user2_image, date_joined: 'december 2019', last_login: '2 days ago'},
+    {
+      id: 3,
+      username: "Marmelad1337",
+      email: "Arthur1203@yandex.ru",
+      image_url: user2_image,
+      date_joined: "december 2019",
+      last_login: "2 days ago",
+    },
     currentUser,
     currentUser,
     currentUser,
-    {id: 4, username: "Fruktozka", email: "Arthur1203@yandex.ru", image_url: user2_image, date_joined: 'december 2019', last_login: '2 days ago'},
+    {
+      id: 4,
+      username: "Fruktozka",
+      email: "Arthur1203@yandex.ru",
+      image_url: user2_image,
+      date_joined: "december 2019",
+      last_login: "2 days ago",
+    },
     currentUser,
     currentUser,
   ];
@@ -51,7 +72,10 @@ const ProfileCard: FC<ProfileCardProps> = ({ currentUser }) => {
             className={classes["card__image"]}
             onClick={() => setModalVisible(true)}
           ></div> */}
-          <div className={classes["card__image"]} onClick={() => setModalVisible(true)}>
+          <div
+            className={classes["card__image"]}
+            onClick={() => setModalVisible(true)}
+          >
             <img src={currentUser.image_url} alt="User" />
           </div>
         </div>
@@ -82,18 +106,35 @@ const ProfileCard: FC<ProfileCardProps> = ({ currentUser }) => {
             >
               <h5 className={classes["friends__title"]}>Друзья</h5>
               <div className={classes["friends__container"]}>
-              {friends.length > 0 &&
-                <Carousel options={friends.length >= 5 ? friendCarouseIOptionsLimited : {...friendCarouseIOptionsLimited, drag: false, arrows: false, autoWidth: true}} arrowTop={40}>
+                {friends.length > 0 && (
+                  <Carousel
+                    options={
+                      friends.length >= 5
+                        ? friendCarouseIOptionsLimited
+                        : {
+                            ...friendCarouseIOptionsLimited,
+                            drag: false,
+                            arrows: false,
+                            autoWidth: true,
+                          }
+                    }
+                    arrowTop={40}
+                  >
                     {friends.map((friend, index) => (
-                        <div className={classes["friend"]} key={index}>
-                            <div className={classes["friend__image"]}>
-                                <img src={friend.image_url || ""} alt={friend.username || ""} />
-                            </div>
-                            <span className={classes["friend__title"]}>{friend.username || ""}</span>
+                      <div className={classes["friend"]} key={index}>
+                        <div className={classes["friend__image"]}>
+                          <img
+                            src={friend.image_url || ""}
+                            alt={friend.username || ""}
+                          />
                         </div>
+                        <span className={classes["friend__title"]}>
+                          {friend.username || ""}
+                        </span>
+                      </div>
                     ))}
-                </Carousel>
-                }
+                  </Carousel>
+                )}
               </div>
             </div>
 

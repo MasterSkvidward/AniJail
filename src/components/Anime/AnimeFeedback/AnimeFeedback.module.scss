@@ -6,16 +6,12 @@
 
   &__reviews {
     background-color: var(--background-primary);
-    padding: 40px 0;
+    // background-image: url("../../../assets//images/igris-solo-leveling.jpg");
+    // background-repeat: no-repeat;
+    // background-position: center 30%;
+    // background-size: cover;
+    padding: 40px 0 90px;
   }
-
-  &__container {
-    display: flex;
-    flex-direction: column;
-    row-gap: 33px;
-  }
-
- 
 
   &__comments {
     background-color: var(--background-secondary);
@@ -23,16 +19,18 @@
 }
 
 .reviews {
-    &__row {
-        display: flex;
-        column-gap: 30px;
-        flex-wrap: wrap;
-      }
 
-      &__column {
-        display: flex;
-        flex-direction: column;
-        row-gap: 29px;
-        margin-bottom: 50px;
-      }
+  &__container {
+    margin-bottom: 50px;
+  }
+  &__row {
+
+  }
+
+  &__column {
+    display: flex;
+    flex-direction: column;
+    row-gap: 29px;
+  
+  }
 }

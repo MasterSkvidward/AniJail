@@ -1,68 +1,87 @@
 @import "../../styles/colors";
 
+
+
 .carousel {
-    display: flex;
-    column-gap: 50px;
-    position: relative;
+    // display: flex;
+    // column-gap: 50px;
+    // position: relative;
     // z-index: 5;
 
+
+    position: relative;
+    width: 100%;
+
+    
     &:active {
         cursor: grab;
     }
-    // &__items {
-    //     display: flex;
-    //     column-gap: 25px;
-    // }
 
-    // &__item {
-    //     cursor: pointer;
-    //     width: 185px;
-    // }
-
-    &__wrapper {
-        display: flex;
-        align-items: center;
-        position: relative;
-        width: 100%;
-    }
-
-    &__arrow {
-        position: absolute;
-        cursor: pointer;
-        background-color: rgba(94, 94, 94, 0);
-        // top: 48%;
-
-        svg {
-            height: 48px;
-            width: 48px;
-            background-color: rgba(0, 0, 0, 0.8);
-            border-radius: 50%;
-            fill: $main-color-dark;
-            // box-shadow: 0px 0px 2px 3px rgb(143, 143, 143);
-        }
-    }
-
-    &__leftArrow {
-        
-        // top: 40%;
-        right: 0;
-        opacity: 0.7;
-
-        svg {
-           
-          
-        }
-        
-    }
-
-    &__rightArrow {
-
-        // top: 40%;
+    & > div > button:nth-child(1) {
         left: 0;
-        opacity: 0.7;
+    }
 
-        svg {
-           
+    & > div > button:nth-child(2) {
+        right: 0;
+    }
+
+    & > div > button {
+   
+        opacity: 0.8;
+        background-color: rgba(0, 0, 0, 0.8);
+        border-radius: 50%;
+        padding: 6px;
+        width: 34px;
+        height: 34px;
+       
+        &:hover, &:focus {
+            fill: rgb(215, 83, 138);
+        }
+
+        & > svg {
+            fill: $main-color-dark;
+            opacity: 0.9;
+        }
+    }
+
+    & > ul > li > button {
+        color: $main-color-dark;
+    }
+
+
+    &__pagination {
+        position: absolute;
+        bottom: -40px;
+
+        button {
+            padding: 6px;
+        }
+
+        button[aria-selected="true"] {
+            background-color: $main-color-dark;
         }
     }
 }
+
+
+.big {
+    & > div > button {
+        width: 41px;
+        height: 41px;
+    }
+}
+
+.medium {
+    & > div > button {
+        width: 34px;
+        height: 34px;
+    }
+}
+
+.small {
+    & > div > button {
+        width: 30px;
+        height: 30px;
+    }
+}
+

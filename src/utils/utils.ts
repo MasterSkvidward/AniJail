@@ -13,6 +13,38 @@ export const getScoreColor = (score: number): string => {
   else return "red";
 };
 
+export const getDateFromTimeStamp = (timestamp: string): Date => {
+  let date = new Date(Date.parse(timestamp));
+  return date;
+};
+
+export const getExactTimeFromDate = (date: Date): string => {
+  let exactTime = `${date.getDate()} ${getMonthName(
+    date.getMonth()
+  )} ${date.getFullYear()} in ${
+    date.getHours() >= 10 ? date.getHours() : "0" + String(date.getHours())
+  }:${date.getMinutes() >= 10 ? date.getMinutes() : "0" + String(date.getMinutes())}`;
+  return exactTime;
+};
+
+export const getMonthName = (month: number): string => {
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "Septemper",
+    "October",
+    "November",
+    "December",
+  ];
+  return months[month];
+};
+
 export const getAnimeField = (field: string | number | undefined): string => {
   if (typeof field === "object") return "";
   if (typeof field == "undefined") return "";
@@ -25,9 +57,7 @@ export const getShortenedString = (
   maxLetters: number
 ) => {
   if (!value) return "";
-  return value.length > maxLetters
-    ? value.slice(0, maxLetters).trim() + "..."
-    : value;
+  return value.length > maxLetters ? value.slice(0, maxLetters) + "..." : value;
 };
 
 export const getCurrentYear = (): number => {
@@ -35,10 +65,10 @@ export const getCurrentYear = (): number => {
   return date.getFullYear();
 };
 
-export const splitNumberByThree = (number:number): string => {
-    const newNumber = String(new Intl.NumberFormat('ru-RU').format(number));
-    return newNumber;
-}
+export const splitNumberByThree = (number: number): string => {
+  const newNumber = String(new Intl.NumberFormat("ru-RU").format(number));
+  return newNumber;
+};
 
 export const getFilterOptions = (
   options: IFilterOption[],

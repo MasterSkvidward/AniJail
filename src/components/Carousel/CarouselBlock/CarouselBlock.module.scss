@@ -2,46 +2,43 @@
 @import "../../../styles/colors";
 
 .carousel-block {
-    padding: 0px 0px 90px 0px;
+  padding: 0px 0px 90px 0px;
 
-    &__body {
-        display: flex;
-        flex-direction: column;
-        row-gap: 100px;
-
-        
-    }
+  &__body {
+    display: flex;
+    flex-direction: column;
+    row-gap: 100px;
+  }
 }
 
 .animeItemBig {
-    
 }
 
 .carousel-item__big {
-    // background-color: var(--background-secondary);
-    // min-height: 700px;
-    background-color: var(--background-primary);
-    padding: 40px 0px 60px;
-    margin-bottom: 50px;
+  // background-color: var(--background-secondary);
+  // min-height: 700px;
+  background-color: var(--background-primary);
+  padding: 40px 0px 60px;
+  margin-bottom: 50px;
 }
 
 .skeleton {
-    &__big {
-        width: 1710px;
-        height: 548px;
-        // border-radius: 19px;
-        // 182
-        // 312
+  &__big {
+    width: 1710px;
+    height: 548px;
+    // border-radius: 19px;
+    // 182
+    // 312
 
-        @include for-small-desktop-up {
-            width: 1210px;
-            height: 448px;
-        }
+    @include for-small-desktop-up {
+      width: 1210px;
+      height: 448px;
     }
+  }
 
-    &__small {
-        width: 182px;
-        height: 312px;
-        border-radius: 20px;
-    }
+  &__small {
+    width: 182px;
+    height: 312px;
+    border-radius: 20px;
+  }
 }

@@ -36,7 +36,7 @@ $trailer_height: 267px;
     flex-direction: column;
    
     & > div{
-        margin-bottom: 100px;
+        margin-bottom: 120px;
     }
 
     & > div:last-child{
@@ -193,11 +193,11 @@ $trailer_height: 267px;
   flex-direction: column;
   row-gap: 23px;
 
-  svg {
-    height: 40px;
-    width: 40px;
-    color: $main-color;
-  }
+//   svg {
+//     height: 40px;
+//     width: 40px;
+//     color: $main-color;
+//   }
 }
 
 .skeleton__item-small {

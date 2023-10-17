@@ -1,0 +1,159 @@
+@import "../../../styles/colors";
+
+.review {
+   background-color: rgba(189, 189, 189, 0.9);
+
+   color: $black;
+   border-radius: 18px;
+
+   display: flex;
+   flex-direction: column;
+   row-gap: 20px;
+
+   height: 425px;
+
+   &__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px solid rgba(115, 115, 115, 0.3);
+
+      padding: 20px 35px 17px;
+   }
+
+   &__date {
+      align-self: flex-start;
+      margin-top: 11px;
+      color: $black-light;
+   }
+
+   &__tag {
+      font-weight: 600;
+      font-size: 1.16em;
+      margin-bottom: 13px;
+   }
+
+   &__body {
+      line-height: 140%;
+      font-size: 0.92em;
+      padding: 0px 35px;
+   }
+
+   &__show-more {
+      padding: 6px 10px;
+      border-radius: 11px;
+      background-color: rgba(211, 211, 211, 0.795);
+      box-shadow: 0px 1px 6px 1px rgba(48, 48, 48, 0.132);
+      cursor: pointer;
+      margin-top: 18px;
+   }
+
+   &__footer {
+      // justify-content: flex-end;
+
+      padding: 00px 35px 20px;
+   }
+
+   &__buttons {
+      display: flex;
+      column-gap: 15px;
+      margin-top: auto;
+      justify-content: flex-end;
+
+      svg:first-of-type(1) {
+         color: red;
+      }
+   }
+
+   &__btn {
+      font-size: 0.91em;
+      padding: 7px 20px;
+      font-weight: 600;
+      border-radius: 17px;
+      background-color: rgba(214, 214, 214, 0.7);
+      box-shadow: 0px 1px 6px 1px rgba(12, 12, 12, 0.132);
+      cursor: pointer;
+
+      transition: all 0.15s ease-in;
+      display: flex;
+      column-gap: 6px;
+
+      &:hover {
+        background-color: rgba(188, 186, 186, 0.7);
+         -webkit-transform: scale(1.2);
+         -ms-transform: scale(1.05);
+         transform: scale(1.05);
+      }
+
+      &_green {
+         svg {
+            color: green;
+         }
+      }
+
+      &_red {
+         svg {
+            color: red;
+         }
+      }
+
+      span:nth-child(3) {
+         color: rgb(96, 96, 96);
+      }
+   }
+}
+
+.user {
+   display: flex;
+   column-gap: 9px;
+
+   &__image {
+      width: 65px;
+      height: 65px;
+      overflow: hidden;
+      border-radius: 50%;
+
+      img {
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+      }
+   }
+
+   &__body {
+      display: flex;
+      flex-direction: column;
+      row-gap: 7px;
+   }
+
+   &__name {
+      font-weight: 600;
+      font-size: 1.15em;
+      margin-top: 7px;
+   }
+
+   &__reviews-amount {
+      color: $black-light;
+      font-size: 0.9em;
+   }
+}
+
+.green {
+   background-color: rgba(207, 238, 202, 0.9);
+}
+
+.light-green {
+   background-color: rgba(207, 238, 202, 0.9);
+}
+
+.grey {
+   background-color: rgba(220, 219, 219, 0.9);
+}
+
+.red {
+   background-color: rgba(238, 185, 185, 0.9);
+}
+
+.clicked {
+    background-color: rgba(188, 186, 186, 0.7);
+}

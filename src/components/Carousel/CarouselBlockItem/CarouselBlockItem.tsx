@@ -11,6 +11,7 @@ interface CarouselBlockItemProps extends PropsWithChildren {
   title: string;
   options?: any;
   arrowTop?: number;
+  arrowSize?: "big" | "medium" | "small";
 }
 
 const CarouselBlockItem: FC<CarouselBlockItemProps> = ({

@@ -3,6 +3,12 @@
 $width: 225px;
 $height: 318px;
 
+$max-width: 225px;
+$max-height: 318px;
+
+$min-width: 225px;
+$min-height: 318px;
+
 @keyframes tooltipShow {
   to {
     opacity: 1;
@@ -44,6 +50,7 @@ $height: 318px;
     width: calc($width * 0.85);
     height: calc($height * 0.85);
 
+
     background-color: var(--background-tertiary);
     border-radius: 14px;
     border: 0.5px solid rgba(255, 255, 255, 0.1);
@@ -64,8 +71,9 @@ $height: 318px;
   &__title {
     overflow-wrap: break-word;
     font-weight: 600;
-    opacity: 0.97;
+    opacity: 0.87;
     transition: 0.2s;
+    font-size: 0.93em;
     cursor: pointer;
   }
 }

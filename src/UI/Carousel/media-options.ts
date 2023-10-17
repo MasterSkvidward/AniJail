@@ -1,3 +1,5 @@
+import { freemem } from "os";
+
 export const bigCarouselOptions = {
   speed: 700,
   // height : '275px',
@@ -10,6 +12,7 @@ export const bigCarouselOptions = {
   // fixedWidth: 190,
   arrows: true,
   // arrowPath: arrowRight,
+  pagination: true,
 
   breakpoints: {
     1920: { gap: "15px" },
@@ -30,6 +33,7 @@ export const smallCarouselOptions = {
   perPage: 9,
   // fixedWidth: 190,
   arrows: true,
+  pagination: false,
   // arrowPath: arrowRight,
 
   breakpoints: {
@@ -55,6 +59,7 @@ export const smallLimitedCarouseIOptions = {
   perPage: 6,
   // fixedWidth: 190,
   arrows: true,
+  pagination: false,
   // arrowPath: arrowRight,
 
   breakpoints: {
@@ -80,6 +85,7 @@ export const charactersCarouseIOptions = {
   perPage: 7,
   // fixedWidth: 190,
   arrows: true,
+  pagination: false,
   // arrowPath: arrowRight,
 
   breakpoints: {
@@ -101,6 +107,7 @@ export const personCarouseIOptionsLimited = {
   perPage: 7,
   // fixedWidth: 190,
   arrows: true,
+  pagination: false,
   // arrowPath: arrowRight,
 
   breakpoints: {
@@ -122,6 +129,7 @@ export const friendCarouseIOptionsLimited = {
   perPage: 6,
   // fixedWidth: 190,
   arrows: true,
+  pagination: false,
   // arrowPath: arrowRight,
 
   breakpoints: {
@@ -131,3 +139,26 @@ export const friendCarouseIOptionsLimited = {
     500: { perPage: 4 },
   },
 };
+
+export const reviewsCarouselOptions = {
+    speed: 1100,
+    // type: "loop",
+    rewind: true,
+    gap: "35px",
+    interval: 9000,
+    autoplay: true,
+    lazyLoad: "nearby",
+    perPage: 3,
+    arrows: true,
+    pagination: true,
+    // drag: "free",
+  
+    breakpoints: {
+      1500: { perPage: 2 },
+      1180: { perPage: 2 },
+      950: { perPage: 2 },
+      500: { perPage: 2 },
+    },
+
+ 
+  };

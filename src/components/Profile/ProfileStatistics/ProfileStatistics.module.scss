@@ -13,6 +13,9 @@
 
     &__container {
         background-color: var(--background-primary);
+        display: flex;
+        flex-direction: column;
+        row-gap: 160px;
     }
 
     &__time {
@@ -86,5 +89,9 @@
                 font-weight: 700;
             }
         }
+    }
+
+    &__reviews {
+        margin-bottom: 150px;
     }
 }

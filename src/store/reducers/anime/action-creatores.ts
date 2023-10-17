@@ -61,7 +61,7 @@ export const AnimeActionCreators = {
         });
       } catch (e: any) {
         dispatch(AnimeActionCreators.setAnimeRecommendationsError(e));
-        console.log(e);
+        // console.log(e);
       } finally {
         dispatch(AnimeActionCreators.setAnimeRecommendationsLoading(false));
       }
@@ -90,6 +90,14 @@ export const AnimeActionCreators = {
         });
       } catch (e: any) {
         dispatch(AnimeActionCreators.setAnimeSeasonError(e));
+        if (e.response.status === 429) {
+            // console.log("Error loading");
+            // setTimeout(() => {
+            //     dispatch(AnimeActionCreators.GetAnimeSeason(params));
+            //     console.log("Load again");
+            // }, 1000)
+        }
+        
       } finally {
         dispatch(AnimeActionCreators.setAnimeSeasonLoading(false));
       }

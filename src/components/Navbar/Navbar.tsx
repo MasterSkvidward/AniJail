@@ -36,8 +36,6 @@ const Navbar: FC = () => {
 
   const handleClick = (event: MouseEvent<HTMLLIElement>): void => {
     setSelectedNumber(Number(event.currentTarget.dataset.index));
-    console.log(String(event.currentTarget.dataset.path));
-    
     navigate(String(event.currentTarget.dataset.path));
   };
 
