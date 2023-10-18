@@ -1,11 +1,11 @@
 import React, { FC } from "react";
 import { IAnime } from "../../../types/jikanMoe/jikan";
 import Image from "../../../UI/Image/Image";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { formatGenres } from "../../../helpers/helpers";
 
 import classes from "./AnimeItemSmall.module.scss";
-import { publicRoutes } from "../../AppRouter/routes";
+import ContentLoader from "react-content-loader";
 import Score from "../../../UI/Score/Score";
 
 interface AnimeItemSmallProps {
@@ -15,16 +15,20 @@ interface AnimeItemSmallProps {
 const AnimeItemSmall: FC<AnimeItemSmallProps> = ({ anime }) => {
    const navigate = useNavigate();
 
-   const handleClick = (id: number) => {
-      // navigate(`/anime/${id}`);
-      // navigate(0);
-
-    navigate(`/anime/${id}`);
-   
-   };
+   if (!anime)
+      return (
+         <ContentLoader
+            speed={2}
+            className={classes["skeleton__big"]}
+            foregroundColor="var(--background-secondary)"
+            backgroundColor="var(--background-skeleton)"
+         >
+            <rect x="0" y="0" rx="2" ry="2" width="342" height="548" />
+         </ContentLoader>
+      );
 
    return (
-      <div className={classes["anime"]} onClick={() => handleClick(anime.mal_id)}>
+      <div className={classes["anime"]} onClick={() => navigate(`/anime/${anime.mal_id}`)}>
          <div className={classes["image"]}>
             <Image url={anime.images.jpg.image_url} alt={anime.title_english} />
          </div>

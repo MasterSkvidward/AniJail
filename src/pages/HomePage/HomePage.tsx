@@ -5,6 +5,7 @@ import classes from "./HomePage.module.scss";
 import { useDispatch } from "react-redux";
 import { AnimeActionCreators } from "../../store/reducers/anime/action-creatores";
 import { IAnimeSearchParams } from "../../types/jikanMoe/jikan";
+import FAQ from "../../components/FAQ/FAQ,";
 
 
 const HomePage: FC = () => {
@@ -22,6 +23,7 @@ const HomePage: FC = () => {
   return (
     <div className={classes.homepage}>
       <CarouselBlock />
+      <FAQ/>
     </div>
   );
 };

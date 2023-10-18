@@ -17,9 +17,11 @@
 .carousel-item__big {
   // background-color: var(--background-secondary);
   // min-height: 700px;
-  background-color: var(--background-primary);
   padding: 40px 0px 60px;
   margin-bottom: 50px;
+
+  background-color: var(--background-primary);
+  background-image: url("../../../assets/images/diagmonds.webp");
 }
 
 .skeleton {

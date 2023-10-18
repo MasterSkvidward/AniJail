@@ -19,7 +19,7 @@ const CarouselBlock = () => {
    //     // const dateAnime = await AnimeService.getAnimeSeasonNow();
    //   };
 
-   let carousels = [
+   const carousels = [
       {
          title: `Anime for you`,
          options: smallCarouselOptions,
@@ -28,13 +28,13 @@ const CarouselBlock = () => {
       },
       {
          title: `Popular`,
-         options: smallCarouselOptions,
+         options: {...smallCarouselOptions, interval: 12000},
          arrowTop: 40,
          data: animeCurrentSeason,
       },
       {
          title: `A-Z`,
-         options: smallCarouselOptions,
+         options: {...smallCarouselOptions, interval: 9000},
          arrowTop: 40,
          data: animeCurrentSeason,
       },

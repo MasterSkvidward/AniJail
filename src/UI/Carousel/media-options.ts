@@ -1,11 +1,11 @@
 import { freemem } from "os";
 
 export const bigCarouselOptions = {
-  speed: 700,
+  speed: 900,
   // height : '275px',
   rewind: true,
   gap: "20px",
-  interval: 7000,
+  interval: 9000,
   autoplay: true,
   lazyLoad: "nearby",
   perPage: 5,
@@ -53,7 +53,7 @@ export const smallLimitedCarouseIOptions = {
   // height : '275px',
   rewind: true,
   gap: "27px",
-  interval: 5000,
+  interval: 10000,
   autoplay: true,
   lazyLoad: "nearby",
   perPage: 6,
@@ -145,8 +145,8 @@ export const reviewsCarouselOptions = {
     // type: "loop",
     rewind: true,
     gap: "35px",
-    interval: 9000,
-    autoplay: true,
+    interval: 11000,
+    autoplay: false,
     lazyLoad: "nearby",
     perPage: 3,
     arrows: true,

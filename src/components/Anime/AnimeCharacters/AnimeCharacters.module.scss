@@ -1,0 +1,25 @@
+@import "../../../styles/colors";
+
+.characters {
+   display: flex;
+   flex-direction: column;
+   row-gap: 27px;
+
+   max-width: 937px;
+
+   svg {
+      height: 35px;
+      width: 35px;
+      color: $main-color;
+   }
+
+   &__rows {
+      // display: grid;
+      // column-gap: 30px;
+      // row-gap: 30px;
+
+      // grid-template-columns: repeat(6, 112px);
+      // grid-template-columns: minmax(130px, 227px), minmax(130px, 227px), minmax(130px, 227px), minmax(130px, 227px), minmax(130px, 227px);
+      // grid-template-columns: auto auto auto auto auto;
+   }
+}

@@ -1,0 +1,20 @@
+@import "../../../styles/media_queries";
+
+.anime {
+   display: flex;
+   flex-direction: column;
+   row-gap: 20px;
+   // min-width: 603px;
+   max-width: 486px;
+   justify-self: flex-end;
+
+   @include for-small-desktop-up {
+      display: none;
+   }
+}
+
+.skeleton__item-small {
+   width: 466px;
+   height: 139px;
+   margin-bottom: 14px;
+}
