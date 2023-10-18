@@ -1,0 +1,114 @@
+@import "../../../styles/colors";
+
+.filter {
+   // background-color: rgb(84, 84, 84);
+   margin: 0 0 50px;
+   background-color: var(--background-tertiary);
+   padding: 15px 10px;
+   border-radius: 17px;
+
+   &__container {
+      //   display: flex;
+      //   column-gap: 10px;
+      //   flex-wrap: wrap;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      row-gap: 20px;
+
+      //   border: 0.3mm solid var(--text-secondary);
+      //   background-color: var(--background-secondary);
+      //   height: auto;
+   }
+
+   //    &__row {
+   //       display: flex;
+   //       justify-content: space-between;
+   //       align-items: center;
+   //    }
+
+   &__title {
+      letter-spacing: 1px;
+      font-size: 20px;
+   }
+
+   &__rows {
+      // background-color: #212121 !important;
+      display: flex;
+      column-gap: 25px;
+      row-gap: 15px;
+      flex-wrap: wrap;
+      justify-content: stretch;
+
+      & > * {
+         width: 100%;
+         max-width: 350px;
+      }
+   }
+
+   &__block {
+      letter-spacing: 1px;
+      font-size: 20px;
+      margin: 20px 0px 0px 0px;
+
+      &_inputs {
+         display: flex;
+         column-gap: 10px;
+
+         .input {
+            padding: 15px 10px 13px;
+            // background-color: #212121;
+            background-color: var(--background-secondary);
+            font-size: 17px;
+            color: var(--text-secondary);
+
+            max-width: 49%;
+            border-radius: 7px;
+
+            &:focus,
+            &:active {
+               outline: none;
+               //   background-color: rgba($color: #2c2b2b, $alpha: 1);
+               //   opacity: 0.9;
+            }
+         }
+      }
+   }
+
+   &__clear {
+      margin: 15px 0px 0px;
+      border-radius: 50px;
+      display: flex;
+      column-gap: 10px;
+      align-items: center;
+      justify-content: center;
+      background-color: $main-color;
+      padding: 14px 10px;
+      max-width: 200px;
+      width: 100%;
+      transition: 0.3s;
+      user-select: none;
+      // align-self: center;
+
+      cursor: pointer;
+      // justify-content: center;
+
+      &:hover {
+         background-color: rgba(63, 95, 224, 0.7);
+      }
+
+      &_title {
+         font-weight: 600;
+         text-align: center;
+         font-size: 15px;
+         // color: rgba(235, 234, 234, 0.9);
+         color: var(--text-secondary);
+      }
+
+      &_cross {
+         font-size: 16px;
+         font-weight: 700;
+         padding: 2px 0px 0px 0px;
+      }
+   }
+}

@@ -11,15 +11,15 @@ const AnimeList = () => {
   const [previewIsVisible, setPreviewIsVisible] = useState(false);
 
   if (!anime.length && !isLoading)
-    return <div className={classes["empty"]}>No Results</div>;
+    return <div className={classes["empty"]}>No Results.</div>;
 
   return (
     <div className={classes["anime-list"]}>
       <div className={classes["anime-list__grid"]}>
         {anime.map((item, index) => (
-          <div className={classes["anime-list__item"]} key={index}>
-            <AnimeItem anime={item} showPreview={true} />
-          </div>
+        //   <div className={classes["anime-list__item"]} key={index}>
+            <AnimeItem anime={item} showPreview={true} key={index}/>
+        //   </div>
         ))}
       </div>
     </div>

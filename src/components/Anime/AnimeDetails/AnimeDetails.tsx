@@ -12,24 +12,22 @@ import AnimeSidebar from "../AnimeSidebar/AnimeSidebar";
 import AnimeRating from "../AnimeRating/AnimeRating";
 
 const AnimeDetails = () => {
-   const {
-      animeRecommendations,
-      animeSeason,
-      animeSingle: anime,
-   } = useTypedSelector((state) => state.anime);
+   const { animeRecommendations, animeSeason, animeSingle: anime } = useTypedSelector((state) => state.anime);
 
    return (
       <section className={classes["anime-details"]}>
          <div className={classes["anime-details__container"] + " " + "_container1800"}>
             <div className={classes["anime-details__main"]}>
-               <AnimeCharacters/>
+               <AnimeCharacters />
 
                <div className={classes["description"]}>
                   <Title value={"Synopsis"} />
                   <p className={classes["description__body"]}>{anime?.synopsis || "Nothing yet."}</p>
                </div>
 
-                <AnimeRating score={anime?.score} scoredBy={anime?.scored_by}/>
+               <div className={classes["anime-details__rating"]}>
+                  <AnimeRating score={anime?.score} scoredBy={anime?.scored_by} />
+               </div>
 
                {/* <div className={classes["trailer"]}>
             <Title value={"Trailer"} />
@@ -70,7 +68,7 @@ const AnimeDetails = () => {
         } */}
             </div>
 
-          <AnimeSidebar animeSeason={animeSeason}/>
+            <AnimeSidebar anime={animeSeason} />
          </div>
       </section>
    );

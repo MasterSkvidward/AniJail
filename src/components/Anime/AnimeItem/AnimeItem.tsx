@@ -12,72 +12,69 @@ import { getShortenedString } from "../../../utils/utils";
 import AnimePreview from "../AnimePreview/AnimePreview";
 
 interface AnimeItemProps {
-    anime: IAnime | null;
-    showPreview?: boolean;
+   anime: IAnime | null;
+   showPreview?: boolean;
 }
 
-const AnimeItem: FC<AnimeItemProps> = ({
-    anime,
-    showPreview = false,
-}) => {
-    const navigate = useNavigate();
-    const [previewVisible, setPreviewVisible] = useState<boolean>(false);
-    const [duration, setDuration] = useState(500);
-    const debounceShow = useDebounce(showAnimePreview, duration);
+const AnimeItem: FC<AnimeItemProps> = ({ anime, showPreview = false }) => {
+   const navigate = useNavigate();
+   const [previewVisible, setPreviewVisible] = useState<boolean>(false);
+   const [duration, setDuration] = useState(500);
+   const debounceShow = useDebounce(showAnimePreview, duration);
 
-    function showAnimePreview(flag: boolean) {
-        setPreviewVisible(flag);
-    }
+   function showAnimePreview(flag: boolean) {
+      setPreviewVisible(flag);
+   }
 
-    const handlerMouseEnter = () => {
-        debounceShow(true);
-        setDuration(100);
-    };
+   const handlerMouseEnter = () => {
+      debounceShow(true);
+      setDuration(100);
+   };
 
-    const handlerMouseLeave = () => {
-        debounceShow(false);
-        setDuration(800);
-    };
+   const handlerMouseLeave = () => {
+      debounceShow(false);
+      setDuration(800);
+   };
 
-    // const propsStyles = {
-    //     width: `${width}px`,
-    //     maxWidth: `${maxWidth}px`,
-    //     minWidth: `${minWidth}px`,
-    //     height: `${height}px`,
-    //     maxHeight: `${maxHeight}px`,
-    // }
+   // const propsStyles = {
+   //     width: `${width}px`,
+   //     maxWidth: `${maxWidth}px`,
+   //     minWidth: `${minWidth}px`,
+   //     height: `${height}px`,
+   //     maxHeight: `${maxHeight}px`,
+   // }
 
-    if (!anime) return <></>;
+   if (!anime) return <></>;
 
-    return (
-        <div
-            className={classes["anime"]}
-            onClick={() => navigate(`/anime/${anime?.mal_id}`)}
-            onMouseEnter={handlerMouseEnter}
-            onMouseLeave={handlerMouseLeave}
-        >
-            {showPreview && (
-                <div
-                    className={
-                        previewVisible
-                            ? [classes["anime__preview"], classes["preview-visible"]].join(" ")
-                            : classes["anime__preview"]
-                    }
-                >
-                    <AnimePreview anime={anime} />
-                </div>
-            )}
-            <div className={classes["anime__body"]}>
-                <div className={classes["anime__image"]}>
-                    <Image url={anime?.images.jpg.image_url || ""} score={anime.score} />
-                </div>
-                <h4 className={classes["anime__title"]}>
-                    {getShortenedString(anime?.title_english ? anime.title_english : anime?.title, 37)}
-                </h4>
-                {/* <AnimePreview anime={anime}/> */}
+   return (
+      <div
+         className={classes["anime"]}
+         onClick={() => navigate(`/anime/${anime?.mal_id}`)}
+         onMouseEnter={handlerMouseEnter}
+         onMouseLeave={handlerMouseLeave}
+      >
+         {showPreview && (
+            <div
+               className={
+                  previewVisible
+                     ? [classes["anime__preview"], classes["preview-visible"]].join(" ")
+                     : classes["anime__preview"]
+               }
+            >
+               <AnimePreview anime={anime} />
             </div>
-        </div>
-    );
+         )}
+         <div className={classes["anime__body"]}>
+            <div className={classes["anime__image"]}>
+               <Image url={anime?.images.jpg.image_url || ""} score={anime.score} />
+            </div>
+            <h4 className={classes["anime__title"]}>
+               {getShortenedString(anime?.title_english ? anime.title_english : anime?.title, 37)}
+            </h4>
+            {/* <AnimePreview anime={anime}/> */}
+         </div>
+      </div>
+   );
 };
 
 export default AnimeItem;

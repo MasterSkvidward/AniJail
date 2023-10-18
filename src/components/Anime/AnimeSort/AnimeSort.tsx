@@ -2,7 +2,6 @@ import React, { FC, useEffect, useState, useRef } from "react";
 import classes from "./AnimeSort.module.scss";
 import MySelect from "../../../UI/MySelect/MySelect";
 import AnimeList from "../AnimeList/AnimeList";
-import Filter from "../../../UI/Filter/Filter";
 import { ISelectOption } from "../../../types/user-inteface";
 import * as CONSTANTS from "./constants";
 import { useDispatch } from "react-redux";
@@ -10,10 +9,13 @@ import { FilterActionCreators } from "../../../store/reducers/filter/action-crea
 import { IAnimeSearchParams } from "../../../types/jikanMoe/jikan";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import Loader from "../../../UI/Loader/Loader";
+import AnimeSidebar from "../AnimeSidebar/AnimeSidebar";
+import AnimeFilter from "../AnimeFilter/AnimeFilter";
 
 const AnimeSort = () => {
    const dispatch = useDispatch();
-   const { loadNewAnime, params, isLoading, hasMoreAnime } = useTypedSelector((state) => state.filter);
+   const { loadNewAnime, params, isLoading, error, hasMoreAnime } = useTypedSelector((state) => state.filter);
+   const { animeSeason } = useTypedSelector((state) => state.anime);
    const [page, setPage] = useState<number>(2);
 
    const lastAnimeRow = useRef<HTMLDivElement | null>(null);
@@ -45,21 +47,18 @@ const AnimeSort = () => {
    return (
       <div className={classes["anime"]}>
          <div className={[classes["anime__container"], "_container1800"].join(" ")}>
-            <h2 className={classes["anime__title"]}>{"Catalog"}</h2>
-            <div className={classes["anime__block"]}>
-               <div className={classes["anime__column"]}>
-                  <div className={classes["anime__row"]}>
-                     <MySelect options={CONSTANTS.sortCategories} />
-                  </div>
-                  <AnimeList />
-                  <div ref={lastAnimeRow} className={classes["anime__lastRow"]}>
-                     {isLoading && hasMoreAnime && <Loader />}
-                  </div>
+            {/* <h2 className={classes["anime__title"]}>{"Catalog"}</h2> */}
+            <div className={classes["anime__column"]}>
+               <AnimeFilter />
+               <div className={classes["anime__row"]}>
+                  <MySelect options={CONSTANTS.sortCategories} />
                </div>
-               <div className={classes["anime__filter"]}>
-                  <Filter />
+               <AnimeList />
+               <div ref={lastAnimeRow} className={classes["anime__lastRow"]}>
+                  {isLoading && !error && hasMoreAnime && <Loader />}
                </div>
             </div>
+            <AnimeSidebar anime={animeSeason} />
          </div>
       </div>
    );

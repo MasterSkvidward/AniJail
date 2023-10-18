@@ -8,17 +8,17 @@ import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { IAnime } from "../../../types/jikanMoe/jikan";
 
 interface AnimeSidebarProps {
-    animeSeason: IAnime [];
+    anime: IAnime [];
 }
 
-const AnimeSidebar:FC<AnimeSidebarProps> = ({animeSeason}) => {
+const AnimeSidebar:FC<AnimeSidebarProps> = ({anime}) => {
 
    return (
       <aside className={classes["anime"]}>
          <Title value="Airing Now" />
          <div>
-            {animeSeason.length !== 0
-               ? animeSeason.slice(0, 8).map((item, index) => <AnimeItemSmall anime={item} key={index} />)
+            {anime.length !== 0
+               ? anime.slice(0, 8).map((item, index) => <AnimeItemSmall anime={item} key={index} />)
                : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item, index) => (
                     <ContentLoader
                        key={index}

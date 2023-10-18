@@ -1,87 +1,93 @@
 @import "../../../styles/media_queries";
 
+// $width: 190px;
+// $height: 269px;
+
 $width: 190px;
-$height: 269px;
-
-$max-width: 225px;
-$max-height: 318px;
-
-$min-width: 225px;
-$min-height: 318px;
+$height: 268px;
 
 @keyframes tooltipShow {
-  to {
-    opacity: 1;
-    visibility: visible;
-    transform: translate(-2%, 0);
-  }
+   to {
+      opacity: 1;
+      visibility: visible;
+      transform: translate(-2%, 0);
+   }
 }
 
 .anime {
-  position: relative;
-  width: 100%;
+   position: relative;
 
+   &__preview {
+      position: absolute;
+      top: -20%;
+      left: 234px;
+      border-radius: 13px;
+      display: none;
 
-  &__preview {
-    position: absolute;
-    top: -20%;
-    left: 234px;
-    border-radius: 13px;
-    display: none;
+      opacity: 0;
+      visibility: hidden;
 
-    opacity: 0;
-    visibility: hidden;
+      @include for-small-desktop-up {
+         display: none;
+      }
+   }
 
-    @include for-small-desktop-up {
-        display: none;
-    }
-  }
+   &__body {
+      display: flex;
+      flex-direction: column;
+      row-gap: 10px;
+      // height: 100%;
+      border-radius: 7px;
+      cursor: pointer;
 
-  &__body {
-    display: flex;
-    flex-direction: column;
-    row-gap: 10px;
-    // height: 100%;
-    border-radius: 7px;
-    cursor: pointer;
-  }
+    //   width: 100%;
+    //   height: 100%;
+   }
 
-  &__image {
-    max-width: $width;
-    max-height: $height;
+   &__image {
+      background-color: var(--background-tertiary);
+      border-radius: 14px;
+    //   border: 0.5px solid rgba(255, 255, 255, 0.1);
+      overflow: hidden;
+      // max-width: 188px;
+      // width: inherit;
+      transition: 0.2s ease-in-out;
+      max-width: $width;
+      max-height: $height;
 
+    //   max-width: $width;
+    //   max-height: $height;
 
-    background-color: var(--background-tertiary);
-    border-radius: 14px;
-    border: 0.5px solid rgba(255, 255, 255, 0.1);
-    overflow: hidden;
-    // max-width: 188px;
-    // width: inherit;
-    transition: 0.2s ease-in-out;
+    //   min-width: calc($width * 0.82);
+      //   min-height: calc($height * 0.82);
 
-    img {
-      // border-radius: 13px;
-    }
+    //   height: 100%;
 
-    &:hover {
-      opacity: 0.83;
-    }
-  }
+      &:hover {
+         opacity: 0.83;
+      }
+   }
 
-  &__title {
-    overflow-wrap: break-word;
-    font-weight: 600;
-    opacity: 0.87;
-    transition: 0.2s;
-    font-size: 0.93em;
-    cursor: pointer;
-  }
+   &__title {
+      overflow-wrap: break-word;
+      font-weight: 600;
+      opacity: 0.87;
+      transition: 0.2s;
+      font-size: 0.93em;
+      cursor: pointer;
+      max-width: $width;
+    //   height: 30px;
+   }
 }
 
 .preview-visible {
-  z-index: 77;
-  visibility: visible;
-  opacity: 1;
-  display: block;
-  animation: tooltipShow 0.2s ease-out forwards;
+   z-index: 77;
+   visibility: visible;
+   opacity: 1;
+   display: block;
+   animation: tooltipShow 0.2s ease-out forwards;
+
+   @include for-small-desktop-up {
+      display: none;
+   }
 }
