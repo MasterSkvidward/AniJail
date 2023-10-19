@@ -1,12 +1,4 @@
-import React, {
-  useRef,
-  FC,
-  useState,
-  useEffect,
-  MouseEvent,
-  Dispatch,
-  SetStateAction,
-} from "react";
+import React, { useRef, FC, useState, useEffect, MouseEvent, Dispatch, SetStateAction } from "react";
 import classes from "./SearchBar.module.scss";
 import MyInput from "../MyInput/MyInput";
 import { AiOutlineSearch } from "react-icons/ai";
@@ -21,98 +13,90 @@ import { AnimeActionCreators } from "../../store/reducers/anime/action-creatores
 import { useDispatch } from "react-redux";
 
 const SearchBar = () => {
-  const search = useRef<HTMLFormElement>(null);
-  const searchList = useRef<HTMLDivElement>(null);
-  const dispatch = useDispatch();
+   const search = useRef<HTMLFormElement>(null);
+   const searchList = useRef<HTMLDivElement>(null);
+   const dispatch = useDispatch();
 
-  const [visible, setVisible] = useState<boolean>(false);
-  const [value, setValue] = useState<string>("");
-//   const [animeItems, setAnimeItems] = useState<IAnime[] | []>([]);
+   const [visible, setVisible] = useState<boolean>(false);
+   const [value, setValue] = useState<string>("");
+   //   const [animeItems, setAnimeItems] = useState<IAnime[] | []>([]);
 
-  const {animeSearch} = useTypedSelector(state => state.anime);
+   const { animeSearch } = useTypedSelector((state) => state.anime);
 
-  const debouncedSearch = useDebounce(searchAnime, 400);
+   const debouncedSearch = useDebounce(searchAnime, 400);
 
-  async function searchAnime() {
-    // const response = await AnimeService.getAnimeBySearch(searchParams);
-    dispatch(AnimeActionCreators.GetAnimeSearch(searchParams));
-  }
+   async function searchAnime() {
+      // const response = await AnimeService.getAnimeBySearch(searchParams);
+      await dispatch(AnimeActionCreators.GetAnimeSearch(searchParams));
+   }
 
-  const searchParams: IAnimeSearchParams = {
-    q: value,
-    order_by: "score",
-    sort: "desc",
-    limit: 15,
-    sfw: false,
-  };
+   const searchParams: IAnimeSearchParams = {
+      q: value,
+      order_by: "score",
+      sort: "desc",
+      limit: 15,
+      sfw: false,
+   };
 
-  const handlerFocusIn = (e: FocusEvent): void => {
-    search.current?.classList.add(classes.focused);
-    setVisible(true);
-    e.stopPropagation();
-  };
+   const handlerFocusIn = (e: FocusEvent): void => {
+      search.current?.classList.add(classes.focused);
+      setVisible(true);
+      e.stopPropagation();
+   };
 
-  const handlerClick = (e: MouseEvent): void => {
-    e.stopPropagation();
-  };
+   const handlerClick = (e: MouseEvent): void => {
+      e.stopPropagation();
+   };
 
-  const handlerClickMenu = (e: MouseEvent): void => {
-    setVisible(false);
-    e.stopPropagation();
-  };
+   const handlerClickMenu = (e: MouseEvent): void => {
+      setVisible(false);
+      e.stopPropagation();
+   };
 
-  const handlerMouseDown = (e: MouseEvent): void => {
-    e.stopPropagation();
-  };
+   const handlerMouseDown = (e: MouseEvent): void => {
+      e.stopPropagation();
+   };
 
-  function handlerDocumentClick(e: Event): void {
-    setVisible(false);
-  }
+   function handlerDocumentClick(e: Event): void {
+      setVisible(false);
+   }
 
-  useEffect(() => {
-    debouncedSearch();
-    if (searchList.current?.scrollTop) searchList.current.scrollTop = 0;
-  }, [value]);
+   useEffect(() => {
+      debouncedSearch();
+      if (searchList.current?.scrollTop) searchList.current.scrollTop = 0;
+   }, [value]);
 
-  useEffect(() => {
-    document.addEventListener("mousedown", handlerDocumentClick);
-    search.current?.addEventListener("focusin", handlerFocusIn);
-  }, []);
+   useEffect(() => {
+      document.addEventListener("mousedown", handlerDocumentClick);
+      search.current?.addEventListener("focusin", handlerFocusIn);
+   }, []);
 
-  return (
-    <form
-      ref={search}
-      className={
-        visible ? [classes.search, classes.focused].join(" ") : classes.search
-      }
-      onClick={handlerClick}
-      onMouseDown={handlerMouseDown}
-      onSubmit={(e) => e.preventDefault()}
-    >
-      <MyInput setValue={setValue} placeholder={"Search anime..."} />
-      <div className={classes.search__loupe}>
-        <AiOutlineSearch />
-      </div>
-      <div
-        ref={searchList}
-        className={
-          visible
-            ? [classes.search__list, classes.active].join(" ")
-            : classes.search__list
-        }
-        onClick={handlerClickMenu}
+   return (
+      <form
+         ref={search}
+         className={visible ? [classes.search, classes.focused].join(" ") : classes.search}
+         onClick={handlerClick}
+         onMouseDown={handlerMouseDown}
+         onSubmit={(e) => e.preventDefault()}
       >
-        <div className={classes.search__items}>
-          {animeSearch.map((anime, index) => (
-            <AnimeItemSmall anime={anime} key={index} />
-          ))}
-        </div>
-        <div className={classes["search__all"]}>
-          See all results for "{value}"
-        </div>
-      </div>
-    </form>
-  );
+         <MyInput setValue={setValue} placeholder={"Search anime..."} />
+         <div className={classes.search__loupe}>
+            <AiOutlineSearch />
+         </div>
+         <div
+            ref={searchList}
+            className={visible ? [classes.search__list, classes.active].join(" ") : classes.search__list}
+            onClick={handlerClickMenu}
+         >
+            <div className={classes.search__items}>
+               {animeSearch.map((anime, index) => (
+                  <AnimeItemSmall anime={anime} key={index} />
+               ))}
+            </div>
+            <div className={classes["search__all"]}>See all results for "{value}"</div>
+         </div>
+      </form>
+   );
 };
 
 export default SearchBar;

@@ -18,6 +18,7 @@ const AnimeFilter = memo(() => {
    const dispatch = useDispatch();
    const { params } = useTypedSelector((state) => state.filter);
    const debouncedParams = useDebounce(changeParams, 500);
+
    const animatedComponents = makeAnimated();
 
    const yearFrom = useRef<HTMLInputElement>(null);
@@ -36,16 +37,20 @@ const AnimeFilter = memo(() => {
 
    const handlerSelectSingleChange = (option: SingleValue<IFilterOption>, paramValue: string): void => {
       let result = option ? option.value : "";
-        console.log(paramValue);
-        console.log(option);
-        
-        
-      dispatch(FilterActionCreators.addParams({ [paramValue]: result }));
+      const obj = { [paramValue]: result };
+      dispatch(FilterActionCreators.addParams(obj));
    };
 
-   const handlerSelectMultiChange = (options: MultiValue<IFilterOption>, paramValue: string): void => {
-      dispatch(FilterActionCreators.addParams({ [paramValue]: formatFilterValues(options) }));
+   const handlerSelectMultiChange = (options: MultiValue<IFilterOption>, paramValue: string, context: any): void => {
+      const obj = { [paramValue]: formatFilterValues(options) };
+      dispatch(FilterActionCreators.addParams(obj));
    };
+
+   //    const handlerSelectChange = (optionList: MultiValue<IFilterOption>, paramValue: string): void => {
+   //       optionList.length
+   //          ? dispatch(FilterActionCreators.addParams({ [paramValue]: formatFilterValues(optionList) }))
+   //          : dispatch(FilterActionCreators.addParams({ [paramValue]: "" }));
+   //    };
 
    function changeParams(param: IAnimeSearchParams): void {
       dispatch(FilterActionCreators.addParams(param));
@@ -57,7 +62,7 @@ const AnimeFilter = memo(() => {
 
    return (
       <div className={classes["filter"]}>
-         <div className={[classes["filter__container"], "_container1800"].join(" ")}>
+         <div className={[classes["filter__container"], "_container-main"].join(" ")}>
             {/* <div className={classes['filter__row']}>
                     <h3 className={classes['filter__title']}>Filters</h3>
                 </div> */}
@@ -76,13 +81,15 @@ const AnimeFilter = memo(() => {
                />
                <Select
                   value={getFilterOptionsMulti(CONSTANTS.filterGenreOptions, params.genres ? params.genres : "")}
-                  closeMenuOnSelect={true}
+                  closeMenuOnSelect={false}
                   options={CONSTANTS.filterGenreOptions}
                   classNamePrefix={"custom-select"}
                   placeholder={"Genres"}
                   isMulti={true}
+                  //   hideSelectedOptions={false}
+                  isClearable={true}
                   components={animatedComponents}
-                  onChange={(options) => handlerSelectMultiChange(options, "genres")}
+                  onChange={(options, context) => handlerSelectMultiChange(options, "genres", context)}
                />
                <Select
                   value={getFilterOptionsSingle(CONSTANTS.filterAgeOptions, params.rating ? params.rating : "")}

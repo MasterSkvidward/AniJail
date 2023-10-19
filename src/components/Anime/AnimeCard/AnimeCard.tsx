@@ -74,7 +74,7 @@ const AnimeCard: FC = () => {
         </div>
       </div>
       <div
-        className={[classes["anime-card__container"], "_container1800"].join(
+        className={[classes["anime-card__container"], "_container-main"].join(
           " "
         )}
       >

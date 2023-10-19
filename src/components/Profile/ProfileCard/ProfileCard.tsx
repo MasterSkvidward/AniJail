@@ -63,7 +63,7 @@ const ProfileCard: FC<ProfileCardProps> = ({ currentUser }) => {
       <MyModal visible={modalVisible} setVisible={setModalVisible}>
         <ImageResponsive url={currentUser.image_url} />
       </MyModal>
-      <div className={[classes["card__container"], "_container1800"].join(" ")}>
+      <div className={[classes["card__container"], "_container-main"].join(" ")}>
         <div className={classes["card__media"]}>
           {/* <div
             style={{

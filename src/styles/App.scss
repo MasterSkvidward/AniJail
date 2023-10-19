@@ -9,103 +9,100 @@
 
 // !-------------------------------------------------------general---------------------------------------------------
 
-
 #root {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol";
-  background-color: var(--background-secondary);
-  // background-image: linear-gradient(90deg, #fee140 0%, #fa709a 100%);
-  // background-color: rgb(17, 18, 19);
-  color: var(--text-primary);
-  // overflow: hidden;
-//   overflow-x: hidden;
+   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif,
+      "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+   background-color: var(--background-secondary);
+   // background-image: linear-gradient(90deg, #fee140 0%, #fa709a 100%);
+   // background-color: rgb(17, 18, 19);
+   color: var(--text-primary);
+   // overflow: hidden;
+   //   overflow-x: hidden;
 
-  line-height: 1;
-  font-size: 16px;
+   line-height: 1;
+   font-size: 16px;
 
-  @include for-medium-desktop-up {
-    font-size: 14px;
-  }
+   @include for-medium-desktop-up {
+      font-size: 14px;
+   }
 
-  @include for-small-desktop-up {
-    font-size: 12px;
-  }
+   @include for-small-desktop-up {
+      font-size: 12px;
+   }
 
-  @include for-desktop-up {
-    font-size: 11px;
-  }
+   @include for-desktop-up {
+      font-size: 11px;
+   }
 
-  @include for-tablet-landscape-up {
-    font-size: 10px;
-  }
+   @include for-tablet-landscape-up {
+      font-size: 10px;
+   }
 
-  @include for-phone-only {
-    font-size: 9px;
-  }
+   @include for-phone-only {
+      font-size: 9px;
+   }
 
-  a:visited {
-    color: inherit;
-  }
+   a:visited {
+      color: inherit;
+   }
 }
 
 .App {
-  min-height: 101vh;
-  display: flex;
-  flex-direction: column;
+   min-height: 101vh;
+   display: flex;
+   flex-direction: column;
 
-  &::-webkit-scrollbar {
-    width: 11px;
-  }
+   &::-webkit-scrollbar {
+      width: 11px;
+   }
 
-  &::-webkit-scrollbar-track {
-    background: #eaeff1;
-  }
+   &::-webkit-scrollbar-track {
+      background: #eaeff1;
+   }
 
-  &::-webkit-scrollbar-thumb {
-    background-color: rgb(161, 161, 161);
-    // background: repeating-linear-gradient(90deg, #c733bb, #bb3c47 2px, #d8373f 5px, #963c3c 15px);
-    border-radius: 1px;
-    // border: 3px double #cb4f4f;
-    transition-property: border;
-    transition-duration: 1s;
-  }
+   &::-webkit-scrollbar-thumb {
+      background-color: rgb(161, 161, 161);
+      // background: repeating-linear-gradient(90deg, #c733bb, #bb3c47 2px, #d8373f 5px, #963c3c 15px);
+      border-radius: 1px;
+      // border: 3px double #cb4f4f;
+      transition-property: border;
+      transition-duration: 1s;
+   }
 }
 
 ._container {
-  max-width: 1440px;
-  // max-width: 70vw;
-  margin: 0 auto;
+   max-width: 1440px;
+   // max-width: 70vw;
+   margin: 0 auto;
 
-  @include for-big-desktop-up {
-    padding: 0 20px;
-  }
+   @include for-big-desktop-up {
+      padding: 0 20px;
+   }
 
-  @include for-phone-only {
-    padding: 0 9px;
-  }
-
+   @include for-phone-only {
+      padding: 0 9px;
+   }
 }
 
-._container1800 {
-  // max-width: 86vw;
-  max-width: 1800px;
-  // max-width: 70vw;
-  margin: 0 auto;
+._container-main {
+   // max-width: 86vw;
+   max-width: 1800px;
+   // max-width: 70vw;
+   margin: 0 auto;
 
-  @include for-big-desktop-up {
-    padding: 0 20px;
-  }
+   @include for-big-desktop-up {
+      padding: 0 20px;
+   }
 
-  @include for-phone-only {
-    padding: 0 9px;
-  }
+   @include for-phone-only {
+      padding: 0 9px;
+   }
 }
 
 .hide-scroll {
-    overflow-y: hidden;
-    padding-right: 18px;
-    background-color: rgba(18, 17, 17, 0);
+   overflow-y: hidden;
+   padding-right: 18px;
+   background-color: rgba(18, 17, 17, 0);
 }
 
 // @import "./react-select.scss";

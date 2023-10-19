@@ -10,7 +10,7 @@ import { BsGithub } from "react-icons/bs";
 const Footer = () => {
   return (
     <footer className={classes["footer"]}>
-      <div className={[classes["footer__container"], "_container1800"].join(" ")}>
+      <div className={[classes["footer__container"], "_container-main"].join(" ")}>
             <div className={[classes["footer__info"], classes["info"]].join(" ")}>
                 <h3 className={classes["info__brandname"]}>AnimeJail</h3>
              

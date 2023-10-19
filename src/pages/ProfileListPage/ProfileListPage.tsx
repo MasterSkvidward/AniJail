@@ -10,35 +10,32 @@ import { HiArrowLongLeft } from "react-icons/hi2";
 interface ProfileListProps {}
 
 const ProfileList: FC<ProfileListProps> = () => {
-  const { user } = useTypedSelector((state) => state.auth);
-  const navigate = useNavigate();
+   const { user } = useTypedSelector((state) => state.auth);
+   const navigate = useNavigate();
 
-  const handlerClickBack = (e: MouseEvent): void => {
-    navigate(`/users/${user.id}`);
-  };
+   const handlerClickBack = (e: MouseEvent): void => {
+      navigate(`/users/${user.id}`);
+   };
 
-  return (
-    <div className={classes["list"]}>
-      <div className={"_container1800"}>
-        <div className={classes["go-back"]}>
-          <div
-            className={classes["go-back__column"]}
-            onClick={handlerClickBack}
-          >
-            <span>
-              <HiArrowLongLeft />
-            </span>
-            <span>back</span>
-          </div>
-          <h4 className={classes["go-back__name"]} onClick={handlerClickBack}>
-            {user.username}
-          </h4>
-        </div>
-        <AnimeSearch />
-        <AnimeWatchList />
+   return (
+      <div className={classes["list"]}>
+         <div className={"_container-main"}>
+            <div className={classes["go-back"]}>
+               <div className={classes["go-back__column"]} onClick={handlerClickBack}>
+                  <span>
+                     <HiArrowLongLeft />
+                  </span>
+                  <span>back</span>
+               </div>
+               <h4 className={classes["go-back__name"]} onClick={handlerClickBack}>
+                  {user.username}
+               </h4>
+            </div>
+            <AnimeSearch />
+            <AnimeWatchList />
+         </div>
       </div>
-    </div>
-  );
+   );
 };
 
 export default ProfileList;

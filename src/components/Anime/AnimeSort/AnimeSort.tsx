@@ -11,42 +11,81 @@ import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import Loader from "../../../UI/Loader/Loader";
 import AnimeSidebar from "../AnimeSidebar/AnimeSidebar";
 import AnimeFilter from "../AnimeFilter/AnimeFilter";
+import useDebounce from "../../../hooks/useDebounce";
+import { SetThemeAction } from "../../../store/reducers/global/types";
 
 const AnimeSort = () => {
    const dispatch = useDispatch();
-   const { loadNewAnime, params, isLoading, error, hasMoreAnime } = useTypedSelector((state) => state.filter);
+   const { anime, loadNewAnime, params, isLoading, error, hasMoreAnime } = useTypedSelector((state) => state.filter);
    const { animeSeason } = useTypedSelector((state) => state.anime);
-   const [page, setPage] = useState<number>(2);
+   const [page, setPage] = useState<number>(1);
+   const [isDebouncing, setIsDebouncing] = useState(false);
+
+   const debouncedNewAnime = useDebounce(loadAnime, 300);
+   const debouncedAnime = useDebounce(fetchAnime, 500);
+   //    const debouncedAnimeNew = useDebounce(fetchNewAnime, 400);
 
    const lastAnimeRow = useRef<HTMLDivElement | null>(null);
    const observer = useRef<IntersectionObserver | null>(null);
 
-   useEffect(() => {
-      if (loadNewAnime) {
-         dispatch(FilterActionCreators.setAnime(params));
+   async function loadAnime() {
+      await dispatch(FilterActionCreators.setAnime(params));
+      dispatch(FilterActionCreators.setError(""));
+   }
+
+   async function fetchNewAnime(loadNewAnime?: boolean) {
+      await dispatch(FilterActionCreators.setAnime(params));
+
+      if (!error) {
          setPage(2);
+      } else {
+         dispatch(FilterActionCreators.setError(""));
+         debouncedNewAnime(params);
+      }
+   }
+
+   async function fetchAnime() {
+      setIsDebouncing(false);
+      console.log("page - ", page);
+
+      await dispatch(FilterActionCreators.addAnime(params, page));
+
+      if (!error) {
+         setPage((prev) => prev + 1);
+      } else {
+         dispatch(FilterActionCreators.setError(""));
+      }
+   }
+
+   useEffect(() => {
+      console.log("loading new...");
+      if (loadNewAnime) {
+         fetchNewAnime(loadNewAnime);
       }
    }, [loadNewAnime]);
 
    useEffect(() => {
-      if (isLoading) return;
+      if (isLoading || page === 1) return;
       if (observer.current) observer.current.disconnect();
 
-      const callback = (entries: any, observer: IntersectionObserver) => {
+      const callback = async (entries: any, observer: IntersectionObserver) => {
          if (entries[0].isIntersecting && hasMoreAnime) {
-            dispatch(FilterActionCreators.addAnime(params, page));
-            setPage(page + 1);
+            // console.log("OBSERVER");
+            setIsDebouncing(true);
+            debouncedAnime();
          }
       };
 
       observer.current = new IntersectionObserver(callback);
 
       if (lastAnimeRow.current) observer.current.observe(lastAnimeRow.current);
-   }, [isLoading]);
+   }, [isLoading, page]);
+
+   //    console.log(`isLoading - ${isLoading} hasMoreAnime - ${hasMoreAnime}  error - ${error} isDebouncing - ${isDebouncing}`);
 
    return (
       <div className={classes["anime"]}>
-         <div className={[classes["anime__container"], "_container1800"].join(" ")}>
+         <div className={[classes["anime__container"], "_container-main"].join(" ")}>
             {/* <h2 className={classes["anime__title"]}>{"Catalog"}</h2> */}
             <div className={classes["anime__column"]}>
                <AnimeFilter />
@@ -55,7 +94,7 @@ const AnimeSort = () => {
                </div>
                <AnimeList />
                <div ref={lastAnimeRow} className={classes["anime__lastRow"]}>
-                  {isLoading && !error && hasMoreAnime && <Loader />}
+                  {(isLoading && hasMoreAnime && <Loader />) || (isDebouncing && <Loader />)}
                </div>
             </div>
             <AnimeSidebar anime={animeSeason} />

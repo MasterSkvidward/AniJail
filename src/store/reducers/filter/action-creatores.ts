@@ -4,7 +4,6 @@ import { useFetching } from "../../../hooks/useFetching";
 import { AppDispatch } from "../rootReducer";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { FilterAction, FilterActionsEnum } from "./types";
-import { deleteEmptyParams } from "../../../utils/utils";
 
 export const FilterActionCreators = {
    setIsLoading: (flag: boolean): FilterAction => ({
@@ -12,21 +11,41 @@ export const FilterActionCreators = {
       payload: flag,
    }),
 
+   setError: (error: string): FilterAction => ({
+      type: FilterActionsEnum.SET_ERROR,
+      payload: error,
+   }),
+
+   setLoadNewAnime: (flag: boolean): FilterAction => ({
+      type: FilterActionsEnum.SET_LOAD_NEW_ANIME,
+      payload: flag,
+   }),
+
    setAnime:
       (params: IAnimeSearchParams): any =>
       async (dispatch: AppDispatch) => {
          try {
+            console.log("fetch setAnime");
+            // console.log(params);
+            
             dispatch(FilterActionCreators.setIsLoading(true));
             const response = await AnimeService.getAnimeBySearch(params);
             dispatch({
                type: FilterActionsEnum.SET_HAS_MORE_ANIME,
                payload: response.pagination.has_next_page,
             });
+            console.log(response.data);
+            
+            
             dispatch({ type: FilterActionsEnum.SET_ANIME, payload: response.data });
-         } catch (e) {
-            dispatch({ type: FilterActionsEnum.SET_ANIME, payload: [] });
+         } catch (e: any) {
+            // dispatch({ type: FilterActionsEnum.SET_ANIME, payload: [] });
+            // console.log(e);
+
+            dispatch(FilterActionCreators.setError(e.message));
          } finally {
             dispatch(FilterActionCreators.setIsLoading(false));
+            dispatch(FilterActionCreators.setLoadNewAnime(false));
          }
       },
 
@@ -34,6 +53,7 @@ export const FilterActionCreators = {
       (params: IAnimeSearchParams, page: number): any =>
       async (dispatch: AppDispatch) => {
          try {
+            console.log("fetch addAnime");
             dispatch(FilterActionCreators.setIsLoading(true));
             const response = await AnimeService.getAnimeBySearch({
                ...params,
@@ -44,8 +64,10 @@ export const FilterActionCreators = {
                payload: response.pagination.has_next_page,
             });
             dispatch({ type: FilterActionsEnum.ADD_ANIME, payload: response.data });
-         } catch (e) {
-            dispatch({ type: FilterActionsEnum.ADD_ANIME, payload: [] });
+         } catch (e: any) {
+            dispatch(FilterActionCreators.setError(e.message));
+
+            // dispatch({ type: FilterActionsEnum.ADD_ANIME, payload: [] });
          } finally {
             dispatch(FilterActionCreators.setIsLoading(false));
          }
@@ -56,25 +78,27 @@ export const FilterActionCreators = {
       payload: flag,
    }),
 
-   setParams: (params: IAnimeSearchParams): FilterAction => {
-      let newParams = deleteEmptyParams(params);
-      return { type: FilterActionsEnum.SET_PARAMS, payload: params };
-   },
+   setParams:
+      (params: IAnimeSearchParams): any =>
+      (dispatch: AppDispatch) => {
+         dispatch({ type: FilterActionsEnum.SET_PARAMS, payload: params });
+      },
 
-   addParams: (params: IAnimeSearchParams): FilterAction => {
-      console.log(params);
-
-      let newParams = deleteEmptyParams(params);
-      console.log(newParams);
-      return { type: FilterActionsEnum.ADD_PARAMS, payload: params };
-   },
+   addParams:
+      (params: IAnimeSearchParams): any =>
+      (dispatch: AppDispatch) => {
+         dispatch({ type: FilterActionsEnum.ADD_PARAMS, payload: params });
+         dispatch({ type: FilterActionsEnum.SET_LOAD_NEW_ANIME, payload: true });
+      },
 
    setSelectedOptionNumber: (number: number): FilterAction => ({
       type: FilterActionsEnum.SET_SELECTED_OPTION,
       payload: number,
    }),
 
-   clearFilterParams: (): FilterAction => ({
-      type: FilterActionsEnum.CLEAR_FILTER_PARAMS,
-   }),
+   clearFilterParams: (): any => (dispatch: AppDispatch) => {
+      dispatch({ type: FilterActionsEnum.SET_ANIME, payload: [] });
+      dispatch({ type: FilterActionsEnum.CLEAR_FILTER_PARAMS });
+      dispatch({ type: FilterActionsEnum.SET_LOAD_NEW_ANIME, payload: true });
+   },
 };

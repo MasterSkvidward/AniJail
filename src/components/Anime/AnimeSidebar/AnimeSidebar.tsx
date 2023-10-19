@@ -27,7 +27,7 @@ const AnimeSidebar:FC<AnimeSidebarProps> = ({anime}) => {
                        foregroundColor="var(--background-secondary)"
                        backgroundColor="var(--background-skeleton)"
                     >
-                       <rect x="0" y="0" rx="2" ry="2" width="466" height="139" />
+                       <rect x="0" y="0" rx="2" ry="2" width="424" height="139" />
                     </ContentLoader>
                  ))}
          </div>

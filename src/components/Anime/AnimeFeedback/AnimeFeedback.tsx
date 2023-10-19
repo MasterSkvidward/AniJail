@@ -19,13 +19,13 @@ const AnimeFeedback = () => {
         <div className={classes.anime}>
             {animeReviews.length > 0 && (
                 <div className={classes["anime__reviews"]}>
-                    <div className={[classes["reviews__container"], "_container1800"].join(" ")}>
+                    <div className={[classes["reviews__container"], "_container-main"].join(" ")}>
                         <ReviewCarousel reviews={animeReviews} />
                     </div>
 
                     {/* <div className={classes["anime__comments"]}>
           <div
-            className={classes["comments__container"] + " " + "_container1800"}
+            className={classes["comments__container"] + " " + "_container-main"}
           >
             <Title value={"Comments"} />
           </div>

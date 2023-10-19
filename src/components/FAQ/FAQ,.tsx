@@ -26,7 +26,7 @@ const FAQ = () => {
 
    return (
       <div className={classes["faq"]}>
-         <div className={[classes["faq__container"], "_container1800"].join(" ")}>
+         <div className={[classes["faq__container"], "_container-main"].join(" ")}>
             <h2 className={classes["faq__title"]}>Frequently Asked Questions</h2>
             <div className={classes["faq__items"]}>
                {faqItems.map((item, index) => (

@@ -47,7 +47,7 @@ const CarouselBlock = () => {
    return (
       <section className={classes["carousel-block"]}>
          <div className={classes["carousel-item__big"]}>
-            <div className={"_container1800"}>
+            <div className={"_container-main"}>
                <CarouselBlockItem
                   title={`${getCurrentSeasonName()} season`}
                   options={bigCarouselOptions}
@@ -56,7 +56,7 @@ const CarouselBlock = () => {
                >
                   {animeCurrentSeason.length !== 0
                      ? animeCurrentSeason.map((item, index) => <AnimeItemBig anime={item} key={index} />)
-                     : [1, 2, 3, 4, 5].map((item, index) => (
+                     : [...new Array(5)].map((item, index) => (
                           <ContentLoader
                              key={index}
                              speed={2}
@@ -70,7 +70,7 @@ const CarouselBlock = () => {
                </CarouselBlockItem>
             </div>
          </div>
-         <div className={"_container1800"}>
+         <div className={"_container-main"}>
             <div className={classes["carousel-block__body"]}>
                <>
                   {carousels.map((carousel, index) => (
@@ -82,7 +82,7 @@ const CarouselBlock = () => {
                      >
                         {carousel.data.length !== 0
                            ? carousel.data.map((item, index) => <AnimeItem anime={item} key={index} />)
-                           : [1, 2, 3, 4, 5, 6, 7, 8, 9].map((item, index) => (
+                           : [...new Array(9)].map((item, index) => (
                                 <ContentLoader
                                    key={index}
                                    speed={2}
@@ -90,7 +90,7 @@ const CarouselBlock = () => {
                                    foregroundColor="var(--background-secondary)"
                                    backgroundColor="var(--background-skeleton)"
                                 >
-                                   <rect x="0" y="0" rx="2" ry="2" width="182" height="268" />
+                                   <rect x="0" y="0" rx="2" ry="2" width="182" height="270" />
                                    <rect x="0" y="282" rx="2" ry="2" width="182" height="30" />
                                 </ContentLoader>
                              ))}

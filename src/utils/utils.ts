@@ -75,17 +75,23 @@ export const getFilterOptionsSingle = (options: IFilterOption[], param: string):
 
 export const getFilterOptionsMulti = (options: IFilterOption[], param: string): IFilterOption[] => {
    let paramItems = param.split(",");
-   return options.filter((option) => paramItems.includes(option.value));
+//    console.log(param.split(","));
+   
+
+   const result = options.filter((option) => paramItems.includes(option.value));
+
+   
+   return result;
 };
 
-export const deleteEmptyParams = (obj: IAnimeSearchParams): IAnimeSearchParams => {
-   for (const [key, value] of Object.entries(obj)) {
-      if (!value) {
-         if (obj.hasOwnProperty(key)) delete obj[key as keyof IAnimeSearchParams];
-      }
-   }
-   return obj;
-};
+// export const deleteEmptyParams = (obj: IAnimeSearchParams): IAnimeSearchParams => {
+//    for (const [key, value] of Object.entries(obj)) {
+//       if (!value) {
+//          if (obj.hasOwnProperty(key)) delete obj[key as keyof IAnimeSearchParams];
+//       }
+//    }
+//    return obj;
+// };
 
 export const getCurrentSeasonName = (): string => {
    const currentMonth = new Date().getMonth();

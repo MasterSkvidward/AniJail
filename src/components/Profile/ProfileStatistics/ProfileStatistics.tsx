@@ -40,7 +40,7 @@ const ProfileStatistics: FC<ProfileStatisticsProps> = ({ currentUser }) => {
          <MyModal visible={modalVisible} setVisible={setModalVisible}>
             <ImageResponsive url={currentUser.image_url} />
          </MyModal>
-         <div className={[classes["statistics__container"], "_container1800"].join(" ")}>
+         <div className={[classes["statistics__container"], "_container-main"].join(" ")}>
             <div className={classes["statistics__time"]}>
                <div className={classes["statistics__title"]}>
                   <h5>Время за аниме</h5>

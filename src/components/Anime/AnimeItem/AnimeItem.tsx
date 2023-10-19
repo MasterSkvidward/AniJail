@@ -10,6 +10,7 @@ import ImageZoom from "../../../UI/ImageZoom/ImageZoom";
 import { publicRoutes } from "../../AppRouter/routes";
 import { getShortenedString } from "../../../utils/utils";
 import AnimePreview from "../AnimePreview/AnimePreview";
+import ContentLoader from "react-content-loader";
 
 interface AnimeItemProps {
    anime: IAnime | null;
@@ -44,7 +45,17 @@ const AnimeItem: FC<AnimeItemProps> = ({ anime, showPreview = false }) => {
    //     maxHeight: `${maxHeight}px`,
    // }
 
-   if (!anime) return <></>;
+   if (!anime)
+      return (
+         <ContentLoader
+            speed={2}
+            className={classes["skeleton"]}
+            foregroundColor="var(--background-secondary)"
+            backgroundColor="var(--background-skeleton)"
+         >
+            <rect x="0" rx="2" ry="2" width="500" height="500" />
+         </ContentLoader>
+      );
 
    return (
       <div
@@ -66,11 +77,17 @@ const AnimeItem: FC<AnimeItemProps> = ({ anime, showPreview = false }) => {
          )}
          <div className={classes["anime__body"]}>
             <div className={classes["anime__image"]}>
-               <Image url={anime?.images.jpg.image_url || ""} score={anime.score} />
+               <Image url={anime?.images.jpg.large_image_url || ""} score={anime.score} />
             </div>
-            <h4 className={classes["anime__title"]}>
-               {getShortenedString(anime?.title_english ? anime.title_english : anime?.title, 37)}
-            </h4>
+            <div className={classes["anime__content"]}>
+               <h4 className={classes["anime__title"]}>
+                  {getShortenedString(anime?.title_english ? anime.title_english : anime?.title, 35)}
+               </h4>
+               {/* <p className={classes["anime__info"]}>
+                  <span>{anime.type}</span><span>{anime.status}</span>{" "}
+               </p> */}
+            </div>
+
             {/* <AnimePreview anime={anime}/> */}
          </div>
       </div>

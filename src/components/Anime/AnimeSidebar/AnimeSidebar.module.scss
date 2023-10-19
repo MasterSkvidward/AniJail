@@ -5,7 +5,7 @@
    flex-direction: column;
    row-gap: 20px;
    // min-width: 603px;
-   max-width: 486px;
+   max-width: 424px;
    justify-self: flex-end;
 
    @include for-small-desktop-up {
@@ -14,7 +14,7 @@
 }
 
 .skeleton__item-small {
-   width: 466px;
+   width: 424px;
    height: 139px;
    margin-bottom: 14px;
 }

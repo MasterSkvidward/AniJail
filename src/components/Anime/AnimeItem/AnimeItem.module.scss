@@ -6,6 +6,15 @@
 $width: 190px;
 $height: 268px;
 
+@keyframes itemShow {
+   from {
+      opacity: 0;
+   }
+   to {
+      opacity: 1;
+   }
+}
+
 @keyframes tooltipShow {
    to {
       opacity: 1;
@@ -16,6 +25,7 @@ $height: 268px;
 
 .anime {
    position: relative;
+
 
    &__preview {
       position: absolute;
@@ -40,28 +50,29 @@ $height: 268px;
       border-radius: 7px;
       cursor: pointer;
 
-    //   width: 100%;
-    //   height: 100%;
+      //   width: 100%;
+      //   height: 100%;
    }
 
    &__image {
       background-color: var(--background-tertiary);
-      border-radius: 14px;
-    //   border: 0.5px solid rgba(255, 255, 255, 0.1);
+      border-radius: 11px;
+      //   border: 0.5px solid rgba(255, 255, 255, 0.1);
       overflow: hidden;
       // max-width: 188px;
       // width: inherit;
-      transition: 0.2s ease-in-out;
+    //   transition: 0.2s ease-in-out;
       max-width: $width;
       max-height: $height;
+      animation: 0.15s itemShow ease-in;
 
-    //   max-width: $width;
-    //   max-height: $height;
+      //   max-width: $width;
+      //   max-height: $height;
 
-    //   min-width: calc($width * 0.82);
+      //   min-width: calc($width * 0.82);
       //   min-height: calc($height * 0.82);
 
-    //   height: 100%;
+      //   height: 100%;
 
       &:hover {
          opacity: 0.83;
@@ -71,12 +82,12 @@ $height: 268px;
    &__title {
       overflow-wrap: break-word;
       font-weight: 600;
-      opacity: 0.87;
+      line-height: 120%;
       transition: 0.2s;
       font-size: 0.93em;
       cursor: pointer;
       max-width: $width;
-    //   height: 30px;
+      //   height: 30px;
    }
 }
 
@@ -90,4 +101,13 @@ $height: 268px;
    @include for-small-desktop-up {
       display: none;
    }
+}
+
+.skeleton {
+   border-radius: 14px;
+   max-width: $width;
+   max-height: 303px;
+   
+//    width: $width;
+   height: 400px;
 }

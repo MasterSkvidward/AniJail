@@ -16,7 +16,7 @@ const AnimeDetails = () => {
 
    return (
       <section className={classes["anime-details"]}>
-         <div className={classes["anime-details__container"] + " " + "_container1800"}>
+         <div className={classes["anime-details__container"] + " " + "_container-main"}>
             <div className={classes["anime-details__main"]}>
                <AnimeCharacters />
 

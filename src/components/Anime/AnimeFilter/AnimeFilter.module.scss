@@ -3,7 +3,7 @@
 .filter {
    // background-color: rgb(84, 84, 84);
    margin: 0 0 50px;
-   background-color: var(--background-tertiary);
+   background-color: var(--background-secondary);
    padding: 15px 10px;
    border-radius: 17px;
 
@@ -35,7 +35,7 @@
    &__rows {
       // background-color: #212121 !important;
       display: flex;
-      column-gap: 25px;
+      column-gap: 15px;
       row-gap: 15px;
       flex-wrap: wrap;
       justify-content: stretch;

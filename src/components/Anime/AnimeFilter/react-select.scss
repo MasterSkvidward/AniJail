@@ -1,117 +1,153 @@
+@import "../../../styles/colors";
+
 @keyframes scaleIn {
-  0% {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  50% {
-    opacity: 0.3;
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
+   0% {
+      opacity: 0;
+      transform: scale(0.9);
+   }
+   50% {
+      opacity: 0.3;
+   }
+   100% {
+      opacity: 1;
+      transform: scale(1);
+   }
 }
 
 .custom-select {
-  &__control {
-    background-color: #212121 !important;
-    border: none !important;
-    border-radius: 0 !important;
-    border-bottom: 1px solid #212121 !important;
-    box-shadow: none !important;
-
-    padding: 8px 10px !important;
-    transition: 0.4s ease-in-out !important;
-    border-radius: 1px !important;
-
-    &--menu-is-open {
-      border-color: #e42c64 !important;
-    }
-  }
-
-  &__value-container {
-    padding: 0 !important;
-    cursor: pointer !important;
-  }
-
-  &__input-container {
-    color: #999aa5 !important;
-  }
-
-  &__indicator-separator {
-    display: none !important;
-  }
-
-  &__indicators {
-    cursor: pointer !important;
-  }
-
-  &__indicator {
-    color: #66676e !important;
-
-    &:hover {
-      // transform: rotate(180deg);
-      color: #999aa5 !important;
-    }
-  }
-
-  &__single-value {
-    // font-size: 80% !important;
-    color: rgba(white, 0.7) !important;
-    font-size: 17px !important;
-    padding: 5px 7px !important;
-  }
-
-  &__multi-value {
-    background-color: rgba(#999aa5, 0.3) !important;
-    border-radius: 0.5rem !important;
-    border-radius: 13px !important;
-  }
-
-  &__multi-value__label {
-    font-size: 80% !important;
-    color: rgba(white, 0.7) !important;
-
-    font-size: 15px !important;
-    padding: 8px 10px !important;
-  }
-
-  &__multi-value__remove {
-    color: rgba(white, 0.8) !important;
-    transform: scale(1.1);
-
-    &:hover {
-      background-color: transparent !important;
-      color: white !important;
-    }
-  }
-
-  &__menu {
-    background-color: #212121 !important;
-    color: rgba(white, 0.6) !important;
-    animation: scaleIn 0.35s ease-in-out !important;
-
-    // box-shadow: 0px 2px 8px 4px rgb(37, 37, 37) !important;
-    border-radius: 13px !important;
-  }
-
-  &__option {
-    padding: 13px !important;
-    cursor: pointer !important;
-    &--is-focused {
-      background-color: lighten(#292a2e, 8%) !important;
-    }
-  }
-
-  &-container {
-    > div {
-      outline: none !important;
+   &__control {
+      background-color: var(--background-primary) !important;
+      border: none !important;
+      border-radius: 0 !important;
+      border-bottom: 1px solid #212121 !important;
       box-shadow: none !important;
-    }
 
-    &:hover,
-    &--menu-is-open {
-      border-color: #ced4da !important;
-    }
-  }
+      padding: 8px 10px !important;
+      transition: 0.4s ease-in-out !important;
+      border-radius: 20px !important;
+
+      &--menu-is-open {
+         border-color: $main-color !important;
+
+         .custom-select__indicator {
+            &:nth-last-child(1) {
+               transform: rotate(180deg) !important;
+               transition: transform 0.4s ease-in-out !important;
+            }
+         }
+      }
+   }
+
+   &__value-container {
+      padding: 0 !important;
+      cursor: pointer !important;
+   }
+
+   &__input-container {
+      // color: #999aa5 !important;
+      color: var(--text-primary) !important;
+   }
+
+   &__indicator-separator {
+      //   display: none !important;
+      opacity: 0.3 !important;
+   }
+
+   &__indicators {
+      cursor: pointer !important;
+   }
+
+   &__indicator {
+      color: var(--text-primary) !important;
+
+      &:hover {
+         // transform: rotate(180deg);
+         color: var(--text-secondary) !important;
+      }
+   }
+
+   &__dropdown-indicator {
+      //   transform: rotate(90deg);
+      transition: transform 0.4s ease-in-out !important;
+      //   transform: rotate(180deg) !important;
+   }
+
+   &__single-value {
+      // font-size: 80% !important;
+      color: var(--text-primary) !important;
+      font-size: 17px !important;
+      padding: 5px 7px !important;
+   }
+
+   &__multi-value {
+      background-color: var(--background-tertiary) !important;
+      border-radius: 0.1rem !important;
+      border-radius: 9px !important;
+   }
+
+   &__multi-value__label {
+      font-size: 80% !important;
+    //   color: rgba(white, 0.7) !important;
+      color: var(--text-primary) !important;
+
+      font-size: 15px !important;
+      padding: 4px 7px !important;
+   }
+
+   &__multi-value__remove {
+      color: var(--text-primary) !important;
+      transform: scale(1.1);
+
+      &:hover {
+         background-color: var(--background-primary) !important;
+         color: var(--text-primary) !important;
+      }
+   }
+
+   &__menu {
+      //   background-color: #212121 !important;
+      background-color: var(--background-secondary) !important;
+      color: var(--text-primary) !important;
+      animation: scaleIn 0.35s ease-in-out !important;
+
+      // box-shadow: 0px 2px 8px 4px rgb(37, 37, 37) !important;
+      border-radius: 13px !important;
+
+      &::-webkit-scrollbar {
+         width: 11px !important;
+      }
+
+      &::-webkit-scrollbar-track {
+         background: #eaeff1 !important;
+      }
+
+      &::-webkit-scrollbar-thumb {
+         background-color: rgb(161, 161, 161) !important;
+         // background: repeating-linear-gradient(90deg, #c733bb, #bb3c47 2px, #d8373f 5px, #963c3c 15px);
+         border-radius: 1px !important;
+         // border: 3px double #cb4f4f;
+         transition-property: border !important;
+         transition-duration: 1s !important;
+      }
+   }
+
+   &__option {
+      padding: 13px !important;
+      cursor: pointer !important;
+      &--is-focused {
+         background-color: var(--background-primary) !important;
+      }
+   }
+
+   &-container {
+      > div {
+         outline: none !important;
+         box-shadow: none !important;
+      }
+
+      &:hover,
+      &--menu-is-open {
+         border-color: var(--background-primary) !important;
+      }
+   }
 }

@@ -68,7 +68,7 @@ const Navbar: FC = () => {
   }, []);
 
   return (
-    <nav className={[classes.navbar, "_container1800"].join(" ")}>
+    <nav className={[classes.navbar, "_container-main"].join(" ")}>
       {/* <div ></div> */}
       <div
         className={classes.navbar__logo}
