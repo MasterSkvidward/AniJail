@@ -1,5 +1,11 @@
 @import "../../../styles/media_queries";
 
+.skeleton {
+    max-height: 20px;
+    border-radius: 5px;
+}
+
+
 .row {
   column-gap: 23%; 
   display: flex;

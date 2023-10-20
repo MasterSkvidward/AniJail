@@ -1,5 +1,19 @@
 @import "../../styles/media_queries";
 
+@keyframes scaleIn {
+    0% {
+       opacity: 0;
+       transform: scale(0.7);
+    }
+    50% {
+       opacity: 0.3;
+    }
+    100% {
+       opacity: 1;
+       transform: scale(1);
+    }
+ }
+
 .faq {
    margin: 100px 0 200px;
 
@@ -12,6 +26,8 @@
       font-weight: 700;
       text-align: center;
       margin-bottom: 35px;
+
+      animation: scaleIn 0.35s ease-in-out;
    }
 
    &__items {
@@ -30,9 +46,11 @@
 .item {
    width: 100%;
    max-width: 1292px;
+   border-radius: 5px;
+   overflow: hidden;
 
    svg {
-      transition: all 0.15s ease-in-out;
+      transition: all 0.2s ease-in-out;
       font-size: 1.4em;
    }
 
@@ -44,7 +62,9 @@
       align-items: center;
       justify-content: space-between;
       cursor: pointer;
-      transition: all 0.4s cubic-bezier(0.5, 0, 0.1, 1) 0s;
+
+      //   transition: all 0.6s cubic-bezier(0.5, 0, 0.1, 1) 0s;
+      // transition: all 2.5s ease-in;
 
       &:hover {
          background-color: #474747;
@@ -59,8 +79,20 @@
       max-height: 0px;
       width: 100%;
       overflow: hidden;
-      transition: all 0.5s cubic-bezier(0.5, 0, 0.1, 1) 0s;
-      visibility: collapse;
+
+      transition-duration: 0.35s;
+      transition-property: all;
+      transition-timing-function: cubic-bezier(0.5, 0, 0.1, 1), cubic-bezier(0.5, 0, 0.1, 1);
+
+    //   transition: max-height, visibility 0.65s cubic-bezier(0.5, 0, 0.1, 1);
+    //   transition-property: max-height, visibility;
+      //   transition: all 0.6s cubic-bezier(0.5, 0, 0.1, 1) 0s;
+      //   transition: all 1.15s ease-in;
+        visibility: collapse;
+
+      &:hover {
+         // transform: matrix(1, 0, 0, 1, 0, 0);
+      }
    }
 
    &__paragraphs {
@@ -85,7 +117,7 @@
    }
 
    .item__answer {
-      max-height: 75rem;
+      max-height: 200px;
       visibility: visible;
    }
 }

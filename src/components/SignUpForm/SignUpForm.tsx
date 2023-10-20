@@ -87,7 +87,7 @@ const SignUpForm: FC<SignUpFormProps> = ({ setModalVisible, setIsNewUser }) => {
           className={classes["form__btn"]}
           type="submit"
           disabled={
-            !isValid || watchFields.includes("")
+            !isValid && isSubmitted
             // watchFields.includes(undefined)
           }
         >

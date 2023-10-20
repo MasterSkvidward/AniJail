@@ -65,6 +65,7 @@ $height: 268px;
       max-width: $width;
       max-height: $height;
       animation: 0.15s itemShow ease-in;
+      transition: 0.2s;
 
       //   max-width: $width;
       //   max-height: $height;

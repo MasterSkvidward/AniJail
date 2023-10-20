@@ -17,7 +17,7 @@ const ImageResponsive:FC<ImageResponsiveProps> = ({url}) => {
 
     return (
         <div ref={content} className={classes['content']} onMouseDown={handlerMouseDown} onSelect={e => false}>
-            <Image url={url}/>
+            <Image url={url || ""}/>
             {/* <img src={url} alt="" /> */}
         </div>
     );

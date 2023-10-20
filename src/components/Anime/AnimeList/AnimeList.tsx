@@ -8,10 +8,10 @@ import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import ContentLoader from "react-content-loader";
 
 const AnimeList = () => {
-   const { anime, isLoading, error } = useTypedSelector((state) => state.filter);
+   const { anime, isLoading, error, hasMoreAnime } = useTypedSelector((state) => state.filter);
    const [previewIsVisible, setPreviewIsVisible] = useState(false);
 
-   if (!anime.length && !isLoading && !error) return <div className={classes["empty"]}>No Results.</div>;
+   if (!anime.length && !isLoading && !error && !hasMoreAnime) return <div className={classes["empty"]}>No Results.</div>;
 
    return (
       <div className={classes["anime-list"]}>

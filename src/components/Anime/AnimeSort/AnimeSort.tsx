@@ -21,7 +21,7 @@ const AnimeSort = () => {
    const [page, setPage] = useState<number>(1);
    const [isDebouncing, setIsDebouncing] = useState(false);
 
-   const debouncedNewAnime = useDebounce(loadAnime, 300);
+   //    const debouncedNewAnime = useDebounce(loadAnime, 300);
    const debouncedAnime = useDebounce(fetchAnime, 500);
    //    const debouncedAnimeNew = useDebounce(fetchNewAnime, 400);
 
@@ -36,17 +36,17 @@ const AnimeSort = () => {
    async function fetchNewAnime(loadNewAnime?: boolean) {
       await dispatch(FilterActionCreators.setAnime(params));
 
-      if (!error) {
-         setPage(2);
-      } else {
-         dispatch(FilterActionCreators.setError(""));
-         debouncedNewAnime(params);
-      }
+      setPage(2);
+      //   }
+      //   else {
+      //      dispatch(FilterActionCreators.setError(""));
+      //      debouncedNewAnime(params);
+      //   }
    }
 
    async function fetchAnime() {
       setIsDebouncing(false);
-      console.log("page - ", page);
+      //   console.log("page - ", page);
 
       await dispatch(FilterActionCreators.addAnime(params, page));
 
@@ -58,19 +58,17 @@ const AnimeSort = () => {
    }
 
    useEffect(() => {
-      console.log("loading new...");
       if (loadNewAnime) {
          fetchNewAnime(loadNewAnime);
       }
    }, [loadNewAnime]);
 
    useEffect(() => {
-      if (isLoading || page === 1) return;
+      if (isLoading || page === 1 || error) return;
       if (observer.current) observer.current.disconnect();
 
       const callback = async (entries: any, observer: IntersectionObserver) => {
          if (entries[0].isIntersecting && hasMoreAnime) {
-            // console.log("OBSERVER");
             setIsDebouncing(true);
             debouncedAnime();
          }

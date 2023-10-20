@@ -2,7 +2,7 @@ import React, { FC } from "react";
 
 import classes from "./AnimeCharacters.module.scss";
 import Carousel from "../../../UI/Carousel/Carousel";
-import PersonItem from "../../PersonItem/PersonItem";
+import CharacterItem from "../../CharacterItem/CharacterItem";
 import Title from "../../../UI/Title/Title";
 import { charactersCarouseIOptions } from "../../../UI/Carousel/media-options";
 import { IAnimeCharacter } from "../../../types/jikanMoe/jikan";
@@ -33,11 +33,7 @@ const AnimeCharacters = () => {
                   {!animeCharactersLoading ? (
                      animeCharacters.slice(0, 10).map((character, index) => (
                         // <AnimeItem anime={item} key={index} />
-                        <PersonItem
-                           src={character.character.images.jpg.image_url}
-                           name={character.character.name}
-                           key={index}
-                        />
+                        <CharacterItem character={character} key={index} />
                      ))
                   ) : (
                      <></>

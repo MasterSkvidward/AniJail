@@ -24,17 +24,24 @@ const AnimeIdPage = () => {
    const fetchAnimeById = async () => {
       if (params.id !== "undefined" && params.id !== "null") {
          const id = Number(params.id);
+         //  setTimeout(async () => {
          await dispatch(AnimeActionCreators.GetAnimeSingle(id));
          await dispatch(AnimeActionCreators.GetAnimeCharacters(id));
          await dispatch(AnimeActionCreators.GetAnimeSeason({ limit: 10 }));
          await dispatch(AnimeActionCreators.GetAnimeRecommendations(id));
          await dispatch(AnimeActionCreators.GetAnimeReviews(id));
+         //  }, 11600);
       }
    };
 
    useEffect(() => {
       window.scrollTo(0, 0);
       fetchAnimeById();
+
+      return () => {
+         dispatch(AnimeActionCreators.clearAnimeSingle());
+         // clear все запросы
+      };
    }, [params.id]);
 
    return (

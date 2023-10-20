@@ -4,6 +4,16 @@ import { useFetching } from "../../../hooks/useFetching";
 import { AppDispatch } from "../rootReducer";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { FilterAction, FilterActionsEnum } from "./types";
+import useDebounce from "../../../hooks/useDebounce";
+import { useDispatch } from "react-redux";
+
+// const debouncedSetAnime = useDebounce((params) => {
+//     dispatch(FilterActionCreators.setAnime(params));
+//     dispatch(FilterActionCreators.setError(""));
+// }, 1000);
+
+let errorCount = 0;
+let delay = 1000;
 
 export const FilterActionCreators = {
    setIsLoading: (flag: boolean): FilterAction => ({
@@ -25,24 +35,28 @@ export const FilterActionCreators = {
       (params: IAnimeSearchParams): any =>
       async (dispatch: AppDispatch) => {
          try {
-            console.log("fetch setAnime");
-            // console.log(params);
-            
             dispatch(FilterActionCreators.setIsLoading(true));
             const response = await AnimeService.getAnimeBySearch(params);
-            dispatch({
-               type: FilterActionsEnum.SET_HAS_MORE_ANIME,
-               payload: response.pagination.has_next_page,
-            });
-            console.log(response.data);
-            
-            
+            const hasNext = response.pagination.has_next_page;
+            dispatch(FilterActionCreators.setHasMoreAnime(hasNext));
+            // dispatch({
+            //    type: FilterActionsEnum.SET_HAS_MORE_ANIME,
+            //    payload: response.pagination.has_next_page,
+            // });
+
             dispatch({ type: FilterActionsEnum.SET_ANIME, payload: response.data });
          } catch (e: any) {
             // dispatch({ type: FilterActionsEnum.SET_ANIME, payload: [] });
             // console.log(e);
 
             dispatch(FilterActionCreators.setError(e.message));
+
+            if (e.response.status === 429) {
+               setTimeout(() => {
+                  dispatch(FilterActionCreators.setAnime(params));
+                  dispatch(FilterActionCreators.setError(""));
+               }, 1000);
+            }
          } finally {
             dispatch(FilterActionCreators.setIsLoading(false));
             dispatch(FilterActionCreators.setLoadNewAnime(false));
@@ -59,13 +73,25 @@ export const FilterActionCreators = {
                ...params,
                page: page,
             });
-            dispatch({
-               type: FilterActionsEnum.SET_HAS_MORE_ANIME,
-               payload: response.pagination.has_next_page,
-            });
+
+            const hasNext = response.pagination.has_next_page;
+            dispatch(FilterActionCreators.setHasMoreAnime(hasNext));
+            // dispatch({
+            //    type: FilterActionsEnum.SET_HAS_MORE_ANIME,
+            //    payload: response.pagination.has_next_page,
+            // });
             dispatch({ type: FilterActionsEnum.ADD_ANIME, payload: response.data });
+            errorCount = 0;
          } catch (e: any) {
             dispatch(FilterActionCreators.setError(e.message));
+            if (e.response.status === 429) {
+               setTimeout(() => {
+                  errorCount += 1;
+                  dispatch(FilterActionCreators.setIsLoading(true));
+                  dispatch(FilterActionCreators.addAnime(params, page));
+                  dispatch(FilterActionCreators.setError(""));
+               }, delay * (errorCount + 1));
+            }
 
             // dispatch({ type: FilterActionsEnum.ADD_ANIME, payload: [] });
          } finally {

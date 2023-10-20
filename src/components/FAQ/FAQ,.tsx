@@ -35,7 +35,7 @@ const FAQ = () => {
                         <p>{item.question}</p>
                         <BsPlusLg />
                      </div>
-                     <div className={classes["item__answer"]}>
+                     <div className={classes["item__answer"]} onClick={(e) => e.stopPropagation()}>
                         <div className={classes["item__paragraphs"]}>
                            {item.answer.map((paragraph, index) => (
                               <p key={index}>{paragraph}</p>
