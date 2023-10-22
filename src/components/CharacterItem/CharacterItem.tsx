@@ -12,17 +12,17 @@ interface CharacterItemProps {
 }
 
 const CharacterItem: FC<CharacterItemProps> = ({ character }) => {
-   if (!character)
-      return (
-         <ContentLoader
-            speed={2}
-            className={classes["skeleton"]}
-            foregroundColor="var(--background-secondary)"
-            backgroundColor="var(--background-skeleton)"
-         >
-            <rect x="0" y="0" rx="2" ry="2" width="500" height="500"/>
-         </ContentLoader>
-      );
+   //    if (!character)
+   //       return (
+   //          <ContentLoader
+   //             speed={2}
+   //             className={classes["skeleton"]}
+   //             foregroundColor="var(--background-secondary)"
+   //             backgroundColor="var(--background-skeleton)"
+   //          >
+   //             <rect x="0" y="0" rx="2" ry="2" width="500" height="500"/>
+   //          </ContentLoader>
+   //       );
 
    return (
       <div className={classes["item"]}>

@@ -24,13 +24,14 @@ const AnimeIdPage = () => {
    const fetchAnimeById = async () => {
       if (params.id !== "undefined" && params.id !== "null") {
          const id = Number(params.id);
-         //  setTimeout(async () => {
-         await dispatch(AnimeActionCreators.GetAnimeSingle(id));
-         await dispatch(AnimeActionCreators.GetAnimeCharacters(id));
-         await dispatch(AnimeActionCreators.GetAnimeSeason({ limit: 10 }));
-         await dispatch(AnimeActionCreators.GetAnimeRecommendations(id));
-         await dispatch(AnimeActionCreators.GetAnimeReviews(id));
-         //  }, 11600);
+
+        //  setTimeout(async () => {
+            await dispatch(AnimeActionCreators.GetAnimeSingle(id));
+            await dispatch(AnimeActionCreators.GetAnimeCharacters(id));
+            await dispatch(AnimeActionCreators.GetAnimeSeason());
+            await dispatch(AnimeActionCreators.GetAnimeRecommendations(id));
+            await dispatch(AnimeActionCreators.GetAnimeReviews(id));
+        //  }, 4600);
       }
    };
 
@@ -40,6 +41,10 @@ const AnimeIdPage = () => {
 
       return () => {
          dispatch(AnimeActionCreators.clearAnimeSingle());
+         dispatch(AnimeActionCreators.clearAnimeCharacters());
+         dispatch(AnimeActionCreators.clearAnimeSeason());
+         dispatch(AnimeActionCreators.clearAnimeRecommendations());
+         dispatch(AnimeActionCreators.clearAnimeReviews());
          // clear все запросы
       };
    }, [params.id]);

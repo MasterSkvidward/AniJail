@@ -22,6 +22,9 @@ const initialState: FilterState = {
 
 export default function filterReducer(state = initialState, action: FilterAction): FilterState {
    switch (action.type) {
+      case FilterActionsEnum.CLEAR_ANIME:
+         return { ...state, anime: [] };
+
       case FilterActionsEnum.SET_IS_LOADING:
          return { ...state, isLoading: action.payload };
 

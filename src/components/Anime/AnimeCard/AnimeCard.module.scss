@@ -5,6 +5,12 @@ $width: 227px;
 $height: 322px;
 
 .skeleton {
+   &__background-image {
+      height: 22vw;
+      width: 100vw;
+      position: relative;
+   }
+
    &__image {
       width: calc($width * 1.08);
       height: calc($height * 1.08);
@@ -12,11 +18,11 @@ $height: 322px;
    }
 
    &__score {
-    max-height: 56px;
+      max-height: 56px;
 
-    rect {
-        border-radius: 20px;
-    }
+      //   rect {
+      //      border-radius: 20px;
+      //   }
    }
 }
 
@@ -69,7 +75,7 @@ $height: 322px;
       column-gap: 60px;
       display: flex;
 
-      @include for-desktop-up {
+      @include for-hd {
          column-gap: 35px;
       }
    }
@@ -96,6 +102,11 @@ $height: 322px;
       border-radius: 13px;
       overflow: hidden;
 
+      @include for-full-hd {
+        width: calc($width * 1.02);
+        height: calc($height * 1.02);
+     }
+
       @include for-medium-desktop-up {
          width: calc($width * 1.03);
          height: calc($height * 1.03);
@@ -106,7 +117,7 @@ $height: 322px;
          height: calc($height * 0.95);
       }
 
-      @include for-desktop-up {
+      @include for-hd {
          width: calc($width * 0.85);
          height: calc($height * 0.85);
       }
@@ -265,7 +276,7 @@ $height: 322px;
          width: 300px;
       }
 
-      @include for-desktop-up {
+      @include for-hd {
          width: 250px;
       }
    }

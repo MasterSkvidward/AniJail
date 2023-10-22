@@ -1,7 +1,7 @@
 import { IAnime, IAnimeSearchParams } from "../../../types/jikanMoe/jikan";
 
 export interface FilterState {
-   anime: IAnime[];
+   anime: IAnime[] | [];
    params: IAnimeSearchParams;
    selectedOptionNumber: number;
    isLoading: boolean;
@@ -11,6 +11,8 @@ export interface FilterState {
 }
 
 export enum FilterActionsEnum {
+   CLEAR_ANIME = "CLEAR_ANIME",
+
    SET_IS_LOADING = "SET_IS_LOADING",
    SET_ERROR = "SET_ERROR",
    SET_LOAD_NEW_ANIME = "SET_LOAD_NEW_ANIME",
@@ -25,6 +27,10 @@ export enum FilterActionsEnum {
    ADD_ANIME = "ADD_ANIME",
    CLEAR_FILTER_PARAMS = "CLEAR_FILTER_PARAMS",
 }
+
+interface ClearAnimeAction {
+    type: FilterActionsEnum.CLEAR_ANIME;
+ }
 
 interface SetIsLoadingAction {
    type: FilterActionsEnum.SET_IS_LOADING;
@@ -84,6 +90,7 @@ export interface ClearFilterParamsAction {
 }
 
 export type FilterAction =
+| ClearAnimeAction
    | SetIsLoadingAction
    | SetErrorAction
    | SetLoadNewAnimeAction

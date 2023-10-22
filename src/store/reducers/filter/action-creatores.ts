@@ -16,6 +16,8 @@ let errorCount = 0;
 let delay = 1000;
 
 export const FilterActionCreators = {
+   clearAnime: (): FilterAction => ({ type: FilterActionsEnum.CLEAR_ANIME }),
+
    setIsLoading: (flag: boolean): FilterAction => ({
       type: FilterActionsEnum.SET_IS_LOADING,
       payload: flag,
@@ -107,12 +109,14 @@ export const FilterActionCreators = {
    setParams:
       (params: IAnimeSearchParams): any =>
       (dispatch: AppDispatch) => {
+         dispatch(FilterActionCreators.clearAnime());
          dispatch({ type: FilterActionsEnum.SET_PARAMS, payload: params });
       },
 
    addParams:
       (params: IAnimeSearchParams): any =>
       (dispatch: AppDispatch) => {
+         dispatch(FilterActionCreators.clearAnime());
          dispatch({ type: FilterActionsEnum.ADD_PARAMS, payload: params });
          dispatch({ type: FilterActionsEnum.SET_LOAD_NEW_ANIME, payload: true });
       },

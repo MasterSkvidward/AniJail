@@ -5,9 +5,10 @@ import { getDateFromTimeStamp, getExactTimeFromDate, getScoreColor, getShortened
 import classes from "./Review.module.scss";
 
 import { AiTwotoneLike, AiTwotoneDislike } from "react-icons/ai";
+import ContentLoader from "react-content-loader";
 
 interface ReviewProps {
-   review: IAnimeReview;
+   review: IAnimeReview | null;
 }
 
 const Review: FC<ReviewProps> = ({ review }) => {
@@ -40,25 +41,36 @@ const Review: FC<ReviewProps> = ({ review }) => {
    };
 
    const handleDislike = (e: MouseEvent): void => {
-    if (userVote === "") {
-        setDislikeCount(dislikeCount + 1);
-        setUserVote("dislike");
-     } else if (userVote === "like") {
-        setDislikeCount(dislikeCount + 1);
-        setLikeCount(likeCount - 1);
-        setUserVote("dislike");
-     } else {
-        setDislikeCount(dislikeCount - 1);
-        setUserVote("");
-     }
+      if (userVote === "") {
+         setDislikeCount(dislikeCount + 1);
+         setUserVote("dislike");
+      } else if (userVote === "like") {
+         setDislikeCount(dislikeCount + 1);
+         setLikeCount(likeCount - 1);
+         setUserVote("dislike");
+      } else {
+         setDislikeCount(dislikeCount - 1);
+         setUserVote("");
+      }
    };
 
    useEffect(() => {
-      setLikeCount(review.reactions.love_it + review.reactions.nice);
-      setDislikeCount(review.reactions.confusing);
+      setLikeCount((review?.reactions.love_it || 0) + (review?.reactions.nice || 0));
+      setDislikeCount(review?.reactions.confusing || 0);
    }, []);
 
-   if (!review) return <></>;
+   if (!review)
+      return (
+         <ContentLoader
+            speed={2}
+            className={classes["skeleton"]}
+            foregroundColor="var(--background-secondary)"
+            backgroundColor="var(--background-skeleton)"
+         >
+            <rect x="0" y="0" rx="2" ry="2" width="563" height="425" />
+            {/* <rect x="0" rx="2" ry="2" width="500" height="500" /> */}
+         </ContentLoader>
+      );
 
    return (
       <div className={[classes.review, classes[getScoreColor(review.score)]].join(" ")}>

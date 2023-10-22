@@ -1,3 +1,6 @@
+@import "../../styles/media_queries";
+
+
 $width: 121px;
 $height: 188px;
 
@@ -17,8 +20,8 @@ $height: 188px;
    max-width: calc($width);
 
    &__image {
-      width: calc($width);
-      height: calc($height);
+      width: calc($width * 0.96);
+      height: calc($height * 0.96);
       transition: 0.2s ease-in-out;
       border-radius: 13px;
       overflow: hidden;
@@ -32,6 +35,11 @@ $height: 188px;
          width: 100%;
          height: 100%;
          object-fit: cover;
+      }
+
+      @include for-full-hd {
+         width: calc($width * 0.91);
+         height: calc($height * 0.91);
       }
    }
 

@@ -11,6 +11,7 @@ import { Search } from "react-router-dom";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { AnimeActionCreators } from "../../store/reducers/anime/action-creatores";
 import { useDispatch } from "react-redux";
+import Loader from "../Loader/Loader";
 
 const SearchBar = () => {
    const search = useRef<HTMLFormElement>(null);
@@ -21,7 +22,7 @@ const SearchBar = () => {
    const [value, setValue] = useState<string>("");
    //   const [animeItems, setAnimeItems] = useState<IAnime[] | []>([]);
 
-   const { animeSearch } = useTypedSelector((state) => state.anime);
+   const { animeSearch, animeSearchLoading, animeSearchError } = useTypedSelector((state) => state.anime);
 
    const debouncedSearch = useDebounce(searchAnime, 400);
 
@@ -62,7 +63,7 @@ const SearchBar = () => {
    }
 
    useEffect(() => {
-      debouncedSearch();
+      visible && debouncedSearch();
       if (searchList.current?.scrollTop) searchList.current.scrollTop = 0;
    }, [value]);
 
@@ -88,11 +89,20 @@ const SearchBar = () => {
             className={visible ? [classes.search__list, classes.active].join(" ") : classes.search__list}
             onClick={handlerClickMenu}
          >
-            <div className={classes.search__items}>
-               {animeSearch.map((anime, index) => (
-                  <AnimeItemSmall anime={anime} key={index} />
-               ))}
-            </div>
+            {animeSearch.length > 0 ? (
+               <div className={classes.search__items}>
+                  {animeSearch.map((anime, index) => (
+                     <AnimeItemSmall anime={anime} key={index} />
+                  ))}
+               </div>
+            ) : animeSearchLoading || animeSearchError ? (
+               <div className={classes["search__loader"]}>
+                  <Loader />
+               </div>
+            ) : (
+               <></>
+            )}
+
             <div className={classes["search__all"]}>See all results for "{value}"</div>
          </div>
       </form>

@@ -12,33 +12,38 @@ export interface AnimeState {
    animeSingleLoading: boolean;
    animeSingleError: string;
 
-   animeRecommendations: IAnimeRecommendation[];
+   animeRecommendations: IAnimeRecommendation[] | [];
    animeRecommendationsLoading: boolean;
    animeRecommendationsError: string;
 
-   animeSeason: IAnime[];
+   animeSeason: IAnime[] | [];
    animeSeasonLoading: boolean;
    animeSeasonError: string;
 
-   animeSearch: IAnime[];
+   animeSearch: IAnime[] | [];
    animeSearchLoading: boolean;
    animeSearchError: string;
 
-   animeCharacters: IAnimeCharacter[];
+   animeCharacters: IAnimeCharacter[] | [];
    animeCharactersLoading: boolean;
    animeCharactersError: string;
 
-   animeReviews: IAnimeReview[];
+   animeReviews: IAnimeReview[] | [];
    animeReviewsLoading: boolean;
    animeReviewsError: string;
 }
 
 export enum AnimeActionsEnum {
+   CLEAR_ANIME_SEARCH = "CLEAR_ANIME_SEARCH",
+   CLEAR_ANIME_SINGLE = "CLEAR_ANIME_SINGLE",
+   CLEAR_ANIME_CHARACTERS = "CLEAR_ANIME_CHARACTERS",
+   CLEAR_ANIME_SEASON = "CLEAR_ANIME_SEASON",
+   CLEAR_ANIME_RECOMMENDATIONS = "CLEAR_ANIME_RECOMMENDATIONS",
+   CLEAR_ANIME_REVIEWS = "CLEAR_ANIME_REVIEWS",
+
    GET_ANIME_SINGLE = "GET_ANIME_SINGLE",
    SET_ANIME_SINGLE_LOADING = "SET_ANIME_SINGLE_LOADING",
    SET_ANIME_SINGLE_ERROR = "SET_ANIME_SINGLE_ERROR",
-
-   CLEAR_ANIME_SINGLE = "CLEAR_ANIME_SINGLE",
 
    GET_ANIME_RECOMMENDATIONS = "GET_ANIME_RECOMMENDATIONS",
    SET_ANIME_RECOMMENDATIONS_LOADING = "SET_ANIME_RECOMMENDATIONS_LOADING",
@@ -61,13 +66,31 @@ export enum AnimeActionsEnum {
    SET_ANIME_REVIEWS_ERROR = "SET_ANIME_REVIEWS_ERROR",
 }
 
-interface GetAnimeSingle {
-   type: AnimeActionsEnum.GET_ANIME_SINGLE;
-   payload: IAnime;
+interface ClearAnimeSearch {
+   type: AnimeActionsEnum.CLEAR_ANIME_SEARCH;
 }
 
 interface ClearAnimeSingle {
    type: AnimeActionsEnum.CLEAR_ANIME_SINGLE;
+}
+
+interface ClearAnimeCharacters {
+   type: AnimeActionsEnum.CLEAR_ANIME_CHARACTERS;
+}
+interface ClearAnimeSeason {
+   type: AnimeActionsEnum.CLEAR_ANIME_SEASON;
+}
+interface ClearAnimeRecommendations {
+   type: AnimeActionsEnum.CLEAR_ANIME_RECOMMENDATIONS;
+}
+
+interface ClearAnimeReviews {
+   type: AnimeActionsEnum.CLEAR_ANIME_REVIEWS;
+}
+
+interface GetAnimeSingle {
+   type: AnimeActionsEnum.GET_ANIME_SINGLE;
+   payload: IAnime;
 }
 
 interface SetAnimeSingleLoading {
@@ -164,8 +187,13 @@ interface SetAnimeReviewsError {
 }
 
 export type AnimeAction =
-   | GetAnimeSingle
+   | ClearAnimeSearch
    | ClearAnimeSingle
+   | ClearAnimeCharacters
+   | ClearAnimeSeason
+   | ClearAnimeRecommendations
+   | ClearAnimeReviews
+   | GetAnimeSingle
    | SetAnimeSingleLoading
    | SetAnimeSingleError
    | GetAnimeRecommendatios

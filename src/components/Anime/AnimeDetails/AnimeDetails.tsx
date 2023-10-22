@@ -10,9 +10,16 @@ import AnimeItemPreview from "../AnimeItemPreview/AnimeItemPreview";
 import AnimeCharacters from "../AnimeCharacters/AnimeCharacters";
 import AnimeSidebar from "../AnimeSidebar/AnimeSidebar";
 import AnimeRating from "../AnimeRating/AnimeRating";
+import ContentLoader from "react-content-loader";
 
 const AnimeDetails = () => {
-   const { animeRecommendations, animeSeason, animeSingle: anime } = useTypedSelector((state) => state.anime);
+   const {
+      animeRecommendations,
+      animeRecommendationsLoading,
+      animeRecommendationsError,
+      animeSeason,
+      animeSingle: anime,
+   } = useTypedSelector((state) => state.anime);
 
    return (
       <section className={classes["anime-details"]}>
@@ -22,7 +29,20 @@ const AnimeDetails = () => {
 
                <div className={classes["description"]}>
                   <Title value={"Synopsis"} />
-                  <p className={classes["description__body"]}>{anime?.synopsis || "Nothing yet."}</p>
+                  {anime ? (
+                     <p className={classes["description__body"]}>{anime?.synopsis || "Nothing yet."}</p>
+                  ) : (
+                     <ContentLoader
+                        speed={2}
+                        className={classes["skeleton"]}
+                        foregroundColor="var(--background-secondary)"
+                        backgroundColor="var(--background-skeleton)"
+                     >
+                        <rect x="0" y="0" rx="2" ry="2" width="500" height="20" />
+                        <rect x="0" y="35" rx="2" ry="2" width="500" height="20" />
+                        <rect x="0" y="70" rx="2" ry="2" width="500" height="20" />
+                     </ContentLoader>
+                  )}
                </div>
 
                <div className={classes["anime-details__rating"]}>
@@ -43,14 +63,16 @@ const AnimeDetails = () => {
             </div>
           </div> */}
 
-               {animeRecommendations.length > 5 && (
+               {(animeRecommendations.length || animeRecommendationsLoading || animeRecommendationsError) && (
                   <div className={classes["carousel"]}>
                      <Title value={"You may also like"} />
                      <Carousel options={smallLimitedCarouseIOptions} arrowTop={40}>
-                        {animeRecommendations.map((item, index) => (
-                           // <AnimeItem anime={item} key={index} />
-                           <AnimeItemPreview anime={item} key={index} />
-                        ))}
+                        {animeRecommendations.length
+                           ? animeRecommendations.map((item, index) => (
+                                // <AnimeItem anime={item} key={index} />
+                                <AnimeItemPreview anime={item} key={index} />
+                             ))
+                           : [...new Array(24)].map((item, index) => <AnimeItemPreview anime={null} key={index} />)}
                      </Carousel>
                   </div>
                )}

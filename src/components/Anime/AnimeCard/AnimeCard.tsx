@@ -66,9 +66,20 @@ const AnimeCard: FC = () => {
             <ImageResponsive url={anime?.images.jpg.large_image_url || ""} />
          </MyModal>
          <div className={classes["anime-card__header"]}>
-            <div className={classes["anime-card__background"]} style={backgroundImgStyle}>
-               {/* <img src={background_img} alt="OnePiece" /> */}
-            </div>
+            {anime ? (
+               <div className={classes["anime-card__background"]} style={backgroundImgStyle}>
+                  {/* <img src={background_img} alt="OnePiece" /> */}
+               </div>
+            ) : (
+               <ContentLoader
+                  speed={2}
+                  className={classes["skeleton__background-image"]}
+                  foregroundColor="var(--background-secondary)"
+                  backgroundColor="var(--background-skeleton)"
+               >
+                  <rect x="0" y="0" rx="2" ry="2" width="100%" height="500" />
+               </ContentLoader>
+            )}
          </div>
          <div className={[classes["anime-card__container"], "_container-main"].join(" ")}>
             <div className={classes["anime-card__main"]}>
@@ -98,8 +109,8 @@ const AnimeCard: FC = () => {
                   <AnimeCardInfo anime={anime} />
                </div>
 
-               <div className={classes["anime-card__score"]}>
-                  {!animeSingleLoading && !animeSingleError ? (
+               {anime ? (
+                  <div className={classes["anime-card__score"]}>
                      <div className={classes["anime-card__numbers"]}>
                         {anime?.score ? <Score score={anime?.score} /> : <span>No scores</span>}
 
@@ -107,45 +118,46 @@ const AnimeCard: FC = () => {
                            anime?.scored_by || 0
                         )}`}</span>
                      </div>
-                  ) : (
-                     <ContentLoader
-                        speed={2}
-                        className={classes["skeleton__score"]}
-                        foregroundColor="var(--background-secondary)"
-                        backgroundColor="var(--background-skeleton)"
-                     >
-                        <rect x="0" y="0" rx="2" ry="2" width="55" height="36" />
-                        <rect x="0" y="42" rx="2" ry="2" width="130" height="14" />
-                     </ContentLoader>
-                  )}
 
-                  <div className={classes["rate"]} onClick={handlerRateClick}>
-                     <div className={classes["rate__btn"]}>
-                        <span>{userRating ? "Change score" : "Rate"}</span>
-                        {userRating !== 0 && (
-                           <span className={classes[getScoreColor(userRating || 0)]}>
-                              <AiFillStar />
-                              {userRating}
-                           </span>
-                        )}
-                     </div>
-                     {/* <MyButton value='Rate'/> */}
-                     <div
-                        className={
-                           ratingVisible ? [classes["rate__block"], classes["active"]].join(" ") : classes["rate__block"]
-                        }
-                     >
-                        <div className={classes["rate__body"]}>
-                           <MyRating
-                              userRating={userRating}
-                              setUserRating={setUserRating}
-                              setRatingVisible={setRatingVisible}
-                              maxWidth={400}
-                           />
+                     <div className={classes["rate"]} onClick={handlerRateClick}>
+                        <div className={classes["rate__btn"]}>
+                           <span>{userRating ? "Change score" : "Rate"}</span>
+                           {userRating !== 0 && (
+                              <span className={classes[getScoreColor(userRating || 0)]}>
+                                 <AiFillStar />
+                                 {userRating}
+                              </span>
+                           )}
+                        </div>
+                        {/* <MyButton value='Rate'/> */}
+                        <div
+                           className={
+                              ratingVisible ? [classes["rate__block"], classes["active"]].join(" ") : classes["rate__block"]
+                           }
+                        >
+                           <div className={classes["rate__body"]}>
+                              <MyRating
+                                 userRating={userRating}
+                                 setUserRating={setUserRating}
+                                 setRatingVisible={setRatingVisible}
+                                 maxWidth={400}
+                              />
+                           </div>
                         </div>
                      </div>
                   </div>
-               </div>
+               ) : (
+                  <ContentLoader
+                     speed={2}
+                     className={classes["skeleton__score"]}
+                     foregroundColor="var(--background-secondary)"
+                     backgroundColor="var(--background-skeleton)"
+                  >
+                     <rect x="0" y="0" rx="2" ry="2" width="55" height="36" />
+                     <rect x="0" y="42" rx="2" ry="2" width="130" height="14" />
+                     <rect x="0" y="92" rx="2" ry="2" width="212" height="39" />
+                  </ContentLoader>
+               )}
             </div>
          </div>
       </section>

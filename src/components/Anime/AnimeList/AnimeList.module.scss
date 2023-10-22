@@ -21,9 +21,9 @@ $height: 268px;
          grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
       }
 
-      @include for-desktop-up {
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-     }
+      @include for-hd {
+         grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      }
 
       @include for-tablet-landscape-up {
          grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));

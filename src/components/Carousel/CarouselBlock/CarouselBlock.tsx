@@ -28,13 +28,13 @@ const CarouselBlock = () => {
       },
       {
          title: `Popular`,
-         options: {...smallCarouselOptions, interval: 12000},
+         options: { ...smallCarouselOptions, interval: 12000 },
          arrowTop: 40,
          data: animeCurrentSeason,
       },
       {
          title: `A-Z`,
-         options: {...smallCarouselOptions, interval: 9000},
+         options: { ...smallCarouselOptions, interval: 9000 },
          arrowTop: 40,
          data: animeCurrentSeason,
       },

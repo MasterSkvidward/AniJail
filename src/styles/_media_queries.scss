@@ -10,7 +10,7 @@
     @media (max-width: 900px) { @content; }
 }
 
-@mixin for-desktop-up {
+@mixin for-hd {
     @media (max-width: 1200px) { @content; }
 }
 
@@ -22,8 +22,15 @@
     @media (max-width: 1700px) { @content; }
 }
 
-@mixin for-big-desktop-up {
-    @media (max-width: 1850px) { @content; }
+@mixin for-full-hd {
+    @media (max-width: 1920px) { @content; }
 }
 
+@mixin for-quad-hd {
+    @media (max-width: 2560px) { @content; }
+}
+
+@mixin for-ultra-hd {
+    @media (max-width: 2560px) { @content; }
+}
 

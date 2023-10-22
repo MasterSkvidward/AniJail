@@ -22,6 +22,10 @@
    line-height: 1;
    font-size: 16px;
 
+   @include for-full-hd {
+      font-size: 14px;
+   }
+
    @include for-medium-desktop-up {
       font-size: 14px;
    }
@@ -30,7 +34,7 @@
       font-size: 12px;
    }
 
-   @include for-desktop-up {
+   @include for-hd {
       font-size: 11px;
    }
 
@@ -75,7 +79,7 @@
    // max-width: 70vw;
    margin: 0 auto;
 
-   @include for-big-desktop-up {
+   @include for-full-hd {
       padding: 0 20px;
    }
 
@@ -89,10 +93,16 @@
    max-width: 1800px;
    // max-width: 70vw;
    margin: 0 auto;
+   padding: 0 20px;
 
-   @include for-big-desktop-up {
-      padding: 0 20px;
+   @include for-full-hd {
+      max-width: 1550px;
+      //   padding: 0 20px;
    }
+
+   //    @include for-full-hd {
+   //       padding: 0 20px;
+   //    }
 
    @include for-phone-only {
       padding: 0 9px;

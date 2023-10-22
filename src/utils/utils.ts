@@ -14,6 +14,13 @@ export const getScoreColor = (score: number): string => {
    else return "red";
 };
 
+// export const getScoreStyles = (color: "green" | "light-green" | "red" | "grey"): {} => {
+//    const scoreStyles = { 
+//     green: { color: "#ffffff", backgroundColor: "red" },
+//     grey: { color: "#ffffff", backgroundColor: "grey" },
+//  };
+// };
+
 export const getDateFromTimeStamp = (timestamp: string): Date => {
    let date = new Date(Date.parse(timestamp));
    return date;
@@ -75,12 +82,10 @@ export const getFilterOptionsSingle = (options: IFilterOption[], param: string):
 
 export const getFilterOptionsMulti = (options: IFilterOption[], param: string): IFilterOption[] => {
    let paramItems = param.split(",");
-//    console.log(param.split(","));
-   
+   //    console.log(param.split(","));
 
    const result = options.filter((option) => paramItems.includes(option.value));
 
-   
    return result;
 };
 

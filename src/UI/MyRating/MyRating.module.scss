@@ -1,54 +1,93 @@
 @import "../../styles/colors";
 
 .rating {
-  display: flex;
-  flex-direction: column;
-  row-gap: 7px;
+   display: flex;
+   flex-direction: column;
+   row-gap: 7px;
 
-  &__body {
-    display: grid;
-    justify-items: center;
-  }
+   &__body {
+      display: grid;
+      justify-items: center;
+   }
 
-  &__footer {
-    display: flex;
-    align-items: center;
-    // justify-content: center;
-    padding: 11px 0 0;
-  }
+   &__footer {
+      display: flex;
+      align-items: center;
+      // justify-content: center;
+      padding: 11px 0 0;
+      transition: all 5.2s;
+   }
 
-  &__user-score {
-    font-size: 1.1em;
-    display: none;
-  }
+   &__user-score {
+      font-size: 1.1em;
+      display: none;
+  
 
-  &__btn {
-    padding: 9px 10px;
-    background-color: red;
-    cursor: pointer;
-    border-radius: 19px;
-    width: 101.6px;
-    text-align: center;
-    user-select: none;
-    justify-self: center;
-    margin-top: 11px;
-    color: $white;
-    margin: 0 auto;
-  }
+      span {
+         &:nth-child(2) {
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 8px;
+            border-radius: 50%;
+            font-weight: 600;
+            padding: 3px;
+            width: 32px;
+            height: 32px;
+            //  overflow: hidden;
+            color: $white;
+         }
+
+         &[data-bg-color="green"] {
+            background-color: $green;
+         }
+
+         &[data-bg-color="light-green"] {
+            background-color: $green;
+         }
+
+         &[data-bg-color="grey"] {
+            background-color: $grey;
+         }
+
+         &[data-bg-color="red"] {
+            background-color: $red;
+         }
+      }
+   }
+
+   &__btn {
+      padding: 9px 10px;
+      background-color: red;
+      cursor: pointer;
+      border-radius: 19px;
+      max-width: 112px;
+      width: 100%;
+      text-align: center;
+      user-select: none;
+      justify-self: center;
+      margin-top: 11px;
+      color: $white;
+      margin: 0 auto;
+   }
 }
 
 .show {
-    column-gap: 60px;
-    padding: 20px 0 0;
+   column-gap: 60px;
+   padding: 20px 0 0;
 
-  .rating {
-    &__user-score {
-      display: inline-block;
-      margin-left: 10px;
-    }
+   .rating {
+      &__user-score {
+        // height: 100px;
+         display: flex;
+         column-gap: 10px;
+         align-items: center;
+         margin-left: 10px;
+      }
 
-    &__btn {
-        margin: 0 0;
-    }
-  }
+      &__btn {
+         margin: 0 0;
+      }
+   }
 }

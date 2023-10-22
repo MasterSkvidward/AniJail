@@ -1,5 +1,11 @@
 @import "../../../styles/colors";
 
+.skeleton {
+   width: 563px;
+   height: 425px;
+   border-radius: 18px;
+}
+
 .review {
    background-color: rgba(189, 189, 189, 0.9);
 
@@ -79,7 +85,7 @@
       column-gap: 6px;
 
       &:hover {
-        background-color: rgba(188, 186, 186, 0.7);
+         background-color: rgba(188, 186, 186, 0.7);
          -webkit-transform: scale(1.2);
          -ms-transform: scale(1.05);
          transform: scale(1.05);
@@ -155,5 +161,5 @@
 }
 
 .clicked {
-    background-color: rgba(188, 186, 186, 0.7);
+   background-color: rgba(188, 186, 186, 0.7);
 }

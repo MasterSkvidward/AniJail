@@ -1,17 +1,21 @@
 @import "../../../styles/colors";
 
+.skeleton {
+    width: 121px;
+    height: 214px;
+}
+
 .characters {
    display: flex;
    flex-direction: column;
    row-gap: 27px;
-
    max-width: 937px;
 
-   svg {
-      height: 35px;
-      width: 35px;
-      color: $main-color;
-   }
+//    svg {
+//       height: 35px;
+//       width: 35px;
+//       color: $main-color;
+//    }
 
    &__rows {
       // display: grid;

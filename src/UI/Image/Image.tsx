@@ -26,7 +26,7 @@ const Image: FC<ImageProps> = ({ url, alt, score }) => {
    return (
       <div className={classes.image}>
          {/* <div className={classes.image} style={{background: `url(${url}) 0 0 / cover no-repeat`}}> */}
-         <img ref={imgRef} src={url || ""} alt={alt} onError={handleImageError} />
+         <img ref={imgRef} src={url || ""} data-splide-lazy={url || ""} alt={alt} onError={handleImageError} />
          {score && (
             <div className={classes.rating}>
                <div className={classes.ratingNumber}>{getAnimeScore(score)}</div>

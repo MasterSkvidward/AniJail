@@ -29,11 +29,26 @@ const initialState: AnimeState = {
 
 export default function animeReducer(state = initialState, action: AnimeAction): AnimeState {
    switch (action.type) {
-      case AnimeActionsEnum.GET_ANIME_SINGLE:
-         return { ...state, animeSingle: action.payload };
+      case AnimeActionsEnum.CLEAR_ANIME_SEARCH:
+         return { ...state, animeSearch: [] };
 
       case AnimeActionsEnum.CLEAR_ANIME_SINGLE:
          return { ...state, animeSingle: null };
+
+      case AnimeActionsEnum.CLEAR_ANIME_CHARACTERS:
+         return { ...state, animeCharacters: [] };
+
+      case AnimeActionsEnum.CLEAR_ANIME_SEASON:
+         return { ...state, animeSeason: [] };
+
+      case AnimeActionsEnum.CLEAR_ANIME_RECOMMENDATIONS:
+         return { ...state, animeRecommendations: [] };
+
+      case AnimeActionsEnum.CLEAR_ANIME_REVIEWS:
+         return { ...state, animeReviews: [] };
+
+      case AnimeActionsEnum.GET_ANIME_SINGLE:
+         return { ...state, animeSingle: action.payload };
 
       case AnimeActionsEnum.SET_ANIME_SINGLE_LOADING:
          return { ...state, animeSingleLoading: action.payload };

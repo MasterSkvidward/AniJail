@@ -29,13 +29,13 @@ const AnimeCardInfo: FC<AnimeCardInfoProps> = ({ anime }) => {
          sortType: anime?.type,
          isLink: false,
       },
-      // {name: 'Genres', value: anime?.genres || [], isLink: true},
+      {name: 'Genres', value: anime?.genres || [], isLink: true},
       { name: "Status", value: getAnimeField(anime?.status), isLink: true },
       { name: "Episodes", value: getAnimeField(anime?.episodes), isLink: false },
       // {name: 'Season', value: `${getAnimeField(anime?.season)} ${getAnimeField(anime?.year)}`, isLink: true},
       { name: "Season", value: `${getAnimeField(anime?.year)}`, isLink: true },
       { name: "Duration", value: getAnimeField(anime?.duration), isLink: false },
-      { name: "Duration", value: getAnimeField(anime?.duration), isLink: false },
+    //   { name: "Duration", value: getAnimeField(anime?.duration), isLink: false },
    ];
 
    return (

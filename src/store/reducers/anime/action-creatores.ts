@@ -18,7 +18,12 @@ export const AnimeActionCreators = {
       payload: error,
    }),
 
-   clearAnimeSingle: (): AnimeAction => ({type: AnimeActionsEnum.CLEAR_ANIME_SINGLE}),
+   clearAnimeSearch: (): AnimeAction => ({ type: AnimeActionsEnum.CLEAR_ANIME_SEARCH }),
+   clearAnimeSingle: (): AnimeAction => ({ type: AnimeActionsEnum.CLEAR_ANIME_SINGLE }),
+   clearAnimeCharacters: (): AnimeAction => ({ type: AnimeActionsEnum.CLEAR_ANIME_CHARACTERS }),
+   clearAnimeSeason: (): AnimeAction => ({ type: AnimeActionsEnum.CLEAR_ANIME_SEASON }),
+   clearAnimeRecommendations: (): AnimeAction => ({ type: AnimeActionsEnum.CLEAR_ANIME_RECOMMENDATIONS }),
+   clearAnimeReviews: (): AnimeAction => ({ type: AnimeActionsEnum.CLEAR_ANIME_REVIEWS }),
 
    GetAnimeSingle:
       (id: number): any =>
@@ -131,8 +136,10 @@ export const AnimeActionCreators = {
       (params?: IAnimeSearchParams): any =>
       async (dispatch: AppDispatch) => {
          try {
+            dispatch(AnimeActionCreators.clearAnimeSearch());
             console.log("fetch AnimeSearch");
             dispatch(AnimeActionCreators.setAnimeSearchLoading(true));
+
             const response = await AnimeService.getAnimeBySearch(params);
             const finalResponse = response.data;
             dispatch({
