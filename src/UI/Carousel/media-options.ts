@@ -78,7 +78,7 @@ export const charactersCarouseIOptions = {
    speed: 900,
    rewind: true,
    drag: true,
-   gap: "15px",
+   gap: "22px",
    interval: 9000,
    autoplay: true,
    lazyLoad: "nearby",

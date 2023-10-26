@@ -14,10 +14,12 @@ import useDebounce from "../../../hooks/useDebounce";
 import { IFilterOption } from "../../../types/types";
 import Title from "../../../UI/Title/Title";
 
+let tempParams: IAnimeSearchParams = {};
+
 const AnimeFilter = memo(() => {
    const dispatch = useDispatch();
    const { params } = useTypedSelector((state) => state.filter);
-   const debouncedParams = useDebounce(changeParams, 500);
+   //    const debouncedParams = useDebounce(setParams, 300);
 
    const animatedComponents = makeAnimated();
 
@@ -26,7 +28,12 @@ const AnimeFilter = memo(() => {
    const scoreFrom = useRef<HTMLInputElement>(null);
    const scoreTo = useRef<HTMLInputElement>(null);
 
+   function setParams(obj: IAnimeSearchParams) {
+      dispatch(FilterActionCreators.addParams(obj));
+   }
+
    const handlerClickClear = () => {
+      tempParams = {};
       dispatch(FilterActionCreators.clearFilterParams());
       if (yearFrom.current) yearFrom.current.value = "";
       if (yearTo.current) yearTo.current.value = "";
@@ -38,12 +45,20 @@ const AnimeFilter = memo(() => {
    const handlerSelectSingleChange = (option: SingleValue<IFilterOption>, paramValue: string): void => {
       let result = option ? option.value : "";
       const obj = { [paramValue]: result };
-      dispatch(FilterActionCreators.addParams(obj));
+      tempParams = { ...tempParams, ...obj };
+      setParams(obj);
+
+      //   dispatch(FilterActionCreators.addParams(obj));
+      //   console.log(tempParams);
    };
 
    const handlerSelectMultiChange = (options: MultiValue<IFilterOption>, paramValue: string, context: any): void => {
       const obj = { [paramValue]: formatFilterValues(options) };
-      dispatch(FilterActionCreators.addParams(obj));
+      console.log(obj);
+
+      tempParams = { ...tempParams, ...obj };
+      console.log("-----------------");
+      setParams(obj);
    };
 
    //    const handlerSelectChange = (optionList: MultiValue<IFilterOption>, paramValue: string): void => {
@@ -53,66 +68,82 @@ const AnimeFilter = memo(() => {
    //    };
 
    function changeParams(param: IAnimeSearchParams): void {
+      tempParams = { ...tempParams, ...param };
       dispatch(FilterActionCreators.addParams(param));
    }
 
-   function handlerChange(e: ChangeEvent<HTMLInputElement>, paramValue: string, defaultValue: number = 0) {
-      debouncedParams({ [paramValue]: e.target.value ? e.target.value : defaultValue });
-   }
+   //    function handlerChange(e: ChangeEvent<HTMLInputElement>, paramValue: string, defaultValue: number = 0) {
+   //       debouncedParams({ [paramValue]: e.target.value ? e.target.value : defaultValue });
+   //    }
 
    return (
       <div className={classes["filter"]}>
-         <div className={[classes["filter__container"], "_container-main"].join(" ")}>
+         <div className={classes["filter__container"]}>
             {/* <div className={classes['filter__row']}>
                     <h3 className={classes['filter__title']}>Filters</h3>
                 </div> */}
             {/* <Title value="Filter" /> */}
             <div className={classes["filter__rows"]}>
-               <Select
-                  value={getFilterOptionsSingle(CONSTANTS.filterTypeOptions, params.type ? params.type : "")}
-                  closeMenuOnSelect={true}
-                  options={CONSTANTS.filterTypeOptions}
-                  classNamePrefix={"custom-select"}
-                  placeholder={"Type"}
-                  isMulti={false}
-                  isClearable={true}
-                  components={animatedComponents}
-                  onChange={(option) => handlerSelectSingleChange(option, "type")}
-               />
-               <Select
-                  value={getFilterOptionsMulti(CONSTANTS.filterGenreOptions, params.genres ? params.genres : "")}
-                  closeMenuOnSelect={false}
-                  options={CONSTANTS.filterGenreOptions}
-                  classNamePrefix={"custom-select"}
-                  placeholder={"Genres"}
-                  isMulti={true}
-                  //   hideSelectedOptions={false}
-                  isClearable={true}
-                  components={animatedComponents}
-                  onChange={(options, context) => handlerSelectMultiChange(options, "genres", context)}
-               />
-               <Select
-                  value={getFilterOptionsSingle(CONSTANTS.filterAgeOptions, params.rating ? params.rating : "")}
-                  closeMenuOnSelect={true}
-                  options={CONSTANTS.filterAgeOptions}
-                  classNamePrefix={"custom-select"}
-                  placeholder={"Age rating"}
-                  isMulti={false}
-                  isClearable={true}
-                  components={animatedComponents}
-                  onChange={(option) => handlerSelectSingleChange(option, "rating")}
-               />
-               <Select
-                  value={getFilterOptionsSingle(CONSTANTS.filterStatusOptions, params.status ? params.status : "")}
-                  closeMenuOnSelect={true}
-                  options={CONSTANTS.filterStatusOptions}
-                  classNamePrefix={"custom-select"}
-                  placeholder={"Status"}
-                  isMulti={false}
-                  isClearable={true}
-                  components={animatedComponents}
-                  onChange={(option) => handlerSelectSingleChange(option, "status")}
-               />
+               <label>
+                  Type
+                  <Select
+                     value={getFilterOptionsSingle(CONSTANTS.filterTypeOptions, tempParams.type || "")}
+                     closeMenuOnSelect={true}
+                     options={CONSTANTS.filterTypeOptions}
+                     classNamePrefix={"custom-select"}
+                     placeholder={"Any"}
+                     isMulti={false}
+                     isClearable={true}
+                     components={animatedComponents}
+                     onChange={(option) => handlerSelectSingleChange(option, "type")}
+                  />
+               </label>
+
+               <label>
+                  Genres
+                  <Select
+                     value={getFilterOptionsMulti(CONSTANTS.filterGenreOptions, tempParams.genres || "")}
+                     closeMenuOnSelect={false}
+                     options={CONSTANTS.filterGenreOptions}
+                     classNamePrefix={"custom-select"}
+                     placeholder={"Any"}
+                     isMulti={true}
+                     hideSelectedOptions={false}
+                     isClearable={true}
+                     components={animatedComponents}
+                     onChange={(options, context) => handlerSelectMultiChange(options, "genres", context)}
+                  />
+               </label>
+               <label>
+                  Age rating
+                  <Select
+                     value={getFilterOptionsSingle(CONSTANTS.filterAgeOptions, tempParams.rating || "")}
+                     closeMenuOnSelect={true}
+                     options={CONSTANTS.filterAgeOptions}
+                     classNamePrefix={"custom-select"}
+                     placeholder={"Any"}
+                     isMulti={false}
+                     isClearable={true}
+                     components={animatedComponents}
+                     onChange={(option) => handlerSelectSingleChange(option, "rating")}
+                  />
+               </label>
+               <label>
+                  Status
+                  <Select
+                     value={getFilterOptionsSingle(CONSTANTS.filterStatusOptions, tempParams.status || "")}
+                     closeMenuOnSelect={true}
+                     options={CONSTANTS.filterStatusOptions}
+                     classNamePrefix={"custom-select"}
+                     placeholder={"Any"}
+                     isMulti={false}
+                     isClearable={true}
+                     components={animatedComponents}
+                     onChange={(option) => handlerSelectSingleChange(option, "status")}
+                  />
+               </label>
+
+               <button className={classes["filter__clear"]} onClick={handlerClickClear}>Clear</button>
                {/* <h3 className={classes['filter__block']}>Year</h3>
                     <div className={classes['filter__block_inputs']}>
                         <input ref={yearFrom} className={classes['input']} defaultValue={params.start_date? params.start_date : ''} type="text" placeholder={'From'} onChange={(e) => handlerChange(e, 'start_date', 0)}/>
@@ -125,10 +156,7 @@ const AnimeFilter = memo(() => {
                         <input ref={scoreTo} className={classes['input']} defaultValue={params.max_score? params.max_score : ''} type="text" placeholder={'To'} onChange={(e) => handlerChange(e, 'max_score', 999)}/>
                     </div> */}
             </div>
-            <div className={classes["filter__clear"]} onClick={handlerClickClear}>
-               <h3 className={classes["filter__clear_title"]}>CLEAR</h3>
-               {/* <RxCross1 className={classes['filter__clear_cross']}/> */}
-            </div>
+           
          </div>
       </div>
    );

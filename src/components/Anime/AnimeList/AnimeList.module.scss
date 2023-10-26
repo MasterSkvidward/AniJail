@@ -14,8 +14,8 @@ $height: 268px;
       // grid-template-rows: ;
       // grid-template-columns: minmax(130px, 227px), minmax(130px, 227px), minmax(130px, 227px), minmax(130px, 227px), minmax(130px, 227px);
       // grid-template-columns: auto auto auto auto auto;
-      column-gap: 15px;
-      row-gap: 30px;
+      column-gap: 25px;
+      row-gap: 35px;
 
       @media (max-width: 1790px) {
          grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));

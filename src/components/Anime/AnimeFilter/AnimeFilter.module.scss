@@ -3,9 +3,11 @@
 .filter {
    // background-color: rgb(84, 84, 84);
    margin: 0 0 50px;
-   background-color: var(--background-secondary);
-   padding: 15px 10px;
+   //    background-color: var(--background-secondary);
+   //    padding: 15px 10px;
    border-radius: 17px;
+   z-index: 2;
+ 
 
    &__container {
       //   display: flex;
@@ -35,14 +37,28 @@
    &__rows {
       // background-color: #212121 !important;
       display: flex;
-      column-gap: 15px;
+      column-gap: 25px;
       row-gap: 15px;
       flex-wrap: wrap;
       justify-content: stretch;
 
+      & > label {
+         display: flex;
+         flex-direction: column;
+         row-gap: 8px;
+         font-weight: 600;
+         opacity: 0.95;
+         // margin-left: 10px;
+         // justify-content: flex-start;
+
+         & > * {
+            font-weight: 400;
+         }
+      }
+
       & > * {
          width: 100%;
-         max-width: 350px;
+         max-width: 220px;
       }
    }
 
@@ -76,33 +92,29 @@
    }
 
    &__clear {
-      margin: 15px 0px 0px;
+      align-self: center;
+      margin-top: 20px;
+
       border-radius: 50px;
-      display: flex;
-      column-gap: 10px;
-      align-items: center;
-      justify-content: center;
       background-color: $main-color;
-      padding: 14px 10px;
-      max-width: 200px;
+      padding: 11px 20px;
+
+      color: var(--text-primary);
+      font-weight: 600;
+      font-size: 1em;
+
       width: 100%;
+      max-width: 130px;
+      //   max-height: 20px;
+
       transition: 0.3s;
       user-select: none;
-      // align-self: center;
 
       cursor: pointer;
       // justify-content: center;
 
       &:hover {
-         background-color: rgba(63, 95, 224, 0.7);
-      }
-
-      &_title {
-         font-weight: 600;
-         text-align: center;
-         font-size: 15px;
-         // color: rgba(235, 234, 234, 0.9);
-         color: var(--text-secondary);
+         opacity: 0.8;
       }
 
       &_cross {

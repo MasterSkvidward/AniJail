@@ -6,7 +6,7 @@ $height: 322px;
 
 .skeleton {
    &__background-image {
-      height: 22vw;
+      height: 18vw;
       width: 100vw;
       position: relative;
    }
@@ -28,8 +28,9 @@ $height: 322px;
 
 .anime-card {
    // background-color:  linear-gradient(to top rgba(201, 50, 50, 0.5));
-   padding: 0px 0px 160px 0px;
-   background-color: var(--background-primary);
+   padding: 0px 0px 50px 0px;
+   border-bottom: 1px solid rgba(73, 72, 72, 0.3);
+//    background-color: var(--background-primary);
 
    &__header {
       // position: relative;
@@ -42,7 +43,7 @@ $height: 322px;
    }
 
    &__background {
-      height: 22vw;
+      height: 18vw;
       position: relative;
       user-select: none;
       // &::after {

@@ -1,6 +1,36 @@
 import { IAnimeSearchParams } from "../types/jikanMoe/jikan";
 import { IFilterOption } from "../types/types";
 
+export const getAnimeEpisodeUrl = (baseUrl: string, animeTitle: string, episode: number): string => {
+   console.log(animeTitle);
+
+   let animeTitleNew = animeTitle
+      .toLowerCase()
+      .replaceAll("-", "")
+      .replaceAll(":", "")
+      .replaceAll(".", "")
+      .replaceAll(",", "")
+      .replaceAll("!", "")
+      .replaceAll(" ", "-")
+      .replaceAll("--", "-");
+   let episodeNew = `episode-${episode}`;
+   const result = `${baseUrl}${animeTitleNew}-${episodeNew}`;
+   console.log(result);
+
+   return result;
+};
+
+export const getAnimeEpisodeSrc = (hostUrl: string, streamingLink: string): string => {
+   let i = 0;
+   while (i < streamingLink.length) {
+      if (streamingLink.slice(i, i + 3) === "id=") break;
+      i++;
+   }
+
+   const result = `${hostUrl}${streamingLink.slice(i)}`;
+   return result;
+};
+
 export const getAnimeScore = (score: number | undefined): string => {
    if (!score) return "-";
 
@@ -15,7 +45,7 @@ export const getScoreColor = (score: number): string => {
 };
 
 // export const getScoreStyles = (color: "green" | "light-green" | "red" | "grey"): {} => {
-//    const scoreStyles = { 
+//    const scoreStyles = {
 //     green: { color: "#ffffff", backgroundColor: "red" },
 //     grey: { color: "#ffffff", backgroundColor: "grey" },
 //  };
@@ -84,7 +114,15 @@ export const getFilterOptionsMulti = (options: IFilterOption[], param: string): 
    let paramItems = param.split(",");
    //    console.log(param.split(","));
 
-   const result = options.filter((option) => paramItems.includes(option.value));
+   let result = options.filter((option) => paramItems.includes(option.value));
+   //    console.log(result);
+
+   //    console.log(result.length);
+
+   // if (result.length > 1) result = [result[0], {value: "-1", label: `+${result.length-1}`}]
+   const optionsMoreCount = result.length - 1;
+
+   if (optionsMoreCount > 0) result.splice(1, 0, { value: "data-count", label: `+${optionsMoreCount}` });
 
    return result;
 };

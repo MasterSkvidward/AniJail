@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Title from "../../../UI/Title/Title";
 import Review from "../../Review/Review/Review";
 
@@ -12,9 +12,15 @@ import Carousel from "../../../UI/Carousel/Carousel";
 import { reviewsCarouselOptions } from "../../../UI/Carousel/media-options";
 import ReviewCarousel from "../../Review/ReviewCarousel/ReviewCarousel";
 import Comments from "../../Comments/Comments";
+import { useDispatch } from "react-redux";
+import { AnimeActionCreators } from "../../../store/reducers/anime/action-creatores";
+import { getAnimeEpisodeUrl } from "../../../utils/utils";
 
 const AnimeFeedback = () => {
-   const { animeReviews } = useTypedSelector((state) => state.anime);
+   const {animeReviews } = useTypedSelector((state) => state.anime);
+   const dispatch = useDispatch();
+
+
 
    return (
       <div className={classes.anime}>

@@ -15,7 +15,7 @@ const AnimeSidebar:FC<AnimeSidebarProps> = ({anime}) => {
 
    return (
       <aside className={classes["anime"]}>
-         <Title value="Airing Now" link={"/anime"}/>
+         <Title value="Airing Now" isLink={true}/>
          <div>
             {anime.length !== 0
                ? anime.slice(0, 8).map((item, index) => <AnimeItemSmall anime={item} key={index} />)

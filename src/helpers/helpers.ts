@@ -8,7 +8,8 @@ export const formatGenres = (genres: IRowObjectInfo[] | undefined): string[] => 
 };
 
 export const formatFilterValues = (filterTypeOptions: MultiValue<IFilterOption>): string => {
-   return filterTypeOptions.map((option) => option.value).join(",");
+    const result = filterTypeOptions.filter((option) => option.value !== "data-count");
+   return result.map((option) => option.value).join(",");
 };
 
 export const formatColor = (color: string): string => {

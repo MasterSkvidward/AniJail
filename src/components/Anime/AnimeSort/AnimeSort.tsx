@@ -95,7 +95,7 @@ const AnimeSort = () => {
                   {(isLoading && hasMoreAnime && <Loader />) || (isDebouncing && <Loader />)}
                </div>
             </div>
-            <AnimeSidebar anime={animeSeason} />
+            {/* <AnimeSidebar anime={animeSeason} /> */}
          </div>
       </div>
    );

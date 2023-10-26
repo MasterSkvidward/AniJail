@@ -7,6 +7,7 @@ import { useComponentDidMount } from "../../hooks/useComponentDidMount";
 import AnimeFilter from "../../components/Anime/AnimeFilter/AnimeFilter";
 import AnimeSidebar from "../../components/Anime/AnimeSidebar/AnimeSidebar";
 import { AnimeActionCreators } from "../../store/reducers/anime/action-creatores";
+import { FilterActionCreators } from "../../store/reducers/filter/action-creatores";
 
 const Anime = () => {
    const dispatch = useDispatch();
@@ -18,6 +19,11 @@ const Anime = () => {
    useEffect(() => {
       window.scrollTo(0, 0);
       fetchAnimeSeason();
+
+     
+    //   return () => {
+    //     dispatch(FilterActionCreators.clearFilterParams());
+    //  };
    }, []);
 
    return (

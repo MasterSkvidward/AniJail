@@ -9,9 +9,11 @@ $height: 268px;
 @keyframes itemShow {
    from {
       opacity: 0;
+      transform: scale(0.85);
    }
    to {
       opacity: 1;
+      transform: scale(1);
    }
 }
 
@@ -25,7 +27,6 @@ $height: 268px;
 
 .anime {
    position: relative;
-
 
    &__preview {
       position: absolute;
@@ -61,10 +62,10 @@ $height: 268px;
       overflow: hidden;
       // max-width: 188px;
       // width: inherit;
-    //   transition: 0.2s ease-in-out;
-      max-width: $width;
-      max-height: $height;
-      animation: 0.1s itemShow ease-in;
+      //   transition: 0.2s ease-in-out;
+      max-width: calc($width * 1.05);
+      max-height: calc($height * 1.05);
+      animation: 0.3s itemShow ease-in;
       transition: 0.2s;
 
       //   max-width: $width;
@@ -89,11 +90,11 @@ $height: 268px;
       cursor: pointer;
       max-width: $width;
       //   height: 30px;
+      opacity: 0.88;
    }
 }
 
 .preview-visible {
-   z-index: 77;
    visibility: visible;
    opacity: 1;
    display: block;
@@ -106,9 +107,9 @@ $height: 268px;
 
 .skeleton {
    border-radius: 14px;
-   max-width: $width;
+   max-width: calc($width * 1.05);
    max-height: 303px;
-   
-//    width: $width;
+
+   //    width: $width;
    height: 400px;
 }

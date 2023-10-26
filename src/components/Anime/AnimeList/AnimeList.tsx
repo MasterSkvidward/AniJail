@@ -19,7 +19,7 @@ const AnimeList = () => {
             {anime.length > 0
                ? anime.map((item, index) => (
                     //    <div className={classes["anime-list__item"]} key={index}>
-                    <AnimeItem anime={item} showPreview={true} key={index} />
+                    <AnimeItem anime={item} showPreview={false} key={index} />
                     //    </div>
                  ))
                : [...new Array(24)].map((item, index) => <AnimeItem anime={null} showPreview={false} key={index} />)}

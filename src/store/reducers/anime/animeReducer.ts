@@ -25,6 +25,10 @@ const initialState: AnimeState = {
    animeReviews: [],
    animeReviewsLoading: false,
    animeReviewsError: "",
+
+   animeEpisode: null,
+   animeEpisodeLoading: false,
+   animeEpisodeError: "",
 };
 
 export default function animeReducer(state = initialState, action: AnimeAction): AnimeState {
@@ -110,6 +114,17 @@ export default function animeReducer(state = initialState, action: AnimeAction):
 
       case AnimeActionsEnum.SET_ANIME_REVIEWS_ERROR:
          return { ...state, animeReviewsError: action.payload };
+
+      //!
+
+      case AnimeActionsEnum.GET_ANIME_EPISODE:
+         return { ...state, animeEpisode: action.payload };
+
+      case AnimeActionsEnum.SET_ANIME_EPISODE_LOADING:
+         return { ...state, animeEpisodeLoading: action.payload };
+
+      case AnimeActionsEnum.SET_ANIME_EPISODE_ERROR:
+         return { ...state, animeEpisodeError: action.payload };
 
       default:
          return state;

@@ -18,7 +18,7 @@ const ReviewCarousel: FC<ReviewCarouselProps> = ({ reviews }) => {
 
    return (
       <div className={classes["reviews"]}>
-         <Title value={"Reviews"} link={`/anime/${animeSingle?.mal_id}/reviews`}/>
+         <Title value={"Reviews"} isLink={true}/>
          {reviews.length === 0 && !animeReviewsLoading && !animeReviewsError ? (
             <p>This show have no reviews.</p>
          ) : (

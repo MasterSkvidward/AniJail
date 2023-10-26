@@ -21,6 +21,10 @@ const AnimeIdPage = () => {
    const dispatch = useDispatch();
    const params = useParams<ParamsType>();
 
+   const url = "https://api.consumet.org/anime/gogoanime/watch/"
+
+   const {animeSingle} = useTypedSelector(state => state.anime);
+
    const fetchAnimeById = async () => {
       if (params.id !== "undefined" && params.id !== "null") {
          const id = Number(params.id);
@@ -32,6 +36,7 @@ const AnimeIdPage = () => {
             await dispatch(AnimeActionCreators.GetAnimeRecommendations(id));
             await dispatch(AnimeActionCreators.GetAnimeReviews(id));
         //  }, 4600);
+        
       }
    };
 

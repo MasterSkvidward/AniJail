@@ -9,8 +9,9 @@ const $api = axios.create({
   baseURL: API_URL,
 });
 
-// $api.interceptors.request.use((config) => {
-//   config.headers.Authorization = `Bearer ${localStorage.getItem("token")}`;
+// $api.interceptors.response.use((config) => {
+// //   config.headers.Authorization = `Bearer ${localStorage.getItem("token")}`;
+// config.headers["X-Frame-options"] = "Sameorigin";
 // //   config.headers["ngrok-skip-browser-warning"] = true;
 //   return config;
 // });

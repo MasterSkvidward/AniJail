@@ -7,10 +7,16 @@ import {
    IAnimeReview,
 } from "../../../types/jikanMoe/jikan";
 
+import { IAnimeEpisode } from "../../../types/gogoAnime/gogoAnime";
+
 export interface AnimeState {
    animeSingle: IAnime | null;
    animeSingleLoading: boolean;
    animeSingleError: string;
+
+   animeEpisode: IAnimeEpisode | null;
+   animeEpisodeLoading: boolean;
+   animeEpisodeError: string;
 
    animeRecommendations: IAnimeRecommendation[] | [];
    animeRecommendationsLoading: boolean;
@@ -60,6 +66,10 @@ export enum AnimeActionsEnum {
    GET_ANIME_CHARACTERS = "GET_ANIME_CHARACTERS",
    SET_ANIME_CHARACTERS_LOADING = "SET_ANIME_CHARACTERS_LOADING",
    SET_ANIME_CHARACTERS_ERROR = "SET_ANIME_CHARACTERS_ERROR",
+
+   GET_ANIME_EPISODE = "GET_ANIME_EPISODE",
+   SET_ANIME_EPISODE_LOADING = "SET_ANIME_EPISODE_LOADING",
+   SET_ANIME_EPISODE_ERROR = "SET_ANIME_EPISODE_ERROR",
 
    GET_ANIME_REVIEWS = "GET_ANIME_REVIEWS",
    SET_ANIME_REVIEWS_LOADING = "SET_ANIME_REVIEWS_LOADING",
@@ -186,6 +196,23 @@ interface SetAnimeReviewsError {
    payload: string;
 }
 
+//!
+
+interface GetAnimeEpisode {
+   type: AnimeActionsEnum.GET_ANIME_EPISODE;
+   payload: IAnimeEpisode;
+}
+
+interface SetAnimeEpisodeLoading {
+   type: AnimeActionsEnum.SET_ANIME_EPISODE_LOADING;
+   payload: boolean;
+}
+
+interface SetAnimeEpisodeError {
+   type: AnimeActionsEnum.SET_ANIME_EPISODE_ERROR;
+   payload: string;
+}
+
 export type AnimeAction =
    | ClearAnimeSearch
    | ClearAnimeSingle
@@ -210,4 +237,7 @@ export type AnimeAction =
    | SetAnimeCharactersError
    | GetAnimeReviews
    | SetAnimeReviewsLoading
-   | SetAnimeReviewsError;
+   | SetAnimeReviewsError
+   | GetAnimeEpisode
+   | SetAnimeEpisodeLoading
+   | SetAnimeEpisodeError

@@ -12,7 +12,7 @@ import ContentLoader from "react-content-loader";
 const AnimeCharacters = () => {
    const { animeCharactersLoading, animeCharacters, animeCharactersError, animeSingleLoading, animeSearchLoading } = useTypedSelector((state) => state.anime);
 
-   console.log(animeCharacters.length, animeCharactersLoading, animeCharactersError, animeSingleLoading, animeSearchLoading);
+//    console.log(animeCharacters.length, animeCharactersLoading, animeCharactersError, animeSingleLoading, animeSearchLoading);
    
 //    if (animeCharacters.length === 0 && !animeCharactersLoading && !animeCharactersError && !animeSingleLoading && !animeSearchLoading) return <></>;
 //    console.log("rendered");

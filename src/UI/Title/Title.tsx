@@ -7,21 +7,21 @@ import classes from "./Title.module.scss";
 
 interface TitleProps {
    value: string;
-   link?: string;
+   isLink?: boolean;
 }
 
-const Title: FC<TitleProps> = ({ value, link }) => {
+const Title: FC<TitleProps> = ({ value, isLink }) => {
     const navigate = useNavigate();
 
-    const handleCLick = (e: MouseEvent<HTMLDivElement>):void => {
-        e.stopPropagation();
-       link && navigate(link)
-    }
+    // const handleCLick = (e: MouseEvent<HTMLDivElement>):void => {
+    //     e.stopPropagation();
+    //    link && navigate(link)
+    // }
 
    return (
-      <div className={link ? [classes["wrapper"], classes["link"]].join(" ") : classes["wrapper"]} onClick={handleCLick}>
+      <div className={isLink ? [classes["wrapper"], classes["link"]].join(" ") : classes["wrapper"]}>
          <h3 className={classes["title"]}>{value}</h3>
-         {link && <MdOutlineKeyboardArrowRight/>}
+         {isLink && <MdOutlineKeyboardArrowRight/>}
       </div>
    );
 };
