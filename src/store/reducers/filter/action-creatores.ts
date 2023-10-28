@@ -111,6 +111,7 @@ export const FilterActionCreators = {
       (dispatch: AppDispatch) => {
          dispatch(FilterActionCreators.clearAnime());
          dispatch({ type: FilterActionsEnum.SET_PARAMS, payload: params });
+         dispatch({ type: FilterActionsEnum.SET_LOAD_NEW_ANIME, payload: true });
       },
 
    addParams:

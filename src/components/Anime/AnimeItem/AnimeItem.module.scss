@@ -9,7 +9,7 @@ $height: 268px;
 @keyframes itemShow {
    from {
       opacity: 0;
-      transform: scale(0.85);
+      transform: scale(0.9);
    }
    to {
       opacity: 1;
@@ -27,6 +27,7 @@ $height: 268px;
 
 .anime {
    position: relative;
+
 
    &__preview {
       position: absolute;
@@ -57,6 +58,7 @@ $height: 268px;
 
    &__image {
       background-color: var(--background-tertiary);
+      box-shadow: var(--box-shadow-primary);
       border-radius: 11px;
       //   border: 0.5px solid rgba(255, 255, 255, 0.1);
       overflow: hidden;

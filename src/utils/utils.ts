@@ -7,6 +7,8 @@ export const getAnimeEpisodeUrl = (baseUrl: string, animeTitle: string, episode:
    let animeTitleNew = animeTitle
       .toLowerCase()
       .replaceAll("-", "")
+      .replaceAll("[", "")
+      .replaceAll("]", "")
       .replaceAll(":", "")
       .replaceAll(".", "")
       .replaceAll(",", "")
@@ -18,6 +20,15 @@ export const getAnimeEpisodeUrl = (baseUrl: string, animeTitle: string, episode:
    console.log(result);
 
    return result;
+};
+
+export const deleteEmptyProperties = (obj: IAnimeSearchParams): IAnimeSearchParams => {
+   for (const [key, value] of Object.entries(obj)) {
+      if (!value) {
+         if (obj.hasOwnProperty(key)) delete obj[key as keyof IAnimeSearchParams];
+      }
+   }
+   return obj;
 };
 
 export const getAnimeEpisodeSrc = (hostUrl: string, streamingLink: string): string => {

@@ -20,8 +20,8 @@ $height: 188px;
    max-width: calc($width);
 
    &__image {
-      width: calc($width * 0.9);
-      height: calc($height * 0.9);
+      width: calc($width * 0.86);
+      height: calc($height * 0.86);
       transition: 0.2s ease-in-out;
       border-radius: 13px;
       overflow: hidden;

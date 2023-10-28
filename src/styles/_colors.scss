@@ -13,30 +13,33 @@ $main-color-dark: rgb(221, 78, 78);
 //! new color system
 
 $black-default: rgb(0, 0, 0);
-$black-light: rgb(27, 27, 27);
-$black-dark: rgb(19, 19, 19);
+$black-light: rgb(37, 37, 37);
+$black-dark: rgb(24, 24, 24);
 $black-coal: rgba(21, 21, 21, 0.9);
+
+$blue: rgba(103, 132, 187, 0.1);
+$blue-light: rgba(103, 132, 187, 0.04);
 
 $grey-dark: rgba(57, 57, 57, 0.7);
 $grey: rgb(118, 118, 118);
 $grey-medium: rgb(146, 146, 146);
 $grey-medium-darker: rgb(89, 89, 89);
 
-$grey-light: rgba(243, 242, 242, 0.1);
+$grey-light: rgb(72, 72, 72);
+// $grey-light: rgba(243, 242, 242, 0.1);
 $grey-thin: rgba(201, 201, 201, 0.8);
 
 $green: #3bb33b;
 $green-light: rgb(40, 221, 94);
 
-$pearl: rgb(237,241,245);
-
+$pearl: rgb(229, 235, 241);
 
 $red: rgb(191, 31, 47);
 
 $skeleton-light: rgba(202, 202, 202, 0.4);
 $skeleton-dark: rgba(60, 60, 60, 0.4);
 
-$white-default: rgb(250,250,250);
+$white-default: rgb(250, 250, 250);
 $white: rgb(237, 237, 237);
 $white-light: rgb(216, 216, 216);
 // $white: #dedede;
@@ -48,61 +51,72 @@ $white-dark: rgba(255, 255, 255, 0.8);
 $border-thin-dark: 1px solid rgba(3, 3, 3, 0.14);
 $border-thin-light: 1px solid rgba(255, 255, 255, 0.14);
 
-$box-shadow-dark: 0px 1px 12px 2px rgba(139, 139, 139, 0.122);
-$box-shadow-light: 0px 1px 17px 2px rgba(12, 12, 12, 0.432);
+$box-shadow-black-dark: rgba(10, 10, 10, 0.9) 0px 5px 15px -3px;
+$box-shadow-black-light: rgba(32, 32, 33, 0.9) 0px 4px 20px 1px;
+
+$box-shadow-white-dark: rgba(32, 32, 33, 0.9) 0px 4px 20px 1px;
+$box-shadow-white-light: 0 14px 30px $blue, 0 4px 4px $blue-light;
+
+//! old
 $box-shadow-medium: 0px 2px 35px -2px rgba(119, 119, 119, 0.812);
 $box-shadow-neu-light: 6px 6px 22px #7a797c, -6px -6px 22px #ffffff;
 $box-shadow-neu-dark: 13px 13px 26px #2a2a2a, -13px -13px 26px #424242;
 
+html {
+   --main-color: #{$main-color};
+}
+
 html[data-theme="light"] {
-  --background-primary: #{$pearl};
-  //   --background-secondary: #{$white-snow};
-  --background-secondary: #{$white-default};
-  --background-tertiary: #{$grey};
-  --background-reverse: #{$black-dark};
-  --background-skeleton: #{$skeleton-light};
+   --background-primary: #{$pearl};
+   //   --background-secondary: #{$white-snow};
+   --background-secondary: #{$white-default};
+   --background-tertiary: #{$grey};
+   --background-reverse: #{$black-dark};
+   --background-skeleton: #{$skeleton-light};
 
-  --border-primary: #{$grey-thin};
-  --box-shadow-primary: #{$box-shadow-dark};
-  --box-shadow-neu: #{$box-shadow-neu-light};
+   --border-primary: #{$grey-thin};
+   --box-shadow-primary: #{$box-shadow-white-light};
+   --box-shadow-secondary: #{$box-shadow-white-dark};
+   --box-shadow-neu: #{$box-shadow-neu-light};
 
-  --hover-primary: #{$white-light};
+   --hover-primary: #{$white-light};
 
-  --text-primary: #{$black-light};
-  --text-secondary: #{$black-light};
-  --text-tertiary: #{$grey-medium};
-  --text-reverse: #{$white};
+   --text-primary: #{$black-light};
+   --text-secondary: #{$black-light};
+   --text-tertiary: #{$grey-medium};
+   --text-reverse: #{$white};
 
-  // --border-primary: #{$grey-light};
-  // --border-secondary: #{$border-thin-dark};
+   // --border-primary: #{$grey-light};
+   // --border-secondary: #{$border-thin-dark};
 
-  // --box-shadow-primary: #{$box-shadow-dark};
-  // --box-shadow-secondary: #{$box-shadow-medium};
-  // --box-shadow-neu: #{$box-shadow-neu-light};
+   // --box-shadow-primary: #{$box-shadow-dark};
+   // --box-shadow-secondary: #{$box-shadow-medium};
+   // --box-shadow-neu: #{$box-shadow-neu-light};
 }
 
 html[data-theme="dark"] {
-  --background-primary: #{$black-dark};
-  --background-secondary: #{$black-light};
-  --background-tertiary: #{$grey-light};
-  --background-reverse: #{$white-snow};
-  --background-skeleton: #{$skeleton-dark};
+   --background-primary: #{$black-dark};
+   --background-secondary: #{$black-light};
+   --background-tertiary: #{$grey-light};
+   --background-reverse: #{$white-snow};
+   --background-skeleton: #{$skeleton-dark};
 
-  --border-primary: #{$grey-light};
-  --box-shadow-primary: #{$box-shadow-dark};
-  --box-shadow-neu: #{$box-shadow-neu-dark};
+   --border-primary: #{$grey-light};
+   --box-shadow-primary: #{$box-shadow-black-dark};
+   --box-shadow-secondary: #{$box-shadow-black-light};
+   --box-shadow-neu: #{$box-shadow-neu-dark};
 
-  --hover-primary: #{$grey-dark};
+   --hover-primary: #{$grey-dark};
 
-  --text-primary: #{$white};
-  --text-secondary: #{$white-dark};
-  --text-tertiary: #{$grey-medium};
-  --text-reverse: #{$black-light};
+   --text-primary: #{$white};
+   --text-secondary: #{$white-dark};
+   --text-tertiary: #{$grey-medium};
+   --text-reverse: #{$black-light};
 
-  // --border-primary: #{$grey-dark};
-  // --border-secondary: #{$border-thin-light};
+   // --border-primary: #{$grey-dark};
+   // --border-secondary: #{$border-thin-light};
 
-  // --box-shadow-primary: #{$box-shadow-light};
-  // --box-shadow-secondary: #{$box-shadow-medium};
-  // --box-shadow-neu: #{$box-shadow-neu-dark};
+   // --box-shadow-primary: #{$box-shadow-light};
+   // --box-shadow-secondary: #{$box-shadow-medium};
+   // --box-shadow-neu: #{$box-shadow-neu-dark};
 }

@@ -12,6 +12,7 @@ import { useDispatch } from "react-redux";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { AnimeActionCreators } from "../../store/reducers/anime/action-creatores";
 import AnimeFeedback from "../../components/Anime/AnimeFeedback/AnimeFeedback";
+import AnimePlayer from "../../components/Anime/AnimePlayer/AnimePlayer";
 
 type ParamsType = {
    id: string;
@@ -58,6 +59,7 @@ const AnimeIdPage = () => {
       <div className={classes["anime-page"]}>
          <AnimeCard />
          <AnimeDetails />
+         <AnimePlayer />
          <AnimeFeedback />
       </div>
    );

@@ -92,7 +92,7 @@ const AnimeSort = () => {
                </div>
                <AnimeList />
                <div ref={lastAnimeRow} className={classes["anime__lastRow"]}>
-                  {(isLoading && hasMoreAnime && <Loader />) || (isDebouncing && <Loader />)}
+                  {(isLoading && hasMoreAnime && anime.length  && <Loader />) || (isDebouncing && <Loader />)}
                </div>
             </div>
             {/* <AnimeSidebar anime={animeSeason} /> */}

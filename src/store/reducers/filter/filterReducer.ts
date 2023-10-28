@@ -48,6 +48,9 @@ export default function filterReducer(state = initialState, action: FilterAction
       case FilterActionsEnum.ADD_PARAMS:
          return { ...state, params: { ...state.params, ...action.payload } };
 
+        //  case FilterActionsEnum.DELETE_PARAM:
+        //     return { ...state, params: { ...state.params, ...action.payload } };
+
       case FilterActionsEnum.SET_ANIME:
          return { ...state, anime: action.payload };
 

@@ -1,6 +1,10 @@
 .player {
-    height: 540px;
-    display: flex;
-    flex-direction: column;
-    row-gap: 24px;
+   height: 540px;
+
+   &__container {
+      display: flex;
+      flex-direction: column;
+      row-gap: 24px;
+      margin: 0px auto;
+   }
 }

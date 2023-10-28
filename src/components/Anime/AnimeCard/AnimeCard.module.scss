@@ -28,9 +28,10 @@ $height: 322px;
 
 .anime-card {
    // background-color:  linear-gradient(to top rgba(201, 50, 50, 0.5));
-   padding: 0px 0px 50px 0px;
-   border-bottom: 1px solid rgba(73, 72, 72, 0.3);
-//    background-color: var(--background-primary);
+   padding: 0px 0px 100px 0px;
+   //    border-bottom: 1px solid rgba(73, 72, 72, 0.3);
+//    background-color: var(--background-secondary);
+   box-shadow: var(--box-shadow-primary);
 
    &__header {
       // position: relative;
@@ -104,9 +105,9 @@ $height: 322px;
       overflow: hidden;
 
       @include for-full-hd {
-        width: calc($width * 1.02);
-        height: calc($height * 1.02);
-     }
+         width: calc($width * 1.02);
+         height: calc($height * 1.02);
+      }
 
       @include for-medium-desktop-up {
          width: calc($width * 1.03);

@@ -1,3 +1,5 @@
+@import "../../styles/colors";
+
 @keyframes scaleIn {
   0% {
     opacity: 0;
@@ -15,6 +17,7 @@
 .dropmenu {
   position: relative;
   width: 100%;
+  box-shadow: var(--box-shadow-primary);
 
   &__btn {
     display: flex;
@@ -24,7 +27,7 @@
     padding: 7px 15px;
     text-align: center;
     border-radius: 15px;
-    transition: all 0.2s;
+    transition: all 0.15s;
     cursor: pointer;
     height: 38px;
     color: rgb(246, 246, 246);
@@ -32,7 +35,7 @@
     button {
       background-color: transparent;
       color: rgb(246, 246, 246);
-      font-size: 1.1em;
+      font-size: 1em;
       align-self: center;
       cursor: pointer;
       margin: 0px auto;
@@ -93,16 +96,18 @@
     // box-shadow: 0px 5px 11px 2px rgb(94, 94, 94);
 
     animation: scaleIn 0.22s ease-in-out;
+    box-shadow: var(--box-shadow-primary);
   }
 
   &__option {
     cursor: pointer;
     padding: 16px 15px;
-    font-size: 1.05em;
+    font-size: 0.92em;
     transition: 0.2s;
 
     &:hover {
       background-color: var(--hover-primary);
+      color: $main-color-dark;
     }
   }
 }

@@ -1,5 +1,5 @@
-import React, { ChangeEvent, memo, useEffect, useRef, useState } from "react";
-import Select, { MultiValue, SingleValue } from "react-select";
+import React, { ChangeEvent, memo, useEffect, useRef, useState, MouseEvent } from "react";
+import Select, { components, MultiValue, SingleValue } from "react-select";
 import classes from "./AnimeFilter.module.scss";
 import "./react-select.scss";
 import makeAnimated from "react-select/animated";
@@ -9,16 +9,20 @@ import { FilterActionCreators } from "../../../store/reducers/filter/action-crea
 import { IAnimeSearchParams } from "../../../types/jikanMoe/jikan";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { formatFilterValues } from "../../../helpers/helpers";
-import { getCurrentYear, getFilterOptionsSingle, getFilterOptionsMulti } from "../../../utils/utils";
+import { getCurrentYear, getFilterOptionsSingle, getFilterOptionsMulti, deleteEmptyProperties } from "../../../utils/utils";
 import useDebounce from "../../../hooks/useDebounce";
 import { IFilterOption } from "../../../types/types";
 import Title from "../../../UI/Title/Title";
+
+import { GiSettingsKnobs } from "react-icons/gi";
+import InputRange from "../../../UI/InputRange/InputRange";
 
 let tempParams: IAnimeSearchParams = {};
 
 const AnimeFilter = memo(() => {
    const dispatch = useDispatch();
    const { params } = useTypedSelector((state) => state.filter);
+   const [isMenuVisible, setIsMenuVisible] = useState<boolean>(false);
    //    const debouncedParams = useDebounce(setParams, 300);
 
    const animatedComponents = makeAnimated();
@@ -44,21 +48,31 @@ const AnimeFilter = memo(() => {
 
    const handlerSelectSingleChange = (option: SingleValue<IFilterOption>, paramValue: string): void => {
       let result = option ? option.value : "";
-      const obj = { [paramValue]: result };
+      let obj = { [paramValue]: result };
+
       tempParams = { ...tempParams, ...obj };
-      setParams(obj);
+
+      let finalParams = { ...params, ...tempParams };
+      finalParams = deleteEmptyProperties(finalParams);
+
+      dispatch(FilterActionCreators.setParams(finalParams));
 
       //   dispatch(FilterActionCreators.addParams(obj));
       //   console.log(tempParams);
    };
 
    const handlerSelectMultiChange = (options: MultiValue<IFilterOption>, paramValue: string, context: any): void => {
-      const obj = { [paramValue]: formatFilterValues(options) };
+      let obj = { [paramValue]: formatFilterValues(options) };
       console.log(obj);
 
       tempParams = { ...tempParams, ...obj };
-      console.log("-----------------");
-      setParams(obj);
+      //   tempParams = deleteEmptyProperties(tempParams);
+      //   setParams(obj);
+      console.log(tempParams);
+      let finalParams = { ...params, ...tempParams };
+      finalParams = deleteEmptyProperties(finalParams);
+
+      dispatch(FilterActionCreators.setParams(finalParams));
    };
 
    //    const handlerSelectChange = (optionList: MultiValue<IFilterOption>, paramValue: string): void => {
@@ -72,9 +86,23 @@ const AnimeFilter = memo(() => {
       dispatch(FilterActionCreators.addParams(param));
    }
 
+   const handleClick = (e: MouseEvent): void => {
+      e.stopPropagation();
+      setIsMenuVisible((prev) => !prev);
+   };
+
    //    function handlerChange(e: ChangeEvent<HTMLInputElement>, paramValue: string, defaultValue: number = 0) {
    //       debouncedParams({ [paramValue]: e.target.value ? e.target.value : defaultValue });
    //    }
+
+   const handlerDocumentClick = (e: Event): void => {
+      setIsMenuVisible(false);
+   };
+
+   useEffect(() => {
+      document.addEventListener("click", handlerDocumentClick);
+      return () => document.removeEventListener("click", handlerDocumentClick);
+   }, []);
 
    return (
       <div className={classes["filter"]}>
@@ -83,7 +111,7 @@ const AnimeFilter = memo(() => {
                     <h3 className={classes['filter__title']}>Filters</h3>
                 </div> */}
             {/* <Title value="Filter" /> */}
-            <div className={classes["filter__rows"]}>
+            <div className={classes["filter__row"]}>
                <label>
                   Type
                   <Select
@@ -109,9 +137,12 @@ const AnimeFilter = memo(() => {
                      placeholder={"Any"}
                      isMulti={true}
                      hideSelectedOptions={false}
-                     isClearable={true}
-                     components={animatedComponents}
+                     isClearable={false}
+                     components={components}
+                     //  components={animatedComponents}
                      onChange={(options, context) => handlerSelectMultiChange(options, "genres", context)}
+                     openMenuOnClick={true}
+                     //  onMenuClose={false}
                   />
                </label>
                <label>
@@ -143,7 +174,43 @@ const AnimeFilter = memo(() => {
                   />
                </label>
 
-               <button className={classes["filter__clear"]} onClick={handlerClickClear}>Clear</button>
+               <button className={classes["filter__clear"]} onClick={handlerClickClear}>
+                  Clear
+               </button>
+
+               <div className={classes["filter__options"]} onClick={handleClick}>
+                  <GiSettingsKnobs />
+                  <div
+                     className={
+                        isMenuVisible
+                           ? [classes["filter__menu"], classes["menu"], classes["visible"]].join(" ")
+                           : [classes["filter__menu"], classes["menu"]].join(" ")
+                     }
+                     onClick={(e) => e.stopPropagation()}
+                  >
+                     <div className={classes["menu__sliders"]}>
+                        <InputRange options={{title:"Year Range", defaultValues: [1970, getCurrentYear() || 2023], minValue: 1970, maxValue: getCurrentYear() || 2023}}/>
+                        <InputRange options={{title:"Score Range", defaultValues: [0, 10], minValue: 0, maxValue: 10}} />
+                     </div>
+
+                     {/* <input
+                           ref={yearFrom}
+                           className={classes["input"]}
+                           defaultValue={params.start_date ? params.start_date : ""}
+                           type="text"
+                           placeholder={"From"}
+                           //    onChange={(e) => handlerChange(e, "start_date", 0)}
+                        />
+                        <input
+                           ref={yearTo}
+                           className={classes["input"]}
+                           defaultValue={params.end_date ? params.end_date : ""}
+                           type="text"
+                           placeholder={"To"}
+                           //    onChange={(e) => handlerChange(e, "end_date", getCurrentYear() + 1)}
+                        /> */}
+                  </div>
+               </div>
                {/* <h3 className={classes['filter__block']}>Year</h3>
                     <div className={classes['filter__block_inputs']}>
                         <input ref={yearFrom} className={classes['input']} defaultValue={params.start_date? params.start_date : ''} type="text" placeholder={'From'} onChange={(e) => handlerChange(e, 'start_date', 0)}/>
@@ -156,7 +223,6 @@ const AnimeFilter = memo(() => {
                         <input ref={scoreTo} className={classes['input']} defaultValue={params.max_score? params.max_score : ''} type="text" placeholder={'To'} onChange={(e) => handlerChange(e, 'max_score', 999)}/>
                     </div> */}
             </div>
-           
          </div>
       </div>
    );

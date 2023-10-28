@@ -1,5 +1,19 @@
 @import "../../../styles/colors";
 
+@keyframes scaleIn {
+   0% {
+      opacity: 0;
+      transform: scale(0.9);
+   }
+   50% {
+      opacity: 0.3;
+   }
+   100% {
+      opacity: 1;
+      transform: scale(1);
+   }
+}
+
 .filter {
    // background-color: rgb(84, 84, 84);
    margin: 0 0 50px;
@@ -7,7 +21,6 @@
    //    padding: 15px 10px;
    border-radius: 17px;
    z-index: 2;
- 
 
    &__container {
       //   display: flex;
@@ -34,20 +47,21 @@
       font-size: 20px;
    }
 
-   &__rows {
+   &__row {
       // background-color: #212121 !important;
       display: flex;
       column-gap: 25px;
       row-gap: 15px;
-      flex-wrap: wrap;
-      justify-content: stretch;
+      //   flex-wrap: wrap;
+      //   justify-content: stretch;
+      //   width: 100%;
 
       & > label {
          display: flex;
          flex-direction: column;
          row-gap: 8px;
          font-weight: 600;
-         opacity: 0.95;
+         //  opacity: 0.95;
          // margin-left: 10px;
          // justify-content: flex-start;
 
@@ -62,34 +76,64 @@
       }
    }
 
-   &__block {
-      letter-spacing: 1px;
-      font-size: 20px;
-      margin: 20px 0px 0px 0px;
+   &__options {
+      position: relative;
 
-      &_inputs {
-         display: flex;
-         column-gap: 10px;
+      background-color: var(--background-secondary);
+      width: min-content;
 
-         .input {
-            padding: 15px 10px 13px;
-            // background-color: #212121;
-            background-color: var(--background-secondary);
-            font-size: 17px;
-            color: var(--text-secondary);
+      padding: 10px 13px;
+      border-radius: 8px;
+      margin-top: 23px;
+      cursor: pointer;
+      box-shadow: var(--box-shadow-primary);
 
-            max-width: 49%;
-            border-radius: 7px;
+      align-self: center;
+      justify-self: flex-end;
 
-            &:focus,
-            &:active {
-               outline: none;
-               //   background-color: rgba($color: #2c2b2b, $alpha: 1);
-               //   opacity: 0.9;
-            }
+      &:hover {
+         & svg {
+            color: $main-color-dark;
          }
       }
+
+      svg {
+         font-size: 1.25em;
+         transform: rotate(90deg);
+         stroke-width: 18px;
+         transition: all 0.2s ease-in-out;
+         color: var(--text-secondary);
+      }
    }
+
+   //    &__block {
+   //       letter-spacing: 1px;
+   //       font-size: 20px;
+   //       margin: 20px 0px 0px 0px;
+
+   //       &_inputs {
+   //          display: flex;
+   //          column-gap: 10px;
+
+   //          .input {
+   //             padding: 15px 10px 13px;
+   //             // background-color: #212121;
+   //             background-color: var(--background-tertiary);
+   //             font-size: 17px;
+   //             color: var(--text-secondary);
+
+   //             max-width: 49%;
+   //             border-radius: 7px;
+
+   //             &:focus,
+   //             &:active {
+   //                outline: none;
+   //                //   background-color: rgba($color: #2c2b2b, $alpha: 1);
+   //                //   opacity: 0.9;
+   //             }
+   //          }
+   //       }
+   //    }
 
    &__clear {
       align-self: center;
@@ -123,4 +167,41 @@
          padding: 2px 0px 0px 0px;
       }
    }
+}
+
+.menu {
+   position: absolute;
+   top: 55px;
+   right: 0px;
+   cursor: default;
+
+   background-color: var(--background-secondary);
+   box-shadow: var(--box-shadow-primary);
+   padding: 40px 40px;
+   animation: scaleIn 0.3s ease-in-out;
+   border-radius: 8px;
+
+   display: none;
+
+   &__sliders {
+      display: flex;
+      column-gap: 45px;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 750px;
+      height: auto;
+   }
+
+   &__slider {
+      //   position: relative;
+      //   width: 500px;
+      //   height: 100px;
+      //   margin-top: 30px;
+   }
+}
+
+.visible {
+   display: flex;
+   flex-direction: column;
+   row-gap: 50px;
 }

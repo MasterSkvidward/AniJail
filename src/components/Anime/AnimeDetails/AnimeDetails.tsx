@@ -11,8 +11,7 @@ import AnimeCharacters from "../AnimeCharacters/AnimeCharacters";
 import AnimeSidebar from "../AnimeSidebar/AnimeSidebar";
 import AnimeRating from "../AnimeRating/AnimeRating";
 import ContentLoader from "react-content-loader";
-import AnimePlayer from "../AnimePlayer/AnimePlayer";
-import { getAnimeEpisodeUrl } from "../../../utils/utils";
+
 import { useDispatch } from "react-redux";
 import { AnimeActionCreators } from "../../../store/reducers/anime/action-creatores";
 
@@ -25,22 +24,6 @@ const AnimeDetails = () => {
       animeSingle: anime,
    } = useTypedSelector((state) => state.anime);
 
-   const dispatch = useDispatch();
-
-   const api_url = "https://api.consumet.org/anime/gogoanime/watch/";
-
-   const fetchAnimeEpisode = async (title: string) => {
-      const url = getAnimeEpisodeUrl(api_url, title, 1);
-      await dispatch(AnimeActionCreators.GetAnimeEpisode(url));
-   };
-
-   useEffect(() => {
-      if (anime) {
-         console.log(anime);
-
-         fetchAnimeEpisode(anime.title || anime?.title_english);
-      }
-   }, [anime]);
 
    return (
       <section className={classes["anime-details"]}>
@@ -98,7 +81,7 @@ const AnimeDetails = () => {
                   </div>
                )}
 
-               <AnimePlayer />
+             
 
                {/* {animeCurrentSeason.length > 5 && 
             <div className={classes["carousel"]}>
