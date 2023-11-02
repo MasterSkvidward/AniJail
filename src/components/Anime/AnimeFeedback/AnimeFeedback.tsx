@@ -15,28 +15,26 @@ import Comments from "../../Comments/Comments";
 import { useDispatch } from "react-redux";
 import { AnimeActionCreators } from "../../../store/reducers/anime/action-creatores";
 import { getAnimeEpisodeUrl } from "../../../utils/utils";
+import AnimeRecommendations from "../AnimeRecommendations/AnimeRecommendations";
 
 const AnimeFeedback = () => {
-   const {animeReviews } = useTypedSelector((state) => state.anime);
+   const { animeReviews } = useTypedSelector((state) => state.anime);
    const dispatch = useDispatch();
-
-
 
    return (
       <div className={classes.anime}>
+         <div className={classes["anime__recommendations"]}>
+            <div className={[classes["reviews__container"], "_container-main"].join(" ")}>
+               <AnimeRecommendations />
+            </div>
+         </div>
+
          <div className={classes["anime__reviews"]}>
             <div className={[classes["reviews__container"], "_container-main"].join(" ")}>
                <ReviewCarousel reviews={animeReviews} />
             </div>
-
-            {/* <div className={classes["anime__comments"]}>
-          <div
-            className={classes["comments__container"] + " " + "_container-main"}
-          >
-            <Title value={"Comments"} />
-          </div>
-        </div> */}
          </div>
+
          <div className={classes["anime__comments"]}>
             <div className={[classes["comments__container"], "_container-main"].join(" ")}>
                <Comments />

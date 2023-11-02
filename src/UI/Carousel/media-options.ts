@@ -56,10 +56,13 @@ export const smallLimitedCarouseIOptions = {
    interval: 10000,
    autoplay: true,
    lazyLoad: "nearby",
-   perPage: 6,
+   perPage: 8,
    // fixedWidth: 190,
    arrows: true,
    pagination: false,
+
+   drag: true,
+   autoWidth: false,
    // arrowPath: arrowRight,
 
    breakpoints: {

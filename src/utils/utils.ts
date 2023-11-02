@@ -1,3 +1,4 @@
+import { filterGenreOptions, filterStatusOptions, filterTypeOptions } from "../components/Anime/AnimeFilter/constants";
 import { IAnimeSearchParams } from "../types/jikanMoe/jikan";
 import { IFilterOption } from "../types/types";
 
@@ -20,6 +21,27 @@ export const getAnimeEpisodeUrl = (baseUrl: string, animeTitle: string, episode:
    console.log(result);
 
    return result;
+};
+
+export const getAnimeParamId = (value: string, type: string): string => {
+   let result;
+
+   switch (type) {
+      case "type":
+         result = filterTypeOptions.find((element) => element.label.toLowerCase() === value.toLowerCase());
+         return result?.value || "";
+
+      case "genres":
+         result = filterGenreOptions.find((element) => element.label.toLowerCase() === value.toLowerCase());
+         return result?.value || "";
+
+      case "status":
+         result = filterStatusOptions.find((element) => element.label.toLowerCase() === value.toLowerCase());
+         return result?.value || "";
+
+      default:
+         return "";
+   }
 };
 
 export const deleteEmptyProperties = (obj: IAnimeSearchParams): IAnimeSearchParams => {

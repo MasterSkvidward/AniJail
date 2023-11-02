@@ -254,6 +254,7 @@ export interface IAnimeSearchParams {
    end_date?: string;
    min_score?: string;
    max_score?: string;
+   producers?: string;
 }
 
 export interface IAnimeReviewsParams {

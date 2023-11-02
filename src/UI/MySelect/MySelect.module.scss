@@ -16,7 +16,7 @@
 
 .MySelect {
   position: relative;
-  font-size: 1.2em;
+  font-size: 1.15em;
 
   display: flex;
   column-gap: 30px;
@@ -41,7 +41,7 @@
     font-weight: 600;
     padding: 0px 9px;
     color: inherit;
-    text-transform: uppercase;
+    // text-transform: uppercase;
     background-color: inherit;
     cursor: pointer;
   }

@@ -10,25 +10,12 @@ import { AnimeActionCreators } from "../../store/reducers/anime/action-creatores
 import { FilterActionCreators } from "../../store/reducers/filter/action-creatores";
 
 const Anime = () => {
-   const dispatch = useDispatch();
-
-   const fetchAnimeSeason = async () => {
-      await dispatch(AnimeActionCreators.GetAnimeSeason({ limit: 20 }));
-   };
-
    useEffect(() => {
       window.scrollTo(0, 0);
-      fetchAnimeSeason();
-
-     
-    //   return () => {
-    //     dispatch(FilterActionCreators.clearFilterParams());
-    //  };
    }, []);
 
    return (
       <div className={classes["anime"]}>
-         {/* <AnimeFilter/> */}
          <AnimeSort />
       </div>
    );

@@ -18,8 +18,8 @@ const AnimeSidebar:FC<AnimeSidebarProps> = ({anime}) => {
          <Title value="Airing Now" isLink={true}/>
          <div>
             {anime.length !== 0
-               ? anime.slice(0, 8).map((item, index) => <AnimeItemSmall anime={item} key={index} />)
-               : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item, index) => (
+               ? anime.slice(0, 5).map((item, index) => <AnimeItemSmall anime={item} key={index} />)
+               : [0, 1, 2, 3, 4, 5].map((item, index) => (
                     <ContentLoader
                        key={index}
                        speed={2}

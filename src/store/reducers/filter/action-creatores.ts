@@ -66,14 +66,14 @@ export const FilterActionCreators = {
       },
 
    addAnime:
-      (params: IAnimeSearchParams, page: number): any =>
+      (params: IAnimeSearchParams): any =>
       async (dispatch: AppDispatch) => {
          try {
             console.log("fetch addAnime");
+            console.log(params);
             dispatch(FilterActionCreators.setIsLoading(true));
             const response = await AnimeService.getAnimeBySearch({
                ...params,
-               page: page,
             });
 
             const hasNext = response.pagination.has_next_page;
@@ -90,7 +90,7 @@ export const FilterActionCreators = {
                setTimeout(() => {
                   errorCount += 1;
                   dispatch(FilterActionCreators.setIsLoading(true));
-                  dispatch(FilterActionCreators.addAnime(params, page));
+                  dispatch(FilterActionCreators.addAnime(params));
                   dispatch(FilterActionCreators.setError(""));
                }, delay * (errorCount + 1));
             }
@@ -110,16 +110,19 @@ export const FilterActionCreators = {
       (params: IAnimeSearchParams): any =>
       (dispatch: AppDispatch) => {
          dispatch(FilterActionCreators.clearAnime());
-         dispatch({ type: FilterActionsEnum.SET_PARAMS, payload: params });
+         dispatch({ type: FilterActionsEnum.SET_PARAMS, payload: { ...params, page: 1 } });
          dispatch({ type: FilterActionsEnum.SET_LOAD_NEW_ANIME, payload: true });
       },
 
    addParams:
-      (params: IAnimeSearchParams): any =>
+      (params: IAnimeSearchParams, loadNew = true): any =>
       (dispatch: AppDispatch) => {
-         dispatch(FilterActionCreators.clearAnime());
+         if (loadNew) {
+            dispatch(FilterActionCreators.clearAnime());
+            dispatch({ type: FilterActionsEnum.SET_LOAD_NEW_ANIME, payload: loadNew });
+         }
+
          dispatch({ type: FilterActionsEnum.ADD_PARAMS, payload: params });
-         dispatch({ type: FilterActionsEnum.SET_LOAD_NEW_ANIME, payload: true });
       },
 
    setSelectedOptionNumber: (number: number): FilterAction => ({

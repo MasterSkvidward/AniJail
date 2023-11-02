@@ -123,7 +123,7 @@ const Navbar: FC = () => {
             >
               <div
                 className={classes["profile__user"]}
-                onClick={(e) => handlerOptionsClick(e, `/users/${user.id}`)}
+                onClick={(e) => handlerOptionsClick(e, `/user/${user.id}`)}
               >
                 <h3 className={classes["profile__username"]}>
                   {user.username}
@@ -134,7 +134,7 @@ const Navbar: FC = () => {
               <ul className={classes["menu"]}>
                 <li
                   className={classes["menu__item"]}
-                  onClick={(e) => handlerOptionsClick(e, `/users/${user.id}`)}
+                  onClick={(e) => handlerOptionsClick(e, `/user/${user.id}`)}
                 >
                   <span>
                     <CgProfile />
@@ -144,7 +144,7 @@ const Navbar: FC = () => {
                 <li
                   className={classes["menu__item"]}
                   onClick={(e) =>
-                    handlerOptionsClick(e, `/users/${user.id}/watchlist`)
+                    handlerOptionsClick(e, `/user/${user.id}/watchlist`)
                   }
                 >
                   <span>

@@ -18,7 +18,7 @@ const AnimeSort = () => {
    const dispatch = useDispatch();
    const { anime, loadNewAnime, params, isLoading, error, hasMoreAnime } = useTypedSelector((state) => state.filter);
    const { animeSeason } = useTypedSelector((state) => state.anime);
-   const [page, setPage] = useState<number>(1);
+   //    const [page, setPage] = useState<number>(params.page || 1);
    const [isDebouncing, setIsDebouncing] = useState(false);
 
    //    const debouncedNewAnime = useDebounce(loadAnime, 300);
@@ -35,23 +35,18 @@ const AnimeSort = () => {
 
    async function fetchNewAnime(loadNewAnime?: boolean) {
       await dispatch(FilterActionCreators.setAnime(params));
-
-      setPage(2);
-      //   }
-      //   else {
-      //      dispatch(FilterActionCreators.setError(""));
-      //      debouncedNewAnime(params);
-      //   }
+      dispatch(FilterActionCreators.addParams({ page: 2 }, false));
    }
 
    async function fetchAnime() {
       setIsDebouncing(false);
-      //   console.log("page - ", page);
 
-      await dispatch(FilterActionCreators.addAnime(params, page));
+      await dispatch(FilterActionCreators.addAnime(params));
 
       if (!error) {
-         setPage((prev) => prev + 1);
+         const currentPage = params.page || 1;
+         console.log(currentPage);
+         dispatch(FilterActionCreators.addParams({ page: currentPage + 1 }, false));
       } else {
          dispatch(FilterActionCreators.setError(""));
       }
@@ -64,7 +59,7 @@ const AnimeSort = () => {
    }, [loadNewAnime]);
 
    useEffect(() => {
-      if (isLoading || page === 1 || error) return;
+      if (isLoading || error) return;
       if (observer.current) observer.current.disconnect();
 
       const callback = async (entries: any, observer: IntersectionObserver) => {
@@ -77,7 +72,7 @@ const AnimeSort = () => {
       observer.current = new IntersectionObserver(callback);
 
       if (lastAnimeRow.current) observer.current.observe(lastAnimeRow.current);
-   }, [isLoading, page]);
+   }, [isLoading, params.page]);
 
    //    console.log(`isLoading - ${isLoading} hasMoreAnime - ${hasMoreAnime}  error - ${error} isDebouncing - ${isDebouncing}`);
 
@@ -92,7 +87,7 @@ const AnimeSort = () => {
                </div>
                <AnimeList />
                <div ref={lastAnimeRow} className={classes["anime__lastRow"]}>
-                  {(isLoading && hasMoreAnime && anime.length  && <Loader />) || (isDebouncing && <Loader />)}
+                  {(isLoading && hasMoreAnime && anime.length && <Loader />) || (isDebouncing && <Loader />)}
                </div>
             </div>
             {/* <AnimeSidebar anime={animeSeason} /> */}

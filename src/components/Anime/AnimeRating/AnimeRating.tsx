@@ -34,7 +34,7 @@ const AnimeRating: FC<AnimeRatingProps> = ({ score, scoredBy }) => {
                </div>
 
                <div className={classes["rating__column"]}>
-                  {score ? <Score score={score} /> : <span>No scores</span>}
+                  {score ? <Score score={score} /> : <p className={classes["rating__score"]}>No scores</p>}
 
                   <span className={classes["rating__scored-by"]}>{`Scored by: ${splitNumberByThree(scoredBy || 0)}`}</span>
                </div>

@@ -14,6 +14,7 @@ import ContentLoader from "react-content-loader";
 
 import { useDispatch } from "react-redux";
 import { AnimeActionCreators } from "../../../store/reducers/anime/action-creatores";
+import AnimeRecommendations from "../AnimeRecommendations/AnimeRecommendations";
 
 const AnimeDetails = () => {
    const {
@@ -23,7 +24,6 @@ const AnimeDetails = () => {
       animeSeason,
       animeSingle: anime,
    } = useTypedSelector((state) => state.anime);
-
 
    return (
       <section className={classes["anime-details"]}>
@@ -53,35 +53,19 @@ const AnimeDetails = () => {
                   <AnimeRating score={anime?.score} scoredBy={anime?.scored_by} />
                </div>
 
-               {/* <div className={classes["trailer"]}>
-            <Title value={"Trailer"} />
-            <div className={classes["trailer__video"]}>
-              <iframe
-                src={`${anime?.trailer.embed_url}?mute=1`}
-                width="397"
-                height="345"
-                title="YouTube video player"
-                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              ></iframe>
-            </div>
-          </div> */}
-
-               {(animeRecommendations.length || animeRecommendationsLoading || animeRecommendationsError) && (
-                  <div className={classes["carousel"]}>
-                     <Title value={"You may also like"} />
-                     <Carousel options={smallLimitedCarouseIOptions} arrowTop={40}>
-                        {animeRecommendations.length
-                           ? animeRecommendations.map((item, index) => (
-                                // <AnimeItem anime={item} key={index} />
-                                <AnimeItemPreview anime={item} key={index} />
-                             ))
-                           : [...new Array(24)].map((item, index) => <AnimeItemPreview anime={null} key={index} />)}
-                     </Carousel>
+               <div className={classes["trailer"]}>
+                  <Title value={"Trailer"} />
+                  <div className={classes["trailer__video"]}>
+                     <iframe
+                        src={`${anime?.trailer.embed_url}?mute=1`}
+                        width="397"
+                        height="345"
+                        title="YouTube video player"
+                        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                     ></iframe>
                   </div>
-               )}
-
-             
+               </div>
 
                {/* {animeCurrentSeason.length > 5 && 
             <div className={classes["carousel"]}>

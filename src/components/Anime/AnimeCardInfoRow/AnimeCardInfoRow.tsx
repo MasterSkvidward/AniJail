@@ -1,32 +1,53 @@
-import React, { FC } from "react";
+import React, { FC, MouseEvent } from "react";
 import { rowType } from "../AnimeCardInfo/AnimeCardInfo";
 import classes from "./AnimeCardInfoRow.module.scss";
 import { formatGenres } from "../../../helpers/helpers";
 import MyLink from "../../../UI/MyLink/MyLink";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import ContentLoader from "react-content-loader";
+import { useDispatch } from "react-redux";
+import { FilterActionCreators } from "../../../store/reducers/filter/action-creatores";
+import { deleteEmptyProperties, getAnimeParamId } from "../../../utils/utils";
+import { defaultFilterParams } from "../../../store/reducers/filter/filterReducer";
 
-const AnimeCardInfoRow: FC<rowType> = ({ name, value, sortType, isLink }) => {
-   const linkNames: string[] = [""];
+const AnimeCardInfoRow: FC<rowType> = ({ label, value, type, isLink }) => {
+   const dispatch = useDispatch();
 
    const { animeSingle, animeSingleLoading, animeSingleError } = useTypedSelector((state) => state.anime);
+   const { params } = useTypedSelector((state) => state.filter);
+
+   const handleClick = (e: MouseEvent): void => {
+      if (!isLink) return;
+      let param = {};
+      if (typeof value === "string") {
+         param = deleteEmptyProperties({ [type]: getAnimeParamId(value, type) });
+         dispatch(FilterActionCreators.setParams({ ...defaultFilterParams, ...param }));
+      }
+   };
+
+   const handleGenreClick = (e: MouseEvent, genre: string): void => {
+      e.stopPropagation();
+      let param = {};
+      param = deleteEmptyProperties({ [type]: getAnimeParamId(genre, type) });
+      dispatch(FilterActionCreators.setParams({ ...defaultFilterParams, ...param }));
+   };
 
    return (
       <div className={classes.row}>
-         <span className={classes.row__name}>{name}</span>
+         <span className={classes.row__name}>{label}</span>
          {animeSingle ? (
-            <div className={classes.row__value}>
+            <div className={classes.row__value} onClick={handleClick}>
                {value ? (
                   typeof value === "string" ? (
                      isLink ? (
-                        <MyLink sortType={sortType}>{value}</MyLink>
+                        <MyLink value={value} />
                      ) : (
                         <span>{value}</span>
                      )
                   ) : (
                      formatGenres(value).map((genre, index) => (
-                        <div className={classes.row__genre} key={index}>
-                           <MyLink sortType={sortType}>{genre}</MyLink>
+                        <div className={classes.row__genre} key={index} onClick={(e) => handleGenreClick(e, genre)}>
+                           <MyLink value={genre} />
                         </div>
                      ))
                   )

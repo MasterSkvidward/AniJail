@@ -34,13 +34,14 @@ const MySelect: FC<MySelectProps> = memo(({ options }) => {
 
    const handlerClickSort = () => {
       const param = params.sort === "desc" ? "asc" : "desc";
-      dispatch(FilterActionCreators.addParams({ sort: param }));
+      dispatch(FilterActionCreators.addParams({ sort: param, page: 1 }));
    };
 
    const handlerOptionClick = (e: MouseEvent, index: number): void => {
       const sortParams = {
          order_by: options[index].order_by,
          sort: options[index].sort,
+         page: 1,
       };
 
       dispatch(FilterActionCreators.setSelectedOptionNumber(index));

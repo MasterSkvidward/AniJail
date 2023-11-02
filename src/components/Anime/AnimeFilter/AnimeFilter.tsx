@@ -15,15 +15,20 @@ import { IFilterOption } from "../../../types/types";
 import Title from "../../../UI/Title/Title";
 
 import { GiSettingsKnobs } from "react-icons/gi";
-import InputRange from "../../../UI/InputRange/InputRange";
+import MyInput from "../../../UI/MyInput/MyInput";
+import { AiOutlineSearch } from "react-icons/ai";
+import { GrFormClose } from "react-icons/gr";
+import { defaultFilterParams } from "../../../store/reducers/filter/filterReducer";
 
-let tempParams: IAnimeSearchParams = {};
+let tempParams: IAnimeSearchParams = defaultFilterParams;
 
 const AnimeFilter = memo(() => {
    const dispatch = useDispatch();
    const { params } = useTypedSelector((state) => state.filter);
    const [isMenuVisible, setIsMenuVisible] = useState<boolean>(false);
+   const [value, setValue] = useState<string>("");
    //    const debouncedParams = useDebounce(setParams, 300);
+   const debouncedSearch = useDebounce(searchAnime, 400);
 
    const animatedComponents = makeAnimated();
 
@@ -32,23 +37,24 @@ const AnimeFilter = memo(() => {
    const scoreFrom = useRef<HTMLInputElement>(null);
    const scoreTo = useRef<HTMLInputElement>(null);
 
-   function setParams(obj: IAnimeSearchParams) {
-      dispatch(FilterActionCreators.addParams(obj));
-   }
+   //    function setParams(obj: IAnimeSearchParams) {
+   //       dispatch(FilterActionCreators.addParams(obj));
+   //    }
 
    const handlerClickClear = () => {
-      tempParams = {};
+      tempParams = defaultFilterParams;
       dispatch(FilterActionCreators.clearFilterParams());
       if (yearFrom.current) yearFrom.current.value = "";
       if (yearTo.current) yearTo.current.value = "";
       if (scoreFrom.current) scoreFrom.current.value = "";
       if (scoreTo.current) scoreTo.current.value = "";
+      setValue("");
       window.scrollTo(0, 0);
    };
 
    const handlerSelectSingleChange = (option: SingleValue<IFilterOption>, paramValue: string): void => {
-      let result = option ? option.value : "";
-      let obj = { [paramValue]: result };
+      let value = option ? option.value : "";
+      let obj = { [paramValue]: value };
 
       tempParams = { ...tempParams, ...obj };
 
@@ -68,7 +74,6 @@ const AnimeFilter = memo(() => {
       tempParams = { ...tempParams, ...obj };
       //   tempParams = deleteEmptyProperties(tempParams);
       //   setParams(obj);
-      console.log(tempParams);
       let finalParams = { ...params, ...tempParams };
       finalParams = deleteEmptyProperties(finalParams);
 
@@ -81,14 +86,18 @@ const AnimeFilter = memo(() => {
    //          : dispatch(FilterActionCreators.addParams({ [paramValue]: "" }));
    //    };
 
-   function changeParams(param: IAnimeSearchParams): void {
-      tempParams = { ...tempParams, ...param };
-      dispatch(FilterActionCreators.addParams(param));
-   }
+   //    function changeParams(param: IAnimeSearchParams): void {
+   //       tempParams = { ...tempParams, ...param };
+   //       dispatch(FilterActionCreators.addParams(param));
+   //    }
 
    const handleClick = (e: MouseEvent): void => {
       e.stopPropagation();
       setIsMenuVisible((prev) => !prev);
+   };
+
+   const handleSearch = (e: ChangeEvent<HTMLInputElement>): void => {
+      setValue(e.target.value);
    };
 
    //    function handlerChange(e: ChangeEvent<HTMLInputElement>, paramValue: string, defaultValue: number = 0) {
@@ -99,19 +108,35 @@ const AnimeFilter = memo(() => {
       setIsMenuVisible(false);
    };
 
+   function searchAnime(newValue: string) {
+      tempParams = { ...tempParams, ...{ q: newValue } };
+      let finalParams = { ...params, ...tempParams };
+      finalParams = deleteEmptyProperties(finalParams);
+      dispatch(FilterActionCreators.setParams(finalParams));
+   }
+
+   useEffect(() => {
+      if (tempParams.q || (!tempParams.q && value)) debouncedSearch(value);
+   }, [value]);
+
    useEffect(() => {
       document.addEventListener("click", handlerDocumentClick);
+      tempParams = params;
       return () => document.removeEventListener("click", handlerDocumentClick);
    }, []);
 
    return (
       <div className={classes["filter"]}>
          <div className={classes["filter__container"]}>
-            {/* <div className={classes['filter__row']}>
-                    <h3 className={classes['filter__title']}>Filters</h3>
-                </div> */}
-            {/* <Title value="Filter" /> */}
             <div className={classes["filter__row"]}>
+               <label>
+                  Search
+                  <div className={classes["filter__search"]}>
+                     <AiOutlineSearch />
+                     <input type="text" value={value} onChange={handleSearch} />
+                     {value && <GrFormClose onClick={() => setValue("")} />}
+                  </div>
+               </label>
                <label>
                   Type
                   <Select
@@ -188,10 +213,47 @@ const AnimeFilter = memo(() => {
                      }
                      onClick={(e) => e.stopPropagation()}
                   >
-                     <div className={classes["menu__sliders"]}>
-                        <InputRange options={{title:"Year Range", defaultValues: [1970, getCurrentYear() || 2023], minValue: 1970, maxValue: getCurrentYear() || 2023}}/>
-                        <InputRange options={{title:"Score Range", defaultValues: [0, 10], minValue: 0, maxValue: 10}} />
+                     <div className={classes["menu__options"]}>
+                        <label>
+                           Status
+                           <Select
+                              value={getFilterOptionsSingle(CONSTANTS.filterStatusOptions, tempParams.status || "")}
+                              closeMenuOnSelect={true}
+                              options={CONSTANTS.filterStatusOptions}
+                              classNamePrefix={"custom-select"}
+                              placeholder={"Any"}
+                              isMulti={false}
+                              isClearable={true}
+                              components={animatedComponents}
+                              onChange={(option) => handlerSelectSingleChange(option, "status")}
+                           />
+                        </label>
+                        <label>
+                           Producers
+                           <Select
+                              value={getFilterOptionsMulti(CONSTANTS.filterProducersOptions, tempParams.producers || "")}
+                              closeMenuOnSelect={true}
+                              options={CONSTANTS.filterProducersOptions}
+                              classNamePrefix={"custom-select"}
+                              placeholder={"Any"}
+                              isMulti={true}
+                              isClearable={true}
+                              //   components={animatedComponents}
+                              onChange={(options, context) => handlerSelectMultiChange(options, "producers", context)}
+                           />
+                        </label>
                      </div>
+                     {/* <div className={classes["menu__sliders"]}>
+                        <InputRange
+                           options={{
+                              title: "Year Range",
+                              defaultValues: [1970, getCurrentYear() || 2023],
+                              minValue: 1970,
+                              maxValue: getCurrentYear() || 2023,
+                           }}
+                        />
+                        <InputRange options={{ title: "Score Range", defaultValues: [0, 10], minValue: 0, maxValue: 10 }} />
+                     </div> */}
 
                      {/* <input
                            ref={yearFrom}

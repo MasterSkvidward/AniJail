@@ -32,7 +32,7 @@ const AnimeCard: FC = () => {
 
    const backgroundImgStyle = {
       // background: `linear-gradient(to bottom, transparent 0%, rgba(${animeColor}, 0.9) 92%), url(${background_img}) 0 30% / cover`,
-      backgroundImage: `linear-gradient(to bottom, transparent 0%, rgba(${animeColor}, 1) 92%), url(${background_img})`,
+      backgroundImage: `linear-gradient(to bottom, transparent 0%, rgba(${animeColor}, 0.95) 100%), url(${background_img})`,
       backgroundRepeat: "no-repeat",
       backgroundSize: "cover",
       backgroundPosition: "center 30%",
@@ -112,7 +112,7 @@ const AnimeCard: FC = () => {
                {anime ? (
                   <div className={classes["anime-card__score"]}>
                      <div className={classes["anime-card__numbers"]}>
-                        {anime?.score ? <Score score={anime?.score} /> : <span>No scores</span>}
+                        {anime?.score ? <Score score={anime?.score} /> : <span className={classes["score"]}>No scores</span>}
 
                         <span className={classes["scoredBy"]}>{`Scored by:   ${splitNumberByThree(
                            anime?.scored_by || 0

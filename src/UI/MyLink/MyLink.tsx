@@ -3,15 +3,15 @@ import { Link } from 'react-router-dom';
 
 import classes from './MyLink.module.scss';
 
-interface MyLinkProps extends PropsWithChildren {
-    className?: string,
-    sortType: string | number | undefined
+interface MyLinkProps {
+    className?: string
+    value: string
 }
 
-const MyLink:FC<MyLinkProps> = ({className, sortType, children}) => {
+const MyLink:FC<MyLinkProps> = ({className, value}) => {
     return (
-       <Link to='' className={classes['myLink']}>
-           {children}
+       <Link to='/anime' className={classes['myLink']}>
+           {value}
        </Link>
     );
 }

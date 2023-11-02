@@ -50,16 +50,20 @@ const AnimePlayer = () => {
             {/* {animeEpisodes[0]?.url &&
                 <video width="700" height="400" src={animeEpisodes[0].url} title={animeEpisodes[0].title}></video>
             } */}
-            <Title value="Watch anime" />
-            <iframe
-               src={src}
-               width={900}
-               height={540}
-               allowFullScreen
-               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-               title="Anime player"
-               //    "https://goone.pro/streaming.php?id=MjEzMDA4&title=Spy+x+Family+Season+2+Episode+1&typesub=SUB"
-            ></iframe>
+            <Title value={`Watch anime «${animeSingle?.title}»`} />
+            <div className={classes["player__content"]}>
+               <iframe
+                  src={src}
+                  width={1116}
+                  height={627}
+                  //   width={930}
+                  //   height={523}
+                  allowFullScreen
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  title="Anime player"
+                  //    "https://goone.pro/streaming.php?id=MjEzMDA4&title=Spy+x+Family+Season+2+Episode+1&typesub=SUB"
+               ></iframe>
+            </div>
          </div>
       </div>
    );

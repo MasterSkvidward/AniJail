@@ -39,9 +39,10 @@ $height: 318px;
   &__title {
     overflow-wrap: break-word;
     font-weight: 600;
-    opacity: 0.97;
+    opacity: 0.92;
     transition: 0.2s;
     cursor: pointer;
     font-size: 0.94em;
+    max-width: calc($width * 0.81);
   }
 }

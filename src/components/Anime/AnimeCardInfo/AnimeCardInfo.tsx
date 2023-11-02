@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { IAnimeFull, IObjectInfo } from "../../../types/jikanMoe/jikan";
+import { IAnimeFull, IAnimeSearchParams, IObjectInfo } from "../../../types/jikanMoe/jikan";
 
 import classes from "./AnimeCardInfo.module.scss";
 import AnimeCardInfoRow from "../AnimeCardInfoRow/AnimeCardInfoRow";
@@ -9,34 +9,35 @@ import { ISingleAnime } from "../../../types/anime/anime-single";
 import { IAnime } from "../../../types/jikanMoe/jikan";
 import { IRowObjectInfo } from "../../../types/types";
 import ContentLoader from "react-content-loader";
+import { filterTypeOptions } from "../AnimeFilter/constants";
 
 interface AnimeCardInfoProps {
    anime: IAnime | null;
 }
 
 export type rowType = {
-   name: string;
+    label: string;
    value: string | IRowObjectInfo[] | [];
-   sortType?: string | number | undefined;
+   //    sortType?: string | number | undefined;
    isLink: boolean;
+   type: string;
+   paramId?: string;
 };
 
 const AnimeCardInfo: FC<AnimeCardInfoProps> = ({ anime }) => {
+
    const rows: rowType[] = [
-      {
-         name: "Type",
-         value: getAnimeField(anime?.type),
-         sortType: anime?.type,
-         isLink: false,
-      },
-      {name: 'Genres', value: anime?.genres || [], isLink: true},
-      { name: "Status", value: getAnimeField(anime?.status), isLink: true },
-      { name: "Episodes", value: getAnimeField(anime?.episodes), isLink: false },
+      { label: "Type", value: getAnimeField(anime?.type), type: "type", isLink: true },
+      { label: "Genres", value: anime?.genres || [], type: "genres",  isLink: true },
+      { label: "Status", value: getAnimeField(anime?.status), type: "status", isLink: true },
+      { label: "Episodes", value: getAnimeField(anime?.episodes), type: "episodes", isLink: false },
       // {name: 'Season', value: `${getAnimeField(anime?.season)} ${getAnimeField(anime?.year)}`, isLink: true},
-      { name: "Season", value: `${getAnimeField(anime?.year)}`, isLink: true },
-      { name: "Duration", value: getAnimeField(anime?.duration), isLink: false },
-    //   { name: "Duration", value: getAnimeField(anime?.duration), isLink: false },
+      { label: "Season", value: `${getAnimeField(anime?.year)}`, type: "season", isLink: true },
+      { label: "Duration", value: getAnimeField(anime?.duration), type: "duration", isLink: false },
+      //   { name: "Duration", value: getAnimeField(anime?.duration), isLink: false },
    ];
+   console.log(anime?.status);
+   
 
    return (
       <div className={classes["anime-info"]}>
@@ -61,7 +62,7 @@ const AnimeCardInfo: FC<AnimeCardInfoProps> = ({ anime }) => {
 
          <div className={classes["anime-info__rows"]}>
             {rows.map((row, index) => (
-               <AnimeCardInfoRow name={row.name} value={row.value} sortType={row.sortType} isLink={row.isLink} key={index} />
+               <AnimeCardInfoRow label={row.label} value={row.value} type={row.type} isLink={row.isLink} key={index} />
             ))}
          </div>
       </div>

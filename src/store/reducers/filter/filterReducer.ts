@@ -2,12 +2,12 @@ import { FilterAction, FilterActionsEnum, FilterState } from "./types";
 import { IAnime, IAnimeSearchParams } from "../../../types/jikanMoe/jikan";
 import { stat } from "fs";
 
-const defaultFilterParams: IAnimeSearchParams = {
+export const defaultFilterParams: IAnimeSearchParams = {
    order_by: "scored_by",
    sort: "desc",
    sfw: true,
    page: 1,
-   limit: 24,
+   limit: 25,
 };
 
 const initialState: FilterState = {

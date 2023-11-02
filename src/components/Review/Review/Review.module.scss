@@ -4,10 +4,12 @@
    width: 563px;
    height: 425px;
    border-radius: 18px;
+   box-shadow: var(--box-shadow-primary);
 }
 
 .review {
    background-color: rgba(189, 189, 189, 0.9);
+   box-shadow: var(--box-shadow-primary);
 
    color: $black;
    border-radius: 18px;

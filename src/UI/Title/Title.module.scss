@@ -1,16 +1,16 @@
 @import "../../styles/colors";
 
-
 .wrapper {
-    display: flex;
-    align-items: center;
-    column-gap: 5px;
+   display: flex;
+   align-items: center;
+   column-gap: 5px;
 }
 
 .title {
    // color: rgb(255, 255, 255);
    font-size: 1.3em;
    font-weight: 600;
+   word-spacing: 2px;
 
    &::before {
       content: "";
@@ -24,8 +24,8 @@
    cursor: pointer;
 
    svg {
-    width: 40px;
-    height: 40px;
+      width: 40px;
+      height: 40px;
    }
 
    &:hover {

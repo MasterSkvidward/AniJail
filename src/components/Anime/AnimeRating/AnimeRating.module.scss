@@ -25,11 +25,15 @@
       & > span:first-child {
          font-size: 2.3em;
       }
+   }
 
-      & > span:last-child {
-         font-size: 0.95em;
-         color: var(--text-secondary);
-      }
+   &__score {
+      font-size: 1.9em;
+   }
+
+   &__scored-by {
+      font-size: 0.95em;
+      color: var(--text-secondary);
    }
 
    &__review {
