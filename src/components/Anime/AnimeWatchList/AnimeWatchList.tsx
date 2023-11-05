@@ -4,25 +4,17 @@ import classes from "./AnimeWatchList.module.scss";
 import AnimeItemSmall from "../AnimeItemSmall/AnimeItemSmall";
 import MyTable from "../../../UI/MyTable/MyTable";
 import * as CONSTANTS from "./constants";
+import AnimeList from "../AnimeList/AnimeList";
 
 const AnimeWatchList = () => {
-  const { anime } = useTypedSelector((state) => state.filter);
+   const { anime } = useTypedSelector((state) => state.filter);
 
-  return (
-    <div className={classes["watchlist"]}>
-      <div className={classes["watchlist__list"]}>
-        <MyTable headlines={CONSTANTS.watchListHeadlines} data={anime} />
-        {/* <MyTable headlines={watchListHeadlines}>
-                    {anime.map((item, index) =>
-                        <>
-                            <span>{index+1}</span>
-                            <AnimeItemSmall anime={item} key={index}/>
-                        </>
-                    )}
-                </MyTable> */}
+   return (
+      <div className={classes["watchlist"]}>
+         <MyTable headlines={CONSTANTS.watchListHeadlines} data={anime} />
+         {/* <AnimeList /> */}
       </div>
-    </div>
-  );
+   );
 };
 
 export default AnimeWatchList;

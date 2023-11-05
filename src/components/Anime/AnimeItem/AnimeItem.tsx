@@ -81,7 +81,7 @@ const AnimeItem: FC<AnimeItemProps> = ({ anime, showPreview = false }) => {
             </div>
             <div className={classes["anime__content"]}>
                <h4 className={classes["anime__title"]}>
-                  {getShortenedString(anime?.title_english ? anime.title_english : anime?.title, 35)}
+                  {getShortenedString(anime?.title_english ? anime.title_english : anime?.title, 42)}
                </h4>
                {/* <p className={classes["anime__info"]}>
                   <span>{anime.type}</span><span>{anime.status}</span>{" "}

@@ -22,22 +22,23 @@ const AnimeIdPage = () => {
    const dispatch = useDispatch();
    const params = useParams<ParamsType>();
 
-   const url = "https://api.consumet.org/anime/gogoanime/watch/"
+   const url = "https://api.consumet.org/anime/gogoanime/watch/";
 
-   const {animeSingle} = useTypedSelector(state => state.anime);
+   const { animeSingle } = useTypedSelector((state) => state.anime);
 
    const fetchAnimeById = async () => {
       if (params.id !== "undefined" && params.id !== "null") {
          const id = Number(params.id);
 
-        //  setTimeout(async () => {
-            await dispatch(AnimeActionCreators.GetAnimeSingle(id));
-            await dispatch(AnimeActionCreators.GetAnimeCharacters(id));
-            await dispatch(AnimeActionCreators.GetAnimeSeason());
+         //  setTimeout(async () => {
+         await dispatch(AnimeActionCreators.GetAnimeSingle(id));
+         await dispatch(AnimeActionCreators.GetAnimeCharacters(id));
+         await dispatch(AnimeActionCreators.GetAnimeSeason());
+
+         setTimeout(async () => {
             await dispatch(AnimeActionCreators.GetAnimeRecommendations(id));
             await dispatch(AnimeActionCreators.GetAnimeReviews(id));
-        //  }, 4600);
-        
+         }, 1000);
       }
    };
 

@@ -42,23 +42,23 @@ const MyTable: FC<MyTableProps> = ({ headlines, data }) => {
 
                   <div className={classes["anime__body"]}>
                     <div className={classes["anime__titles"]}>
-                      <h5
+                      <span
                         className={[
                           classes["anime__title"],
                           classes["anime__title_en"],
                         ].join(" ")}
                       >
                         {item.title ? item.title : item.title_english}
-                      </h5>
+                      </span>
 
-                      <h6
+                      <span
                         className={[
                           classes["anime__title"],
                           classes["anime__title_jp"],
                         ].join(" ")}
                       >
                         {item.title_japanese}
-                      </h6>
+                      </span>
                     </div>
                     <div className={classes["anime__year"]}>
                       {item.year ? item.year : "-"}

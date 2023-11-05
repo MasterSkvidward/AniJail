@@ -53,7 +53,17 @@ const AnimeDetails = () => {
                   <AnimeRating score={anime?.score} scoredBy={anime?.scored_by} />
                </div>
 
-               <div className={classes["trailer"]}>
+               {/* <div>
+                  <iframe
+                     src="https://cloud.kodik-storage.com/useruploads/1b2c313a-d7be-4df5-a403-c6f6ac2306d8/ccb9f6289f1ff8483066699beaa06c79"
+                     allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                     title="anime"
+                     width={700}
+                     height={400}
+                  ></iframe>
+               </div> */}
+
+               {/* <div className={classes["trailer"]}>
                   <Title value={"Trailer"} />
                   <div className={classes["trailer__video"]}>
                      <iframe
@@ -65,7 +75,7 @@ const AnimeDetails = () => {
                         allowFullScreen
                      ></iframe>
                   </div>
-               </div>
+               </div> */}
 
                {/* {animeCurrentSeason.length > 5 && 
             <div className={classes["carousel"]}>

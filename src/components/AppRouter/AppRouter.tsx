@@ -6,7 +6,6 @@ import Error from "../../pages/404/404";
 import AnimeIdPage from "../../pages/AnimeIdPage/AnimeIdPage";
 import Anime from "../../pages/AnimePage/AnimePage";
 import Profile from "../../pages/ProfilePage/ProfilePage";
-import ProfileList from "../../pages/ProfileListPage/ProfileListPage";
 
 const AppRouter: FC = () => {
    return (

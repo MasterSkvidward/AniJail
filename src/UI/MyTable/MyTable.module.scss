@@ -12,16 +12,16 @@ table {
     font-family: 'Open Sans', sans-serif;
     font-weight: bold;
     width: 100%;
-    max-width: 1200px;
+    // max-width: 1200px;
     background-color: var(--background-secondary);
 
-    border-radius: 14px;
+    border-radius: 7px;
     overflow: hidden;
-    box-shadow: 0px 1px 17px 2px rgba(229, 229, 229, 0.222);
+    // box-shadow: 0px 1px 17px 2px rgba(229, 229, 229, 0.222);
     
     th {
         padding: 21px 20px;
-        background: $main-color-dark;
+        // background: $main-color-dark;
         // opacity: 0.5;
         // color: #161616;
         // border-right: 2px solid; 
@@ -62,6 +62,7 @@ tbody {
 
         &:hover{
             background-color: var(--hover-primary);
+            // background-color: var(--main-color);
         }
 
         &:last-of-type {
@@ -106,6 +107,7 @@ thead {
     &__image {
         border-radius: 6px;
         width: 60px;
+        min-width: 60px;
         height: 90px;
         
         // img {
@@ -122,15 +124,14 @@ thead {
 
     &__titles {
        
-        display: flex;
-        column-gap: 15px;
-        align-items: center;
+        // display: flex;
+        // column-gap: 15px;
+        // align-items: center;
+        // flex-wrap: wrap;
     }
 
     &__title {
-       
         
-
         &_en {
             font-size: 16px;
             opacity: 0.9;
@@ -146,6 +147,7 @@ thead {
             font-size: 13px;
             opacity: 0.77;
             color: var(--text-secondary);
+            margin: 0px 0px 0px 15px;
         }
     }
 

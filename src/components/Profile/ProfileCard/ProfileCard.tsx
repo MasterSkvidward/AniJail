@@ -15,7 +15,6 @@ import user2_image from "../../../assets/images/vacant_room_ch2-copy.jpg";
 import background_img2 from "../../../assets/images/anime-voice.jpg";
 
 import background_img from "../../../assets/images/igris-solo-leveling.jpg";
-import ProfileList from "../../../pages/ProfileListPage/ProfileListPage";
 import ProfileStatistics from "../ProfileStatistics/ProfileStatistics";
 import ProfileNavigation from "../ProfileNavigation/ProfileNavigation";
 

@@ -36,7 +36,6 @@ const AnimeCardInfo: FC<AnimeCardInfoProps> = ({ anime }) => {
       { label: "Duration", value: getAnimeField(anime?.duration), type: "duration", isLink: false },
       //   { name: "Duration", value: getAnimeField(anime?.duration), isLink: false },
    ];
-   console.log(anime?.status);
    
 
    return (

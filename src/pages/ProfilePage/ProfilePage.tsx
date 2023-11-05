@@ -5,9 +5,11 @@ import ProfileCard from "../../components/Profile/ProfileCard/ProfileCard";
 import { Route, Routes, useParams } from "react-router-dom";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import ProfileStatistics from "../../components/Profile/ProfileStatistics/ProfileStatistics";
-import ProfileList from "../ProfileListPage/ProfileListPage";
 import AnimeCard from "../../components/Anime/AnimeCard/AnimeCard";
 import ProfileOverview from "../../components/Profile/ProfileOverview/ProfileOverview";
+import ProfileReviews from "../../components/Profile/ProfileReviews/ProfileReviews";
+import ProfileStats from "../../components/Profile/ProfileStats/ProfileStats";
+import ProfileList from "../../components/Profile/ProfileList/ProfileList";
 
 type ParamsType = {
    id: string;
@@ -18,7 +20,7 @@ const Profile = () => {
    const { user } = useTypedSelector((state) => state.auth);
 
    useEffect(() => {
-      // window.scrollTo(0, 0);
+      window.scrollTo(0, 0);
    }, []);
 
    return (
@@ -28,6 +30,8 @@ const Profile = () => {
          <Routes>
             <Route path="/" element={<ProfileOverview />} />
             <Route path="/watchlist" element={<ProfileList />} />
+            <Route path="/stats" element={<ProfileStats />} />
+            <Route path="/reviews" element={<ProfileReviews />} />
          </Routes>
 
          {/* <ProfileStatistics currentUser={user} /> */}

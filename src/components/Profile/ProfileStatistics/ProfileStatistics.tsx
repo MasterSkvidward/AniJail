@@ -70,9 +70,7 @@ const ProfileStatistics: FC<ProfileStatisticsProps> = ({ currentUser }) => {
                   </div>
                </div>
             </div>
-            <div className={classes["statistics__reviews"]}>
-                <ReviewCarousel reviews={animeReviews}/>
-            </div>
+           
  
          </div>
       </section>

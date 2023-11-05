@@ -1,0 +1,45 @@
+.stats {
+   padding-top: 60px;
+
+   &__container {
+      display: flex;
+      flex-direction: column;
+      row-gap: 90px;
+   }
+
+   &__cards {
+      display: flex;
+      flex-direction: column;
+      row-gap: 24px;
+   }
+
+   &__cards-block {
+      display: grid;
+      // grid-template-columns: repeat(4, minmax(190px, 350px));
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      column-gap: 50px;
+      row-gap: 35px;
+   }
+
+   &__graph {
+      display: flex;
+      flex-direction: column;
+      row-gap: 24px;
+   }
+
+   &__title {
+      font-size: 1.4em;
+      font-weight: 600;
+   }
+
+   &__pies {
+      display: flex;
+      flex-direction: column;
+      row-gap: 24px;
+   }
+
+   &__pies-block {
+    display: flex;
+    justify-content: space-between;
+   }
+}
