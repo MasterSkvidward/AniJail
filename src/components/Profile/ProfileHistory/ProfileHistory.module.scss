@@ -1,0 +1,15 @@
+.history {
+    padding: 60px;
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        row-gap: 24px;
+    }
+
+    &__items {
+        display: flex;
+        flex-direction: column;
+        row-gap: 19px;
+    }
+}

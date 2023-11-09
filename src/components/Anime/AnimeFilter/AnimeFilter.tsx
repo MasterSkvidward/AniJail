@@ -26,7 +26,7 @@ const AnimeFilter = memo(() => {
    const dispatch = useDispatch();
    const { params } = useTypedSelector((state) => state.filter);
    const [isMenuVisible, setIsMenuVisible] = useState<boolean>(false);
-   const [value, setValue] = useState<string>("");
+   const [value, setValue] = useState<string>(tempParams.q || "");
    //    const debouncedParams = useDebounce(setParams, 300);
    const debouncedSearch = useDebounce(searchAnime, 400);
 
@@ -50,6 +50,11 @@ const AnimeFilter = memo(() => {
       if (scoreTo.current) scoreTo.current.value = "";
       setValue("");
       window.scrollTo(0, 0);
+   };
+
+   const handleClearSearch = () => {
+      setValue("");
+      debouncedSearch("");
    };
 
    const handlerSelectSingleChange = (option: SingleValue<IFilterOption>, paramValue: string): void => {
@@ -98,6 +103,7 @@ const AnimeFilter = memo(() => {
 
    const handleSearch = (e: ChangeEvent<HTMLInputElement>): void => {
       setValue(e.target.value);
+      debouncedSearch(value);
    };
 
    //    function handlerChange(e: ChangeEvent<HTMLInputElement>, paramValue: string, defaultValue: number = 0) {
@@ -109,19 +115,20 @@ const AnimeFilter = memo(() => {
    };
 
    function searchAnime(newValue: string) {
-      tempParams = { ...tempParams, ...{ q: newValue } };
+      tempParams = { ...tempParams, q: newValue };
       let finalParams = { ...params, ...tempParams };
       finalParams = deleteEmptyProperties(finalParams);
       dispatch(FilterActionCreators.setParams(finalParams));
    }
 
-   useEffect(() => {
-      if (tempParams.q || (!tempParams.q && value)) debouncedSearch(value);
-   }, [value]);
+   //    useEffect(() => {
+   //       if (tempParams.q || (!tempParams.q && value)) debouncedSearch(value);
+   //    }, [value]);
 
    useEffect(() => {
       document.addEventListener("click", handlerDocumentClick);
-      tempParams = params;
+      tempParams = { ...params };
+      //   setValue(params.q || "");
       return () => document.removeEventListener("click", handlerDocumentClick);
    }, []);
 
@@ -134,7 +141,7 @@ const AnimeFilter = memo(() => {
                   <div className={classes["filter__search"]}>
                      <AiOutlineSearch />
                      <input type="text" value={value} onChange={handleSearch} />
-                     {value && <GrFormClose onClick={() => setValue("")} />}
+                     {value && <GrFormClose onClick={handleClearSearch} />}
                   </div>
                </label>
                <label>

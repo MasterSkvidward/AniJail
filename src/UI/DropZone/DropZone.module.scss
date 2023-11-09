@@ -1,0 +1,40 @@
+.dropzone {
+   transition: background-color 0.2s;
+
+   &__box {
+      width: 230px;
+      height: 230px;
+      padding: 40px 40px;
+      border: 2px dashed var(--text-primary);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      row-gap: 20px;
+
+      p {
+         font-size: 1.1em;
+         &:nth-child(2) {
+            text-align: center;
+         }
+      }
+   }
+
+   &__btn {
+      user-select: none;
+      align-self: center;
+      width: 100%;
+      max-width: 150px;
+      background-color: rgb(87, 117, 222);
+      color: rgb(255, 255, 255);
+      cursor: pointer;
+      font-size: 0.8em;
+      padding: 13px 18px;
+      border-radius: 6px;
+      font-weight: 600;
+   }
+}
+
+.active {
+   background-color: rgba(87, 117, 222, 0.7);
+}

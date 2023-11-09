@@ -1,52 +1,71 @@
 @import "../../../styles/media_queries";
 
 .skeleton {
-    max-height: 20px;
-    border-radius: 5px;
+   max-height: 20px;
+   border-radius: 5px;
 }
-
 
 .row {
-  column-gap: 23%; 
-  display: flex;
+   column-gap: 23%;
+   display: flex;
 
-  font-size: 0.96em;
+   font-size: 0.96em;
 
-  line-height: 120%;
+   line-height: 125%;
 
-  padding: 1em 0px;
+   padding: 1em 0px;
 
-  @include for-medium-desktop-up {
-    // column-gap: 5%;
-  }
+   @include for-medium-desktop-up {
+      // column-gap: 5%;
+   }
 
-  @include for-small-desktop-up {
-    // column-gap: 5%;
-  }
+   @include for-small-desktop-up {
+      // column-gap: 5%;
+   }
 
-  &__name {
-    flex: 0 1 25%;
-    font-weight: 500;
-    // color: rgba($color: #eae8e8, $alpha: 0.9);
-    color: var(--text-secondary);
-    opacity: 0.9;
-  }
+   &__name {
+      flex: 0 1 25%;
+      font-weight: 500;
+      // color: rgba($color: #eae8e8, $alpha: 0.9);
+      color: var(--text-secondary);
+      opacity: 0.9;
+   }
 
-  &__value {
-    display: flex;
-    column-gap: 11px;
-    // color: rgba($color: #eae8e8, $alpha: 0.8);
-    opacity: 0.8;
-  }
+   &__value {
+      // display: flex;
+      // column-gap: 11px;
+      // color: rgba($color: #eae8e8, $alpha: 0.8);
+      opacity: 0.8;
+   }
 
-  &__genre {
-    // color: rgba($color: #efeded, $alpha: 0.7);
+   &__value-list {
+      display: inline;
 
-    &:not(:last-child)::after {
-      content: ",";
-      // color: rgba($color: #ffffff, $alpha: 0.7);
-      opacity: 0.7;
-    }
-  }
+    //   & a {
+    //      color: var(--main-color);
+    //   }
+
+      & > a {
+         display: inline;
+         margin-right: 5px;
+         color: var(--main-color) !important;
+
+         &:not(:last-child)::after {
+            content: ",";
+            color: var(--text-primary);
+            opacity: 0.7;
+         }
+      }
+   }
+
+   &__genre {
+      // color: rgba($color: #efeded, $alpha: 0.7);
+      display: inline;
+
+      &:not(:last-child)::after {
+         content: ",";
+         // color: rgba($color: #ffffff, $alpha: 0.7);
+         opacity: 0.7;
+      }
+   }
 }
-

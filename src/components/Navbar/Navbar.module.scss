@@ -4,8 +4,10 @@
   display: flex;
   align-items: center;
   column-gap: 50px;
-  height: 85px;
+  height: 75px;
   padding: 10px 0px;
+  justify-content: space-between;
+
 
   &__logo {
     cursor: pointer;
@@ -16,7 +18,7 @@
 
   &__links {
     display: flex;
-    column-gap: 30px;
+    column-gap: 40px;
   }
 
   &__link {
@@ -57,10 +59,17 @@
   }
 
   &__search {
-    max-width: 650px;
-    flex: 1 1 auto;
-    margin: 0px 0px 0px 50px;
-    border-radius: 15px;
+    // max-width: 650px;
+    // flex: 0 1 500px;
+    // margin: 0px 0px 0px 50px;
+    // border-radius: 15px;
+    margin-left: auto;
+   
+    svg {
+        font-size: 1.8em;
+       stroke-width: 25px;
+       opacity: 0.85;
+    }
   }
 }
 
@@ -71,7 +80,7 @@
 .profile {
     position: relative;
   cursor: pointer;
-  margin: 0px 5px 0px auto;
+  margin: 0px 5px 0px 0px;
   display: flex;
   column-gap: 26px;
   align-items: center;
@@ -90,9 +99,10 @@
   }
 
   &__menu {
-    box-shadow: 0px 0px 4px 1px rgba(220, 220, 220, 0.3);
+    // box-shadow: 0px 0px 4px 1px rgba(220, 220, 220, 0.3);
+    box-shadow: var(--box-shadow-primary);
     position: absolute;
-    top: 70px;
+    top: 77px;
     right: 0;
     width: 15vw;
     display: none;

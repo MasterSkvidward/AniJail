@@ -1,4 +1,4 @@
-import React, {FC} from "react";
+import React, {FC, MouseEvent} from "react";
 
 import Title from "../../../UI/Title/Title";
 import ContentLoader from "react-content-loader";
@@ -15,8 +15,8 @@ const AnimeSidebar:FC<AnimeSidebarProps> = ({anime}) => {
 
    return (
       <aside className={classes["anime"]}>
-         <Title value="Airing Now" isLink={true}/>
-         <div>
+         <Title value="Trending Now" isLink={true}/>
+         <div className={classes["anime__body"]}>
             {anime.length !== 0
                ? anime.slice(0, 5).map((item, index) => <AnimeItemSmall anime={item} key={index} />)
                : [0, 1, 2, 3, 4, 5].map((item, index) => (

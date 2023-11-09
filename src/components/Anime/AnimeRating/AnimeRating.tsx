@@ -21,40 +21,44 @@ const AnimeRating: FC<AnimeRatingProps> = ({ score, scoredBy }) => {
    return (
       <div className={classes["rating"]}>
          <Title value={"Rating"} />
-         {animeSingle ? (
-            <div className={classes["rating__row"]}>
-               <div className={classes["rating__rate"]}>
-                  <MyRating
-                     userRating={userRating}
-                     setUserRating={setUserRating}
-                     maxWidth={400}
-                     items={10}
-                     showUserRating={true}
-                  />
+         <div className={classes["rating__container"]}>
+            {animeSingle ? (
+               <div className={classes["rating__row"]}>
+                  <div className={classes["rating__rate"]}>
+                     <MyRating
+                        userRating={userRating}
+                        setUserRating={setUserRating}
+                        maxWidth={400}
+                        items={10}
+                        showUserRating={true}
+                     />
+                  </div>
+
+                  <div className={classes["rating__column"]}>
+                     {score ? <Score score={score} /> : <p className={classes["rating__score"]}>No scores</p>}
+
+                     <span className={classes["rating__scored-by"]}>{`Scored by: ${splitNumberByThree(
+                        scoredBy || 0
+                     )}`}</span>
+                  </div>
                </div>
+            ) : (
+               <ContentLoader
+                  speed={2}
+                  className={classes["skeleton"]}
+                  foregroundColor="var(--background-secondary)"
+                  backgroundColor="var(--background-skeleton)"
+               >
+                  <rect x="0" y="0" rx="2" ry="2" width="600" height="60" />
+                  <rect x="0" y="80" rx="2" ry="2" width="300" height="32" />
+               </ContentLoader>
+            )}
 
-               <div className={classes["rating__column"]}>
-                  {score ? <Score score={score} /> : <p className={classes["rating__score"]}>No scores</p>}
-
-                  <span className={classes["rating__scored-by"]}>{`Scored by: ${splitNumberByThree(scoredBy || 0)}`}</span>
-               </div>
-            </div>
-         ) : (
-            <ContentLoader
-               speed={2}
-               className={classes["skeleton"]}
-               foregroundColor="var(--background-secondary)"
-               backgroundColor="var(--background-skeleton)"
-            >
-               <rect x="0" y="0" rx="2" ry="2" width="600" height="60" />
-               <rect x="0" y="80" rx="2" ry="2" width="300" height="32" />
-            </ContentLoader>
-         )}
-
-         <button className={classes["rating__review"]}>
-            <BsFillPencilFill />
-            <span>Write review</span>
-         </button>
+            <button className={classes["rating__review"]}>
+               <BsFillPencilFill />
+               <span>Write review</span>
+            </button>
+         </div>
       </div>
    );
 };

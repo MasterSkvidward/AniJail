@@ -1,17 +1,24 @@
-import React from "react";
+import {FC} from "react";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import classes from "./AnimeWatchList.module.scss";
 import AnimeItemSmall from "../AnimeItemSmall/AnimeItemSmall";
 import MyTable from "../../../UI/MyTable/MyTable";
 import * as CONSTANTS from "./constants";
 import AnimeList from "../AnimeList/AnimeList";
+import AnimeListGrid from "../AnimeListGrid/AnimeListGrid";
 
-const AnimeWatchList = () => {
+interface AnimeWatchListProps {
+    view: string
+}
+
+const AnimeWatchList:FC<AnimeWatchListProps> = ({view}) => {
    const { anime } = useTypedSelector((state) => state.filter);
 
    return (
       <div className={classes["watchlist"]}>
-         <MyTable headlines={CONSTANTS.watchListHeadlines} data={anime} />
+        {view === "table" && <MyTable headlines={CONSTANTS.watchListHeadlines} data={anime} />}
+        {view === "grid" && <AnimeListGrid/>}
+        
          {/* <AnimeList /> */}
       </div>
    );

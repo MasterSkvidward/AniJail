@@ -5,11 +5,22 @@
    flex-direction: column;
    row-gap: 20px;
    // min-width: 603px;
-   max-width: 424px;
+   width: 100%;
+   max-width: 390px;
    justify-self: flex-end;
+
+   position: sticky;
+   top: 85px;
 
    @include for-small-desktop-up {
       display: none;
+   }
+
+   &__body {
+      background-color: var(--background-secondary);
+      padding: 10px 2px;
+      box-shadow: var(--box-shadow-primary);
+      border-radius: 8px;
    }
 }
 

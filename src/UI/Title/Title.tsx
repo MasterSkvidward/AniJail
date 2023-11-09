@@ -10,16 +10,10 @@ interface TitleProps {
    isLink?: boolean;
 }
 
-const Title: FC<TitleProps> = ({ value, isLink }) => {
-    const navigate = useNavigate();
-
-    // const handleCLick = (e: MouseEvent<HTMLDivElement>):void => {
-    //     e.stopPropagation();
-    //    link && navigate(link)
-    // }
+const Title: FC<TitleProps> = ({ value, isLink, ...props }) => {
 
    return (
-      <div className={isLink ? [classes["wrapper"], classes["link"]].join(" ") : classes["wrapper"]}>
+      <div className={isLink ? [classes["wrapper"], classes["link"]].join(" ") : classes["wrapper"]} {...props}>
          <h3 className={classes["title"]}>{value}</h3>
          {isLink && <MdOutlineKeyboardArrowRight/>}
       </div>

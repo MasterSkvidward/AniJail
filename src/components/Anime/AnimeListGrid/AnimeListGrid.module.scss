@@ -1,0 +1,29 @@
+@import "../../../styles/media_queries";
+
+.anime {
+   display: grid;
+   // grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+   // grid-template-rows: repeat(auto-fill, minmax(calc($height * 0.85), calc($height * 1.05)));
+   // grid-template-rows: ;
+   // grid-template-columns: minmax(130px, 227px), minmax(130px, 227px), minmax(130px, 227px), minmax(130px, 227px), minmax(130px, 227px);
+   // grid-template-columns: auto auto auto auto auto;
+   column-gap: 30px;
+   row-gap: 35px;
+
+   @media (max-width: 1790px) {
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+   }
+
+   @include for-hd {
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+   }
+
+   @include for-tablet-landscape-up {
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+   }
+
+   @include for-phone-only {
+      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+   }
+}

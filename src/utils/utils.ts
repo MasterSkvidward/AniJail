@@ -3,8 +3,6 @@ import { IAnimeSearchParams } from "../types/jikanMoe/jikan";
 import { IFilterOption } from "../types/types";
 
 export const getAnimeEpisodeUrl = (baseUrl: string, animeTitle: string, episode: number): string => {
-   console.log(animeTitle);
-
    let animeTitleNew = animeTitle
       .toLowerCase()
       .replaceAll("-", "")
@@ -18,9 +16,20 @@ export const getAnimeEpisodeUrl = (baseUrl: string, animeTitle: string, episode:
       .replaceAll("--", "-");
    let episodeNew = `episode-${episode}`;
    const result = `${baseUrl}${animeTitleNew}-${episodeNew}`;
-   console.log(result);
 
    return result;
+};
+
+export const getActivityDays = (days: number): number => {
+   let currentDay = new Date().getDay();
+   if (currentDay === 0) return days;
+   if (currentDay === 1) return days - 6;
+   if (currentDay === 2) return days - 5;
+   if (currentDay === 3) return days - 4;
+   if (currentDay === 4) return days - 3;
+   if (currentDay === 5) return days - 2;
+   if (currentDay === 6) return days - 1;
+   return days;
 };
 
 export const getAnimeParamId = (value: string, type: string): string => {

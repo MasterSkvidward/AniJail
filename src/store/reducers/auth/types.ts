@@ -10,6 +10,7 @@ export interface IUser {
     is_active?: boolean,
     is_superuser?: boolean,
     is_staff?: boolean,
+    about?: string,
 }
 
 export interface AuthState {

@@ -1,0 +1,13 @@
+.title {
+    font-weight: 600;
+    font-size: 1.2em;
+    color: var(--text-secondary);
+    width: max-content;
+}
+
+.link {
+    cursor: pointer;
+    &:hover {
+        opacity: 0.83;
+    }
+}

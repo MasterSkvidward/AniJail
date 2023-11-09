@@ -43,7 +43,7 @@ const AnimeItemBig: FC<AnimeItemBigProps> = ({ anime }) => {
       <div
         className={classes["anime__body"]}
         style={{
-          background: `linear-gradient(to bottom, transparent 35%, rgba(${animeColor}, 0.7) 100%), url(${anime.images.jpg.large_image_url}) 0 0/ cover no-repeat`,
+          background: `linear-gradient(to bottom, transparent 35%, rgba(${animeColor}, 1) 100%), url(${anime.images.jpg.large_image_url}) 0 0/ cover no-repeat`,
         }}
       >
         <div className={classes["anime__block"]}>

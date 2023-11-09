@@ -1,0 +1,19 @@
+.settings {
+    padding-top: 60px;
+    width: 100%;
+
+
+
+    &__container {
+        background-color: var(--background-secondary);
+        box-shadow: var(--box-shadow-primary);
+        border-radius: 8px;
+
+        display: flex;
+        column-gap: 70px;
+        justify-content: space-between;
+
+        padding-top: 30px !important;
+        padding-bottom: 30px !important;
+    }
+}

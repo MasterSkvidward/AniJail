@@ -41,7 +41,7 @@ export const AnimeActionCreators = {
             
          } catch (e: any) {
             dispatch(AnimeActionCreators.setAnimeSingleError(e));
-            if (e.response.status === 429) {
+            if (e.response && e.response.status === 429) {
                setTimeout(() => {
                   dispatch(AnimeActionCreators.GetAnimeSingle(id));
                   dispatch(AnimeActionCreators.setAnimeSingleError(""));
@@ -77,7 +77,7 @@ export const AnimeActionCreators = {
             });
          } catch (e: any) {
             dispatch(AnimeActionCreators.setAnimeRecommendationsError(e.message));
-            if (e.response.status === 429) {
+            if (e.response && e.response.status === 429) {
                setTimeout(() => {
                   dispatch(AnimeActionCreators.GetAnimeRecommendations(id));
                   dispatch(AnimeActionCreators.setAnimeRecommendationsError(""));
@@ -112,7 +112,7 @@ export const AnimeActionCreators = {
             });
          } catch (e: any) {
             dispatch(AnimeActionCreators.setAnimeSeasonError(e.message));
-            if (e.response.status === 429) {
+            if (e.response && e.response.status === 429) {
                setTimeout(() => {
                   dispatch(AnimeActionCreators.GetAnimeSeason(params));
                   dispatch(AnimeActionCreators.setAnimeSeasonError(""));
@@ -151,7 +151,7 @@ export const AnimeActionCreators = {
          } catch (e: any) {
             dispatch(AnimeActionCreators.setAnimeSearchError(e.message));
 
-            if (e.response.status === 429) {
+            if (e.response && e.response.status === 429) {
                setTimeout(() => {
                   dispatch(AnimeActionCreators.GetAnimeSearch(params));
                   dispatch(AnimeActionCreators.setAnimeSearchError(""));
@@ -187,7 +187,7 @@ export const AnimeActionCreators = {
          } catch (e: any) {
             dispatch(AnimeActionCreators.setAnimeCharactersError(e.message));
 
-            if (e.response.status === 429) {
+            if (e.response && e.response.status === 429) {
                setTimeout(() => {
                   dispatch(AnimeActionCreators.GetAnimeCharacters(id));
                   dispatch(AnimeActionCreators.setAnimeCharactersError(""));
@@ -224,7 +224,7 @@ export const AnimeActionCreators = {
             });
          } catch (e: any) {
             dispatch(AnimeActionCreators.setAnimeReviewsError(e.message));
-            if (e.response.status === 429) {
+            if (e.response && e.response.status === 429) {
                setTimeout(() => {
                   dispatch(AnimeActionCreators.GetAnimeReviews(id, params));
                   dispatch(AnimeActionCreators.setAnimeReviewsError(""));
@@ -263,7 +263,7 @@ export const AnimeActionCreators = {
               });
            } catch (e: any) {
               dispatch(AnimeActionCreators.setAnimeEpisodeError(e.message));
-              if (e.response.status === 429) {
+              if (e.response && e.response.status === 429) {
                  setTimeout(() => {
                     dispatch(AnimeActionCreators.GetAnimeEpisode(url, server));
                     dispatch(AnimeActionCreators.setAnimeEpisodeError(""));

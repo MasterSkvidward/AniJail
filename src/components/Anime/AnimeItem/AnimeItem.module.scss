@@ -65,8 +65,8 @@ $height: 268px;
       // max-width: 188px;
       // width: inherit;
       //   transition: 0.2s ease-in-out;
-      max-width: calc($width * 1.05);
-      max-height: calc($height * 1.05);
+      max-width: calc($width);
+      max-height: calc($height);
       animation: 0.3s itemShow ease-in;
       transition: 0.2s;
 
@@ -109,7 +109,7 @@ $height: 268px;
 
 .skeleton {
    border-radius: 14px;
-   max-width: calc($width * 1.05);
+   max-width: calc($width);
    max-height: 303px;
 
    //    width: $width;

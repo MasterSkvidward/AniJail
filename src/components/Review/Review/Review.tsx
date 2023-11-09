@@ -88,7 +88,7 @@ const Review: FC<ReviewProps> = ({ review }) => {
          </div>
          <div className={classes["review__body"]}>
             <h4 className={classes["review__tag"]}>{review.tags.join(", ")}</h4>
-            <p>{getShortenedString(review.review, 500)}</p>
+            <p>{getShortenedString(review.review, 400)}</p>
             <button className={classes["review__show-more"]}>Show full review</button>
          </div>
          <div className={classes["review__footer"]}>

@@ -8,7 +8,7 @@ $trailer_height: 267px;
    //   background-color: var(--background-secondary);
    // background-color: rgba(238, 243, 241, 0.9);
    // color: rgb(255, 255, 255);
-   padding: 80px 0px;
+   padding: 60px 0px;
 
    @include for-small-desktop-up {
       &__main {
@@ -22,20 +22,21 @@ $trailer_height: 267px;
 
    &__container {
       display: flex;
-      column-gap: 90px;
+      column-gap: 40px;
       align-items: flex-start;
       justify-content: space-between;
-      //   flex-direction: row;
+      flex-direction: row;
+      width: 100%;
    }
 
    &__main {
-      max-width: 68%;
+      //   max-width: 68%;
       // flex: 0 1 70%;
       display: flex;
       flex-direction: column;
 
       & > div {
-         margin-bottom: 85px;
+         margin-bottom: 65px;
       }
 
       & > div:last-child {
@@ -46,18 +47,34 @@ $trailer_height: 267px;
          max-width: 100%;
       }
    }
+
+   &__row {
+   }
+
+   &__rating {
+      display: flex;
+      column-gap: 80px;
+      justify-content: space-between;
+      align-items: flex-start;
+   }
 }
 
 .description {
    display: flex;
    flex-direction: column;
    row-gap: 19px;
+   width: 100%;
+   max-width: 1000px;
 
    &__body {
       font-size: 0.96em;
       line-height: 160%;
-    //   padding-right: 300px;
-    max-width: 80%;
+      background-color: var(--background-secondary);
+      border-radius: 11px;
+      padding: 20px 25px;
+      box-shadow: var(--box-shadow-primary);
+      //   padding-right: 300px;
+      // max-width: 80%;
       // text-indent: 60px;
    }
 }
@@ -66,10 +83,11 @@ $trailer_height: 267px;
    &__video {
       // flex: 1 1 400px;
       position: relative;
+      box-shadow: var(--box-shadow-primary);
       // padding: 0px 0px 56% 0px;
       // aspect-ratio: 16 / 9;
       // max-width: 400px;
-      width: calc($trailer_width );
+      width: calc($trailer_width);
       height: calc($trailer_height);
       // max-width: 320px;
       // min-height: 180px;
@@ -85,4 +103,3 @@ $trailer_height: 267px;
       }
    }
 }
-

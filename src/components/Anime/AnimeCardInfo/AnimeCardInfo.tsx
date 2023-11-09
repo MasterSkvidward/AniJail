@@ -29,11 +29,16 @@ const AnimeCardInfo: FC<AnimeCardInfoProps> = ({ anime }) => {
    const rows: rowType[] = [
       { label: "Type", value: getAnimeField(anime?.type), type: "type", isLink: true },
       { label: "Genres", value: anime?.genres || [], type: "genres",  isLink: true },
-      { label: "Status", value: getAnimeField(anime?.status), type: "status", isLink: true },
       { label: "Episodes", value: getAnimeField(anime?.episodes), type: "episodes", isLink: false },
+      { label: "Status", value: getAnimeField(anime?.status), type: "status", isLink: true },
+ 
       // {name: 'Season', value: `${getAnimeField(anime?.season)} ${getAnimeField(anime?.year)}`, isLink: true},
       { label: "Season", value: `${getAnimeField(anime?.year)}`, type: "season", isLink: true },
       { label: "Duration", value: getAnimeField(anime?.duration), type: "duration", isLink: false },
+      { label: "Age rating", value: getAnimeField(anime?.rating), type: "rating", isLink: true },
+      { label: "Studio", value: anime?.studios || [], type: "studios",  isLink: true },
+    //   { label: "Producers", value: anime?.producers || [], type: "producers",  isLink: true },
+
       //   { name: "Duration", value: getAnimeField(anime?.duration), isLink: false },
    ];
    

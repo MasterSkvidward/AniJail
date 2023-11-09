@@ -5,9 +5,10 @@ import classes from './MyModal.module.scss';
 interface MyModalProps extends PropsWithChildren {
     visible: boolean,
     setVisible: Dispatch<SetStateAction<boolean>>;
+    contentStyles?: {}
 }
 
-const MyModal:FC<MyModalProps> = ({children, visible, setVisible}) => {
+const MyModal:FC<MyModalProps> = ({children, visible, setVisible, contentStyles}) => {
     const rootClasses = [classes['myModal']];
     if (visible) rootClasses.push(classes.active);
 
@@ -22,7 +23,7 @@ const MyModal:FC<MyModalProps> = ({children, visible, setVisible}) => {
     }, [visible])
 
     return (
-       <div className={rootClasses.join(' ')} onMouseDown={() => setVisible(false)} onKeyDown={handleKeyDown}>
+       <div className={rootClasses.join(' ')} onMouseDown={() => setVisible(false)} onKeyDown={handleKeyDown} style={contentStyles}>
             {children}
        </div>
     );

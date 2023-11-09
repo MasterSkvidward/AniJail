@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { FilterActionCreators } from "../../../store/reducers/filter/action-creatores";
 import { deleteEmptyProperties, getAnimeParamId } from "../../../utils/utils";
 import { defaultFilterParams } from "../../../store/reducers/filter/filterReducer";
+import { Link } from "react-router-dom";
 
 const AnimeCardInfoRow: FC<rowType> = ({ label, value, type, isLink }) => {
    const dispatch = useDispatch();
@@ -45,11 +46,13 @@ const AnimeCardInfoRow: FC<rowType> = ({ label, value, type, isLink }) => {
                         <span>{value}</span>
                      )
                   ) : (
-                     formatGenres(value).map((genre, index) => (
-                        <div className={classes.row__genre} key={index} onClick={(e) => handleGenreClick(e, genre)}>
-                           <MyLink value={genre} />
-                        </div>
-                     ))
+                     <div className={classes["row__value-list"]}>
+                        {formatGenres(value).slice(0, 5).map((genre, index) => (
+                           // <span className={classes.row__genre} key={index} onClick={(e) => handleGenreClick(e, genre)}>
+                           <Link to="/anime" onClick={(e) => handleGenreClick(e, genre)} key={index}>{`${genre}`}</Link>
+                           // </span>
+                        ))}
+                     </div>
                   )
                ) : (
                   <span>{"-"}</span>

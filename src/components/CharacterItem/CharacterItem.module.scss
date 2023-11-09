@@ -1,6 +1,5 @@
 @import "../../styles/media_queries";
 
-
 $width: 121px;
 $height: 188px;
 
@@ -38,8 +37,8 @@ $height: 188px;
       }
 
       @include for-full-hd {
-         width: calc($width * 0.91);
-         height: calc($height * 0.91);
+         width: calc($width * 0.73);
+         height: calc($height * 0.73);
       }
    }
 

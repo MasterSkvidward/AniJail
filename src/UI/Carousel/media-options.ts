@@ -30,7 +30,7 @@ export const smallCarouselOptions = {
    interval: 7000,
    autoplay: true,
    lazyLoad: "nearby",
-   perPage: 9,
+   perPage: 10,
    // fixedWidth: 190,
    arrows: true,
    pagination: false,

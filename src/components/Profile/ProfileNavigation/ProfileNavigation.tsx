@@ -10,6 +10,7 @@ const ProfileNavigation = () => {
       { title: "Stats", path: "/user/1/stats" },
       { title: "Friends", path: "/user/1/friends" },
       { title: "Reviews", path: "/user/1/reviews" },
+      { title: "Settings", path: "/user/1/settings" },
    ];
 
    return (

@@ -94,13 +94,13 @@
 
 ._container-main {
    // max-width: 86vw;
-   max-width: 1700px;
+   max-width: 1550px;
    // max-width: 70vw;
    margin: 0 auto;
    padding: 0 20px;
 
    @include for-full-hd {
-      max-width: 1440px;
+      max-width: 1400px;
       //   padding: 0 20px;
    }
 
@@ -113,12 +113,21 @@
    }
 }
 
+._container-big {
+   max-width: 2100px;
+   margin: 0 auto;
+   padding: 0 20px;
+
+   @include for-phone-only {
+      padding: 0 9px;
+   }
+}
+
 .hide-scroll {
    overflow-y: hidden;
    padding-right: 18px;
    background-color: rgba(18, 17, 17, 0);
 }
-
 
 // @import "./react-select.scss";
 

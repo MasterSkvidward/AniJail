@@ -35,10 +35,8 @@ const AnimeIdPage = () => {
          await dispatch(AnimeActionCreators.GetAnimeCharacters(id));
          await dispatch(AnimeActionCreators.GetAnimeSeason());
 
-         setTimeout(async () => {
-            await dispatch(AnimeActionCreators.GetAnimeRecommendations(id));
-            await dispatch(AnimeActionCreators.GetAnimeReviews(id));
-         }, 1000);
+         await dispatch(AnimeActionCreators.GetAnimeRecommendations(id));
+         await dispatch(AnimeActionCreators.GetAnimeReviews(id));
       }
    };
 
@@ -60,7 +58,7 @@ const AnimeIdPage = () => {
       <div className={classes["anime-page"]}>
          <AnimeCard />
          <AnimeDetails />
-         <AnimePlayer />
+         {/* <AnimePlayer /> */}
          <AnimeFeedback />
       </div>
    );

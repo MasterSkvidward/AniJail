@@ -17,6 +17,8 @@ import { getScoreColor } from "../../../utils/utils";
 import { AiFillStar } from "react-icons/ai";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import ContentLoader from "react-content-loader";
+
+import banner from "../../../assets/images/anime-voice.jpg";
 // interface AnimeCardProps {
 //   anime: IAnime | null;
 //   // animePictures: IAnimePicture[] | []
@@ -32,14 +34,14 @@ const AnimeCard: FC = () => {
 
    const backgroundImgStyle = {
       // background: `linear-gradient(to bottom, transparent 0%, rgba(${animeColor}, 0.9) 92%), url(${background_img}) 0 30% / cover`,
-      backgroundImage: `linear-gradient(to bottom, transparent 0%, rgba(${animeColor}, 0.95) 100%), url(${background_img})`,
+      backgroundImage: `linear-gradient(to bottom, transparent 0%, rgba(0,0,0, 0.55) 100%), url(${banner})`,
       backgroundRepeat: "no-repeat",
       backgroundSize: "cover",
       backgroundPosition: "center 30%",
    };
 
    const getAnimeColor = async () => {
-      const color = await get_average_rgb(background_img);
+      const color = await get_average_rgb(banner);
       setAnimeColor(formatColor(color.toString()));
    };
 

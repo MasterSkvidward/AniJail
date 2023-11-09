@@ -1,24 +1,30 @@
 import React, { useRef, FC, useState, useEffect, MouseEvent, Dispatch, SetStateAction } from "react";
 import classes from "./SearchBar.module.scss";
-import MyInput from "../MyInput/MyInput";
+import MyInput from "../../UI/MyInput/MyInput";
 import { AiOutlineSearch } from "react-icons/ai";
-import AnimeItemSmall from "../../components/Anime/AnimeItemSmall/AnimeItemSmall";
+import AnimeItemSmall from "../Anime/AnimeItemSmall/AnimeItemSmall";
 import { IAnime, IAnimeSearchParams } from "../../types/jikanMoe/jikan";
 import useDebounce from "../../hooks/useDebounce";
 import { AnimeService } from "../../services/AnimeService";
-import MyModal from "../MyModal/MyModal";
+import MyModal from "../../UI/MyModal/MyModal";
 import { Search } from "react-router-dom";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { AnimeActionCreators } from "../../store/reducers/anime/action-creatores";
 import { useDispatch } from "react-redux";
-import Loader from "../Loader/Loader";
+import Loader from "../../UI/Loader/Loader";
+import SearchInput from "../../UI/SearchInput/SearchInput";
 
-const SearchBar = () => {
+interface SearchBarProps {
+   visible: boolean;
+   setVisible: Dispatch<SetStateAction<boolean>>;
+}
+
+const SearchBar: FC<SearchBarProps> = ({ visible, setVisible }) => {
    const search = useRef<HTMLFormElement>(null);
    const searchList = useRef<HTMLDivElement>(null);
    const dispatch = useDispatch();
 
-   const [visible, setVisible] = useState<boolean>(false);
+   //    const [visible, setVisible] = useState<boolean>(false);
    const [value, setValue] = useState<string>("");
    //   const [animeItems, setAnimeItems] = useState<IAnime[] | []>([]);
 
@@ -80,16 +86,18 @@ const SearchBar = () => {
          onMouseDown={handlerMouseDown}
          onSubmit={(e) => e.preventDefault()}
       >
-         <MyInput setValue={setValue} placeholder={"Search anime..."} />
+         {/* <MyInput setValue={setValue} placeholder={"Search anime..."} styles={{padding: "25px 15px"}}/>
          <div className={classes.search__loupe}>
             <AiOutlineSearch />
-         </div>
+         </div> */}
+
+         <SearchInput value={value} setValue={setValue} placeholder="Search..." styles={{ padding: "10px 10px" }} />
          <div
             ref={searchList}
             className={visible ? [classes.search__list, classes.active].join(" ") : classes.search__list}
             onClick={handlerClickMenu}
          >
-            {animeSearch.length > 0 ? (
+            {animeSearch.length && !animeSearchLoading ? (
                <div className={classes.search__items}>
                   {animeSearch.map((anime, index) => (
                      <AnimeItemSmall anime={anime} key={index} />

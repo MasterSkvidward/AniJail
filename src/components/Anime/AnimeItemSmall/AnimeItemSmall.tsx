@@ -30,7 +30,7 @@ const AnimeItemSmall: FC<AnimeItemSmallProps> = ({ anime }) => {
    return (
       <div className={classes["anime"]} onClick={() => navigate(`/anime/${anime.mal_id}`)}>
          <div className={classes["image"]}>
-            <Image url={anime.images.jpg.image_url} alt={anime.title_english} />
+            <img src={anime.images.jpg.image_url} alt={anime.title_english} />
          </div>
          <div className={classes["body"]}>
             <div className={classes["body__title"]}>
@@ -43,11 +43,13 @@ const AnimeItemSmall: FC<AnimeItemSmallProps> = ({ anime }) => {
             <div className={classes["body__info"]}>
                <Score score={anime?.score || 0} />
                <div className={classes["body__genres"]}>
-                  {formatGenres(anime?.genres).map((genre, index) => (
-                     <div className={classes["body__genre"]} key={index}>
-                        {genre}
-                     </div>
-                  ))}
+                  {formatGenres(anime?.genres)
+                     .splice(0, 3)
+                     .map((genre, index) => (
+                        <div className={classes["body__genre"]} key={index}>
+                           {genre}
+                        </div>
+                     ))}
                </div>
             </div>
          </div>

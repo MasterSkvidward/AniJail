@@ -16,6 +16,8 @@ import { useDispatch } from "react-redux";
 import { AnimeActionCreators } from "../../../store/reducers/anime/action-creatores";
 import AnimeRecommendations from "../AnimeRecommendations/AnimeRecommendations";
 
+import aot_img from "../../../assets/images/aot-promo.jpg";
+
 const AnimeDetails = () => {
    const {
       animeRecommendations,
@@ -29,8 +31,6 @@ const AnimeDetails = () => {
       <section className={classes["anime-details"]}>
          <div className={classes["anime-details__container"] + " " + "_container-main"}>
             <div className={classes["anime-details__main"]}>
-               <AnimeCharacters />
-
                <div className={classes["description"]}>
                   <Title value={"Synopsis"} />
                   {anime ? (
@@ -49,9 +49,33 @@ const AnimeDetails = () => {
                   )}
                </div>
 
-               <div className={classes["anime-details__rating"]}>
-                  <AnimeRating score={anime?.score} scoredBy={anime?.scored_by} />
+               <div className={classes["anime-details__row"]}>
+                  <AnimeCharacters />
                </div>
+
+               {anime?.trailer.embed_url && (
+                  <div className={classes["anime-details__rating"]}>
+                     {/* <AnimeRating score={anime?.score} scoredBy={anime?.scored_by} /> */}
+                     <div className={classes["trailer"]}>
+                        <Title value={"Trailer"} />
+                        <div className={classes["trailer__video"]}>
+                           <iframe
+                              src={`${anime?.trailer.embed_url || ""}?poster=${aot_img}`}
+                              name="trailer"
+                              width="397"
+                              height="245"
+                              title="YouTube video player"
+                              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                              allowFullScreen
+                           ></iframe>
+
+                           {/* <a href="" target="trailer">
+                           <img src={aot_img} alt="Trailer" />
+                        </a> */}
+                        </div>
+                     </div>
+                  </div>
+               )}
 
                {/* <div>
                   <iframe
@@ -61,20 +85,6 @@ const AnimeDetails = () => {
                      width={700}
                      height={400}
                   ></iframe>
-               </div> */}
-
-               {/* <div className={classes["trailer"]}>
-                  <Title value={"Trailer"} />
-                  <div className={classes["trailer__video"]}>
-                     <iframe
-                        src={`${anime?.trailer.embed_url}?mute=1`}
-                        width="397"
-                        height="345"
-                        title="YouTube video player"
-                        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowFullScreen
-                     ></iframe>
-                  </div>
                </div> */}
 
                {/* {animeCurrentSeason.length > 5 && 

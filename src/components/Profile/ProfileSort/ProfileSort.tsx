@@ -5,6 +5,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { GrFormClose } from "react-icons/gr";
 import { FaList } from "react-icons/fa";
 import { BsGrid3X3GapFill } from "react-icons/bs";
+import SearchInput from "../../../UI/SearchInput/SearchInput";
 
 const ProfileSort = () => {
    const [value, setValue] = useState<string>("");
@@ -26,11 +27,13 @@ const ProfileSort = () => {
    return (
       <div className={classes["sort"]}>
          <div className={classes["sort__row"]}>
-            <div className={classes["sort__search"]}>
+            {/* <div className={classes["sort__search"]}>
                <AiOutlineSearch />
                <input type="text" placeholder="Filter by name" value={value} onChange={handleSearch} />
                {value && <GrFormClose onClick={() => setValue("")} />}
-            </div>
+            </div> */}
+
+            <SearchInput value={value} setValue={setValue} placeholder="Filter by name"/>
             <div className={classes["sort__switches"]}>
                {icons.map((icon, index) => (
                   <span
@@ -48,7 +51,7 @@ const ProfileSort = () => {
             </div>
          </div>
 
-         <AnimeWatchList />
+         <AnimeWatchList view={currentView}/>
       </div>
    );
 };

@@ -6,26 +6,27 @@ import { useDispatch } from "react-redux";
 import { AnimeActionCreators } from "../../store/reducers/anime/action-creatores";
 import { IAnimeSearchParams } from "../../types/jikanMoe/jikan";
 import FAQ from "../../components/FAQ/FAQ,";
-
+import AnimePromo from "../../components/Anime/AnimePromo/AnimePromo";
 
 const HomePage: FC = () => {
-    const dispatch = useDispatch();
+   const dispatch = useDispatch();
 
-    const fetchSeasonAnime = (params?:IAnimeSearchParams) => {
-        dispatch(AnimeActionCreators.GetAnimeSeason(params));
-    };
+   const fetchSeasonAnime = (params?: IAnimeSearchParams) => {
+      dispatch(AnimeActionCreators.GetAnimeSeason(params));
+   };
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    fetchSeasonAnime();
-  }, []);
+   useEffect(() => {
+      window.scrollTo(0, 0);
+      fetchSeasonAnime();
+   }, []);
 
-  return (
-    <div className={classes.homepage}>
-      <CarouselBlock />
-      <FAQ/>
-    </div>
-  );
+   return (
+      <div className={classes.homepage}>
+         <CarouselBlock />
+         <AnimePromo />
+         <FAQ />
+      </div>
+   );
 };
 
 export default HomePage;

@@ -1,23 +1,27 @@
 @import "../../../styles/colors";
 
 .skeleton {
-    width: 121px;
-    height: 214px;
+   width: 121px;
+   height: 214px;
 }
 
 .characters {
    display: flex;
    flex-direction: column;
    row-gap: 27px;
-   max-width: 937px;
+   max-width: 1000px;
 
-//    svg {
-//       height: 35px;
-//       width: 35px;
-//       color: $main-color;
-//    }
+   //    svg {
+   //       height: 35px;
+   //       width: 35px;
+   //       color: $main-color;
+   //    }
 
    &__rows {
+    //   background-color: var(--background-secondary);
+    //   padding: 20px 25px;
+    //   border-radius: 11px;
+    //   box-shadow: var(--box-shadow-primary);
       // display: grid;
       // column-gap: 30px;
       // row-gap: 30px;
