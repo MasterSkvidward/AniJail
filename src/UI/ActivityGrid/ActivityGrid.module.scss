@@ -1,7 +1,7 @@
 $boxSize: 13px;
 
 .history {
-   background-color: var(--background-secondary);
+   background-color: var(--background-300);
 
    display: grid;
    grid-template-rows: repeat(7, $boxSize);
@@ -19,21 +19,24 @@ $boxSize: 13px;
    max-width: 700px;
 
    &__box {
-      background-color: var(--background-primary);
+      background-color: var(--background-100);
       width: $boxSize;
       height: $boxSize;
       border-radius: 4px;
 
       &[data-amount="poor"] {
          background-color: rgb(249, 160, 150);
+         background-color: rgba(var(--color-main), 1);
       }
 
       &[data-amount="medium"] {
-         background-color: rgb(205,92,92);
+         background-color: rgb(205, 92, 92);
+         background-color: rgba(var(--color-main), 0.6);
       }
 
       &[data-amount="good"] {
-         background-color: rgb(178,34,34);
+         background-color: rgb(178, 34, 34);
+         background-color: rgba(var(--color-main), 0.3);
       }
    }
 }

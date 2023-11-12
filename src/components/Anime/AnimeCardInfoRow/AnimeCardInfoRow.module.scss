@@ -35,20 +35,26 @@
       // display: flex;
       // column-gap: 11px;
       // color: rgba($color: #eae8e8, $alpha: 0.8);
-      opacity: 0.8;
+    //   opacity: 0.8;
+    font-size: 0.95em;
+    letter-spacing: 0.5px;
    }
 
    &__value-list {
       display: inline;
 
-    //   & a {
-    //      color: var(--main-color);
-    //   }
+      //   & a {
+      //      color: rgb(var(--color-main));
+      //   }
 
       & > a {
          display: inline;
          margin-right: 5px;
-         color: var(--main-color) !important;
+         color: rgb(var(--color-main)) !important;
+
+         &:hover {
+            opacity: 0.9;
+         }
 
          &:not(:last-child)::after {
             content: ",";

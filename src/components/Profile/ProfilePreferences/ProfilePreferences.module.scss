@@ -1,0 +1,17 @@
+.preferences {
+   background-color: var(--background-300);
+   box-shadow: var(--box-shadow-primary);
+   border-radius: 7px;
+   padding: 30px 35px;
+   width: 100%;
+
+   display: flex;
+   flex-direction: column;
+   row-gap: 60px;
+
+   &__colors {
+      display: flex;
+      flex-direction: column;
+      row-gap: 16px;
+   }
+}

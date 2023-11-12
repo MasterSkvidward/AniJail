@@ -18,9 +18,17 @@ const ReviewCarousel: FC<ReviewCarouselProps> = ({ reviews }) => {
 
    return (
       <div className={classes["reviews"]}>
-         <Title value={"Reviews"} isLink={true}/>
+         <div className={classes["reviews__header"]}>
+            <Title value={`Reviews`} amount={46} isLink={true} />
+            <div className={classes["reviews__counts"]}>
+                <div className={classes["reviews__positive"]}>Positive<span className={classes["reviews__amount"]}>{34}</span></div>
+                <div className={classes["reviews__neutral"]}>Neutral<span className={classes["reviews__amount"]}>{8}</span></div>
+                <div className={classes["reviews__negative"]}>Negative<span className={classes["reviews__amount"]}>{4}</span></div>
+            </div>
+         </div>
+
          {reviews.length === 0 && !animeReviewsLoading && !animeReviewsError ? (
-            <p>This show have no reviews.</p>
+            <p className={classes["reviews__empty"]}>This show have no reviews.</p>
          ) : (
             <div className={classes["reviews__row"]}>
                <Carousel options={reviewsCarouselOptions} arrowTop={46}>

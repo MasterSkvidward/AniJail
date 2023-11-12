@@ -1,7 +1,8 @@
 export const publicRoutes = {
     HOMEPAGE: '/',
     ANIME: '/anime',
-    ANIMEID: '/anime/:id',
+    ANIME_TOP: '/anime/top',
+    ANIME_ID: '/anime/:id',
     ERROR: '/404',
     RANDOM: '/anime/55644',
     ANY: '*',

@@ -49,6 +49,8 @@
    border-radius: 5px;
    overflow: hidden;
 
+   box-shadow: var(--box-shadow-primary);
+
    svg {
       transition: all 0.2s ease-in-out;
       font-size: 1.4em;
@@ -117,7 +119,7 @@
    }
 
    .item__answer {
-      max-height: 200px;
+      max-height: 180px;
       visibility: visible;
    }
 }

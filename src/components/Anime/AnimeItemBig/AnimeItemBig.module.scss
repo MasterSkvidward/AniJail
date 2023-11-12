@@ -1,185 +1,180 @@
 @import "../../../styles/_colors.scss";
 
 .anime-skeleton {
-    border: 1px solid rgba(146, 146, 146, 0.2);
-    position: relative;
+   border: 1px solid rgba(146, 146, 146, 0.2);
+   position: relative;
 }
 
 .anime {
-    transition: 0.4s;
-    border: 1px solid rgba(146, 146, 146, 0.2);
-    background-color: var(--background-tertiary);
-    // padding: 6px 6px;
-    border-radius: 19px;
-    // max-width: 455px;
-    height: 620px;
-    font-size: 25px;
-    position: relative;
+   transition: 0.4s;
+   border: 1px solid rgba(146, 146, 146, 0.2);
+   background-color: var(--background-500);
+   // padding: 6px 6px;
+   border-radius: 19px;
+   // max-width: 455px;
+   height: 510px;
+   font-size: 25px;
+   position: relative;
 
-    &:hover {
-        cursor: pointer;
-        border: 1px solid rgba(213, 212, 212, 0.44);
+   &:hover {
+      cursor: pointer;
+      border: 1px solid rgba(213, 212, 212, 0.44);
 
-        .anime__block {
-            // background-color: rgba(0, 0, 0, 0.3);
-        }
+      .anime__block {
+         // background-color: rgba(0, 0, 0, 0.3);
+      }
 
-        .anime__synopsis {
-            opacity: 1;
-            max-height: 80px;
-        }
-    }
+      .anime__synopsis {
+         opacity: 1;
+         max-height: 80px;
+      }
+   }
 
-    &__body {
-        border-radius: 19px;
-        display: flex;
-        width: 100%;
-        height: 100%;
-        flex-direction: column;
-        justify-content: flex-end;
-    }
+   &__body {
+      border-radius: 19px;
+      display: flex;
+      width: 100%;
+      height: 100%;
+      flex-direction: column;
+      justify-content: flex-end;
+   }
 
-    &__block {
-        color: $white;
-        transition: all 0.5s;
-        // justify-self:
-        padding: 20px 15px 0px;
-        display: flex;
-        flex-direction: column;
-        row-gap: 17px;
-    }
+   &__block {
+      color: $white;
+      transition: all 0.5s;
+      // justify-self:
+      padding: 20px 15px 0px;
+      display: flex;
+      flex-direction: column;
+      row-gap: 17px;
+   }
 
-    &__title {
-        text-shadow: 3px 3px 15px rgb(0, 0, 0);
-        font-size: 1em;
-        font-weight: 600;
-    }
+   &__title {
+      text-shadow: 3px 3px 15px rgb(0, 0, 0);
+      font-size: 1em;
+      font-weight: 600;
+   }
 
-    &__synopsis {
-        font-size: 0.6em;
-        font-weight: 600;
-        line-height: 125%;
-        text-shadow: 0px -1px 2px rgb(0, 0, 0);
-        display: block;
-        opacity: 1;
-        max-height: 0px;
-        overflow-y: hidden;
-        overflow-y: hidden;
-        transition-duration: 0.25s;
-        transition-property: max-height, opacity;
-        transition-timing-function: ease-in-out, ease-in-out;
-    }
+   &__synopsis {
+      font-size: 0.6em;
+      font-weight: 600;
+      line-height: 125%;
+      text-shadow: 0px -1px 2px rgb(0, 0, 0);
+      display: block;
+      opacity: 1;
+      max-height: 0px;
+      overflow-y: hidden;
+      overflow-y: hidden;
+      transition-duration: 0.25s;
+      transition-property: max-height, opacity;
+      transition-timing-function: ease-in-out, ease-in-out;
+   }
 
-    &__details {
-        text-shadow: 3px 3px 15px rgb(0, 0, 0);
-        font-weight: 600;
-        font-size: 0.6em;
+   &__details {
+      text-shadow: 3px 3px 15px rgb(0, 0, 0);
+      font-weight: 600;
+      font-size: 0.6em;
 
-        display: flex;
-        column-gap: 10px;
-    }
+      display: flex;
+      column-gap: 10px;
+   }
 
-    &__genre {
-        &:not(:last-child)::after {
-            content: ',';
-        }
-    }
+   &__genre {
+      &:not(:last-child)::after {
+         content: ",";
+      }
+   }
 
-    &__arrow {
-        padding: 15px 0px;
-        border-top: 1px solid rgba(255, 255, 255, 1);
+   &__arrow {
+      padding: 15px 0px;
+      border-top: 1px solid rgba(255, 255, 255, 1);
 
-        svg {
-            // fill: rgba(195, 55, 55, 0.9);
-            color: $white;
-            background-color: rgba(0, 0, 0, 0.9);
-            border-radius: 51%;
-            height: 32px;
-            width: 32px;
-            font-weight: 600;
-            font-size: 22px;
-        }
-    }
+      svg {
+         // fill: rgba(195, 55, 55, 0.9);
+         color: $white;
+         background-color: rgba(0, 0, 0, 0.9);
+         border-radius: 51%;
+         height: 32px;
+         width: 32px;
+         font-weight: 600;
+         font-size: 22px;
+      }
+   }
 }
 
 .active {
-    display: flex;
+   display: flex;
 }
-
 
 @media (min-width: 1901px) {
-    .anime {
-        // height: 23vw;
-        // width: 15vw;
-    }
+   .anime {
+      // height: 23vw;
+      // width: 15vw;
+   }
 }
 
-
-
 @media (max-width: 1900px) {
-    .anime {
-        max-width: 500px;
-        height: 30vw;
-    }
+   .anime {
+      max-width: 500px;
+      height: 30vw;
+   }
 }
 
 @media (max-width: 1775px) {
-    .anime {
-        height: 36vw;
-    }
+   .anime {
+      height: 36vw;
+   }
 }
 
-
 @media (max-width: 1300px) {
-    .anime {
-        height: 47vw;
-    }
+   .anime {
+      height: 47vw;
+   }
 }
 
 @media (max-width: 1200px) {
-    .anime {
-        font-size: 21px;
+   .anime {
+      font-size: 21px;
 
-        &__block {
-            row-gap: 11px;
-        }
-    }
+      &__block {
+         row-gap: 11px;
+      }
+   }
 }
 
 @media (max-width: 910px) {
-    .anime {
-        font-size: 19px;
+   .anime {
+      font-size: 19px;
 
-        &__synopsis {
-            display: none;
-        }
+      &__synopsis {
+         display: none;
+      }
 
-        &__block {
-            row-gap: 10px;
-        }
+      &__block {
+         row-gap: 10px;
+      }
 
-        &__arrow {
-            padding: 10px 0px;
+      &__arrow {
+         padding: 10px 0px;
 
-            svg {
-                height: 26px;
-                width: 26px;
-            }
-        }
-    }
+         svg {
+            height: 26px;
+            width: 26px;
+         }
+      }
+   }
 }
 
 @media (max-width: 720px) {
-    .anime {
-        height: 67vw;
-    }
+   .anime {
+      height: 67vw;
+   }
 }
 
 @media (max-width: 510px) {
-    .anime {
-        font-size: 15px;
-    }
-
+   .anime {
+      font-size: 15px;
+   }
 }
 
 // @media (max-width: 560px) {

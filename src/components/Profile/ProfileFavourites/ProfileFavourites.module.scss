@@ -1,0 +1,9 @@
+.favourites {
+    padding-top: 60px;
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        row-gap: 60px;
+    }
+}

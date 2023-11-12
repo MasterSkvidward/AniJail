@@ -1,129 +1,129 @@
 @import "../../styles/colors";
 
 @keyframes scaleIn {
-  0% {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  50% {
-    opacity: 0.3;
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
+   0% {
+      opacity: 0;
+      transform: scale(0.9);
+   }
+   50% {
+      opacity: 0.3;
+   }
+   100% {
+      opacity: 1;
+      transform: scale(1);
+   }
 }
 
 .dropmenu {
-  position: relative;
-  width: 100%;
-  box-shadow: var(--box-shadow-primary);
+   position: relative;
+   width: 100%;
+   box-shadow: var(--box-shadow-primary);
 
-  &__btn {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    padding: 7px 15px;
-    text-align: center;
-    border-radius: 15px;
-    transition: all 0.15s;
-    cursor: pointer;
-    height: 38px;
-    color: rgb(246, 246, 246);
-
-    button {
-      background-color: transparent;
-      color: rgb(246, 246, 246);
-      font-size: 1em;
-      align-self: center;
+   &__btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 7px 15px;
+      text-align: center;
+      border-radius: 15px;
+      transition: all 0.15s;
       cursor: pointer;
-      margin: 0px auto;
-      user-select: none;
-    }
+      height: 38px;
+      color: rgb(246, 246, 246);
 
-    svg {
-      &:nth-child(1) {
-        width: 19px;
-        height: 19px;
-        // color: rgb(246, 246, 246);
+      button {
+         background-color: transparent;
+         color: rgb(246, 246, 246);
+         font-size: 1em;
+         align-self: center;
+         cursor: pointer;
+         margin: 0px auto;
+         user-select: none;
       }
-    }
 
-    &_add {
-      color: rgb(239, 239, 239);
-      background-color: rgb(49, 49, 49);
-    }
+      svg {
+         &:nth-child(1) {
+            width: 19px;
+            height: 19px;
+            // color: rgb(246, 246, 246);
+         }
+      }
 
-    &_viewed {
-      background-color: rgb(95, 167, 81);
-    }
+      &_add {
+         color: rgb(239, 239, 239);
+         background-color: var(--background-400);
+      }
 
-    &_will_watch {
-      background-color: rgb(76, 129, 197);
-    }
+      &_viewed {
+         background-color: rgb(95, 167, 81);
+      }
 
-    &_favorite {
-      background-color: rgb(194, 70, 70);
-    }
+      &_will_watch {
+         background-color: rgb(76, 129, 197);
+      }
 
-    &:hover {
-      opacity: 0.9;
-      // color: rgba(255, 255, 255, 0.8);
-      // transform: scale(1.001);
-    }
+      &_favorite {
+         background-color: rgb(194, 70, 70);
+      }
 
-    &::after {
-      content: "";
-    }
-  }
+      &:hover {
+         opacity: 0.9;
+         // color: rgba(255, 255, 255, 0.8);
+         // transform: scale(1.001);
+      }
 
-  &__options {
-    width: 100%;
-    border-radius: 14px;
-    // background-color: rgb(37, 37, 37);
-    background-color: var(--background-secondary);
-    padding: 9px 0px;
-    position: absolute;
-    top: 49px;
-    left: 0;
-    display: none;
-    flex-direction: column;
-    // z-index: 50;
-    z-index: 2;
-    // transition: height 1s ease;
+      &::after {
+         content: "";
+      }
+   }
 
-    // box-shadow: 0px 5px 11px 2px rgb(94, 94, 94);
+   &__options {
+      width: 100%;
+      border-radius: 14px;
+      // background-color: rgb(37, 37, 37);
+      background-color: var(--background-300);
+      padding: 9px 0px;
+      position: absolute;
+      top: 49px;
+      left: 0;
+      display: none;
+      flex-direction: column;
+      // z-index: 50;
+      z-index: 2;
+      // transition: height 1s ease;
 
-    animation: scaleIn 0.22s ease-in-out;
-    box-shadow: var(--box-shadow-primary);
-  }
+      // box-shadow: 0px 5px 11px 2px rgb(94, 94, 94);
 
-  &__option {
-    cursor: pointer;
-    padding: 16px 15px;
-    font-size: 0.92em;
-    transition: 0.2s;
+      animation: scaleIn 0.22s ease-in-out;
+      box-shadow: var(--box-shadow-primary);
+   }
 
-    &:hover {
-      background-color: var(--hover-primary);
-      color: $main-color-dark;
-    }
-  }
+   &__option {
+      cursor: pointer;
+      padding: 16px 15px;
+      font-size: 0.92em;
+      transition: 0.2s;
+
+      &:hover {
+         background-color: var(--hover-primary);
+         color: rgb(var(--color-main));
+      }
+   }
 }
 
 .active {
-  display: flex;
+   display: flex;
 }
 
 .arrow {
-  width: 26px;
-  height: 26px;
-  transition: transform 0.4s ease-in-out;
-  // margin: 0px 0px 0px auto;
-  // transform: rotate(180deg);
+   width: 26px;
+   height: 26px;
+   transition: transform 0.4s ease-in-out;
+   // margin: 0px 0px 0px auto;
+   // transform: rotate(180deg);
 }
 
 .rotate {
-  transform: rotate(180deg);
+   transform: rotate(180deg);
 }

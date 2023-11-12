@@ -20,7 +20,7 @@ const AnimeItemSmall: FC<AnimeItemSmallProps> = ({ anime }) => {
          <ContentLoader
             speed={2}
             className={classes["skeleton__big"]}
-            foregroundColor="var(--background-secondary)"
+            foregroundColor="var(--background-300)"
             backgroundColor="var(--background-skeleton)"
          >
             <rect x="0" y="0" rx="2" ry="2" width="342" height="548" />

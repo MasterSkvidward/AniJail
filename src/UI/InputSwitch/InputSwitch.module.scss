@@ -25,13 +25,13 @@ $coeff: 0.85;
       height: 0;
 
       &:checked + .slider {
-        //  background-color: #2196f3;
-         background-color: var(--main-color);
+         //  background-color: #2196f3;
+         background-color: rgb(var(--color-main));
       }
 
       &:focus + .slider {
-        //  box-shadow: 0 0 1px #2196f3;
-        box-shadow: 0 0 1px var(--main-color);
+         //  box-shadow: 0 0 1px #2196f3;
+         box-shadow: 0 0 1px rgb(var(--color-main));
       }
 
       &:checked + .slider::before {

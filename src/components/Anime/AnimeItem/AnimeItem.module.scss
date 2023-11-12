@@ -28,6 +28,9 @@ $height: 268px;
 .anime {
    position: relative;
 
+   &:hover &__title {
+      color: rgb(var(--color-main));
+   }
 
    &__preview {
       position: absolute;
@@ -57,7 +60,7 @@ $height: 268px;
    }
 
    &__image {
-      background-color: var(--background-tertiary);
+      background-color: var(--background-500);
       box-shadow: var(--box-shadow-primary);
       border-radius: 11px;
       //   border: 0.5px solid rgba(255, 255, 255, 0.1);
@@ -93,6 +96,8 @@ $height: 268px;
       max-width: $width;
       //   height: 30px;
       opacity: 0.88;
+
+      transition: color 0.2s ease-in-out;
    }
 }
 

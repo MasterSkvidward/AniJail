@@ -22,7 +22,7 @@
 //       max-height: 0px !important;
 //    }
 //    50% {
-//       //    opacity: 0.8;
+//       //    opacity: 0.7;
 //    }
 //    100% {
 //       //    opacity: 1;
@@ -33,7 +33,7 @@
 
 .custom-select {
    &__control {
-      background-color: var(--background-secondary) !important;
+      background-color: var(--background-300) !important;
       border: none !important;
       border-radius: 0 !important;
       //   border-bottom: 1px solid #212121 !important;
@@ -115,14 +115,14 @@
 
    &__single-value {
       //   color: var(--text-primary) !important;
-      color: $main-color-dark !important;
+      color: rgb(var(--color-main), 0.7) !important;
       letter-spacing: 0.3px !important;
 
       padding: 3px 0px !important;
    }
 
    &__multi-value {
-      background-color: var(--background-tertiary) !important;
+      background-color: var(--background-500) !important;
       border-radius: 0.1rem !important;
       border-radius: 10px !important;
       display: flex !important;
@@ -147,7 +147,7 @@
       transform: scale(1.1);
 
       &:hover {
-         background-color: var(--background-primary) !important;
+         background-color: var(--background-100) !important;
          color: var(--text-primary) !important;
       }
    }
@@ -155,14 +155,14 @@
    &__menu {
       z-index: 2 !important;
       //   background-color: #212121 !important;
-      background-color: var(--background-secondary) !important;
+      background-color: var(--background-300) !important;
       color: var(--text-primary) !important;
       animation: scaleIn 0.3s ease-in-out !important;
       border-radius: 11px !important;
       box-shadow: var(--box-shadow-secondary) !important;
 
       &-list {
-         background-color: var(--background-secondary) !important;
+         background-color: var(--background-300) !important;
          //  max-height: 500px !important;
          //  height: 100% !important;
          height: auto !important;
@@ -195,13 +195,13 @@
       position: relative !important;
       padding: 12px 15px !important;
       cursor: pointer !important;
-      transition: all 0.35s ease-in-out !important;
+      transition: all 0.1s ease-in-out !important;
       font-size: 0.87em !important;
-      border-radius: 11px !important;
+      //   border-radius: 11px !important;
 
       &:hover {
-         background-color: var(--background-tertiary) !important;
-         color: $main-color-dark !important;
+         background-color: var(--background-500) !important;
+         color: rgb(var(--color-main), 0.7) !important;
       }
 
       &--is-focused {
@@ -212,7 +212,7 @@
          background-color: transparent !important;
 
          &:hover {
-            background-color: var(--background-tertiary) !important;
+            background-color: var(--background-500) !important;
          }
 
          &::after {
@@ -222,7 +222,7 @@
             //  top: 10px;
             right: 20px;
             padding: 4px;
-            background-color: $main-color-dark;
+            background-color: rgb(var(--color-main), 0.7);
             color: $white;
             border-radius: 50%;
             font-weight: 600;
@@ -242,7 +242,7 @@
 
       &:hover,
       &--menu-is-open {
-         //  border-color: var(--background-primary) !important;
+         //  border-color: var(--background-100) !important;
       }
    }
 }

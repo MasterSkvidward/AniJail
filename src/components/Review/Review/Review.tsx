@@ -6,12 +6,14 @@ import classes from "./Review.module.scss";
 
 import { AiTwotoneLike, AiTwotoneDislike } from "react-icons/ai";
 import ContentLoader from "react-content-loader";
+import { Link } from "react-router-dom";
 
 interface ReviewProps {
    review: IAnimeReview | null;
+   showFull?: boolean;
 }
 
-const Review: FC<ReviewProps> = ({ review }) => {
+const Review: FC<ReviewProps> = ({ review, showFull = false }) => {
    const [likeCount, setLikeCount] = useState<number>(0);
    const [dislikeCount, setDislikeCount] = useState<number>(0);
    const [userVote, setUserVote] = useState<"like" | "dislike" | "">("");
@@ -64,7 +66,7 @@ const Review: FC<ReviewProps> = ({ review }) => {
          <ContentLoader
             speed={2}
             className={classes["skeleton"]}
-            foregroundColor="var(--background-secondary)"
+            foregroundColor="var(--background-300)"
             backgroundColor="var(--background-skeleton)"
          >
             <rect x="0" y="0" rx="2" ry="2" width="563" height="425" />
@@ -72,15 +74,23 @@ const Review: FC<ReviewProps> = ({ review }) => {
          </ContentLoader>
       );
 
+   const reviewClasses = [classes.review, classes[getScoreColor(review.score)]];
+   if (showFull) reviewClasses.push(classes.review_full);
+
    return (
-      <div className={[classes.review, classes[getScoreColor(review.score)]].join(" ")}>
+      <div className={reviewClasses.join(" ")}>
          <div className={classes["review__header"]}>
             <div className={[classes["review__user"], classes["user"]].join(" ")}>
-               <div className={classes["user__image"]}>
-                  <img src={review.user.images.jpg.image_url || ""} alt="" />
-               </div>
+               <Link to={"/user/1"}>
+                  <div className={classes["user__image"]}>
+                     <img src={review.user.images.jpg.image_url || ""} alt="" />
+                  </div>
+               </Link>
+
                <div className={classes["user__body"]}>
-                  <span className={classes["user__name"]}>{review.user.username}</span>
+                  <Link to={"/user/1"}>
+                     <span className={classes["user__name"]}>{review.user.username}</span>
+                  </Link>
                   <span className={classes["user__reviews-amount"]}>24 reviews</span>
                </div>
             </div>
@@ -88,8 +98,8 @@ const Review: FC<ReviewProps> = ({ review }) => {
          </div>
          <div className={classes["review__body"]}>
             <h4 className={classes["review__tag"]}>{review.tags.join(", ")}</h4>
-            <p>{getShortenedString(review.review, 400)}</p>
-            <button className={classes["review__show-more"]}>Show full review</button>
+            <p>{showFull ? review.review : getShortenedString(review.review, 400)}</p>
+            <p className={classes["review__show-more"]}>Show full review</p>
          </div>
          <div className={classes["review__footer"]}>
             <div></div>

@@ -10,13 +10,15 @@ import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import ContentLoader from "react-content-loader";
 
 const AnimeCharacters = () => {
-   const { animeCharactersLoading, animeCharacters, animeCharactersError, animeSingleLoading, animeSearchLoading } = useTypedSelector((state) => state.anime);
+   const { animeCharactersLoading, animeCharacters, animeCharactersError, animeSingleLoading, animeSearchLoading } =
+      useTypedSelector((state) => state.anime);
 
-//    console.log(animeCharacters.length, animeCharactersLoading, animeCharactersError, animeSingleLoading, animeSearchLoading);
-   
-//    if (animeCharacters.length === 0 && !animeCharactersLoading && !animeCharactersError && !animeSingleLoading && !animeSearchLoading) return <></>;
-//    console.log("rendered");
-   
+   //    console.log(animeCharacters.length, animeCharactersLoading, animeCharactersError, animeSingleLoading, animeSearchLoading);
+
+   //    if (animeCharacters.length === 0 && !animeCharactersLoading && !animeCharactersError && !animeSingleLoading && !animeSearchLoading) return <></>;
+   //    console.log("rendered");
+
+   if (!animeCharacters) return <></>;
 
    return (
       <div className={classes["characters"]}>
@@ -28,7 +30,7 @@ const AnimeCharacters = () => {
                      ? charactersCarouseIOptions
                      : {
                           ...charactersCarouseIOptions,
-                         ...limitedOptions
+                          ...limitedOptions,
                        }
                }
                arrowTop={40}
@@ -44,7 +46,7 @@ const AnimeCharacters = () => {
                           key={index}
                           speed={2}
                           className={classes["skeleton"]}
-                          foregroundColor="var(--background-secondary)"
+                          foregroundColor="var(--background-300)"
                           backgroundColor="var(--background-skeleton)"
                        >
                           <rect x="0" y="0" rx="2" ry="2" width="121" height="188" />

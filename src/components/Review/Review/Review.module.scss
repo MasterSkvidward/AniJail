@@ -18,7 +18,13 @@
    flex-direction: column;
    row-gap: 20px;
 
-   height: 425px;
+   //    height: 425px;
+   height: 100%;
+   max-height: 425px;
+
+   &_full {
+      max-height: fit-content;
+   }
 
    &__header {
       display: flex;
@@ -27,40 +33,43 @@
       align-items: baseline;
       border-bottom: 1px solid rgba(115, 115, 115, 0.3);
 
-      padding: 20px 35px 17px;
+      padding: 20px 20px 17px;
    }
 
    &__date {
       align-self: flex-start;
       margin-top: 11px;
-      color: $black-light;
+      color: $black-300;
+      font-size: 0.88em;
    }
 
    &__tag {
       font-weight: 600;
-      font-size: 1.16em;
+      font-size: 1.24em;
       margin-bottom: 13px;
    }
 
    &__body {
       line-height: 140%;
-      font-size: 0.92em;
-      padding: 0px 35px;
+      font-size: 0.85em;
+      padding: 0px 20px;
    }
 
    &__show-more {
-      padding: 6px 10px;
+      //   padding: 6px 10px;
       border-radius: 11px;
-      background-color: rgba(211, 211, 211, 0.795);
-      box-shadow: 0px 1px 6px 1px rgba(48, 48, 48, 0.132);
+      //   background-color: rgba(211, 211, 211, 0.795);
+      //   box-shadow: 0px 1px 6px 1px rgba(48, 48, 48, 0.132);
       cursor: pointer;
       margin-top: 18px;
+      color: rgb(var(--color-main));
+      color: rgb(12, 18, 96);
    }
 
    &__footer {
       // justify-content: flex-end;
 
-      padding: 00px 35px 20px;
+      padding: 0px 20px 20px;
    }
 
    &__buttons {
@@ -81,6 +90,7 @@
       border-radius: 17px;
       background-color: rgba(214, 214, 214, 0.7);
       box-shadow: 0px 1px 6px 1px rgba(12, 12, 12, 0.132);
+      //   box-shadow: var(--box-shadow-primary);
       cursor: pointer;
 
       transition: all 0.15s ease-in;
@@ -89,9 +99,9 @@
 
       &:hover {
          background-color: rgba(188, 186, 186, 0.7);
-         -webkit-transform: scale(1.2);
-         -ms-transform: scale(1.05);
-         transform: scale(1.05);
+         -webkit-transform: scale(1.04);
+         -ms-transform: scale(1.04);
+         transform: scale(1.04);
       }
 
       &_green {
@@ -122,6 +132,12 @@
       overflow: hidden;
       border-radius: 50%;
 
+      cursor: pointer;
+
+      &:hover {
+         opacity: 0.9;
+      }
+
       img {
          width: 100%;
          height: 100%;
@@ -139,28 +155,33 @@
       font-weight: 600;
       font-size: 1.15em;
       margin-top: 7px;
+
+      cursor: pointer;
+      &:hover {
+         opacity: 0.8;
+      }
    }
 
    &__reviews-amount {
-      color: $black-light;
+      color: $black-300;
       font-size: 0.9em;
    }
 }
 
 .green {
-   background-color: rgba(207, 238, 202, 0.9);
+   background-color: var(--color-positive);
 }
 
 .light-green {
-   background-color: rgba(207, 238, 202, 0.9);
+   background-color: var(--color-positive);
 }
 
 .grey {
-   background-color: rgba(220, 219, 219, 0.9);
+   background-color: var(--color-neutral);
 }
 
 .red {
-   background-color: rgba(238, 185, 185, 0.9);
+   background-color: var(--color-negative);
 }
 
 .clicked {

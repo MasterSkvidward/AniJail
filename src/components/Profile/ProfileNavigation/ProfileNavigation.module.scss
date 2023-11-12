@@ -1,6 +1,5 @@
-
 .navbar {
-   background-color: var(--background-secondary);
+   background-color: var(--background-300);
    padding: 15px 0;
 
    &__container {
@@ -20,7 +19,7 @@
       transition: color 0.2s ease-in-out;
 
       &:hover {
-         color: var(--main-color);
+         color: rgb(var(--color-main));
       }
 
       &:visited {
@@ -28,7 +27,7 @@
       }
 
       &_active {
-         color: var(--main-color);
+         color: rgb(var(--color-main));
       }
    }
 }

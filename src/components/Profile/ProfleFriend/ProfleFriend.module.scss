@@ -1,0 +1,31 @@
+$size: 230px;
+
+.friend {
+   display: flex;
+   column-gap: 10px;
+   align-items: center;
+
+   &__image {
+      overflow: hidden;
+      border-radius: 50%;
+      width: calc($size * 0.35);
+      height: calc($size * 0.35);
+      cursor: pointer;
+
+      img {
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+      }
+   }
+
+   &__body {
+      cursor: pointer;
+      transition: color 0.14s ease-in;
+      font-size: 0.93em;
+
+      &:hover {
+         color: rgb(var(--color-main));
+      }
+   }
+}

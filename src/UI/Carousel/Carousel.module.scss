@@ -1,87 +1,87 @@
 @import "../../styles/colors";
 
-
-
 .carousel {
-    // display: flex;
-    // column-gap: 50px;
-    // position: relative;
-    // z-index: 5;
+   // display: flex;
+   // column-gap: 50px;
+   // position: relative;
+   // z-index: 5;
 
+   position: relative;
+   width: 100%;
 
-    position: relative;
-    width: 100%;
+   &:active {
+      cursor: grab;
+   }
 
-    
-    &:active {
-        cursor: grab;
-    }
+   &:hover > div > button {
+      opacity: 0.9;
+   }
 
-    & > div > button:nth-child(1) {
-        left: 0;
-    }
+   & > div > button:nth-child(1) {
+      left: 0;
+   }
 
-    & > div > button:nth-child(2) {
-        right: 0;
-    }
+   & > div > button:nth-child(2) {
+      right: 0;
+   }
 
-    & > div > button {
-   
-        opacity: 0.8;
-        background-color: rgba(0, 0, 0, 0.8);
-        border-radius: 50%;
-        padding: 6px;
-        width: 34px;
-        height: 34px;
-       
-        &:hover, &:focus {
-            fill: rgb(215, 83, 138);
-        }
+   & > div > button {
+      opacity: 0.8;
+      background-color: rgba(0, 0, 0, 0.8);
+      border-radius: 50%;
+      padding: 6px;
+      width: 34px;
+      height: 34px;
+      opacity: 0;
+      transition: opacity 0.2s ease-in-out;
+      //   visibility: hidden;
+      &:hover,
+      &:focus {
+        //  fill: rgb(215, 83, 138);
+         fill: rgb(var(--color-main));
+      }
 
-        & > svg {
-            fill: $main-color-dark;
-            opacity: 0.9;
-        }
-    }
+      & > svg {
+         fill: rgb(var(--color-main));
+         opacity: 0.9;
+      }
+   }
 
-    & > ul > li > button {
-        color: $main-color-dark;
-    }
+   & > ul > li > button {
+      color: rgb(var(--color-main));
+   }
 
+   &__pagination {
+      position: absolute;
+      bottom: -40px;
 
-    &__pagination {
-        position: absolute;
-        bottom: -40px;
+      button {
+         padding: 6px;
+      }
 
-        button {
-            padding: 6px;
-        }
-
-        button[aria-selected="true"] {
-            background-color: $main-color-dark;
-        }
-    }
+      button[aria-selected="true"] {
+         background-color: rgb(var(--color-main));
+      }
+   }
 }
 
-
 .big {
-    & > div > button {
-        width: 41px;
-        height: 41px;
-    }
+   & > div > button {
+      width: 41px;
+      height: 41px;
+   }
 }
 
 .medium {
-    & > div > button {
-        width: 34px;
-        height: 34px;
-    }
+   & > div > button {
+      width: 34px;
+      height: 34px;
+   }
 }
 
 .small {
-    & > div > button {
-        width: 30px;
-        height: 30px;
-    }
+   & > div > button {
+      width: 30px;
+      height: 30px;
+   }
 }
-

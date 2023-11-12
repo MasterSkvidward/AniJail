@@ -19,6 +19,7 @@ import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import ContentLoader from "react-content-loader";
 
 import banner from "../../../assets/images/anime-voice.jpg";
+import AnimeScore from "../AnimeScore/AnimeScore";
 // interface AnimeCardProps {
 //   anime: IAnime | null;
 //   // animePictures: IAnimePicture[] | []
@@ -27,8 +28,6 @@ import banner from "../../../assets/images/anime-voice.jpg";
 const AnimeCard: FC = () => {
    const [animeColor, setAnimeColor] = useState<string>("");
    const [modalVisible, setModalVisible] = useState(false);
-   const [ratingVisible, setRatingVisible] = useState(false);
-   const [userRating, setUserRating] = useState<number>(7);
 
    const { animeSingle: anime, animeSingleLoading, animeSingleError } = useTypedSelector((state) => state.anime);
 
@@ -45,22 +44,9 @@ const AnimeCard: FC = () => {
       setAnimeColor(formatColor(color.toString()));
    };
 
-   const handlerDocumentClick = (e: Event): void => {
-      setRatingVisible(false);
-   };
-
-   const handlerRateClick = (e: MouseEvent): void => {
-      setRatingVisible(!ratingVisible);
-      e.stopPropagation();
-   };
-
    useEffect(() => {
       getAnimeColor();
-      document.addEventListener("click", handlerDocumentClick);
-      return () => document.removeEventListener("click", handlerDocumentClick);
    }, []);
-
-   //    if (!anime) return <></>;
 
    return (
       <section className={classes["anime-card"]}>
@@ -76,7 +62,7 @@ const AnimeCard: FC = () => {
                <ContentLoader
                   speed={2}
                   className={classes["skeleton__background-image"]}
-                  foregroundColor="var(--background-secondary)"
+                  foregroundColor="var(--background-300)"
                   backgroundColor="var(--background-skeleton)"
                >
                   <rect x="0" y="0" rx="2" ry="2" width="100%" height="500" />
@@ -95,7 +81,7 @@ const AnimeCard: FC = () => {
                      <ContentLoader
                         speed={2}
                         className={classes["skeleton__image"]}
-                        foregroundColor="var(--background-secondary)"
+                        foregroundColor="var(--background-300)"
                         backgroundColor="var(--background-skeleton)"
                      >
                         <rect x="0" y="0" rx="2" ry="2" width="500" height="500" />
@@ -112,42 +98,7 @@ const AnimeCard: FC = () => {
                </div>
 
                {anime ? (
-                  <div className={classes["anime-card__score"]}>
-                     <div className={classes["anime-card__numbers"]}>
-                        {anime?.score ? <Score score={anime?.score} /> : <span className={classes["score"]}>No scores</span>}
-
-                        <span className={classes["scoredBy"]}>{`Scored by:   ${splitNumberByThree(
-                           anime?.scored_by || 0
-                        )}`}</span>
-                     </div>
-
-                     <div className={classes["rate"]} onClick={handlerRateClick}>
-                        <div className={classes["rate__btn"]}>
-                           <span>{userRating ? "Change score" : "Rate"}</span>
-                           {userRating !== 0 && (
-                              <span className={classes[getScoreColor(userRating || 0)]}>
-                                 <AiFillStar />
-                                 {userRating}
-                              </span>
-                           )}
-                        </div>
-                        {/* <MyButton value='Rate'/> */}
-                        <div
-                           className={
-                              ratingVisible ? [classes["rate__block"], classes["active"]].join(" ") : classes["rate__block"]
-                           }
-                        >
-                           <div className={classes["rate__body"]}>
-                              <MyRating
-                                 userRating={userRating}
-                                 setUserRating={setUserRating}
-                                 setRatingVisible={setRatingVisible}
-                                 maxWidth={400}
-                              />
-                           </div>
-                        </div>
-                     </div>
-                  </div>
+                  <AnimeScore score={anime?.score} scoredBy={anime?.scored_by} rank={anime.rank} />
                ) : (
                   <ContentLoader
                      speed={2}

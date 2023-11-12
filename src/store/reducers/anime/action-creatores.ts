@@ -37,8 +37,6 @@ export const AnimeActionCreators = {
                type: AnimeActionsEnum.GET_ANIME_SINGLE,
                payload: response,
             });
-            console.log(response);
-            
          } catch (e: any) {
             dispatch(AnimeActionCreators.setAnimeSingleError(e));
             if (e.response && e.response.status === 429) {
@@ -180,6 +178,7 @@ export const AnimeActionCreators = {
             console.log("fetch AnimeCharacters");
             dispatch(AnimeActionCreators.setAnimeCharactersLoading(true));
             const response = await AnimeService.getAnimeCharacters(id);
+
             dispatch({
                type: AnimeActionsEnum.GET_ANIME_CHARACTERS,
                payload: response,
@@ -220,7 +219,7 @@ export const AnimeActionCreators = {
             const response = await AnimeService.getAnimeReviews(id, params);
             dispatch({
                type: AnimeActionsEnum.GET_ANIME_REVIEWS,
-               payload: response,
+               payload: response || [],
             });
          } catch (e: any) {
             dispatch(AnimeActionCreators.setAnimeReviewsError(e.message));
@@ -235,42 +234,41 @@ export const AnimeActionCreators = {
          }
       },
 
-      setAnimeEpisodeLoading: (flag: boolean): AnimeAction => ({
-        type: AnimeActionsEnum.SET_ANIME_EPISODE_LOADING,
-        payload: flag,
-     }),
-  
-     setAnimeEpisodeError: (error: string): AnimeAction => ({
-        type: AnimeActionsEnum.SET_ANIME_EPISODE_ERROR,
-        payload: error,
-     }),
-  
-     GetAnimeEpisode:
-        (url: string, server = "gogocdn"): any =>
-        async (dispatch: AppDispatch) => {
-           //  let debounce = useDebounce(() => dispatch(AnimeActionCreators.GetAnimeReviews(id, params)), 1500);
-           try {
-              console.log("fetch AnimeEpisode");
-              dispatch(AnimeActionCreators.setAnimeEpisodeLoading(true));
-              const response = await AnimeService.getAnimeEpisodeUrl(url, server);
-              console.log(url, server);
-              console.log(response);
-              
-              
-              dispatch({
-                 type: AnimeActionsEnum.GET_ANIME_EPISODE,
-                 payload: response,
-              });
-           } catch (e: any) {
-              dispatch(AnimeActionCreators.setAnimeEpisodeError(e.message));
-              if (e.response && e.response.status === 429) {
-                 setTimeout(() => {
-                    dispatch(AnimeActionCreators.GetAnimeEpisode(url, server));
-                    dispatch(AnimeActionCreators.setAnimeEpisodeError(""));
-                 }, 1000);
-              }
-           } finally {
-              dispatch(AnimeActionCreators.setAnimeEpisodeLoading(false));
-           }
-        },
+   setAnimeEpisodeLoading: (flag: boolean): AnimeAction => ({
+      type: AnimeActionsEnum.SET_ANIME_EPISODE_LOADING,
+      payload: flag,
+   }),
+
+   setAnimeEpisodeError: (error: string): AnimeAction => ({
+      type: AnimeActionsEnum.SET_ANIME_EPISODE_ERROR,
+      payload: error,
+   }),
+
+   GetAnimeEpisode:
+      (url: string, server = "gogocdn"): any =>
+      async (dispatch: AppDispatch) => {
+         //  let debounce = useDebounce(() => dispatch(AnimeActionCreators.GetAnimeReviews(id, params)), 1500);
+         try {
+            console.log("fetch AnimeEpisode");
+            dispatch(AnimeActionCreators.setAnimeEpisodeLoading(true));
+            const response = await AnimeService.getAnimeEpisodeUrl(url, server);
+            // console.log(url, server);
+            // console.log(response);
+
+            dispatch({
+               type: AnimeActionsEnum.GET_ANIME_EPISODE,
+               payload: response,
+            });
+         } catch (e: any) {
+            dispatch(AnimeActionCreators.setAnimeEpisodeError(e.message));
+            if (e.response && e.response.status === 429) {
+               setTimeout(() => {
+                  dispatch(AnimeActionCreators.GetAnimeEpisode(url, server));
+                  dispatch(AnimeActionCreators.setAnimeEpisodeError(""));
+               }, 1000);
+            }
+         } finally {
+            dispatch(AnimeActionCreators.setAnimeEpisodeLoading(false));
+         }
+      },
 };

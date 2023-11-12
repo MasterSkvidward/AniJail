@@ -1,0 +1,17 @@
+.tag {
+    padding: 4px 10px;
+    background-color: rgba(var(--color-main), 0.9);
+    border-radius: 12px;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.9em;
+    color: var(--text-primary);
+
+    transition: background-color 0.11s ease-in-out;
+
+    &:hover {
+        background-color: rgba(var(--color-main), 0.55);
+    }
+}

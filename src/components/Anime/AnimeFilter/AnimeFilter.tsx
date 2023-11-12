@@ -19,6 +19,7 @@ import MyInput from "../../../UI/MyInput/MyInput";
 import { AiOutlineSearch } from "react-icons/ai";
 import { GrFormClose } from "react-icons/gr";
 import { defaultFilterParams } from "../../../store/reducers/filter/filterReducer";
+import { useNavigate } from "react-router-dom";
 
 let tempParams: IAnimeSearchParams = defaultFilterParams;
 
@@ -29,6 +30,7 @@ const AnimeFilter = memo(() => {
    const [value, setValue] = useState<string>(tempParams.q || "");
    //    const debouncedParams = useDebounce(setParams, 300);
    const debouncedSearch = useDebounce(searchAnime, 400);
+   const navigate = useNavigate();
 
    const animatedComponents = makeAnimated();
 
@@ -42,6 +44,7 @@ const AnimeFilter = memo(() => {
    //    }
 
    const handlerClickClear = () => {
+      navigate("/anime");
       tempParams = defaultFilterParams;
       dispatch(FilterActionCreators.clearFilterParams());
       if (yearFrom.current) yearFrom.current.value = "";
@@ -53,11 +56,13 @@ const AnimeFilter = memo(() => {
    };
 
    const handleClearSearch = () => {
+      navigate("/anime");
       setValue("");
       debouncedSearch("");
    };
 
    const handlerSelectSingleChange = (option: SingleValue<IFilterOption>, paramValue: string): void => {
+      navigate("/anime");
       let value = option ? option.value : "";
       let obj = { [paramValue]: value };
 
@@ -73,8 +78,9 @@ const AnimeFilter = memo(() => {
    };
 
    const handlerSelectMultiChange = (options: MultiValue<IFilterOption>, paramValue: string, context: any): void => {
+      navigate("/anime");
       let obj = { [paramValue]: formatFilterValues(options) };
-      console.log(obj);
+    //   console.log(obj);
 
       tempParams = { ...tempParams, ...obj };
       //   tempParams = deleteEmptyProperties(tempParams);
@@ -102,8 +108,10 @@ const AnimeFilter = memo(() => {
    };
 
    const handleSearch = (e: ChangeEvent<HTMLInputElement>): void => {
+      navigate("/anime");
+
       setValue(e.target.value);
-      debouncedSearch(value);
+      debouncedSearch(e.target.value);
    };
 
    //    function handlerChange(e: ChangeEvent<HTMLInputElement>, paramValue: string, defaultValue: number = 0) {
@@ -128,9 +136,20 @@ const AnimeFilter = memo(() => {
    useEffect(() => {
       document.addEventListener("click", handlerDocumentClick);
       tempParams = { ...params };
+      setValue(tempParams.q || "");
       //   setValue(params.q || "");
       return () => document.removeEventListener("click", handlerDocumentClick);
    }, []);
+
+   useEffect(() => {
+    //   console.log("---------------");
+
+    //   console.log(params);
+    //   console.log(tempParams);
+
+      if (JSON.stringify(params) !== JSON.stringify(tempParams)) tempParams = { ...params };
+      if (!tempParams.q) setValue("");
+   }, [params]);
 
    return (
       <div className={classes["filter"]}>

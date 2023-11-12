@@ -2,7 +2,7 @@
 
 .search {
    position: relative;
-   background-color: var(--background-primary);
+   background-color: var(--background-100);
    display: flex;
    border-radius: 9px;
 
@@ -33,10 +33,10 @@
 
    &__list {
       // background-color: rgba(31,31,31, 1);
-      background-color: var(--background-secondary);
+      background-color: var(--background-300);
       box-shadow: var(--box-shadow-primary);
       // box-shadow: 0 14px 28px rgba(0,0,0,0.45), 0 10px 10px rgba(0,0,0,0.22);
-    //   box-shadow: -1px 5px 21px 3px rgb(24, 24, 24);
+      //   box-shadow: -1px 5px 21px 3px rgb(24, 24, 24);
       // background-color: rgba(255, 255, 255, 1);
       // color: rgba(0, 0, 0, 1);
       display: none;

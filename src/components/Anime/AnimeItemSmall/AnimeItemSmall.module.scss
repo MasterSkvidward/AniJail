@@ -17,7 +17,6 @@ $height: 319px;
 
    &:hover {
       background-color: var(--hover-primary);
-      transform: scale(100%);
    }
 }
 
@@ -104,7 +103,7 @@ $height: 319px;
    }
 
    &__genre {
-      color: $red;
+      color: rgb(var(--color-main));
 
       &:not(:last-child)::after {
          content: ",";

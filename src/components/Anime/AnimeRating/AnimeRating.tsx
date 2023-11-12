@@ -46,7 +46,7 @@ const AnimeRating: FC<AnimeRatingProps> = ({ score, scoredBy }) => {
                <ContentLoader
                   speed={2}
                   className={classes["skeleton"]}
-                  foregroundColor="var(--background-secondary)"
+                  foregroundColor="var(--background-300)"
                   backgroundColor="var(--background-skeleton)"
                >
                   <rect x="0" y="0" rx="2" ry="2" width="600" height="60" />

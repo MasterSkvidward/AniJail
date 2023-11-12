@@ -7,6 +7,7 @@ import { AnimeActionCreators } from "../../store/reducers/anime/action-creatores
 import { IAnimeSearchParams } from "../../types/jikanMoe/jikan";
 import FAQ from "../../components/FAQ/FAQ,";
 import AnimePromo from "../../components/Anime/AnimePromo/AnimePromo";
+import CarouselBig from "../../components/Carousel/CarouselBig/CarouselBig";
 
 const HomePage: FC = () => {
    const dispatch = useDispatch();
@@ -22,6 +23,7 @@ const HomePage: FC = () => {
 
    return (
       <div className={classes.homepage}>
+         <CarouselBig />
          <CarouselBlock />
          <AnimePromo />
          <FAQ />

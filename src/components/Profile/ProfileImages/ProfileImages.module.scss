@@ -10,6 +10,11 @@ $bannerHeight: 330px;
    flex-direction: column;
    row-gap: 80px;
 
+   background-color: var(--background-300);
+   box-shadow: var(--box-shadow-primary);
+   border-radius: 7px;
+   padding: 30px 35px;
+
    &__title {
       font-size: 1.2em;
       font-weight: 600;
@@ -17,7 +22,7 @@ $bannerHeight: 330px;
 
    &__label {
       color: var(--text-secondary);
-      font-size: 0.85em;
+      font-size: 0.82em;
       margin-bottom: 10px;
    }
 }

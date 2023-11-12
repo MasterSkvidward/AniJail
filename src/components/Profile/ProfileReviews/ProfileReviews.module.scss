@@ -1,3 +1,17 @@
 .reviews {
+   padding-top: 60px;
+
+   &__container {
     
+   
+   }
+
+   &__column {
+      display: flex;
+      flex-direction: column;
+      row-gap: 100px;
+      align-items: center;
+      max-width: 1000px;
+      margin: 0 auto;
+   }
 }

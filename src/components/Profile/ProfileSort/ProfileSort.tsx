@@ -33,7 +33,7 @@ const ProfileSort = () => {
                {value && <GrFormClose onClick={() => setValue("")} />}
             </div> */}
 
-            <SearchInput value={value} setValue={setValue} placeholder="Filter by name"/>
+            <SearchInput value={value} setValue={setValue} placeholder="Filter by name" />
             <div className={classes["sort__switches"]}>
                {icons.map((icon, index) => (
                   <span
@@ -51,7 +51,7 @@ const ProfileSort = () => {
             </div>
          </div>
 
-         <AnimeWatchList view={currentView}/>
+         <AnimeWatchList view={currentView} />
       </div>
    );
 };

@@ -26,7 +26,7 @@ const ProfileForm: FC = () => {
       reset,
       resetField,
       formState: { errors, isValid, isSubmitted, isSubmitting },
-   } = useForm<ISignUpFormValues>({ mode: "onTouched" });
+   } = useForm<ISignUpFormValues>({ mode: "onSubmit" });
 
    const watchFields = watch(["nickname", "email", "password"]);
 
@@ -78,7 +78,7 @@ const ProfileForm: FC = () => {
                ></textarea>
             </div>
 
-            <ProfileSwitches />
+        
 
             <button className={classes["form__btn"]}>Save</button>
          </div>

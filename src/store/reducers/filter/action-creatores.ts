@@ -70,7 +70,7 @@ export const FilterActionCreators = {
       async (dispatch: AppDispatch) => {
          try {
             console.log("fetch addAnime");
-            console.log(params);
+    
             dispatch(FilterActionCreators.setIsLoading(true));
             const response = await AnimeService.getAnimeBySearch({
                ...params,

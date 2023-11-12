@@ -17,6 +17,12 @@ $height: 188px;
    row-gap: 10px;
 
    max-width: calc($width);
+   cursor: pointer;
+
+//    &:hover &__title {
+//         color: rgb(var(--color-main));
+//    }
+
 
    &__image {
       width: calc($width * 0.86);

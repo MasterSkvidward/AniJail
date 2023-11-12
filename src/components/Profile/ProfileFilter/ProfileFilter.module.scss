@@ -39,10 +39,10 @@
       }
 
       &_active {
-         background-color: var(--background-tertiary);
+         background-color: var(--background-500);
 
          &:hover {
-            background-color: var(--background-tertiary);
+            background-color: var(--background-500);
          }
       }
 
@@ -63,12 +63,12 @@
    }
 
    &__clear {
-    //   align-self: center;
-    align-self: stretch;
+      //   align-self: center;
+      align-self: stretch;
       margin-top: 20px;
 
       border-radius: 50px;
-      background-color: var(--main-color);
+      background-color: rgb(var(--color-main));
       padding: 11px 20px;
 
       color: var(--text-primary);

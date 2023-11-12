@@ -9,7 +9,7 @@ import AnimeSidebar from "../../components/Anime/AnimeSidebar/AnimeSidebar";
 import { AnimeActionCreators } from "../../store/reducers/anime/action-creatores";
 import { FilterActionCreators } from "../../store/reducers/filter/action-creatores";
 
-const Anime = () => {
+const AnimePage = () => {
    useEffect(() => {
       window.scrollTo(0, 0);
    }, []);
@@ -21,4 +21,4 @@ const Anime = () => {
    );
 };
 
-export default Anime;
+export default AnimePage;

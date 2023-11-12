@@ -2,47 +2,52 @@ $width: 225px;
 $height: 318px;
 
 .skeleton {
-    height: 282px;
+   height: 282px;
 }
 
 .anime {
-  &__body {
-    display: flex;
-    flex-direction: column;
-    row-gap: 10px;
-    // height: 100%;
-    border-radius: 7px;
-    cursor: pointer;
-  }
+   display: flex;
+   flex-direction: column;
+   row-gap: 10px;
+   // height: 100%;
+   border-radius: 7px;
+   cursor: pointer;
 
-  &__image {
-    width: calc($width * 0.81);
-    height: calc($height * 0.81);
+   &:hover &__title {
+      color: rgb(var(--color-main));
+   }
 
-    background-color: var(--background-tertiary);
-    border-radius: 14px;
-    border: 0.5px solid rgba(255, 255, 255, 0.1);
-    overflow: hidden;
-    // max-width: 188px;
-    // width: inherit;
-    transition: 0.2s ease-in-out;
+   &__image {
+      width: calc($width * 0.81);
+      height: calc($height * 0.81);
 
-    img {
-      // border-radius: 13px;
-    }
+      background-color: var(--background-500);
+      border-radius: 14px;
+      border: 0.5px solid rgba(255, 255, 255, 0.1);
+      overflow: hidden;
+      // max-width: 188px;
+      // width: inherit;
+      transition: 0.2s ease-in-out;
 
-    &:hover {
-      opacity: 0.83;
-    }
-  }
+      img {
+         // border-radius: 13px;
+      }
 
-  &__title {
-    overflow-wrap: break-word;
-    font-weight: 600;
-    opacity: 0.92;
-    transition: 0.2s;
-    cursor: pointer;
-    font-size: 0.94em;
-    max-width: calc($width * 0.81);
-  }
+      &:hover {
+         opacity: 0.83;
+      }
+   }
+
+   &__title {
+      overflow-wrap: break-word;
+      font-weight: 600;
+      opacity: 0.92;
+      transition: 0.2s;
+      cursor: pointer;
+      font-size: 0.9em;
+      max-width: calc($width * 0.81);
+      padding-bottom: 2px;
+
+      transition: color 0.15s ease-in-out;
+   }
 }

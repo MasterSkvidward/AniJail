@@ -4,10 +4,10 @@ $width: 300px;
 $height: 300px;
 
 .profile {
-//    &__container {
-//       display: flex;
-//       flex-direction: column;
-//    }
+   //    &__container {
+   //       display: flex;
+   //       flex-direction: column;
+   //    }
 
    &__container-block {
       display: flex;
@@ -33,6 +33,7 @@ $height: 300px;
       position: relative;
       user-select: none;
       overflow: hidden;
+      border-radius: 5px;
       // height: 100%;
       width: 150px;
       height: 150px;
@@ -78,7 +79,7 @@ $height: 300px;
 //     align-items: flex-start;
 //     column-gap: 55px;
 //     padding: 60px 0px 0px 0px;
-//     background-color: var(--background-primary);
+//     background-color: var(--background-100);
 //   }
 //   &__media {
 //   }

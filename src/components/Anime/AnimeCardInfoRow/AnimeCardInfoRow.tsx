@@ -47,11 +47,13 @@ const AnimeCardInfoRow: FC<rowType> = ({ label, value, type, isLink }) => {
                      )
                   ) : (
                      <div className={classes["row__value-list"]}>
-                        {formatGenres(value).slice(0, 5).map((genre, index) => (
-                           // <span className={classes.row__genre} key={index} onClick={(e) => handleGenreClick(e, genre)}>
-                           <Link to="/anime" onClick={(e) => handleGenreClick(e, genre)} key={index}>{`${genre}`}</Link>
-                           // </span>
-                        ))}
+                        {formatGenres(value)
+                           .slice(0, 5)
+                           .map((genre, index) => (
+                              // <span className={classes.row__genre} key={index} onClick={(e) => handleGenreClick(e, genre)}>
+                              <Link to="/anime" onClick={(e) => handleGenreClick(e, genre)} key={index}>{`${genre}`}</Link>
+                              // </span>
+                           ))}
                      </div>
                   )
                ) : (
@@ -62,7 +64,7 @@ const AnimeCardInfoRow: FC<rowType> = ({ label, value, type, isLink }) => {
             <ContentLoader
                speed={2}
                className={classes["skeleton"]}
-               foregroundColor="var(--background-secondary)"
+               foregroundColor="var(--background-300)"
                backgroundColor="var(--background-skeleton)"
             >
                <rect x="0" y="0" rx="2" ry="2" width="160" height="20" />

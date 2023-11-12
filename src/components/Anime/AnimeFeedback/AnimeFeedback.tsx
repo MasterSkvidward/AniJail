@@ -23,19 +23,19 @@ const AnimeFeedback = () => {
 
    return (
       <div className={classes.anime}>
-         <div className={classes["anime__recommendations"]}>
-            <div className={[classes["reviews__container"], "_container-main"].join(" ")}>
+         <div className={classes["recommendations"]}>
+            <div className={[classes["recommendations__container"], "_container-main"].join(" ")}>
                <AnimeRecommendations />
             </div>
          </div>
 
-         <div className={classes["anime__reviews"]}>
+         <div className={classes["reviews"]}>
             <div className={[classes["reviews__container"], "_container-main"].join(" ")}>
                <ReviewCarousel reviews={animeReviews} />
             </div>
          </div>
 
-         <div className={classes["anime__comments"]}>
+         <div className={classes["comments"]}>
             <div className={[classes["comments__container"], "_container-main"].join(" ")}>
                <Comments />
             </div>

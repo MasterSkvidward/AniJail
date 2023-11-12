@@ -8,6 +8,7 @@ const ProfileNavigation = () => {
       { title: "AnimeList", path: "/user/1/watchlist" },
       { title: "Activity", path: "/user/1/activity" },
       { title: "Stats", path: "/user/1/stats" },
+      { title: "Favourites", path: "/user/1/favourites" },
       { title: "Friends", path: "/user/1/friends" },
       { title: "Reviews", path: "/user/1/reviews" },
       { title: "Settings", path: "/user/1/settings" },

@@ -8,13 +8,15 @@ $black: rgba(0, 0, 0, 1);
 //! general colors
 
 $main-color: rgb(254, 0, 57);
-$main-color-dark: rgb(221, 78, 78);
+// $main-color-dark: rgb(221, 78, 78);
 
 //! new color system
 
 $black-default: rgb(0, 0, 0);
-$black-light: rgb(37, 37, 37);
-$black-dark: rgb(24, 24, 24);
+$black-100: rgb(24, 24, 24);
+$black-300: rgb(37, 37, 37);
+
+
 $black-coal: rgba(21, 21, 21, 0.9);
 
 $blue: rgba(103, 132, 187, 0.1);
@@ -63,15 +65,36 @@ $box-shadow-neu-light: 6px 6px 22px #7a797c, -6px -6px 22px #ffffff;
 $box-shadow-neu-dark: 13px 13px 26px #2a2a2a, -13px -13px 26px #424242;
 
 html {
-   --main-color: #{$main-color};
+   --color-blue-600: rgb(35, 159, 191);
+   --color-blue-800: rgb(80, 134, 221);
+   --color-blue-900: rgb(18, 95, 114);
+
+   --color-green-600: rgb(202, 233, 98);
+   --color-green-900: rgb(11, 103, 10);
+
+   --color-grey-600: rgb(72, 72, 72);
+   --color-grey-900: rgb(43, 43, 43);
+
+   --color-neutral: rgba(214, 233, 246, 0.9);
+   --color-negative: rgba(238, 185, 185, 0.9);
+
+   --color-main: 254, 0, 57;
+
+   //    --color-main-dark: rgb(221, 78, 78);
+   //    --color-main: rgb(80, 134, 221);
+
+   --color-positive: rgba(207, 238, 202, 0.9);
+
+   --color-red-600: rgb(186, 29, 29);
+   --color-red-900: rgb(134, 21, 21);
 }
 
 html[data-theme="light"] {
-   --background-primary: #{$pearl};
-   //   --background-secondary: #{$white-snow};
-   --background-secondary: #{$white-default};
-   --background-tertiary: #{$grey};
-   --background-reverse: #{$black-dark};
+   --background-100: #{$pearl};
+   //   --background-300: #{$white-snow};
+   --background-300: #{$white-default};
+   --background-500: #{$grey};
+   --background-reverse: #{$black-100};
    --background-skeleton: #{$skeleton-light};
 
    --border-primary: #{$grey-thin};
@@ -81,8 +104,8 @@ html[data-theme="light"] {
 
    --hover-primary: #{$white-light};
 
-   --text-primary: #{$black-light};
-   --text-secondary: #{$black-light};
+   --text-primary: #{$black-300};
+   --text-secondary: #{$black-300};
    --text-tertiary: #{$grey-medium};
    --text-reverse: #{$white};
 
@@ -95,9 +118,12 @@ html[data-theme="light"] {
 }
 
 html[data-theme="dark"] {
-   --background-primary: #{$black-dark};
-   --background-secondary: #{$black-light};
-   --background-tertiary: #{$grey-light};
+   --background-100: #{$black-100};
+   --background-200: rgb(28, 28, 28);
+   --background-300: #{$black-300};
+   --background-400: rgb(49, 49, 49);
+
+   --background-500: #{$grey-light};
    --background-reverse: #{$white-snow};
    --background-skeleton: #{$skeleton-dark};
 
@@ -111,7 +137,7 @@ html[data-theme="dark"] {
    --text-primary: #{$white};
    --text-secondary: #{$white-dark};
    --text-tertiary: #{$grey-medium};
-   --text-reverse: #{$black-light};
+   --text-reverse: #{$black-300};
 
    // --border-primary: #{$grey-dark};
    // --border-secondary: #{$border-thin-light};

@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
-import classes from './404.module.scss';
+import classes from './Error404Page.module.scss';
 
-const Error:FC = () => {
+const Error404Page:FC = () => {
     return (
        <div className={classes.error}>
            404
@@ -9,4 +9,4 @@ const Error:FC = () => {
     );
 }
 
-export default Error;
+export default Error404Page;

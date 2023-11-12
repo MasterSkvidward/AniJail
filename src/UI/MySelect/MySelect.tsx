@@ -11,16 +11,16 @@ import { AiOutlineSortAscending } from "react-icons/ai";
 import { AiOutlineSortDescending } from "react-icons/ai";
 import { useComponentDidMount } from "../../hooks/useComponentDidMount";
 
-interface MySelectProps {
+interface selectProps {
    options: ISelectOption[];
 }
 
-const MySelect: FC<MySelectProps> = memo(({ options }) => {
+const select: FC<selectProps> = memo(({ options }) => {
    const dispatch = useDispatch();
    const { selectedOptionNumber, params } = useTypedSelector((state) => state.filter);
    const [isVisible, setIsVisible] = useState<boolean>(false);
 
-   const MySelect = useRef<HTMLDivElement>(null);
+   const select = useRef<HTMLDivElement>(null);
 
    const handlerDocumentClick = (e: Event): void => {
       setIsVisible(false);
@@ -31,6 +31,8 @@ const MySelect: FC<MySelectProps> = memo(({ options }) => {
       setIsVisible(!isVisible);
       e.stopPropagation();
    };
+
+   //    const getSelectedOptionNumber = (params, )
 
    const handlerClickSort = () => {
       const param = params.sort === "desc" ? "asc" : "desc";
@@ -55,28 +57,27 @@ const MySelect: FC<MySelectProps> = memo(({ options }) => {
    }, []);
 
    return (
-      <div className={classes.MySelect} ref={MySelect}>
-         <div className={classes["MySelect__body"]} onClick={handlerButtonClick}>
-            <BsFilterLeft />
-            <button className={classes["MySelect__btn"]}>{options[selectedOptionNumber].name}</button>
-            <MdOutlineKeyboardArrowDown
+      <div className={classes.select} ref={select}>
+         <div className={classes["select__body"]}>
+            {/* <BsFilterLeft /> */}
+            <div className={classes["sortArrow"]} onClick={handlerClickSort}>
+               {params.sort === "desc" ? <AiOutlineSortDescending /> : <AiOutlineSortAscending />}
+            </div>
+            <button className={classes["select__btn"]} onClick={handlerButtonClick}>
+               {options[selectedOptionNumber].name}
+            </button>
+            {/* <MdOutlineKeyboardArrowDown
                className={isVisible ? [classes["arrow"], classes["rotate"]].join(" ") : classes["arrow"]}
-            />
+            /> */}
          </div>
-         <div className={classes["sortArrow"]} onClick={handlerClickSort}>
-            {params.sort === "desc" ? <AiOutlineSortDescending /> : <AiOutlineSortAscending />}
-         </div>
-         <div
-            className={
-               isVisible ? [classes["MySelect__options"], classes["active"]].join(" ") : classes["MySelect__options"]
-            }
-         >
+
+         <div className={isVisible ? [classes["select__options"], classes["active"]].join(" ") : classes["select__options"]}>
             {options.map((option, index) => (
                <div
                   className={
                      index === selectedOptionNumber
-                        ? [classes["MySelect__option"], classes["selected"]].join(" ")
-                        : classes["MySelect__option"]
+                        ? [classes["select__option"], classes["selected"]].join(" ")
+                        : classes["select__option"]
                   }
                   onClick={(e) => handlerOptionClick(e, index)}
                   key={index}
@@ -89,4 +90,4 @@ const MySelect: FC<MySelectProps> = memo(({ options }) => {
    );
 });
 
-export default MySelect;
+export default select;

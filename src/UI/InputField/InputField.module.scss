@@ -9,7 +9,7 @@
 }
 
 .input {
-   background-color: var(--background-primary);
+   background-color: var(--background-100);
    color: var(--text-secondary);
    padding: 17px 8px;
    border-radius: 7px;
@@ -23,7 +23,7 @@
    &:-webkit-autofill,
    &:-webkit-autofill:hover,
    &:-webkit-autofill:focus {
-      -webkit-fill: 0 0 0px 40rem var(--background-primary) inset;
+      -webkit-fill: 0 0 0px 40rem var(--background-100) inset;
    }
 
    &::placeholder {
@@ -33,7 +33,7 @@
 
 .error {
    height: 25px;
-   color: $main-color-dark;
+   color: var(--color-main-dark);
    font-size: 0.75em;
    margin-left: 2px;
    //   margin: 3px 0px 0px 0px;

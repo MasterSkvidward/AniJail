@@ -16,8 +16,8 @@
 
 .filter {
    // background-color: rgb(84, 84, 84);
-   margin: 0 0 50px;
-   //    background-color: var(--background-secondary);
+   margin: 0 0 30px;
+   //    background-color: var(--background-300);
    //    padding: 15px 10px;
    border-radius: 17px;
    z-index: 2;
@@ -32,7 +32,7 @@
       row-gap: 20px;
 
       //   border: 0.3mm solid var(--text-secondary);
-      //   background-color: var(--background-secondary);
+      //   background-color: var(--background-300);
       //   height: auto;
    }
 
@@ -82,7 +82,7 @@
       //   column-gap: 5px;
       width: 100%;
       max-width: 220px;
-      background-color: var(--background-secondary);
+      background-color: var(--background-300);
       border-radius: 8px;
       transition: 0.4s ease-in-out !important;
       height: 46px;
@@ -125,7 +125,7 @@
    &__options {
       position: relative;
 
-      background-color: var(--background-secondary);
+      background-color: var(--background-300);
       width: min-content;
 
       padding: 10px 13px;
@@ -141,7 +141,7 @@
 
       &:hover {
          & > svg {
-            color: $main-color-dark;
+            color: rgb(var(--color-main), 0.8);
          }
       }
 
@@ -166,7 +166,7 @@
    //          .input {
    //             padding: 15px 10px 13px;
    //             // background-color: #212121;
-   //             background-color: var(--background-tertiary);
+   //             background-color: var(--background-500);
    //             font-size: 17px;
    //             color: var(--text-secondary);
 
@@ -223,7 +223,7 @@
    right: 0px;
    cursor: default;
 
-   background-color: var(--background-secondary);
+   background-color: var(--background-300);
    box-shadow: var(--box-shadow-primary);
    padding: 40px 40px;
    animation: scaleIn 0.3s ease-in-out;

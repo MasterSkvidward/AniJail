@@ -2,6 +2,7 @@ import React from "react";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import ActivityGrid from "../../../UI/ActivityGrid/ActivityGrid";
 import CommonTitle from "../../../UI/CommonTitle/CommonTitle";
+import ProfileGrid from "../ProfileGrid/ProfileGrid";
 import ProfileHistory from "../ProfileHistory/ProfileHistory";
 import ProfileHistoryItem from "../ProfileHistoryItem/ProfileHistoryItem";
 import ProfileStatistics from "../ProfileStatistics/ProfileStatistics";
@@ -25,10 +26,14 @@ const ProfileOverview = () => {
                   <CommonTitle value="Activity" />
                   <ActivityGrid />
                </div>
+
+               <div>
+                  <ProfileGrid title="Characters" srcList={anime.map((item) => item.images.jpg.image_url)} />
+               </div>
             </div>
 
             <div className={classes["overview__history"]}>
-               <CommonTitle value="Activity History"  isLink={true}/>
+               <CommonTitle value="Activity History" isLink={true} />
                <div className={classes["overview__history-list"]}>
                   {anime.slice(0, 6).map((item, index) => (
                      <ProfileHistoryItem anime={item} key={index} />

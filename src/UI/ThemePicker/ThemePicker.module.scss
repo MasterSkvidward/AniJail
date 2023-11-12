@@ -1,0 +1,27 @@
+.themes {
+   display: flex;
+   column-gap: 15px;
+}
+
+.theme {
+   width: 60px;
+   height: 60px;
+   border-radius: 5px;
+   cursor: pointer;
+   
+   &:hover {
+    opacity: 0.9;
+   }
+}
+
+.red {
+   background-color: var(--color-red-600);
+}
+
+.blue {
+   background-color: var(--color-blue-800);
+}
+
+.green {
+   background-color: var(--color-green-600);
+}

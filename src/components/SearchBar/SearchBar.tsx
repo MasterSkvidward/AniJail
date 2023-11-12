@@ -7,12 +7,14 @@ import { IAnime, IAnimeSearchParams } from "../../types/jikanMoe/jikan";
 import useDebounce from "../../hooks/useDebounce";
 import { AnimeService } from "../../services/AnimeService";
 import MyModal from "../../UI/MyModal/MyModal";
-import { Search } from "react-router-dom";
+import { Link, Search, useNavigate } from "react-router-dom";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { AnimeActionCreators } from "../../store/reducers/anime/action-creatores";
 import { useDispatch } from "react-redux";
 import Loader from "../../UI/Loader/Loader";
 import SearchInput from "../../UI/SearchInput/SearchInput";
+import { defaultFilterParams } from "../../store/reducers/filter/filterReducer";
+import { FilterActionCreators } from "../../store/reducers/filter/action-creatores";
 
 interface SearchBarProps {
    visible: boolean;
@@ -31,6 +33,7 @@ const SearchBar: FC<SearchBarProps> = ({ visible, setVisible }) => {
    const { animeSearch, animeSearchLoading, animeSearchError } = useTypedSelector((state) => state.anime);
 
    const debouncedSearch = useDebounce(searchAnime, 400);
+   const navigate = useNavigate();
 
    async function searchAnime() {
       // const response = await AnimeService.getAnimeBySearch(searchParams);
@@ -67,6 +70,14 @@ const SearchBar: FC<SearchBarProps> = ({ visible, setVisible }) => {
    function handlerDocumentClick(e: Event): void {
       setVisible(false);
    }
+
+   const handleSeeAll = (): void => {
+      if (value) {
+         dispatch(FilterActionCreators.setParams({ ...defaultFilterParams, q: value }));
+      }
+
+      navigate("/anime");
+   };
 
    useEffect(() => {
       visible && debouncedSearch();
@@ -111,7 +122,9 @@ const SearchBar: FC<SearchBarProps> = ({ visible, setVisible }) => {
                <></>
             )}
 
-            <div className={classes["search__all"]}>See all results for "{value}"</div>
+            <div className={classes["search__all"]} onClick={handleSeeAll}>
+               See all results for "{value}"
+            </div>
          </div>
       </form>
    );
