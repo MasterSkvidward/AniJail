@@ -9,8 +9,8 @@ interface TagProps {
 
 const Tag: FC<TagProps> = ({ value, onClick }) => {
    return (
-      <span className={classes["tag"]} onClick={(e) => onClick(e)}>
-         {getShortenedString(value, 90)}
+      <span className={classes["tag"]} onClick={onClick}>
+         {getShortenedString(value, 80)}
       </span>
    );
 };

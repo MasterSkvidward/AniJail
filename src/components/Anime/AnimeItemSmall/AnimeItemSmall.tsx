@@ -7,6 +7,7 @@ import { formatGenres } from "../../../helpers/helpers";
 import classes from "./AnimeItemSmall.module.scss";
 import ContentLoader from "react-content-loader";
 import Score from "../../../UI/Score/Score";
+import Tag from "../../../UI/Tag/Tag";
 
 interface AnimeItemSmallProps {
    anime: IAnime;
@@ -46,9 +47,10 @@ const AnimeItemSmall: FC<AnimeItemSmallProps> = ({ anime }) => {
                   {formatGenres(anime?.genres)
                      .splice(0, 3)
                      .map((genre, index) => (
-                        <div className={classes["body__genre"]} key={index}>
-                           {genre}
-                        </div>
+                        <Tag value={genre} onClick={(e) => {e.stopPropagation()}} key={index}/>
+                        // <div className={classes["body__genre"]} key={index}>
+                        //    {genre}
+                        // </div>
                      ))}
                </div>
             </div>

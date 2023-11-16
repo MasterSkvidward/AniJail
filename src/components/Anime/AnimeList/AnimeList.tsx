@@ -7,6 +7,7 @@ import { IAnime } from "../../../types/jikanMoe/jikan";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import ContentLoader from "react-content-loader";
 import AnimeItemSmall from "../AnimeItemSmall/AnimeItemSmall";
+import AnimeItemMedium from "../AnimeItemMedium/AnimeItemMedium";
 
 interface AnimeListProps {
    view: string;
@@ -25,7 +26,7 @@ const AnimeList: FC<AnimeListProps> = ({ view }) => {
                {anime.length > 0
                   ? anime.map((item, index) => (
                        //    <div className={classes["anime-list__item"]} key={index}>
-                       <AnimeItem anime={item} showPreview={false} key={index} />
+                       <AnimeItem anime={item} showPreview={true} key={index} />
                        //    </div>
                     ))
                   : [...new Array(24)].map((item, index) => <AnimeItem anime={null} showPreview={false} key={index} />)}
@@ -37,7 +38,7 @@ const AnimeList: FC<AnimeListProps> = ({ view }) => {
                {anime.length > 0
                   ? anime.map((item, index) => (
                        //    <div className={classes["anime-list__item"]} key={index}>
-                       <AnimeItemSmall anime={item}  key={index} />
+                       <AnimeItemMedium anime={item} key={index} />
                        //    </div>
                     ))
                   : [...new Array(24)].map((item, index) => <AnimeItem anime={null} showPreview={false} key={index} />)}

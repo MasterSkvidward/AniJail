@@ -6,15 +6,16 @@
    padding: 17px 18px;
    position: relative;
    // background-color: rgb(38, 38, 38);
-   background-color: var(--background-300);
+   background-color: var(--background-400);
    border-radius: 13px;
    // z-index: 77;
    display: flex;
    flex-direction: column;
-   row-gap: 15px;
-   font-size: 0.8em;
-   border: 0.5px solid rgba(233, 233, 233, 0.5);
-   width: 510px;
+   row-gap: 16px;
+   //    font-size: 0.8em;
+   //    border: 0.5px solid rgba(233, 233, 233, 0.5);
+   width: 250px;
+   box-shadow: var(--box-shadow-primary);
 
    &:before {
       content: "";
@@ -22,28 +23,55 @@
       position: absolute;
       right: 100%;
       top: 50%;
-      border-right-color: rgba(233, 233, 233, 0.5);
+      border-right-color: var(--background-400);
 
       border-width: 9px;
       margin-top: -9px;
    }
 
-   &__title {
-      color: $red;
-      // font-size: 0.15em !important;
+   &__row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1.2em;
       font-weight: 600;
    }
 
-   &__synopsis {
-      line-height: 140%;
-      opacity: 0.9;
+   &__season {
+      font-size: 0.9em;
+      //   font-weight: 600;
    }
 
-   h2 {
-      color: $red;
+   &__info {
+      display: flex;
+      column-gap: 10px;
+      align-items: center;
+      font-size: 0.8em;
+      font-weight: 600;
    }
 
-   h4 {
-      color: var(--text-primary);
+   &__type {
+      color: var(--text-secondary);
+   }
+
+   &__studio {
+      color: rgb(var(--color-main));
+      cursor: pointer;
+
+      &:hover {
+         color: rgba(var(--color-main), 0.9);
+      }
+   }
+
+   &__genres {
+      display: flex;
+      column-gap: 5px;
+      font-size: 0.9em;
+   }
+
+   &__folders {
+      font-size: 0.8em;
+      width: 100%;
+      max-width: 165px;
    }
 }

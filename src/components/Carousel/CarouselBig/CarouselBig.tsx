@@ -14,7 +14,7 @@ const CarouselBig = () => {
 
    return (
       <div className={classes["anime"]}>
-         <div className={[classes["anime__container"], "_container-main"].join(" ")}>
+         <div className={[classes["anime__container"], "_container-big"].join(" ")}>
             <Carousel options={bigCarouselOptions} arrowTop={48} arrowSize={"big"}>
                {animeSeason.length !== 0
                   ? animeSeason.map((item, index) => <AnimeItemBig anime={item} key={index} />)

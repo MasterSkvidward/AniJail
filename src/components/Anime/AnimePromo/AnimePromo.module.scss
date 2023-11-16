@@ -20,7 +20,7 @@ $height: 576px;
       left: 0;
       right: 0;
       bottom: 0;
-      background: rgba(0, 0, 0, 0.7);
+      background: rgba(0, 0, 0, 0.8);
       //   z-index: 2;
    }
 
@@ -44,8 +44,8 @@ $height: 576px;
    }
 
    &__img {
-      width: calc($width);
-      height: calc($height);
+      width: calc($width * 0.7);
+      height: calc($height * 0.7);
       border-radius: 8px;
       overflow: hidden;
       box-shadow: var(--box-shadow-primary);

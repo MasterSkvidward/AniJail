@@ -9,6 +9,7 @@ import branchLeft from "../../../assets/icons/branch-left.svg";
 import branchRight from "../../../assets/icons/branch-right.svg";
 import { Link, Routes } from "react-router-dom";
 import { publicRoutes } from "../../AppRouter/routes";
+import RankStatus from "../../../UI/RankStatus/RankStatus";
 
 interface AnimeScoreProps {
    score: number;
@@ -66,17 +67,9 @@ const AnimeScore: FC<AnimeScoreProps> = ({ score, scoredBy, rank }) => {
          </div>
 
          {rank && rank <= 100 && (
-            <Link to={`${publicRoutes.ANIME_TOP}`} className={classes["anime__link"]}>
-               <div className={classes["anime__rank"]}>
-                  <img src={branchLeft} alt="branch" />
-                  <div className={classes["anime__rank-status"]}>
-                     <h5 className={classes["anime__top"]}>Top 100</h5>
-                     <span className={classes["anime__place"]}>{rank} place</span>
-                  </div>
-
-                  <img src={branchRight} alt="branch" />
-               </div>
-            </Link>
+            <div className={classes["anime__rank"]}>
+               <RankStatus all={100} rank={rank} />
+            </div>
          )}
       </div>
    );

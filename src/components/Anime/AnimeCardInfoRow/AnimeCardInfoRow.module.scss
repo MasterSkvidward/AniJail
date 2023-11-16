@@ -35,9 +35,9 @@
       // display: flex;
       // column-gap: 11px;
       // color: rgba($color: #eae8e8, $alpha: 0.8);
-    //   opacity: 0.8;
-    font-size: 0.95em;
-    letter-spacing: 0.5px;
+      //   opacity: 0.8;
+      font-size: 0.95em;
+      letter-spacing: 0.5px;
    }
 
    &__value-list {
@@ -49,7 +49,7 @@
 
       & > a {
          display: inline;
-         margin-right: 5px;
+         margin-right: 6px;
          color: rgb(var(--color-main)) !important;
 
          &:hover {

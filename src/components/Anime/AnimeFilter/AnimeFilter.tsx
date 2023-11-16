@@ -80,7 +80,7 @@ const AnimeFilter = memo(() => {
    const handlerSelectMultiChange = (options: MultiValue<IFilterOption>, paramValue: string, context: any): void => {
       navigate("/anime");
       let obj = { [paramValue]: formatFilterValues(options) };
-    //   console.log(obj);
+      //   console.log(obj);
 
       tempParams = { ...tempParams, ...obj };
       //   tempParams = deleteEmptyProperties(tempParams);
@@ -142,13 +142,14 @@ const AnimeFilter = memo(() => {
    }, []);
 
    useEffect(() => {
-    //   console.log("---------------");
+      //   console.log("---------------");
 
-    //   console.log(params);
-    //   console.log(tempParams);
+      //   console.log(params);
+      //   console.log(tempParams);
 
       if (JSON.stringify(params) !== JSON.stringify(tempParams)) tempParams = { ...params };
       if (!tempParams.q) setValue("");
+      else if (value !== tempParams.q) setValue(tempParams.q);
    }, [params]);
 
    return (

@@ -2,13 +2,13 @@
 @import "../../../styles/colors";
 
 .carousel-block {
-   padding: 0px 0px 90px;
-
+   padding: 40px 0px 90px;
+   background-color: var(--background-200);
 
    &__body {
       display: flex;
       flex-direction: column;
-      row-gap: 100px;
+      row-gap: 50px;
    }
 }
 

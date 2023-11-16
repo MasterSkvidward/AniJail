@@ -50,8 +50,12 @@
       font-size: 9px;
    }
 
-   a:visited {
+   a {
       color: inherit;
+
+      &:visited {
+         color: inherit;
+      }
    }
 }
 
@@ -114,7 +118,7 @@
 }
 
 ._container-big {
-   max-width: 2100px;
+   max-width: 2200px;
    margin: 0 auto;
    padding: 0 20px;
 

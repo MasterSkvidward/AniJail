@@ -10,6 +10,7 @@ import { FilterActionCreators } from "../../../store/reducers/filter/action-crea
 import { deleteEmptyProperties, getAnimeParamId } from "../../../utils/utils";
 import { defaultFilterParams } from "../../../store/reducers/filter/filterReducer";
 import { Link } from "react-router-dom";
+import Tag from "../../../UI/Tag/Tag";
 
 const AnimeCardInfoRow: FC<rowType> = ({ label, value, type, isLink }) => {
    const dispatch = useDispatch();
@@ -52,6 +53,7 @@ const AnimeCardInfoRow: FC<rowType> = ({ label, value, type, isLink }) => {
                            .map((genre, index) => (
                               // <span className={classes.row__genre} key={index} onClick={(e) => handleGenreClick(e, genre)}>
                               <Link to="/anime" onClick={(e) => handleGenreClick(e, genre)} key={index}>{`${genre}`}</Link>
+                              // <Tag value={genre} onClick={(e) => handleGenreClick(e, genre)} key={index}/>
                               // </span>
                            ))}
                      </div>

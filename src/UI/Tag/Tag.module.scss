@@ -1,17 +1,18 @@
 .tag {
-    padding: 4px 10px;
-    background-color: rgba(var(--color-main), 0.9);
-    border-radius: 12px;
-    text-align: center;
-    vertical-align: middle;
-    cursor: pointer;
-    font-weight: 500;
-    font-size: 0.9em;
-    color: var(--text-primary);
+   padding: 4px 10px;
+   background-color: rgba(var(--color-main), 0.7);
+   border-radius: 12px;
+   text-align: center;
+   vertical-align: middle;
+   cursor: pointer;
+   font-weight: 600;
+   font-size: 0.87em;
+   // color: var(--text-primary);
+   color: rgb(237, 237, 237);
 
-    transition: background-color 0.11s ease-in-out;
+   transition: background-color 0.11s ease-in-out;
 
-    &:hover {
-        background-color: rgba(var(--color-main), 0.55);
-    }
+   &:hover {
+      background-color: rgba(var(--color-main), 0.55);
+   }
 }

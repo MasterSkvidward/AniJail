@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, Dispatch, SetStateAction, FC } from "react";
+import { useState, ChangeEvent, Dispatch, SetStateAction, FC, KeyboardEventHandler } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { GrFormClose } from "react-icons/gr";
 import classes from "./SearchInput.module.scss";
@@ -6,11 +6,12 @@ import classes from "./SearchInput.module.scss";
 interface SearchInputProps {
     value: string
     setValue: Dispatch<SetStateAction<string>>
+    onKeyDown?: KeyboardEventHandler<HTMLInputElement>;
     styles?: {}
     [x:string]: any;
 }
 
-const SearchInput:FC<SearchInputProps> = ({value, setValue, styles, ...props}) => {
+const SearchInput:FC<SearchInputProps> = ({value, setValue, styles, onKeyDown, ...props}) => {
 //    const [value, setValue] = useState<string>("");
 
    const handleSearch = (e: ChangeEvent<HTMLInputElement>): void => {
@@ -20,7 +21,7 @@ const SearchInput:FC<SearchInputProps> = ({value, setValue, styles, ...props}) =
    return (
       <div className={classes["search"]}>
          <AiOutlineSearch />
-         <input type="text" onChange={handleSearch} value={value} style={styles} {...props}/>
+         <input type="text" onChange={handleSearch} value={value} style={styles} onKeyDown={onKeyDown ? onKeyDown : () => {}} {...props}/>
          {value && <GrFormClose onClick={() => setValue("")} />}
       </div>
    );

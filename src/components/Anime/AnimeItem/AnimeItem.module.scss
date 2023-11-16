@@ -18,10 +18,13 @@ $height: 268px;
 }
 
 @keyframes tooltipShow {
+   from {
+      opacity: 0;
+   }
    to {
       opacity: 1;
       visibility: visible;
-      transform: translate(-2%, 0);
+    //   transform: translate(-2%, 0);
    }
 }
 
@@ -34,8 +37,9 @@ $height: 268px;
 
    &__preview {
       position: absolute;
-      top: -20%;
-      left: 234px;
+      top: 0%;
+      //   left: 184px;
+      left: 115%;
       border-radius: 13px;
       display: none;
 
@@ -44,6 +48,18 @@ $height: 268px;
 
       @include for-small-desktop-up {
          display: none;
+      }
+
+      &_visible {
+         visibility: visible;
+         opacity: 1;
+         display: block;
+         animation: tooltipShow 0.2s ease-out forwards;
+         z-index: 2;
+
+         @include for-small-desktop-up {
+            display: none;
+         }
       }
    }
 
@@ -98,17 +114,6 @@ $height: 268px;
       opacity: 0.88;
 
       transition: color 0.2s ease-in-out;
-   }
-}
-
-.preview-visible {
-   visibility: visible;
-   opacity: 1;
-   display: block;
-   animation: tooltipShow 0.2s ease-out forwards;
-
-   @include for-small-desktop-up {
-      display: none;
    }
 }
 

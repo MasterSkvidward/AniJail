@@ -20,7 +20,7 @@ interface AnimeItemProps {
 const AnimeItem: FC<AnimeItemProps> = ({ anime, showPreview = false }) => {
    const navigate = useNavigate();
    const [previewVisible, setPreviewVisible] = useState<boolean>(false);
-   const [duration, setDuration] = useState(500);
+   const [duration, setDuration] = useState(100);
    const debounceShow = useDebounce(showAnimePreview, duration);
 
    function showAnimePreview(flag: boolean) {
@@ -29,12 +29,12 @@ const AnimeItem: FC<AnimeItemProps> = ({ anime, showPreview = false }) => {
 
    const handlerMouseEnter = () => {
       debounceShow(true);
-      setDuration(100);
+    //   setDuration(0);
    };
 
    const handlerMouseLeave = () => {
       debounceShow(false);
-      setDuration(800);
+      setDuration(100);
    };
 
    // const propsStyles = {
@@ -57,6 +57,9 @@ const AnimeItem: FC<AnimeItemProps> = ({ anime, showPreview = false }) => {
          </ContentLoader>
       );
 
+      console.log(showPreview);
+      
+
    return (
       <div
          className={classes["anime"]}
@@ -68,7 +71,7 @@ const AnimeItem: FC<AnimeItemProps> = ({ anime, showPreview = false }) => {
             <div
                className={
                   previewVisible
-                     ? [classes["anime__preview"], classes["preview-visible"]].join(" ")
+                     ? [classes["anime__preview"], classes["anime__preview_visible"]].join(" ")
                      : classes["anime__preview"]
                }
             >

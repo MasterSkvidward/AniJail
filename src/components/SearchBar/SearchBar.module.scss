@@ -43,26 +43,30 @@
       position: absolute;
       top: 65px;
       width: 100%;
-      max-height: 700px;
+      max-height: 750px;
       overflow-y: auto;
       overflow-x: hidden;
       border-radius: 8px;
 
       &::-webkit-scrollbar {
-         width: 11px;
+         width: 10px;
+         border-radius: 22px;
       }
 
       &::-webkit-scrollbar-track {
-         background: #eaeff1;
+         background: #cdcecf;
+         background-color: var(--background-500);
       }
 
       &::-webkit-scrollbar-thumb {
          background-color: rgb(161, 161, 161);
+         background-color: var(--background-reverse);
          // background: repeating-linear-gradient(90deg, #c733bb, #bb3c47 2px, #d8373f 5px, #963c3c 15px);
          border-radius: 1px;
          // border: 3px double #cb4f4f;
          transition-property: border;
          transition-duration: 1s;
+         border-radius: 22px;
       }
    }
 

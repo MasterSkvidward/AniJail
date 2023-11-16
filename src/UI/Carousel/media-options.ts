@@ -8,7 +8,7 @@ export const bigCarouselOptions = {
    interval: 9000,
    autoplay: true,
    lazyLoad: "nearby",
-   perPage: 5,
+   perPage: 6,
    // fixedWidth: 190,
    arrows: true,
    // arrowPath: arrowRight,

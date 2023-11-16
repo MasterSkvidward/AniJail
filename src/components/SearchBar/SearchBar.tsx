@@ -1,4 +1,4 @@
-import React, { useRef, FC, useState, useEffect, MouseEvent, Dispatch, SetStateAction } from "react";
+import React, { useRef, FC, useState, useEffect, MouseEvent, Dispatch, SetStateAction, KeyboardEvent } from "react";
 import classes from "./SearchBar.module.scss";
 import MyInput from "../../UI/MyInput/MyInput";
 import { AiOutlineSearch } from "react-icons/ai";
@@ -71,6 +71,15 @@ const SearchBar: FC<SearchBarProps> = ({ visible, setVisible }) => {
       setVisible(false);
    }
 
+   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>): void => {
+        e.stopPropagation();
+        if (e.key === "Enter") {
+            handleSeeAll()
+            setVisible(false);
+        }
+        
+   };
+
    const handleSeeAll = (): void => {
       if (value) {
          dispatch(FilterActionCreators.setParams({ ...defaultFilterParams, q: value }));
@@ -96,13 +105,14 @@ const SearchBar: FC<SearchBarProps> = ({ visible, setVisible }) => {
          onClick={handlerClick}
          onMouseDown={handlerMouseDown}
          onSubmit={(e) => e.preventDefault()}
+         
       >
          {/* <MyInput setValue={setValue} placeholder={"Search anime..."} styles={{padding: "25px 15px"}}/>
          <div className={classes.search__loupe}>
             <AiOutlineSearch />
          </div> */}
 
-         <SearchInput value={value} setValue={setValue} placeholder="Search..." styles={{ padding: "10px 10px" }} />
+         <SearchInput value={value} setValue={setValue} placeholder="Search..." styles={{ padding: "10px 10px" }} onKeyDown={handleKeyDown}/>
          <div
             ref={searchList}
             className={visible ? [classes.search__list, classes.active].join(" ") : classes.search__list}
@@ -110,7 +120,7 @@ const SearchBar: FC<SearchBarProps> = ({ visible, setVisible }) => {
          >
             {animeSearch.length && !animeSearchLoading ? (
                <div className={classes.search__items}>
-                  {animeSearch.map((anime, index) => (
+                  {animeSearch.slice(0, 5).map((anime, index) => (
                      <AnimeItemSmall anime={anime} key={index} />
                   ))}
                </div>

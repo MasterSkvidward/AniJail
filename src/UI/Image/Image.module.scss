@@ -14,30 +14,30 @@
     }
 }
 
-.rating {
-    display: inline-flex;
-    align-items: center;
-    position: absolute;
-    top: 25px;
-    left: -2px;
+// .rating {
+//     display: inline-flex;
+//     align-items: center;
+//     position: absolute;
+//     top: 25px;
+//     left: -2px;
 
-    color: black;
-    background-color: #ffd400;
+//     color: black;
+//     background-color: #ffd400;
 
-    height: 28px;
-    padding: 13px 11px;
-    // z-index: 1;
-}
+//     height: 28px;
+//     padding: 13px 11px;
+//     // z-index: 1;
+// }
 
-.ratingNumber {
-    font-size: 0.82em;
-    line-height: 20px;
-    font-weight: 700;  
-}
+// .ratingNumber {
+//     font-size: 0.82em;
+//     line-height: 20px;
+//     font-weight: 700;  
+// }
 
-.ratingNumber::before {
-    font-size: 1.15em;
-    content: '★';
+// .ratingNumber::before {
+//     font-size: 1.15em;
+//     content: '★';
 
-    margin: 0px 3px 0px 0px;
-}
+//     margin: 0px 3px 0px 0px;
+// }

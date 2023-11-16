@@ -1,0 +1,115 @@
+$width: 190px;
+$height: 268px;
+
+.anime {
+   background-color: var(--background-300);
+
+   display: flex;
+   column-gap: 15px;
+   border-radius: 15px;
+   box-shadow: var(--box-shadow-primary);
+
+   &__score {
+      width: 100%;
+      max-width: 150px;
+
+      display: flex;
+      flex-direction: column;
+      row-gap: 25px;
+
+      align-self: flex-start;
+      font-size: 1.35em;
+      padding: 15px 5px 20px;
+      align-items: center;
+   }
+
+   &__user {
+      padding: 15px 5px 20px;
+      margin-left: auto;
+      margin-right: 80px;
+      font-size: 0.8em;
+      width: 100%;
+      max-width: 165px;
+
+      justify-self: flex-end;
+   }
+}
+
+.image {
+   width: calc($width * 0.7);
+   height: calc($height * 0.7);
+   cursor: pointer;
+   border-radius: 15px;
+   overflow: hidden;
+   transition: opacity 0.2s ease-in-out;
+ 
+
+   &:hover {
+      opacity: 0.8;
+   }
+
+   img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+   }
+}
+
+.body {
+   display: flex;
+   flex-direction: column;
+   row-gap: 20px;
+
+   padding: 15px 5px 20px;
+   justify-content: space-between;
+   width: 100%;
+   max-width: 600px;
+
+   &__title {
+      display: flex;
+      flex-direction: column;
+      row-gap: 7px;
+      width: fit-content;
+
+      &_en {
+         font-size: 1.2em;
+         font-weight: 600;
+         transition: color 0.2s ease-in-out;
+         cursor: pointer;
+
+         &:hover {
+            color: rgb(var(--color-main));
+         }
+      }
+
+      &_jp {
+         font-size: 0.55em;
+         color: var(--text-secondary);
+      }
+   }
+
+   &__studios {
+      display: flex;
+      column-gap: 10px;
+      font-size: 0.88em;
+   }
+
+   &__studio {
+      color: rgb(var(--color-main));
+   }
+
+   &__type {
+      font-size: 0.88em;
+   }
+
+   &__info {
+      display: flex;
+      flex-direction: column;
+      row-gap: 15px;
+   }
+
+   &__genres {
+      display: flex;
+      column-gap: 10px;
+   }
+}

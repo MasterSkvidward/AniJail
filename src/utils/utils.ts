@@ -32,6 +32,8 @@ export const getActivityDays = (days: number): number => {
    return days;
 };
 
+
+
 export const getAnimeParamId = (value: string, type: string): string => {
    let result;
 
@@ -104,6 +106,13 @@ export const getExactTimeFromDate = (date: Date): string => {
    }:${date.getMinutes() >= 10 ? date.getMinutes() : "0" + String(date.getMinutes())}`;
    return exactTime;
 };
+
+// export const getShortDate = (date: Date): string => {
+//     let exactTime = `${date.getDate()} ${getMonthName(date.getMonth())} ${date.getFullYear()} in ${
+//        date.getHours() >= 10 ? date.getHours() : "0" + String(date.getHours())
+//     }:${date.getMinutes() >= 10 ? date.getMinutes() : "0" + String(date.getMinutes())}`;
+//     return exactTime;
+//  };
 
 export const getMonthName = (month: number): string => {
    const months = [

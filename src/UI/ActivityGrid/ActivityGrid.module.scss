@@ -24,6 +24,16 @@ $boxSize: 13px;
       height: $boxSize;
       border-radius: 4px;
 
+      //!
+      position: relative;
+
+      &:hover .history__tooltip {
+         visibility: visible;
+         opacity: 0.93;
+      }
+
+      //!
+
       &[data-amount="poor"] {
          background-color: rgb(249, 160, 150);
          background-color: rgba(var(--color-main), 1);
@@ -37,6 +47,54 @@ $boxSize: 13px;
       &[data-amount="good"] {
          background-color: rgb(178, 34, 34);
          background-color: rgba(var(--color-main), 0.3);
+      }
+   }
+
+   &__tooltip {
+      visibility: hidden;
+      width: 110px;
+
+      //   background-color: #555;
+      background-color: var(--background-400);
+    //   color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 8px 0;
+      position: absolute;
+      z-index: 1;
+      bottom: 155%;
+      left: 50%;
+      margin-left: -55px;
+      opacity: 0;
+      transition: all 0.1s ease-in-out;
+
+      box-shadow: var(--box-shadow-primary);
+
+      display: flex;
+      flex-direction: column;
+      row-gap: 10px;
+      color: var(--text-secondary);
+      font-weight: 600;
+
+      span {
+        &:nth-child(1) {
+            font-size: 0.98em;
+        }
+
+        &:nth-child(2) {
+            font-size: 0.85em;
+        }
+      }
+
+      &::after {
+         content: "";
+         position: absolute;
+         top: 100%;
+         left: 50%;
+         margin-left: -5px;
+         border-width: 5px;
+         border-style: solid;
+         border-color: #555 transparent transparent transparent;
       }
    }
 }

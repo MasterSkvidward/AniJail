@@ -53,12 +53,13 @@ const AnimeDetails = () => {
                   <AnimeCharacters />
                </div>
 
-               {anime?.trailer.embed_url && (
-                  <div className={classes["anime-details__rating"]}>
-                     {/* <AnimeRating score={anime?.score} scoredBy={anime?.scored_by} /> */}
-                     <div className={classes["trailer"]}>
-                        <Title value={"Trailer"} />
-                        <div className={classes["trailer__video"]}>
+               <div className={classes["anime-details__rating"]}>
+                  {/* <AnimeRating score={anime?.score} scoredBy={anime?.scored_by} /> */}
+                  <div className={classes["trailer"]}>
+                     <Title value={"Trailer"} />
+
+                     <div className={classes["trailer__video"]}>
+                        {anime?.trailer.embed_url ? 
                            <iframe
                               src={`${anime?.trailer.embed_url || ""}?poster=${aot_img}`}
                               name="trailer"
@@ -68,14 +69,14 @@ const AnimeDetails = () => {
                               allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                               allowFullScreen
                            ></iframe>
-
-                           {/* <a href="" target="trailer">
-                           <img src={aot_img} alt="Trailer" />
-                        </a> */}
-                        </div>
+                           :
+                           <div className={classes["trailer__error"]}>
+                                <span>Trailer is not available</span>
+                           </div>
+                        }
                      </div>
                   </div>
-               )}
+               </div>
 
                {/* <div>
                   <iframe

@@ -92,6 +92,8 @@ $trailer_height: 267px;
       height: calc($trailer_height);
       // max-width: 320px;
       // min-height: 180px;
+      border-radius: 6px;
+      overflow: hidden;
       margin: 25px 0px 0px 0px;
 
       iframe {
@@ -102,5 +104,16 @@ $trailer_height: 267px;
          top: 0;
          left: 0;
       }
+   }
+
+   &__error {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        span {
+            font-weight: 600;
+            font-size: 1.35em;
+        }
    }
 }

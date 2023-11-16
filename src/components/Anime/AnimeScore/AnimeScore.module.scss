@@ -1,31 +1,6 @@
 @import "../../../styles/colors";
 @import "../../../styles/media_queries";
 
-@keyframes rotateWingLeft {
-   0% {
-      transform: rotate(-35deg);
-   }
-   50% {
-    transform: rotate(15deg);
-   }
-   100% {
-      transform: rotate(0deg);
-   }
-}
-
-
-@keyframes rotateWingRight {
-    0% {
-       transform: rotate(35deg);
-    }
-    50% {
-        transform: rotate(-15deg);
-    }
-    100% {
-       transform: rotate(0deg);
-    }
- }
-
 .anime {
    justify-self: stretch;
    display: flex;
@@ -47,80 +22,8 @@
       }
    }
 
-   &__link {
-      margin: auto 0 120px;
-   }
-
    &__rank {
-      display: flex;
-      align-items: center;
-      //   column-gap: 5px;
-      cursor: pointer;
-
-      &:hover img:nth-of-type(1) {
-         transform: rotate(-25deg);
-      }
-
-      &:hover img:nth-of-type(2) {
-         transform: rotate(25deg);
-      }
-
-
-      img {
-         width: 55px;
-         height: 80px;
-         transition: transform 0.35s ease-in-out;
-
-
-         &:nth-of-type(1) {
-            animation: rotateWingLeft 0.9s ease-in-out;
-         }
-
-         &:nth-of-type(2) {
-            animation: rotateWingRight 0.9s ease-in-out;
-         }
-
-         //  &:nth-child(1) {
-         //     transform: scale(-1, 1);
-         //  }
-         //  height: 25px;
-      }
-
-      //   justify-self: flex-end;
-   }
-
-   &__rank-status {
-      display: flex;
-      flex-direction: column;
-      row-gap: 10px;
-      align-items: center;
-   }
-
-   &__top,
-   &__place {
-      font-weight: 600;
-      background: linear-gradient(165deg, #ffd25e 16.44%, #b59646 63.42%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-
-      transition: background-color 0.3s ease-in-out;
-
-      //   &:hover {
-      //      background: linear-gradient(165deg, #e3b02e 26.44%, #e0c78a 63.42%);
-      //      -webkit-background-clip: text;
-      //      background-clip: text;
-      //      -webkit-text-fill-color: transparent;
-      //   }
-   }
-
-   &__top {
-      font-size: 1.35em;
-   }
-
-   &__place {
-      font-size: 1.1em;
-      padding-bottom: 2px;
+      margin: auto 0 120px;
    }
 }
 
@@ -154,6 +57,8 @@
       text-align: center;
       justify-content: center;
       font-weight: 600;
+
+      will-change: transform;
 
       &:hover {
          //   background-color: rgb(169, 43, 43);
