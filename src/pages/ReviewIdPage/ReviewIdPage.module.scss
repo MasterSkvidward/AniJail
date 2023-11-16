@@ -1,0 +1,41 @@
+.reviews {
+   padding: 0 0 70px;
+   background-color: var(--background-100);
+   min-height: 92vh;
+
+   &__container {
+      display: flex;
+      justify-content: center;
+
+      top: -110px;
+      position: relative;
+      z-index: 2;
+
+      // & > * {
+      //     margin: 0 auto;
+      // }
+   }
+
+   &__title {
+      font-size: 1.8em;
+      font-weight: 600;
+      text-align: center;
+      margin-top: 25px;
+   }
+}
+
+.banner {
+   height: 14vw;
+   position: relative;
+
+   &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      //   z-index: 2;
+   }
+}

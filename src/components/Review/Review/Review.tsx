@@ -13,7 +13,7 @@ interface ReviewProps {
    showFull?: boolean;
 }
 
-const Review: FC<ReviewProps> = ({ review, showFull = false }) => {
+const Review: FC<ReviewProps> = ({ review }) => {
    const [likeCount, setLikeCount] = useState<number>(0);
    const [dislikeCount, setDislikeCount] = useState<number>(0);
    const [userVote, setUserVote] = useState<"like" | "dislike" | "">("");
@@ -75,7 +75,6 @@ const Review: FC<ReviewProps> = ({ review, showFull = false }) => {
       );
 
    const reviewClasses = [classes.review, classes[getScoreColor(review.score)]];
-   if (showFull) reviewClasses.push(classes.review_full);
 
    return (
       <div className={reviewClasses.join(" ")}>
@@ -94,12 +93,23 @@ const Review: FC<ReviewProps> = ({ review, showFull = false }) => {
                   <span className={classes["user__reviews-amount"]}>24 reviews</span>
                </div>
             </div>
-            <div className={classes["review__date"]}>{getExactTimeFromDate(getDateFromTimeStamp(review.date))}</div>
+
+            <div className={classes["review__column"]}>
+               <div className={classes["review__score"]}>{review.score} / 10</div>
+               <div className={classes["review__date"]}>{getExactTimeFromDate(getDateFromTimeStamp(review.date))}</div>
+            </div>
          </div>
-         <div className={classes["review__body"]}>
+
+         <div className={classes["review__divider"]}>
             <h4 className={classes["review__tag"]}>{review.tags.join(", ")}</h4>
-            <p>{showFull ? review.review : getShortenedString(review.review, 400)}</p>
-            <p className={classes["review__show-more"]}>Show full review</p>
+         </div>
+
+         <div className={classes["review__body"]}>
+            {/* <h4 className={classes["review__tag"]}>{review.tags.join(", ")}</h4> */}
+            <p>{getShortenedString(review.review, 400)}</p>
+            <Link to={`/anime/${20}/reviews/${1}`}>
+               <p className={classes["review__show-more"]}>Show more</p>
+            </Link>
          </div>
          <div className={classes["review__footer"]}>
             <div></div>

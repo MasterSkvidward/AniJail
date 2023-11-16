@@ -11,11 +11,11 @@ import background_image from "../../../assets/images/igris-solo-leveling.jpg";
 import Carousel from "../../../UI/Carousel/Carousel";
 import { reviewsCarouselOptions } from "../../../UI/Carousel/media-options";
 import ReviewCarousel from "../../Review/ReviewCarousel/ReviewCarousel";
-import Comments from "../../Comments/Comments";
 import { useDispatch } from "react-redux";
 import { AnimeActionCreators } from "../../../store/reducers/anime/action-creatores";
 import { getAnimeEpisodeUrl } from "../../../utils/utils";
 import AnimeRecommendations from "../AnimeRecommendations/AnimeRecommendations";
+import CommentList from "../../Comment/CommentList/CommentList";
 
 const AnimeFeedback = () => {
    const { animeReviews } = useTypedSelector((state) => state.anime);
@@ -37,7 +37,7 @@ const AnimeFeedback = () => {
 
          <div className={classes["comments"]}>
             <div className={[classes["comments__container"], "_container-main"].join(" ")}>
-               <Comments />
+               <CommentList />
             </div>
          </div>
       </div>

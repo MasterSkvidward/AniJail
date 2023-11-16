@@ -5,6 +5,40 @@
       column-gap: 40px;
    }
 
+   &__nav {
+    width: 100%;
+    max-width: 250px;
+ }
+
+ &__links {
+    display: flex;
+    flex-direction: column;
+ }
+
+ &__link {
+    font-size: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 10px;
+    padding: 14px 7px;
+    border-radius: 6px;
+    transition: backgroundColor 0.22s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+       background-color: rgb(27, 27, 27);
+    }
+
+    &_active {
+       background-color: var(--background-500);
+
+       &:hover {
+          background-color: var(--background-500);
+       }
+    }
+ }
+
    &__sidebar,
    &__grid {
       background-color: var(--background-300);

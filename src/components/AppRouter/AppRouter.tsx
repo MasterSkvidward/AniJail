@@ -9,6 +9,8 @@ import AnimeTopPage from "../../pages/AnimeTopPage/AnimeTopPage";
 import AnimePage from "../../pages/AnimePage/AnimePage";
 import Error404Page from "../../pages/Error404Page/Error404Page";
 import ProfilePage from "../../pages/ProfilePage/ProfilePage";
+import ReviewsPage from "../../pages/ReviewsPage/ReviewsPage";
+import ReviewIdPage from "../../pages/ReviewIdPage/ReviewIdPage";
 
 const AppRouter: FC = () => {
    return (
@@ -18,6 +20,8 @@ const AppRouter: FC = () => {
          <Route path={publicRoutes.ANIME} element={<AnimePage />} />
          <Route path={publicRoutes.ANIME_TOP} element={<AnimeTopPage />} />
          <Route path={`/anime/:id`} element={<AnimeIdPage />} />
+         <Route path={`/anime/:id/reviews`} element={<ReviewsPage />} />
+         <Route path={`/anime/:id/reviews/:id`} element={<ReviewIdPage />} />
          <Route path={`/user/*`} element={<ProfilePage />}/>
          <Route path={`/user/:id/*`} element={<ProfilePage />}/>
          {/* <Route path={`/users/:id/watchlist`} element={<ProfileList />} /> */}

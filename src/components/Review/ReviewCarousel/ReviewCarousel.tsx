@@ -8,23 +8,29 @@ import Carousel from "../../../UI/Carousel/Carousel";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import Review from "../Review/Review";
 import { IAnimeReview } from "../../../types/jikanMoe/jikan";
+import { Link, useParams } from "react-router-dom";
+import ReviewsCount from "../../../UI/ReviewsCount/ReviewsCount";
 
 interface ReviewCarouselProps {
    reviews: IAnimeReview[];
 }
 
+type ParamsType = {
+   id: string;
+};
+
 const ReviewCarousel: FC<ReviewCarouselProps> = ({ reviews }) => {
    const { animeSingle, animeReviews, animeReviewsLoading, animeReviewsError } = useTypedSelector((state) => state.anime);
+
+   const params = useParams<ParamsType>();
 
    return (
       <div className={classes["reviews"]}>
          <div className={classes["reviews__header"]}>
-            <Title value={`Reviews`} amount={46} isLink={true} />
-            <div className={classes["reviews__counts"]}>
-                <div className={classes["reviews__positive"]}>Positive<span className={classes["reviews__amount"]}>{34}</span></div>
-                <div className={classes["reviews__neutral"]}>Neutral<span className={classes["reviews__amount"]}>{8}</span></div>
-                <div className={classes["reviews__negative"]}>Negative<span className={classes["reviews__amount"]}>{4}</span></div>
-            </div>
+            <Link to={`/anime/${params.id}/reviews`}>
+               <Title value={`Reviews`} amount={46} isLink={true} />
+            </Link>
+            <ReviewsCount counts={{ positive: 32, neutral: 10, negative: 4 }} />
          </div>
 
          {reviews.length === 0 && !animeReviewsLoading && !animeReviewsError ? (

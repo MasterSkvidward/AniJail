@@ -1,6 +1,8 @@
+import userEvent from "@testing-library/user-event";
 import React, { FC, useState, SyntheticEvent, Dispatch, SetStateAction } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
+import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { AuthActionCreators } from "../../../store/reducers/auth/action-creatores";
 import InputField from "../../../UI/InputField/InputField";
 import InputSwitch from "../../../UI/InputSwitch/InputSwitch";
@@ -19,6 +21,8 @@ interface ISignUpFormValues {
 const ProfileForm: FC = () => {
    const dispatch = useDispatch();
 
+   const { user } = useTypedSelector((state) => state.auth);
+
    const {
       register,
       handleSubmit,
@@ -33,8 +37,8 @@ const ProfileForm: FC = () => {
    const onSubmit = (e: SyntheticEvent) => {
       e.preventDefault();
       dispatch(AuthActionCreators.setAuth(true));
-      resetField("nickname");
-      resetField("email");
+    //   resetField("nickname");
+    //   resetField("email");
       resetField("password");
    };
 
@@ -46,8 +50,9 @@ const ProfileForm: FC = () => {
             <div className={classes["form__inputs"]}>
                <InputField
                   type={"text"}
-                  placeholder={"hokage007"}
+                  placeholder={""}
                   label={"Username"}
+                  defaultValue={user.username}
                   errors={errors.nickname?.message || ""}
                   {...register("nickname", nickNameValidation)}
                />
@@ -77,8 +82,6 @@ const ProfileForm: FC = () => {
                   placeholder="Write something about yourself..."
                ></textarea>
             </div>
-
-        
 
             <button className={classes["form__btn"]}>Save</button>
          </div>

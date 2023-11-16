@@ -101,7 +101,7 @@ export const getDateFromTimeStamp = (timestamp: string): Date => {
 };
 
 export const getExactTimeFromDate = (date: Date): string => {
-   let exactTime = `${date.getDate()} ${getMonthName(date.getMonth())} ${date.getFullYear()} in ${
+   let exactTime = `${date.getDate()} ${getMonthName(date.getMonth()).slice(0, 3)} ${date.getFullYear()} in ${
       date.getHours() >= 10 ? date.getHours() : "0" + String(date.getHours())
    }:${date.getMinutes() >= 10 ? date.getMinutes() : "0" + String(date.getMinutes())}`;
    return exactTime;
