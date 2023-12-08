@@ -5,6 +5,9 @@ import CommentItem from "../CommentItem/CommentItem";
 import classes from "./CommentList.module.scss";
 
 import user_image from "../../../assets/images/makima.jpg";
+import CommentForm from "../CommentForm/CommentForm";
+import { CommentActionCreators } from "../../../store/reducers/comment/action-creatores";
+import { useDispatch } from "react-redux";
 
 export interface IComment {
    id: number;
@@ -15,93 +18,56 @@ export interface IComment {
    comment: string;
 }
 
-export const backendComments: IComment[] = [
-   {
-      id: 1,
-      parentId: null,
-      author: "Atrhur",
-      img: user_image,
-      date: "3 days ago",
-      comment:
-         "Wow! Wonderful show. Btw waifu is hot)) Wow! Wonderful show. Btw waifu is hot)) Wow! Wonderful show. Btw waifu is hot)) Wow! Wonderful show. Btw waifu is hot))",
-   },
-
-   {
-      id: 2,
-      parentId: 1,
-      author: "Sergey",
-      img: user_image,
-      date: "1 day ago",
-      comment:
-         "Wow! Wonderful show. Btw waifu is hot)) Wow! Wonderful show. Btw waifu is hot)) Wow! Wonderful show. Btw waifu is hot)) Wow! Wonderful show. Btw waifu is hot))",
-   },
-
-   {
-      id: 3,
-      parentId: null,
-      author: "Vlad",
-      img: user_image,
-      date: "3 weeks ago",
-      comment:
-         "Wow! Wonderful show. Btw waifu is hot)) Wow! Wonderful show. Btw waifu is hot)) Wow! Wonderful show. Btw waifu is hot)) Wow! Wonderful show. Btw waifu is hot))",
-   },
-   {
-      id: 4,
-      parentId: 3,
-      author: "Dima",
-      img: user_image,
-      date: "yeasterday",
-      comment:
-         "Wow! Wonderful show. Btw waifu is hot)) Wow! Wonderful show. Btw waifu is hot)) Wow! Wonderful show. Btw waifu is hot)) Wow! Wonderful show. Btw waifu is hot))",
-   },
-   {
-      id: 5,
-      parentId: null,
-      author: "Leonid",
-      img: user_image,
-      date: "2 days ago",
-      comment:
-         "Wow! Wonderful show. Btw waifu is hot)) Wow! Wonderful show. Btw waifu is hot)) Wow! Wonderful show. Btw waifu is hot)) Wow! Wonderful show. Btw waifu is hot))",
-   },
-
-   {
-      id: 6,
-      parentId: 2,
-      author: "John Snow",
-      img: user_image,
-      date: "4 days ago",
-      comment:
-         "Wow! Wonderful show. Btw waifu is hot)) Wow! Wonderful show. Btw waifu is hot)) Wow! Wonderful show. Btw waifu is hot)) Wow! Wonderful show. Btw waifu is hot))",
-   },
-
-   {
-      id: 7,
-      parentId: 2,
-      author: "Anton",
-      img: user_image,
-      date: "5 days ago",
-      comment:
-         "Wow! Wonderful show. Btw waifu is hot)) Wow! Wonderful show. Btw waifu is hot)) Wow! Wonderful show. Btw waifu is hot)) Wow! Wonderful show. Btw waifu is hot))",
-   },
-];
-
 const CommentList = () => {
    const { user } = useTypedSelector((state) => state.auth);
+   const { comments } = useTypedSelector((state) => state.comment);
 
-   const rootComments = backendComments.filter((comment) => comment.parentId === null);
+   const dispatch = useDispatch();
+
+   let rootComments = comments.filter((comment) => comment.parentId === null);
 
    const getReplies = (commentId: number, comments: IComment[]): IComment[] => {
       //! .sort((a,b) => newDate(a) - newDate(b))  <--- need to add
       return comments.filter((comment) => comment.parentId === commentId);
    };
 
-   useEffect(() => {}, []);
+   const fetchComments = async () => {
+      await dispatch(CommentActionCreators.getComments());
+   };
+
+   const handleAddComment = (text: string, parentId: number | null): void => {
+      if (text) {
+         const newComment: IComment = {
+            id: comments.at(-1)?.id || 0 + 1,
+            parentId: parentId,
+            author: user.username,
+            img: user_image,
+            date: "recently",
+            comment: text,
+         };
+         dispatch(CommentActionCreators.addComment(newComment));
+      }
+
+      //   rootComments = [newComment, ...comments];
+   };
+
+   useEffect(() => {
+      fetchComments();
+   }, []);
+
+   console.log(comments);
 
    return (
       <div className={classes["comments"]}>
-         <Title value={"Comments"} />
+         <Title value={"Comments"} amount={rootComments.length} />
+         <CommentForm handleAddComment={handleAddComment} />
          {rootComments.map((rootComment, index) => (
-            <CommentItem comment={rootComment} replies={getReplies(rootComment.id, backendComments)} backendComments={backendComments} key={index} />
+            <CommentItem
+               comment={rootComment}
+               replies={getReplies(rootComment.id, comments)}
+               backendComments={comments}
+               key={index}
+            />
          ))}
       </div>
    );

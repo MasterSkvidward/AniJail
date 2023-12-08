@@ -11,7 +11,7 @@ $height: 268px;
       grid-template-columns: repeat(auto-fill, minmax(114px, 1fr));
       width: 100%;
 
-      column-gap: 17px;
+      column-gap: .5vw;
       row-gap: 25px;
 
       background-color: var(--background-300);

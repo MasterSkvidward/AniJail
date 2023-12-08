@@ -32,8 +32,6 @@ export const getActivityDays = (days: number): number => {
    return days;
 };
 
-
-
 export const getAnimeParamId = (value: string, type: string): string => {
    let result;
 

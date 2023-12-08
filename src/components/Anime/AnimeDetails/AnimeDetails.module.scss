@@ -35,13 +35,14 @@ $trailer_height: 267px;
       display: flex;
       flex-direction: column;
       flex-grow: 1;
+      max-width: 1050px;
 
       & > div {
          margin-bottom: 65px;
       }
 
       & > div:last-child {
-         margin-bottom: 70px;
+         margin-bottom: 0px;
       }
 
       @include for-small-desktop-up {
@@ -49,7 +50,14 @@ $trailer_height: 267px;
       }
    }
 
+   &__characters {
+      width: 100%;
+   }
+
    &__row {
+      display: flex;
+      justify-content: space-between;
+      column-gap: 20px;
    }
 
    &__rating {
@@ -66,7 +74,7 @@ $trailer_height: 267px;
    row-gap: 19px;
 
    width: 100%;
-   max-width: 1000px;
+   //    max-width: 1000px;
 
    &__body {
       font-size: 0.96em;
@@ -85,6 +93,22 @@ $trailer_height: 267px;
    }
 }
 
+.statistics {
+   width: 100%;
+   max-width: 550px;
+
+   display: flex;
+   flex-direction: column;
+   row-gap: 25px;
+   justify-content: space-between;
+
+   &__folders {
+      display: flex;
+      flex-direction: column;
+      row-gap: 25px;
+   }
+}
+
 .trailer {
    &__video {
       // flex: 1 1 400px;
@@ -94,8 +118,8 @@ $trailer_height: 267px;
       // padding: 0px 0px 56% 0px;
       // aspect-ratio: 16 / 9;
       // max-width: 400px;
-      width: calc($trailer_width);
-      height: calc($trailer_height);
+      width: calc($trailer_width * 0.95);
+      height: calc($trailer_height * 0.95);
       // max-width: 320px;
       // min-height: 180px;
       border-radius: 6px;

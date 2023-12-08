@@ -1,20 +1,36 @@
 $width: 55px;
 $height: 55px;
 
+@keyframes scaleIn {
+   0% {
+      opacity: 0.3;
+      //   transform: scale(0.98);
+   }
+   50% {
+      opacity: 0.8;
+   }
+   100% {
+      opacity: 1;
+      transform: scale(1);
+   }
+}
+
 .comment {
-   &__content {
-      padding: 15px;
+   &__container {
       background-color: var(--background-300);
+      box-shadow: var(--box-shadow-primary);
+      padding: 15px;
       border-radius: 16px;
       overflow: hidden;
-      box-shadow: var(--box-shadow-primary);
+      width: 100%;
+      margin-bottom: 15px;
+      animation: scaleIn 0.3s ease-in-out;
+   }
+
+   &__content {
       display: flex;
       column-gap: 12px;
-
-      width: 100%;
-      max-width: 900px;
-
-      margin-bottom: 15px;
+      margin-bottom: 5px;
    }
 
    &__image {
@@ -59,6 +75,8 @@ $height: 55px;
       color: var(--text-secondary);
       font-size: 0.9em;
       line-height: 140%;
+      word-break: break-all;
+      white-space: normal;
 
       margin-bottom: 5px;
    }
@@ -66,19 +84,66 @@ $height: 55px;
    &__actions {
       display: flex;
       column-gap: 15px;
+      align-items: center;
 
+      margin-left: 60px;
+   }
+
+   &__btn {
+      background-color: var(--background-300);
+      color: var(--text-primary);
+
+      display: flex;
+      align-items: center;
+      column-gap: 8px;
+
+      padding: 7px 12px;
+      border-radius: 12px;
+      transition: background-color 0.11s ease-in-out;
+      cursor: pointer;
+
+      &:hover {
+         background-color: var(--background-100);
+         opacity: 0.9;
+
+         //  svg {
+         //     color: rgb(var(--color-main));
+         //  }
+      }
       svg {
          font-size: 1.1em;
          cursor: pointer;
-         transition: color 0.18s ease-in-out;
+         //  transition: color 0.18s ease-in-out;
+      }
+   }
 
-         &:hover {
-            color: rgb(var(--color-main));
-         }
+   &__show {
+      color: rgba(var(--color-main), 0.7);
+      font-size: 0.86em;
+      cursor: pointer;
+
+      display: flex;
+      align-items: center;
+      column-gap: 2px;
+
+      &:hover {
+         //  opacity: 0.98;
+         color: rgba(var(--color-main), 0.65);
       }
    }
 
    &__replies {
       margin-left: 75px;
    }
+}
+
+.arrow {
+   width: 25px;
+   height: 25px;
+   transition: transform 0.25s ease-in-out;
+   // transform: rotate(180deg);
+}
+
+.rotate {
+   transform: rotate(180deg);
 }

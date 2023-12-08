@@ -1,0 +1,73 @@
+[
+   {
+      "id": 1,
+      "parentId": null,
+      "author": "Arthur",
+      "img": "",
+      "date": "3 days ago",
+      "comment": "What anime should i watch if i liked jujutsu kaisen?"
+   },
+
+   {
+      "id": 2,
+      "parentId": 1,
+      "author": "Sergey",
+      "img": "",
+      "date": "3 days ago",
+      "comment": "What anime should i watch if i liked jujutsu kaisen?"
+   },
+
+   {
+      "id": 3,
+      "parentId": 2,
+      "author": "Vlad",
+      "img": "",
+      "date": "3 months ago",
+      "comment": "What anime should i watch if i liked jujutsu kaisen?"
+   },
+
+   {
+      "id": 4,
+      "parentId": 2,
+      "author": "Dima",
+      "img": "",
+      "date": "3 weeks ago",
+      "comment": "What anime should i watch if i liked jujutsu kaisen?"
+   },
+
+   {
+      "id": 5,
+      "parentId": 2,
+      "author": "Leonid",
+      "img": "",
+      "date": "3 days ago",
+      "comment": "What anime should i watch if i liked jujutsu kaisen?"
+   },
+
+   {
+      "id": 6,
+      "parentId": null,
+      "author": "Anthon",
+      "img": "",
+      "date": "3 days ago",
+      "comment": "What anime should i watch if i liked jujutsu kaisen?"
+   },
+
+   {
+      "id": 7,
+      "parentId": 6,
+      "author": "Kuzma",
+      "img": "",
+      "date": "5 days ago",
+      "comment": "What anime should i watch if i liked jujutsu kaisen?"
+   },
+
+   {
+      "id": 8,
+      "parentId": null,
+      "author": "GGPPeegGa",
+      "img": "",
+      "date": "2 days ago",
+      "comment": "What anime should i watch if i liked jujutsu kaisen? What anime should i watch if i liked jujutsu kaisen? What anime should i watch if i liked jujutsu kaisen? What anime should i watch if i liked jujutsu kaisen? What anime should i watch if i liked jujutsu kaisen?"
+   }
+]

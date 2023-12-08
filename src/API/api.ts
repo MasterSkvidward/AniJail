@@ -1,12 +1,17 @@
 import axios from "axios";
 import { API_ENDPOINTS } from "./api-endpoints";
 
-export const PUBLIC_URL = process.env.PUBLIC_URL;
+export const PUBLIC_URL = process.env.PUBLIC_URL + "/server";
 export const API_URL = "https://api.jikan.moe/v4";
 
 const $api = axios.create({
-  //   withCredentials: true,
-  baseURL: API_URL,
+   //   withCredentials: true,
+   baseURL: API_URL,
+});
+
+export const $public_server = axios.create({
+   //   withCredentials: true,
+   baseURL: PUBLIC_URL,
 });
 
 // $api.interceptors.response.use((config) => {

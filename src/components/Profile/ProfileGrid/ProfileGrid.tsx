@@ -13,7 +13,7 @@ const ProfileGrid: FC<ProfileGridProps> = ({ title, srcList }) => {
          <CommonTitle value={title} />
          <div className={classes["block__grid"]}>
             {srcList.map((src, index) => (
-               <div className={classes["block__image"]}>
+               <div className={classes["block__image"]} key={index}>
                   <img src={src} alt="" />
                </div>
             ))}

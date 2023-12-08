@@ -17,6 +17,7 @@ import { AnimeActionCreators } from "../../../store/reducers/anime/action-creato
 import AnimeRecommendations from "../AnimeRecommendations/AnimeRecommendations";
 
 import aot_img from "../../../assets/images/aot-promo.jpg";
+import CategoriesOverview, { ICategory } from "../../../UI/CategoriesOverview/CategoriesOverview";
 
 const AnimeDetails = () => {
    const {
@@ -26,6 +27,14 @@ const AnimeDetails = () => {
       animeSeason,
       animeSingle: anime,
    } = useTypedSelector((state) => state.anime);
+
+   const backendCategories: ICategory[] = [
+      { label: "Completed", amount: 20250 },
+      { label: "Planned", amount: 13060 },
+      { label: "Watching", amount: 962 },
+      { label: "Favourite", amount: 4025 },
+      { label: "Dropped", amount: 1675 },
+   ];
 
    return (
       <section className={classes["anime-details"]}>
@@ -49,17 +58,17 @@ const AnimeDetails = () => {
                   )}
                </div>
 
-               <div className={classes["anime-details__row"]}>
+               <div className={classes["anime-details__characters"]}>
                   <AnimeCharacters />
                </div>
 
-               <div className={classes["anime-details__rating"]}>
+               <div className={classes["anime-details__row"]}>
                   {/* <AnimeRating score={anime?.score} scoredBy={anime?.scored_by} /> */}
                   <div className={classes["trailer"]}>
                      <Title value={"Trailer"} />
 
                      <div className={classes["trailer__video"]}>
-                        {anime?.trailer.embed_url ? 
+                        {anime?.trailer.embed_url ? (
                            <iframe
                               src={`${anime?.trailer.embed_url || ""}?poster=${aot_img}`}
                               name="trailer"
@@ -69,11 +78,21 @@ const AnimeDetails = () => {
                               allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                               allowFullScreen
                            ></iframe>
-                           :
+                        ) : (
                            <div className={classes["trailer__error"]}>
-                                <span>Trailer is not available</span>
+                              <span>Trailer is not available</span>
                            </div>
-                        }
+                        )}
+                     </div>
+                  </div>
+                  <div className={classes["statistics"]}>
+                     <div className={classes["statistics__folders"]}>
+                        <Title value={"Statistics"} />
+                        <CategoriesOverview categories={backendCategories} />
+                     </div>{" "}
+                     <div className={classes["statistics__folders"]}>
+                        {/* <Title value={"Status Destribution"} /> */}
+                        <CategoriesOverview categories={backendCategories} />
                      </div>
                   </div>
                </div>
