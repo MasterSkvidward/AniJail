@@ -39,6 +39,7 @@ export const AnimeActionCreators = {
             });
          } catch (e: any) {
             dispatch(AnimeActionCreators.setAnimeSingleError(e));
+            console.log("success")
             if (e.response && e.response.status === 429) {
                setTimeout(() => {
                   dispatch(AnimeActionCreators.GetAnimeSingle(id));

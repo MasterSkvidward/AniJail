@@ -6,4 +6,5 @@ export const API_ENDPOINTS = {
   ANIME: "/anime",
   CHARACTERS: "/characters",
   SEASON_NOW: "/seasons/now",
+  ANIME_RECCOMENDATIONS: ""
 };

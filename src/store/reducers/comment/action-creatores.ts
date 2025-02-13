@@ -28,6 +28,7 @@ export const CommentActionCreators = {
          console.log("fetch Comments");
          dispatch(CommentActionCreators.setCommentsLoading(true));
          const response = await CommentService.getComments();
+         console.log("success")
          dispatch({
             type: CommentActionsEnum.GET_COMMENTS,
             payload: response,

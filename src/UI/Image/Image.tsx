@@ -21,6 +21,7 @@ const Image: FC<ImageProps> = ({ url, alt, score }) => {
    const handleImageError = (e: SyntheticEvent) => {
       if (imgRef.current) imgRef.current.src = errorImage;
       e.stopPropagation();
+      console.log("image error");
    };
 
    return (

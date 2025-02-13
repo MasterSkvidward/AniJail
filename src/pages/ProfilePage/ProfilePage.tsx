@@ -36,7 +36,7 @@ const ProfilePage = () => {
    useEffect(() => {
       window.scrollTo(0, 0);
       fetchAnimeTest();
-    
+      console.log("fetch success");
    }, []);
 
    return (

@@ -21,6 +21,7 @@ const DropMenu: FC<DropMenuProps> = ({ options, defaultValue }) => {
 
    const handlerOptionClick = (e: MouseEvent, index: number) => {
       setCurrentValue(options[index]);
+      console.log("option changed")
    };
 
    const handlerButtonClick = (e: MouseEvent) => {
